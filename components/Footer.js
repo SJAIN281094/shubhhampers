@@ -115,6 +115,7 @@ const Footer = () => {
               </li>
             </ul>
           </div>
+        </div>
 
         {/* Copyright section */}
         <div className="container mx-auto mt-12 pt-6 border-t border-gray-700">
