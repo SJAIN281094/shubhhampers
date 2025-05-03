@@ -4,16 +4,39 @@ import NextTopLoader from "nextjs-toploader";
 import Header from "@/components/Header";
 import ContextProvider from "@/Context/Context";
 import Footer from "@/components/Footer";
-import { ProductContextProvider } from "@/Context/CreateProduct";
 import { Toaster } from "react-hot-toast";
-import CartProvider from "@/Context/CartProvider";
-import AdminProvider from "@/Context/AdminProvider";
 
 const inter = Montserrat({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Store",
-  description: "A store for all your needs",
+  title: "The Little Basket",
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/favicon.ico",
+  },
+  keywords: [
+    "The Little Basket",
+    "Gifts",
+    "Gifting",
+    "Gift Baskets",
+    "Gift Boxes",
+    "Gift Delivery",
+    "Personalized Gifts",
+    "Custom Gifts",
+    "Luxury Gifts",
+    "Unique Gifts",
+  ],
+  authors: [
+    {
+      name: "The Little Basket",
+      url: "https://thelittlebasket.com",
+    },
+  ],
+  creator: "The Little Basket",
+  publisher: "The Little Basket",
+  description:
+    "The Little Basket is a gifting company that specializes in creating unique and personalized gift baskets and boxes for all occasions.",
 };
 
 export default function RootLayout({ children }) {
@@ -22,16 +45,10 @@ export default function RootLayout({ children }) {
       <body className={`bg-gray-100 ${inter.className}`}>
         <NextTopLoader color="#000" height={4} />
         <ContextProvider>
-          <AdminProvider>
-            <ProductContextProvider>
-              <CartProvider>
-                <Header />
-                <Toaster position="top-right" reverseOrder={false} />
-                <div className="min-h-screen">{children}</div>
-                <Footer />
-              </CartProvider>
-            </ProductContextProvider>
-          </AdminProvider>
+          <Header />
+          <Toaster position="top-right" reverseOrder={false} />
+          <div className="min-h-screen">{children}</div>
+          <Footer />
         </ContextProvider>
       </body>
     </html>

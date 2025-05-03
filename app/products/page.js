@@ -11,7 +11,6 @@ import {
 } from "@heroicons/react/20/solid";
 import HomeProducts from "@/components/HomeProducts";
 import Image from "next/image";
-import { ProductContext } from "@/Context/CreateProduct";
 
 const sortOptions = [
   { name: "Most Popular", value: "popularity", current: true },
@@ -40,21 +39,105 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
+const mockProducts = {
+  data: [
+    {
+      _id: "1",
+      name: "Luxury Gift Hamper",
+      price: 99.99,
+      description:
+        "A luxury gift hamper with assorted chocolates, wine, and gourmet snacks.",
+      category: "premium",
+      mainImage:
+        "https://images.unsplash.com/photo-1594631252845-29fc4cc8cde9?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+    },
+    {
+      _id: "2",
+      name: "Birthday Celebration Hamper",
+      price: 79.99,
+      description:
+        "Perfect birthday gift hamper with cake, balloons, and personalized items.",
+      category: "birthday",
+      mainImage:
+        "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+    },
+    {
+      _id: "3",
+      name: "Chocolate Lovers Hamper",
+      price: 59.99,
+      description:
+        "Indulgent hamper filled with premium chocolates from around the world.",
+      category: "chocolate",
+      mainImage:
+        "https://images.unsplash.com/photo-1621939514649-280e2ee25f60?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+    },
+    {
+      _id: "4",
+      name: "Wellness Gift Hamper",
+      price: 89.99,
+      description:
+        "Self-care hamper with organic skincare products, herbal teas, and aromatherapy items.",
+      category: "wellness",
+      mainImage:
+        "https://images.unsplash.com/photo-1584473457333-8c264c7d755d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+    },
+    {
+      _id: "5",
+      name: "Corporate Gift Basket",
+      price: 129.99,
+      description:
+        "Professional gift hamper for business associates with premium items and elegant packaging.",
+      category: "corporate",
+      mainImage:
+        "https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+    },
+    {
+      _id: "6",
+      name: "Wine & Cheese Hamper",
+      price: 119.99,
+      description:
+        "Sophisticated hamper with selected wines, artisanal cheeses, and gourmet crackers.",
+      category: "gourmet",
+      mainImage:
+        "https://images.unsplash.com/photo-1506368249639-73a05d6f6488?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+    },
+    {
+      _id: "7",
+      name: "Baby Shower Gift Hamper",
+      price: 69.99,
+      description:
+        "Adorable hamper filled with baby essentials, toys, and keepsakes for new parents.",
+      category: "baby",
+      mainImage:
+        "https://images.unsplash.com/photo-1544967082-d9d25d867d66?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+    },
+    {
+      _id: "8",
+      name: "Tea Lover's Hamper",
+      price: 49.99,
+      description:
+        "Delightful hamper for tea enthusiasts with premium teas, honey, and elegant teaware.",
+      category: "tea",
+      mainImage:
+        "https://images.unsplash.com/photo-1594631252845-29fc4cc8cde9?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+    },
+  ],
+};
+
 const Products = () => {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [selectedSort, setSelectedSort] = useState("popularity");
-  const { products } = useContext(ProductContext);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    if (products?.data) {
+    if (mockProducts?.data) {
       setIsLoading(false);
       // Here you would implement actual filtering and sorting
-      setFilteredProducts(products.data);
+      setFilteredProducts(mockProducts.data);
     }
-  }, [products]);
+  }, [mockProducts]);
 
   const handleCategoryChange = (category) => {
     setSelectedCategory(category);

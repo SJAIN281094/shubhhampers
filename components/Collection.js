@@ -19,7 +19,7 @@ const Collection = () => {
               <Image
                 height={300}
                 width={300}
-                src="https://the-little-basket.s3.us-east-1.amazonaws.com/images/8.jpeg"
+                src="https://the-little-basket.s3.us-east-1.amazonaws.com/images/9.jpeg"
                 alt=""
                 className="aspect-square w-full object-cover transition duration-500 group-hover:opacity-90"
               />
@@ -37,7 +37,7 @@ const Collection = () => {
               <Image
                 height={300}
                 width={300}
-                src="https://the-little-basket.s3.us-east-1.amazonaws.com/images/9.jpeg"
+                src="https://the-little-basket.s3.us-east-1.amazonaws.com/images/7.jpeg"
                 alt=""
                 className="aspect-square w-full object-cover transition duration-500 group-hover:opacity-90"
               />
@@ -55,7 +55,7 @@ const Collection = () => {
               <Image
                 height={300}
                 width={500}
-                src="https://the-little-basket.s3.us-east-1.amazonaws.com/images/7.jpeg"
+                src="https://the-little-basket.s3.us-east-1.amazonaws.com/images/8.jpeg"
                 alt=""
                 className="aspect-square w-full object-cover transition duration-500 group-hover:opacity-90"
               />

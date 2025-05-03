@@ -1,11 +1,7 @@
 "use client";
 import Link from "next/link";
-import { useContext } from "react";
-import { Context } from "@/Context/Context";
 
-const Mobile = ({ setIsOpen, categories }) => {
-  const { user, handleLogout } = useContext(Context);
-
+const Mobile = ({ setIsOpen }) => {
   return (
     <div className="p-4">
       <div className="flex justify-end">
@@ -59,64 +55,6 @@ const Mobile = ({ setIsOpen, categories }) => {
             Contact
           </Link>
         </li>
-        {user?.data?.isAdmin && (
-          <li>
-            <Link
-              href="/dashboard"
-              className="block text-gray-800 transition hover:text-gray-800/75"
-              onClick={() => setIsOpen(false)}
-            >
-              Admin
-            </Link>
-          </li>
-        )}
-
-        {categories?.map((category) => (
-          <li key={category._id}>
-            <Link
-              href={`/category/${category.slug}`}
-              className="block text-gray-800 transition hover:text-gray-800/75"
-              onClick={() => setIsOpen(false)}
-            >
-              {category.name}
-            </Link>
-          </li>
-        ))}
-
-        {user ? (
-          <li>
-            <button
-              onClick={() => {
-                handleLogout();
-                setIsOpen(false);
-              }}
-              className="block w-full text-left text-gray-800 transition hover:text-gray-800/75"
-            >
-              Logout
-            </button>
-          </li>
-        ) : (
-          <>
-            <li>
-              <Link
-                href="/loginpage"
-                className="block text-gray-800 transition hover:text-gray-800/75"
-                onClick={() => setIsOpen(false)}
-              >
-                Login
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/signupPage"
-                className="block text-gray-800 transition hover:text-gray-800/75"
-                onClick={() => setIsOpen(false)}
-              >
-                Signup
-              </Link>
-            </li>
-          </>
-        )}
       </ul>
     </div>
   );

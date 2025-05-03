@@ -2,7 +2,7 @@
 import Mobile from "../Mobile/Mobile";
 import { useState } from "react";
 
-const MobileMenu = ({ categories }) => {
+const MobileMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -30,7 +30,7 @@ const MobileMenu = ({ categories }) => {
 
       {isOpen && (
         <div className="absolute left-0 top-0 w-52 md:hidden bg-white shadow-lg rounded-lg z-50">
-          <Mobile setIsOpen={setIsOpen} categories={categories} />
+          <Mobile setIsOpen={setIsOpen} />
         </div>
       )}
     </>

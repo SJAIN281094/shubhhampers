@@ -20,6 +20,12 @@ const HeroBanner = () => {
               gift for Corporate, birthday, anniversary, etc. we have the
               perfect basket for you.`}
             </p>
+            <Link
+              href="/contact"
+              className="inline-block rounded-md border border-transparent bg-[#2a2e33] px-8 py-3 my-5 text-center font-medium text-white hover:bg-[#12171d]"
+            >
+              Connect With Us
+            </Link>
           </div>
           <div>
             <div className="mt-10">
@@ -101,13 +107,6 @@ const HeroBanner = () => {
                   </div>
                 </div>
               </div>
-
-              <Link
-                href="/contact"
-                className="inline-block rounded-md border border-transparent bg-[#2a2e33] px-8 py-3 text-center font-medium text-white hover:bg-[#12171d]"
-              >
-                Connect With Us
-              </Link>
             </div>
           </div>
         </div>

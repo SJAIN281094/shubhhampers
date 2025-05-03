@@ -1,27 +1,10 @@
 "use client";
 import Link from "next/link";
-import { BsBag } from "react-icons/bs";
 import Mobile from "./Mobile";
-import { useContext, useEffect, useState } from "react";
-import SideCart from "./SideCart";
-import { Context } from "@/Context/Context";
-import axios from "axios";
+import { useState } from "react";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isCartOpen, setIsCartOpen] = useState(false);
-  const { user, handleLogout } = useContext(Context);
-  const [categories, setCategories] = useState([]);
-  const [isHovered, setIsHovered] = useState(false);
-  const name = user?.data?.name.replace(/ .*/, "");
-
-  useEffect(() => {
-    const fetchCategories = async () => {
-      const res = await axios.get("/api/category");
-      setCategories(res?.data?.data);
-    };
-    fetchCategories();
-  }, []);
 
   return (
     <div className="w-full relative">
@@ -88,16 +71,6 @@ const Header = () => {
                     Contact
                   </Link>
                 </li>
-                {user?.data?.isAdmin && (
-                  <li>
-                    <Link
-                      className="text-gray-800 transition hover:text-gray-800/75 "
-                      href="/dashboard"
-                    >
-                      Admin
-                    </Link>
-                  </li>
-                )}
               </ul>
             </nav>
           </div>
@@ -107,11 +80,8 @@ const Header = () => {
         <div
           className={`absolute left-0 top-0 w-52 md:hidden bg-white shadow-lg rounded-lg z-50`}
         >
-          <Mobile setIsOpen={setIsOpen} categories={categories} />
+          <Mobile setIsOpen={setIsOpen} />
         </div>
-      )}
-      {isCartOpen && (
-        <SideCart setIsCartOpen={setIsCartOpen} isCartOpen={isCartOpen} />
       )}
     </div>
   );
