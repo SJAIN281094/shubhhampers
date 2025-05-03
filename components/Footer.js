@@ -1,54 +1,47 @@
 "use client";
-import { Context } from "@/Context/Context";
-import Image from "next/image";
 import Link from "next/link";
-import { useContext } from "react";
 
 const Footer = () => {
-  const { user } = useContext(Context);
   return (
     <>
-      {!user?.data?.isAdmin && (
-        <div className="w-[97%] mx-auto my-5">
-          <div className="flex flex-col items-center gap-4 rounded-lg bg-white p-6 shadow-lg sm:flex-row sm:justify-between">
-            <strong className="text-xl text-black sm:text-xl capitalize text-center md:text-start">
-              contact us
-              <p className="text-xs text-black my-2 w-full text-center md:text-start">
-                for more information about our services and products, please
-                contact us at
-                <a
-                  href="mailto:gifts@thelittlebasket.com"
-                  className="ml-1 text-black underline"
-                >
-                  gifts@thelittlebasket.com
-                </a>
-              </p>
-            </strong>
-
-            <Link
-              className="inline-flex items-center gap-2 rounded-full border border-[#12171D] bg-[#000000] px-8 py-3 text-white hover:bg-transparent hover:border-white hover:text-white focus:outline-none focus:ring active:bg-white/90"
-              href="/contact"
-            >
-              <span className="text-sm font-medium"> Lets Get Started </span>
-
-              <svg
-                className="h-5 w-5 rtl:rotate-180"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
+      <div className="w-[95%] mx-auto my-5">
+        <div className="flex flex-col items-center gap-4 rounded-lg bg-white p-6 shadow-lg sm:flex-row sm:justify-between">
+          <strong className="text-xl text-black sm:text-xl capitalize text-center md:text-start">
+            contact us
+            <p className="text-sm text-black my-2 w-full text-center md:text-start">
+              for more information about our services and products, please
+              contact us at
+              <a
+                href="mailto:gifts@thelittlebasket.com"
+                className="ml-1 underline text-blue-500"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M17 8l4 4m0 0l-4 4m4-4H3"
-                />
-              </svg>
-            </Link>
-          </div>
+                gifts@thelittlebasket.com
+              </a>
+            </p>
+          </strong>
+
+          <Link
+            className="inline-flex items-center gap-2 rounded-full border border-[#12171D] bg-[#000000] px-8 py-3 text-white hover:bg-transparent hover:border-black hover:text-black focus:outline-none focus:ring active:bg-white/90"
+            href="/contact"
+          >
+            <span className="text-sm font-medium"> Lets Get Started </span>
+            <svg
+              className="h-5 w-5 rtl:rotate-180"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M17 8l4 4m0 0l-4 4m4-4H3"
+              />
+            </svg>
+          </Link>
         </div>
-      )}
+      </div>
 
       <footer className="bg-black text-white py-10">
         <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-24">

@@ -3,8 +3,8 @@ import Image from "next/image";
 import CardSkeleton from "./CardSkeleton";
 import Link from "next/link";
 
-const HomeProducts = ({ show }) => {
-  const mockProducts = {
+const HomeProducts = ({ show, products }) => {
+  const mockProducts = products ?? {
     data: [
       {
         _id: "1",
@@ -108,6 +108,8 @@ const HomeProducts = ({ show }) => {
       },
     ],
   };
+
+  console.log("mockProducts", mockProducts);
 
   if (!mockProducts?.data) {
     return (
