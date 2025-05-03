@@ -77,10 +77,10 @@ const page = () => {
                   thoughtfully curated gifts that leave lasting impressions.
                 </p>
                 <p className="mb-8 text-base text-gray-600">
-                  Our baskets are carefully curated with high-quality products
+                  {`Our baskets are carefully curated with high-quality products
                   and can be customized to fit your needs. Whether you're
                   looking for a gift for Corporate, birthday, anniversary, or
-                  any special occasion, we have the perfect basket for you.
+                  any special occasion, we have the perfect basket for you.`}
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-4">
@@ -181,8 +181,8 @@ const page = () => {
               </div>
               <h3 className="text-xl font-semibold mb-2">Corporate Gifts</h3>
               <p className="text-gray-600">
-                Impress your clients and employees with sophisticated gift
-                baskets that represent your company's values.
+                {`Impress your clients and employees with sophisticated gift
+                baskets that represent your company's values.`}
               </p>
             </div>
 
@@ -231,8 +231,8 @@ const page = () => {
               </div>
               <h3 className="text-xl font-semibold mb-2">Custom Creations</h3>
               <p className="text-gray-600">
-                Tell us your vision, and we'll create a personalized gift basket
-                tailored to your recipient's preferences and tastes.
+                {`Tell us your vision, and we'll create a personalized gift basket
+                tailored to your recipient's preferences and tastes.`}
               </p>
             </div>
           </div>
