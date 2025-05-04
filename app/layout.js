@@ -9,14 +9,14 @@ import { Toaster } from "react-hot-toast";
 const inter = Montserrat({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "The Little Basket",
+  title: "Shubhhampers",
   icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon.ico",
-    apple: "/favicon.ico",
+    icon: "/shubhhampers-mini.png",
+    shortcut: "/shubhhampers-mini.png",
+    apple: "/shubhhampers-mini.png",
   },
   keywords: [
-    "The Little Basket",
+    "Shubhhampers",
     "Gifts",
     "Gifting",
     "Gift Baskets",
@@ -29,20 +29,20 @@ export const metadata = {
   ],
   authors: [
     {
-      name: "The Little Basket",
-      url: "https://thelittlebasket.com",
+      name: "Shubhhampers",
+      url: "https://shubhhampers.com",
     },
   ],
-  creator: "The Little Basket",
-  publisher: "The Little Basket",
+  creator: "Shubhhampers",
+  publisher: "Shubhhampers",
   description:
-    "The Little Basket is a gifting company that specializes in creating unique and personalized gift baskets and boxes for all occasions.",
+    "Shubhhampers is a gifting company that specializes in creating unique and personalized gift baskets and boxes for all occasions.",
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`bg-gray-100 ${inter.className}`}>
+      <body className={`bg-gray-100 mt-[96px] ${inter.className}`}>
         <NextTopLoader color="#000" height={4} />
         <ContextProvider>
           <Header />

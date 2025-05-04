@@ -15,7 +15,7 @@ const Collection = () => {
 
         <ul className="mt-8 grid grid-cols-1 gap-4 lg:grid-cols-3">
           <li>
-            <Link href={"/category/Men"} className="group relative block">
+            <Link href={"/products"} className="group relative block">
               <Image
                 height={300}
                 width={300}
@@ -26,43 +26,43 @@ const Collection = () => {
 
               <div className="absolute inset-0 flex flex-col items-start justify-end p-6">
                 <span className="mt-1.5 inline-block bg-black px-5 py-3 text-xs font-medium uppercase tracking-wide text-white rounded">
-                  BUY
+                  Corporate Gift
                 </span>
               </div>
             </Link>
           </li>
 
           <li>
-            <Link href={"/category/Kids"} className="group relative block">
+            <Link href={"/products"} className="group relative block">
               <Image
                 height={300}
                 width={300}
-                src="https://the-little-basket.s3.us-east-1.amazonaws.com/images/7.jpeg"
+                src="https://the-little-basket.s3.us-east-1.amazonaws.com/images/3.jpeg"
                 alt=""
                 className="aspect-square w-full object-cover transition duration-500 group-hover:opacity-90"
               />
 
               <div className="absolute inset-0 flex flex-col items-start justify-end p-6">
                 <span className="mt-1.5 inline-block bg-black px-5 py-3 text-xs font-medium uppercase tracking-wide text-white rounded">
-                  BUY
+                  Mother's Day Gift
                 </span>
               </div>
             </Link>
           </li>
 
           <li className="lg:col-span-2 lg:col-start-2 lg:row-span-2 lg:row-start-1">
-            <Link href={"/category/Women"} className="group relative block">
+            <Link href={"/products"} className="group relative block">
               <Image
                 height={300}
                 width={500}
-                src="https://the-little-basket.s3.us-east-1.amazonaws.com/images/8.jpeg"
+                src="https://the-little-basket.s3.us-east-1.amazonaws.com/images/11.jpeg"
                 alt=""
                 className="aspect-square w-full object-cover transition duration-500 group-hover:opacity-90"
               />
 
               <div className="absolute inset-0 flex flex-col items-start justify-end p-6">
                 <span className="mt-1.5 inline-block bg-black px-5 py-3 text-xs font-medium uppercase tracking-wide text-white rounded">
-                  BUY
+                  Diwali Gift
                 </span>
               </div>
             </Link>

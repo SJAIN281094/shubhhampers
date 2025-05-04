@@ -1,21 +1,22 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
 
 const Footer = () => {
   return (
     <>
       <div className="w-[95%] mx-auto my-5">
         <div className="flex flex-col items-center gap-4 rounded-lg bg-white p-6 shadow-lg sm:flex-row sm:justify-between">
-          <strong className="text-xl text-black sm:text-xl capitalize text-center md:text-start">
-            contact us
+          <strong className="text-xl text-black sm:text-xl  text-center md:text-start">
+            Contact us
             <p className="text-sm text-black my-2 w-full text-center md:text-start">
-              for more information about our services and products, please
+              For more information about our services and products, please
               contact us at
               <a
-                href="mailto:gifts@thelittlebasket.com"
+                href="mailto:connect@shubhhampers.com"
                 className="ml-1 underline text-blue-500"
               >
-                gifts@thelittlebasket.com
+                connect@shubhhampers.com
               </a>
             </p>
           </strong>
@@ -44,15 +45,24 @@ const Footer = () => {
       </div>
 
       <footer className="bg-black text-white py-10">
-        <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-24">
+        <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:gap-24">
           {/* OUR STORE Section */}
+          <Link className="block text-teal-600" href="/">
+            <Image
+              height={250}
+              width={250}
+              src="/shubhhampers-full.png"
+              alt=""
+              className=""
+            />
+          </Link>
           <div>
-            <h2 className="text-lg font-bold mb-6">OUR STORE</h2>
+            <h2 className="text-lg font-bold mb-6 mt-10">OUR STORE</h2>
             <p className="text-sm mb-4">
               {`We promise we'll get back to you promptly— your gifting needs are
               always on our minds!`}
             </p>
-            <p className="text-sm">Monday – Friday 8am – 6pm pts.</p>
+            <p className="text-sm">Call us @ +91-968584727</p>
           </div>
 
           {/* INFORMATION Section */}
@@ -89,21 +99,21 @@ const Footer = () => {
 
           {/* SERVICES Section */}
           <div>
-            <h2 className="text-lg font-bold mb-6">SERVICES</h2>
+            <h2 className="text-lg font-bold mb-6 mt-10">SERVICES</h2>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link href="/contact" className="hover:text-gray-300">
-                  Contact Us
+                <Link href="/about" className="hover:text-gray-300">
+                  About
                 </Link>
               </li>
               <li>
-                <Link href="#" className="hover:text-gray-300">
+                <Link href="/products" className="hover:text-gray-300">
                   Products
                 </Link>
               </li>
               <li>
-                <Link href="#" className="hover:text-gray-300">
-                  FAQ
+                <Link href="/contact" className="hover:text-gray-300">
+                  Contact Us
                 </Link>
               </li>
             </ul>
@@ -114,7 +124,7 @@ const Footer = () => {
         <div className="container mx-auto mt-12 pt-6 border-t border-gray-700">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-xs text-gray-400">
-              Copyright© 2021 TheLittleBasket. All Rights Reserved.
+              Copyright© 2025 Shubhhampers.com. All Rights Reserved.
             </p>
             <div className="flex space-x-4 mt-4 md:mt-0">
               <a href="#" className="text-gray-400 hover:text-white">

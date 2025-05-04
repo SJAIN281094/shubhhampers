@@ -54,7 +54,7 @@ const Contact = () => {
       <section className="bg-white">
         <div className="container px-6 py-12 mx-auto">
           <div className="grid grid-cols-1 gap-12 mt-10 lg:grid-cols-2">
-            <div className="bg-gray-50 p-8 rounded-lg order-2 lg:order-1">
+            {/* <div className="bg-gray-50 p-8 rounded-lg order-2 lg:order-1">
               <h2 className="text-2xl font-semibold text-gray-800 mb-6">
                 Send us a message
               </h2>
@@ -158,7 +158,7 @@ const Contact = () => {
                   {state.submitting ? "Sending..." : "Send message"}
                 </button>
               </form>
-            </div>
+            </div> */}
 
             <div className="order-1 lg:order-2">
               <h2 className="text-2xl font-semibold text-gray-800 mb-6">
@@ -190,15 +190,52 @@ const Contact = () => {
                     </div>
                   </div>
                   <div className="ml-4">
-                    <h3 className="text-lg font-medium text-gray-800">Email</h3>
+                    <h3 className="text-lg font-medium text-gray-800">
+                      Contact
+                    </h3>
                     <p className="mt-1 text-gray-600">
                       {`We'll respond within 24 hours`}
                     </p>
                     <a
-                      href="mailto:support@thelittlebasket.com"
+                      href="mailto:connect@shubhhampers.com"
                       className="mt-1 text-indigo-600 hover:underline"
                     >
-                      support@thelittlebasket.com
+                      connect@shubhhampers.com
+                    </a>
+                  </div>
+                </div>
+
+                <div className="flex items-start">
+                  <div className="flex-shrink-0">
+                    <div className="p-3 bg-black text-white rounded-full">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth="1.5"
+                        stroke="currentColor"
+                        className="w-5 h-5"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                  <div className="ml-4">
+                    <h3 className="text-lg font-medium text-gray-800">
+                      Support
+                    </h3>
+                    <p className="mt-1 text-gray-600">
+                      {`We'll respond within 24 hours`}
+                    </p>
+                    <a
+                      href="mailto:connect@shubhhampers.com"
+                      className="mt-1 text-indigo-600 hover:underline"
+                    >
+                      support@shubhhampers.com
                     </a>
                   </div>
                 </div>
@@ -225,13 +262,13 @@ const Contact = () => {
                   <div className="ml-4">
                     <h3 className="text-lg font-medium text-gray-800">Phone</h3>
                     <p className="mt-1 text-gray-600">
-                      Mon-Fri from 8am to 6pm
+                      Get in touch with us directly
                     </p>
                     <a
-                      href="tel:+919876543210"
+                      href="tel:+91968584727"
                       className="mt-1 text-indigo-600 hover:underline"
                     >
-                      +91 9876543210
+                      +91 968584727
                     </a>
                   </div>
                 </div>
@@ -265,7 +302,7 @@ const Contact = () => {
                       Office
                     </h3>
                     <p className="mt-1 text-gray-700">
-                      Industrial Area, Faridabad, Haryana
+                      DLF Industrial Area, Faridabad, Haryana
                     </p>
                   </div>
                 </div>

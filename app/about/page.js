@@ -68,7 +68,7 @@ const page = () => {
                   Our Story
                 </span>
                 <h2 className="mb-5 text-3xl font-bold text-black sm:text-[40px]/[48px]">
-                  A Little Basket, A Lot of Joy
+                  Shubhhampers, A Lot of Joy
                 </h2>
                 <p className="mb-5 text-base text-gray-600">
                   We are a small business that specializes in creating beautiful

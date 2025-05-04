@@ -268,7 +268,7 @@ const Products = () => {
               Browse Products
             </h1>
 
-            <div className="flex items-center">
+            {/* <div className="flex items-center">
               <Menu as="div" className="relative inline-block text-left">
                 <div>
                   <Menu.Button className="group inline-flex justify-center text-sm font-medium text-gray-700 hover:text-gray-900">
@@ -329,7 +329,7 @@ const Products = () => {
                 <span className="sr-only">Filters</span>
                 <FunnelIcon className="h-5 w-5" aria-hidden="true" />
               </button>
-            </div>
+            </div> */}
           </div>
 
           <section aria-labelledby="products-heading" className="pb-24 pt-6">

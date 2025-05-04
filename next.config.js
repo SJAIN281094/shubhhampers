@@ -8,6 +8,7 @@ const nextConfig = {
       "i.postimg.cc",
       "firebasestorage.googleapis.com",
       "the-little-basket.s3.us-east-1.amazonaws.com",
+      "shubhhampers.s3.us-east-1.amazonaws.com",
       "maps.googleapis.com",
     ],
   },
