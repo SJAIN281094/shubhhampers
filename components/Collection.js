@@ -44,7 +44,7 @@ const Collection = () => {
 
               <div className="absolute inset-0 flex flex-col items-start justify-end p-6">
                 <span className="mt-1.5 inline-block bg-black px-5 py-3 text-xs font-medium uppercase tracking-wide text-white rounded">
-                  Mother's Day Gift
+                  {`Mother's Day Gift`}
                 </span>
               </div>
             </Link>
