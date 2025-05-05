@@ -103,7 +103,7 @@ const mockProducts = {
     },
     {
       _id: "5",
-      name: "Corporate Gift Basket",
+      name: "Corporate Gift Hampers",
       price: 129.99,
       description:
         "Professional gift hamper for business associates with premium items and elegant packaging.",
@@ -183,7 +183,8 @@ const Products = () => {
         <div className="container relative z-10 px-6 py-16 mx-auto text-center">
           <h1 className="text-4xl font-bold mb-4">Our Products</h1>
           <p className="text-xl max-w-2xl mx-auto">
-            Discover our fresh, high-quality selection of organic products
+            Discover our beautiful collection of thoughtfully curated gift
+            hampers for every occasion
           </p>
         </div>
       </div>

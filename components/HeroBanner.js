@@ -12,13 +12,13 @@ const HeroBanner = () => {
             </h1>
             <p className="mt-4 text-xl text-gray-500">
               We are a small business that specializes in creating beautiful and
-              unique gift baskets for all occasions.
+              unique gift hampers for all occasions.
             </p>
             <p className="mt-4 text-xl text-gray-500">
-              {`Our baskets are carefully curated with high-quality products and
+              {`Our hampers are carefully curated with high-quality products and
               can be customized to fit your needs. Whether you're looking for a
               gift for Corporate, birthday, anniversary, etc. we have the
-              perfect basket for you.`}
+              perfect hampers for you.`}
             </p>
             <Link
               href="/contact"

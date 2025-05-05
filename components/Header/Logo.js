@@ -8,7 +8,7 @@ const Logo = () => {
       <Image
         height={300}
         width={300}
-        src="shubhhampers-mini.png"
+        src="/shubhhampers-mini.png"
         alt=""
         className="aspect-square w-full object-cover transition duration-500 group-hover:opacity-90"
       />

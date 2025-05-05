@@ -19,7 +19,7 @@ export const metadata = {
     "Shubhhampers",
     "Gifts",
     "Gifting",
-    "Gift Baskets",
+    "Gift Hampers",
     "Gift Boxes",
     "Gift Delivery",
     "Personalized Gifts",
@@ -36,7 +36,7 @@ export const metadata = {
   creator: "Shubhhampers",
   publisher: "Shubhhampers",
   description:
-    "Shubhhampers is a gifting company that specializes in creating unique and personalized gift baskets and boxes for all occasions.",
+    "Shubhhampers is a gifting company that specializes in creating unique and personalized gift hampers and boxes for all occasions.",
 };
 
 export default function RootLayout({ children }) {

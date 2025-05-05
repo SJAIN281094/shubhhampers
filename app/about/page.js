@@ -34,7 +34,7 @@ const page = () => {
                       width={300}
                       height={400}
                       src="https://the-little-basket.s3.us-east-1.amazonaws.com/images/5.jpeg"
-                      alt="Gift basket for celebrations"
+                      alt="Gift hamper for celebrations"
                       className="w-full rounded-2xl"
                     />
                   </div>
@@ -43,7 +43,7 @@ const page = () => {
                       width={300}
                       height={400}
                       src="https://the-little-basket.s3.us-east-1.amazonaws.com/images/11.jpeg"
-                      alt="Corporate gift basket"
+                      alt="Corporate gift Hampers"
                       className="w-full rounded-2xl"
                     />
                   </div>
@@ -54,7 +54,7 @@ const page = () => {
                       width={300}
                       height={400}
                       src="https://the-little-basket.s3.us-east-1.amazonaws.com/images/17.jpeg"
-                      alt="Custom gift basket"
+                      alt="Custom gift hampers"
                       className="w-full rounded-2xl"
                     />
                   </div>
@@ -72,15 +72,15 @@ const page = () => {
                 </h2>
                 <p className="mb-5 text-base text-gray-600">
                   We are a small business that specializes in creating beautiful
-                  and unique gift baskets for all occasions. Our journey began
+                  and unique gift hampers for all occasions. Our journey began
                   with a simple idea: to bring joy to people through
                   thoughtfully curated gifts that leave lasting impressions.
                 </p>
                 <p className="mb-8 text-base text-gray-600">
-                  {`Our baskets are carefully curated with high-quality products
+                  {`Our hampers are carefully curated with high-quality products
                   and can be customized to fit your needs. Whether you're
                   looking for a gift for Corporate, birthday, anniversary, or
-                  any special occasion, we have the perfect basket for you.`}
+                  any special occasion, we have the perfect hamper for you.`}
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-4">
@@ -156,7 +156,7 @@ const page = () => {
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">Our Gift Categories</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Explore our wide range of gift baskets for every occasion and
+              Explore our wide range of gift hampers for every occasion and
               recipient
             </p>
           </div>
@@ -182,7 +182,7 @@ const page = () => {
               <h3 className="text-xl font-semibold mb-2">Corporate Gifts</h3>
               <p className="text-gray-600">
                 {`Impress your clients and employees with sophisticated gift
-                baskets that represent your company's values.`}
+                hampers that represent your company's values.`}
               </p>
             </div>
 
@@ -204,7 +204,7 @@ const page = () => {
                 </svg>
               </div>
               <h3 className="text-xl font-semibold mb-2">
-                Celebration Baskets
+                Celebration Hampers
               </h3>
               <p className="text-gray-600">
                 Perfect for birthdays, anniversaries, holidays, and special
@@ -231,7 +231,7 @@ const page = () => {
               </div>
               <h3 className="text-xl font-semibold mb-2">Custom Creations</h3>
               <p className="text-gray-600">
-                {`Tell us your vision, and we'll create a personalized gift basket
+                {`Tell us your vision, and we'll create a personalized gift hamper
                 tailored to your recipient's preferences and tastes.`}
               </p>
             </div>
