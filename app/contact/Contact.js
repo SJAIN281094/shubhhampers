@@ -22,9 +22,7 @@ const Contact = () => {
       <div className="w-full mx-auto flex items-center justify-center p-2">
         <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative">
           <strong className="font-bold">Success!</strong>
-          <span className="block sm:inline">
-            Your message has been sent successfully.
-          </span>
+          <span className="block sm:inline">Your message has been sent successfully.</span>
         </div>
       </div>
     );
@@ -32,7 +30,7 @@ const Contact = () => {
   return (
     <div>
       {/* Hero section with background */}
-      <div className="relative bg-black text-white">
+      <div className="relative bg-[#d1988f] text-white">
         <div className="absolute inset-0 z-0 opacity-20">
           <Image
             src="/hero-pattern.png"
@@ -161,18 +159,16 @@ const Contact = () => {
             </div> */}
 
             <div className="order-1 lg:order-2">
-              <h2 className="text-2xl font-semibold text-gray-800 mb-6">
-                Get in touch
-              </h2>
+              <h2 className="text-2xl font-semibold text-gray-800 mb-6">Get in touch</h2>
               <p className="text-gray-600 mb-8">
-                Our team is here to help you with any questions or concerns you
-                may have about our products and services.
+                Our team is here to help you with any questions or concerns you may have about our
+                products and services.
               </p>
 
               <div className="space-y-8">
                 <div className="flex items-start">
                   <div className="flex-shrink-0">
-                    <div className="p-3 bg-black text-white rounded-full">
+                    <div className="p-3 bg-[#d1988f] text-white rounded-full">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
@@ -190,12 +186,8 @@ const Contact = () => {
                     </div>
                   </div>
                   <div className="ml-4">
-                    <h3 className="text-lg font-medium text-gray-800">
-                      Contact
-                    </h3>
-                    <p className="mt-1 text-gray-600">
-                      {`We'll respond within 24 hours`}
-                    </p>
+                    <h3 className="text-lg font-medium text-gray-800">Contact</h3>
+                    <p className="mt-1 text-gray-600">{`We'll respond within 24 hours`}</p>
                     <a
                       href="mailto:connect@shubhhampers.com"
                       className="mt-1 text-indigo-600 hover:underline"
@@ -207,7 +199,7 @@ const Contact = () => {
 
                 <div className="flex items-start">
                   <div className="flex-shrink-0">
-                    <div className="p-3 bg-black text-white rounded-full">
+                    <div className="p-3 bg-[#d1988f] text-white rounded-full">
                       <svg
                         className="w-5 h-5"
                         fill="currentColor"
@@ -223,12 +215,8 @@ const Contact = () => {
                     </div>
                   </div>
                   <div className="ml-4">
-                    <h3 className="text-lg font-medium text-gray-800">
-                      Instagram
-                    </h3>
-                    <p className="mt-1 text-gray-600">
-                      {`Connect with us on social media`}
-                    </p>
+                    <h3 className="text-lg font-medium text-gray-800">Instagram</h3>
+                    <p className="mt-1 text-gray-600">{`Connect with us on social media`}</p>
                     <a
                       href="https://www.instagram.com/shubhhampers_/#"
                       className="mt-1 text-indigo-600 hover:underline"
@@ -240,7 +228,7 @@ const Contact = () => {
 
                 <div className="flex items-start">
                   <div className="flex-shrink-0">
-                    <div className="p-3 bg-black text-white rounded-full">
+                    <div className="p-3 bg-[#d1988f] text-white rounded-full">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
@@ -258,12 +246,8 @@ const Contact = () => {
                     </div>
                   </div>
                   <div className="ml-4">
-                    <h3 className="text-lg font-medium text-gray-800">
-                      Support
-                    </h3>
-                    <p className="mt-1 text-gray-600">
-                      {`We'll respond within 24 hours`}
-                    </p>
+                    <h3 className="text-lg font-medium text-gray-800">Support</h3>
+                    <p className="mt-1 text-gray-600">{`We'll respond within 24 hours`}</p>
                     <a
                       href="mailto:connect@shubhhampers.com"
                       className="mt-1 text-indigo-600 hover:underline"
@@ -275,7 +259,7 @@ const Contact = () => {
 
                 <div className="flex items-start">
                   <div className="flex-shrink-0">
-                    <div className="p-3 bg-black text-white rounded-full">
+                    <div className="p-3 bg-[#d1988f] text-white rounded-full">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
@@ -294,13 +278,8 @@ const Contact = () => {
                   </div>
                   <div className="ml-4">
                     <h3 className="text-lg font-medium text-gray-800">Phone</h3>
-                    <p className="mt-1 text-gray-600">
-                      Get in touch with us directly
-                    </p>
-                    <a
-                      href="tel:+919685847274"
-                      className="mt-1 text-indigo-600 hover:underline"
-                    >
+                    <p className="mt-1 text-gray-600">Get in touch with us directly</p>
+                    <a href="tel:+919685847274" className="mt-1 text-indigo-600 hover:underline">
                       +91-9685847274
                     </a>
                   </div>
@@ -308,7 +287,7 @@ const Contact = () => {
 
                 <div className="flex items-start">
                   <div className="flex-shrink-0">
-                    <div className="p-3 bg-black text-white rounded-full">
+                    <div className="p-3 bg-[#d1988f] text-white rounded-full">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
@@ -331,12 +310,8 @@ const Contact = () => {
                     </div>
                   </div>
                   <div className="ml-4">
-                    <h3 className="text-lg font-medium text-gray-800">
-                      Office
-                    </h3>
-                    <p className="mt-1 text-gray-700">
-                      DLF Industrial Area, Faridabad, Haryana
-                    </p>
+                    <h3 className="text-lg font-medium text-gray-800">Office</h3>
+                    <p className="mt-1 text-gray-700">DLF Industrial Area, Faridabad, Haryana</p>
                   </div>
                 </div>
               </div>

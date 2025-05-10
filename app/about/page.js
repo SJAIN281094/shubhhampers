@@ -5,7 +5,7 @@ const page = () => {
   return (
     <div className="w-full flex flex-col">
       {/* Hero section with background */}
-      <div className="relative bg-black text-white">
+      <div className="relative bg-[#d1988f] text-white">
         <div className="absolute inset-0 z-0 opacity-20">
           <Image
             src="/hero-pattern.png"
@@ -17,9 +17,7 @@ const page = () => {
         </div>
         <div className="container relative z-10 px-6 py-20 mx-auto text-center">
           <h1 className="text-4xl font-bold mb-4">About Us</h1>
-          <p className="text-xl max-w-2xl mx-auto">
-            Gift your loved ones a little something
-          </p>
+          <p className="text-xl max-w-2xl mx-auto">Gift your loved ones a little something</p>
         </div>
       </div>
 
@@ -64,17 +62,14 @@ const page = () => {
 
             <div className="w-full px-4 lg:w-1/2 xl:w-5/12">
               <div className="mt-10 lg:mt-0">
-                <span className="block mb-4 text-lg font-semibold text-black">
-                  Our Story
-                </span>
+                <span className="block mb-4 text-lg font-semibold text-black">Our Story</span>
                 <h2 className="mb-5 text-3xl font-bold text-black sm:text-[40px]/[48px]">
                   Shubhhampers, A Lot of Joy
                 </h2>
                 <p className="mb-5 text-base text-gray-600">
-                  We are a small business that specializes in creating beautiful
-                  and unique gift hampers for all occasions. Our journey began
-                  with a simple idea: to bring joy to people through
-                  thoughtfully curated gifts that leave lasting impressions.
+                  We are a small business that specializes in creating beautiful and unique gift
+                  hampers for all occasions. Our journey began with a simple idea: to bring joy to
+                  people through thoughtfully curated gifts that leave lasting impressions.
                 </p>
                 <p className="mb-8 text-base text-gray-600">
                   {`Our hampers are carefully curated with high-quality products
@@ -85,7 +80,7 @@ const page = () => {
 
                 <div className="flex flex-col sm:flex-row gap-4">
                   <div className="flex items-center">
-                    <div className="mr-4 flex h-[60px] w-[60px] items-center justify-center rounded-full bg-black text-white">
+                    <div className="mr-4 flex h-[60px] w-[60px] items-center justify-center rounded-full bg-[#d1988f] text-white">
                       <svg
                         width="32"
                         height="32"
@@ -104,16 +99,12 @@ const page = () => {
                       </svg>
                     </div>
                     <div>
-                      <h4 className="text-xl font-semibold text-black">
-                        Customized Gifts
-                      </h4>
-                      <p className="text-sm text-gray-600">
-                        Tailored for every occasion
-                      </p>
+                      <h4 className="text-xl font-semibold text-black">Customized Gifts</h4>
+                      <p className="text-sm text-gray-600">Tailored for every occasion</p>
                     </div>
                   </div>
                   <div className="flex items-center">
-                    <div className="mr-4 flex h-[60px] w-[60px] items-center justify-center rounded-full bg-black text-white">
+                    <div className="mr-4 flex h-[60px] w-[60px] items-center justify-center rounded-full bg-[#d1988f] text-white">
                       <svg
                         width="32"
                         height="32"
@@ -128,19 +119,15 @@ const page = () => {
                       </svg>
                     </div>
                     <div>
-                      <h4 className="text-xl font-semibold text-black">
-                        Premium Quality
-                      </h4>
-                      <p className="text-sm text-gray-600">
-                        Only the finest products
-                      </p>
+                      <h4 className="text-xl font-semibold text-black">Premium Quality</h4>
+                      <p className="text-sm text-gray-600">Only the finest products</p>
                     </div>
                   </div>
                 </div>
 
                 <a
                   href="/contact"
-                  className="mt-8 inline-flex items-center justify-center py-3 px-7 text-base font-medium text-center text-white border border-transparent rounded-md bg-black hover:bg-gray-800 transition-colors duration-300"
+                  className="mt-8 inline-flex items-center justify-center py-3 px-7 text-base font-medium text-center text-white border border-transparent rounded-md bg-[#d1988f] hover:bg-gray-800 transition-colors duration-300"
                 >
                   Contact Us
                 </a>
@@ -156,14 +143,13 @@ const page = () => {
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">Our Gift Categories</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Explore our wide range of gift hampers for every occasion and
-              recipient
+              Explore our wide range of gift hampers for every occasion and recipient
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="bg-white p-8 rounded-lg shadow-md text-center">
-              <div className="bg-black text-white h-16 w-16 rounded-full mx-auto flex items-center justify-center mb-4">
+              <div className="bg-[#d1988f] text-white h-16 w-16 rounded-full mx-auto flex items-center justify-center mb-4">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-8 w-8"
@@ -187,7 +173,7 @@ const page = () => {
             </div>
 
             <div className="bg-white p-8 rounded-lg shadow-md text-center">
-              <div className="bg-black text-white h-16 w-16 rounded-full mx-auto flex items-center justify-center mb-4">
+              <div className="bg-[#d1988f] text-white h-16 w-16 rounded-full mx-auto flex items-center justify-center mb-4">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-8 w-8"
@@ -203,17 +189,15 @@ const page = () => {
                   />
                 </svg>
               </div>
-              <h3 className="text-xl font-semibold mb-2">
-                Celebration Hampers
-              </h3>
+              <h3 className="text-xl font-semibold mb-2">Celebration Hampers</h3>
               <p className="text-gray-600">
-                Perfect for birthdays, anniversaries, holidays, and special
-                milestones that deserve to be celebrated in style.
+                Perfect for birthdays, anniversaries, holidays, and special milestones that deserve
+                to be celebrated in style.
               </p>
             </div>
 
             <div className="bg-white p-8 rounded-lg shadow-md text-center">
-              <div className="bg-black text-white h-16 w-16 rounded-full mx-auto flex items-center justify-center mb-4">
+              <div className="bg-[#d1988f] text-white h-16 w-16 rounded-full mx-auto flex items-center justify-center mb-4">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-8 w-8"
