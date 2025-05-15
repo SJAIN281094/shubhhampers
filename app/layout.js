@@ -42,6 +42,27 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        {/* <!-- Google tag (gtag.js) --> */}
+        {process.env.NEXT_PUBLIC_ENV === "production" && (
+          <script
+            async
+            src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
+          />
+        )}
+        {process.env.NEXT_PUBLIC_ENV === "production" && (
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}');
+            `,
+            }}
+          />
+        )}
+      </head>
       <body className={`bg-gray-100 mt-[96px] ${inter.className}`}>
         <NextTopLoader color="#000" height={4} />
         <ContextProvider>
