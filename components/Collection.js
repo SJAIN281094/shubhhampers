@@ -6,9 +6,7 @@ const Collection = () => {
     <section>
       <div className="mx-auto lg:w-10/12 px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
         <header className="text-center">
-          <h2 className="text-xl font-bold text-gray-900 sm:text-3xl">
-            Our Collection
-          </h2>
+          <h2 className="text-xl font-bold text-gray-900 sm:text-3xl">Our Collection</h2>
 
           <p className="mx-auto mt-4 max-w-md text-gray-500"></p>
         </header>
@@ -21,11 +19,11 @@ const Collection = () => {
                 width={300}
                 src="https://the-little-basket.s3.us-east-1.amazonaws.com/images/9.jpeg"
                 alt=""
-                className="aspect-square w-full object-cover transition duration-500 group-hover:opacity-90"
+                className="rounded-lg aspect-square w-full object-cover transition duration-500 group-hover:opacity-90"
               />
 
-              <div className="absolute inset-0 flex flex-col items-start justify-end p-6">
-                <span className="mt-1.5 inline-block bg-black px-5 py-3 text-xs font-medium uppercase tracking-wide text-white rounded">
+              <div className="absolute inset-0 flex flex-col items-start justify-end p-6 bg-gradient-to-t from-black/40 to-transparent">
+                <span className="mt-1.5 inline-block border-2 border-[#d1988f] hover:bg-[#d1988f] px-5 py-3 text-xs font-medium uppercase tracking-wide text-white rounded">
                   Corporate Gift
                 </span>
               </div>
@@ -39,11 +37,11 @@ const Collection = () => {
                 width={300}
                 src="https://the-little-basket.s3.us-east-1.amazonaws.com/images/3.jpeg"
                 alt=""
-                className="aspect-square w-full object-cover transition duration-500 group-hover:opacity-90"
+                className="rounded-lg aspect-square w-full object-cover transition duration-500 group-hover:opacity-90 bg-black"
               />
 
-              <div className="absolute inset-0 flex flex-col items-start justify-end p-6">
-                <span className="mt-1.5 inline-block bg-black px-5 py-3 text-xs font-medium uppercase tracking-wide text-white rounded">
+              <div className="absolute inset-0 flex flex-col items-start justify-end p-6 bg-gradient-to-t from-black/40 to-transparent">
+                <span className="mt-1.5 inline-block border-2 border-[#d1988f] hover:bg-[#d1988f] px-5 py-3 text-xs font-medium uppercase tracking-wide text-white rounded">
                   {`Mother's Day Gift`}
                 </span>
               </div>
@@ -57,11 +55,11 @@ const Collection = () => {
                 width={500}
                 src="https://the-little-basket.s3.us-east-1.amazonaws.com/images/11.jpeg"
                 alt=""
-                className="aspect-square w-full object-cover transition duration-500 group-hover:opacity-90"
+                className="rounded-lg aspect-square w-full object-cover transition duration-500 group-hover:opacity-90"
               />
 
               <div className="absolute inset-0 flex flex-col items-start justify-end p-6">
-                <span className="mt-1.5 inline-block bg-black px-5 py-3 text-xs font-medium uppercase tracking-wide text-white rounded">
+                <span className="mt-1.5 inline-block border-2 border-[#d1988f] hover:bg-[#d1988f] px-5 py-3 text-xs font-medium uppercase tracking-wide text-white rounded">
                   Diwali Gift
                 </span>
               </div>

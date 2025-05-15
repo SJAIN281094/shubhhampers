@@ -45,31 +45,25 @@ const mockProducts = {
       _id: "1",
       name: "Luxury Gift Hamper",
       price: 99.99,
-      description:
-        "A luxury gift hamper with assorted chocolates, wine, and gourmet snacks.",
+      description: "A luxury gift hamper with assorted chocolates, wine, and gourmet snacks.",
       category: "premium",
-      mainImage:
-        "https://the-little-basket.s3.us-east-1.amazonaws.com/images/10.jpeg",
+      mainImage: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/10.jpeg",
     },
     {
       _id: "2",
       name: "Birthday Celebration Hamper",
       price: 79.99,
-      description:
-        "Perfect birthday gift hamper with cake, balloons, and personalized items.",
+      description: "Perfect birthday gift hamper with cake, balloons, and personalized items.",
       category: "corporate",
-      mainImage:
-        "https://the-little-basket.s3.us-east-1.amazonaws.com/images/11.jpeg",
+      mainImage: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/11.jpeg",
     },
     {
       _id: "3",
       name: "Chocolate Lovers Hamper",
       price: 59.99,
-      description:
-        "Indulgent hamper filled with premium chocolates from around the world.",
+      description: "Indulgent hamper filled with premium chocolates from around the world.",
       category: "chocolate",
-      mainImage:
-        "https://the-little-basket.s3.us-east-1.amazonaws.com/images/12.jpeg",
+      mainImage: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/12.jpeg",
     },
     {
       _id: "8",
@@ -78,8 +72,7 @@ const mockProducts = {
       description:
         "Delightful hamper for tea enthusiasts with premium teas, honey, and elegant teaware.",
       category: "tea",
-      mainImage:
-        "https://the-little-basket.s3.us-east-1.amazonaws.com/images/18.jpeg",
+      mainImage: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/18.jpeg",
     },
     {
       _id: "8",
@@ -88,8 +81,7 @@ const mockProducts = {
       description:
         "Delightful hamper for tea enthusiasts with premium teas, honey, and elegant teaware.",
       category: "tea",
-      mainImage:
-        "https://the-little-basket.s3.us-east-1.amazonaws.com/images/19.jpeg",
+      mainImage: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/19.jpeg",
     },
     {
       _id: "4",
@@ -98,8 +90,7 @@ const mockProducts = {
       description:
         "Self-care hamper with organic skincare products, herbal teas, and aromatherapy items.",
       category: "wellness",
-      mainImage:
-        "https://the-little-basket.s3.us-east-1.amazonaws.com/images/13.jpeg",
+      mainImage: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/13.jpeg",
     },
     {
       _id: "5",
@@ -108,8 +99,7 @@ const mockProducts = {
       description:
         "Professional gift hamper for business associates with premium items and elegant packaging.",
       category: "corporate",
-      mainImage:
-        "https://the-little-basket.s3.us-east-1.amazonaws.com/images/14.jpeg",
+      mainImage: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/14.jpeg",
     },
     {
       _id: "6",
@@ -118,8 +108,7 @@ const mockProducts = {
       description:
         "Sophisticated hamper with selected wines, artisanal cheeses, and gourmet crackers.",
       category: "gourmet",
-      mainImage:
-        "https://the-little-basket.s3.us-east-1.amazonaws.com/images/15.jpeg",
+      mainImage: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/15.jpeg",
     },
     {
       _id: "7",
@@ -128,8 +117,7 @@ const mockProducts = {
       description:
         "Adorable hamper filled with baby essentials, toys, and keepsakes for new parents.",
       category: "baby",
-      mainImage:
-        "https://the-little-basket.s3.us-east-1.amazonaws.com/images/16.jpeg",
+      mainImage: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/16.jpeg",
     },
     {
       _id: "8",
@@ -138,8 +126,7 @@ const mockProducts = {
       description:
         "Delightful hamper for tea enthusiasts with premium teas, honey, and elegant teaware.",
       category: "tea",
-      mainImage:
-        "https://the-little-basket.s3.us-east-1.amazonaws.com/images/17.jpeg",
+      mainImage: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/17.jpeg",
     },
   ],
 };
@@ -170,7 +157,7 @@ const Products = () => {
   return (
     <div className="bg-white">
       {/* Hero section with background */}
-      <div className="relative bg-black text-white">
+      <div className="relative bg-[#d1988f] text-white">
         <div className="absolute inset-0 z-0 opacity-20">
           <Image
             src="/hero-pattern.png"
@@ -183,8 +170,8 @@ const Products = () => {
         <div className="container relative z-10 px-6 py-16 mx-auto text-center">
           <h1 className="text-4xl font-bold mb-4">Our Products</h1>
           <p className="text-xl max-w-2xl mx-auto">
-            Discover our beautiful collection of thoughtfully curated gift
-            hampers for every occasion
+            Discover our beautiful collection of thoughtfully curated gift hampers for every
+            occasion
           </p>
         </div>
       </div>
@@ -192,11 +179,7 @@ const Products = () => {
       <div>
         {/* Mobile filter dialog */}
         <Transition.Root show={mobileFiltersOpen} as={Fragment}>
-          <Dialog
-            as="div"
-            className="relative z-40 lg:hidden"
-            onClose={setMobileFiltersOpen}
-          >
+          <Dialog as="div" className="relative z-40 lg:hidden" onClose={setMobileFiltersOpen}>
             <Transition.Child
               as={Fragment}
               enter="transition-opacity ease-linear duration-300"
@@ -221,9 +204,7 @@ const Products = () => {
               >
                 <Dialog.Panel className="relative ml-auto flex h-full w-full max-w-xs flex-col overflow-y-auto bg-white py-4 pb-12 shadow-xl">
                   <div className="flex items-center justify-between px-4">
-                    <h2 className="text-lg font-medium text-gray-900">
-                      Filters
-                    </h2>
+                    <h2 className="text-lg font-medium text-gray-900">Filters</h2>
                     <button
                       type="button"
                       className="-mr-2 flex h-10 w-10 items-center justify-center rounded-md bg-white p-2 text-gray-400"
@@ -237,18 +218,13 @@ const Products = () => {
                   {/* Filters */}
                   <form className="mt-4 border-t border-gray-200">
                     <h3 className="sr-only">Categories</h3>
-                    <ul
-                      role="list"
-                      className="px-2 py-3 font-medium text-gray-900"
-                    >
+                    <ul role="list" className="px-2 py-3 font-medium text-gray-900">
                       {categories.map((category) => (
                         <li key={category.name}>
                           <button
                             onClick={() => handleCategoryChange(category.value)}
                             className={`block px-2 py-3 w-full text-left ${
-                              selectedCategory === category.value
-                                ? "text-indigo-600 font-bold"
-                                : ""
+                              selectedCategory === category.value ? "text-indigo-600 font-bold" : ""
                             }`}
                           >
                             {category.name}
@@ -265,9 +241,7 @@ const Products = () => {
 
         <main className="mx-auto w-11/12 px-4 sm:px-6 lg:px-8">
           <div className="flex items-baseline justify-between border-b border-gray-200 pb-6 pt-8">
-            <h1 className="text-2xl font-bold tracking-tight text-gray-900">
-              Browse Products
-            </h1>
+            <h1 className="text-2xl font-bold tracking-tight text-gray-900">Browse Products</h1>
 
             {/* <div className="flex items-center">
               <Menu as="div" className="relative inline-block text-left">
@@ -341,9 +315,7 @@ const Products = () => {
             <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-4">
               {/* Filters */}
               <form className="hidden lg:block">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">
-                  Categories
-                </h3>
+                <h3 className="text-lg font-semibold text-gray-900 mb-4">Categories</h3>
                 <ul
                   role="list"
                   className="space-y-4 border-b border-gray-200 pb-6 text-sm font-medium text-gray-900"
