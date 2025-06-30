@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Button } from "../ui-kit/button";
+import { Button } from "@ui-kit/button";
 
 const events = [
   {
@@ -21,7 +21,7 @@ const events = [
     backgroundImage: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/10.jpeg",
     specialEffects: true,
     glowEffect: "shadow-[0_0_50px_rgba(218,167,85,0.3)]",
-    animationClass: "animate-pulse",
+    animationClass: "animate-pulse"
   },
   {
     id: 2,
@@ -39,7 +39,7 @@ const events = [
     backgroundImage: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/11.jpeg",
     specialEffects: true,
     glowEffect: "shadow-[0_0_50px_rgba(233,197,121,0.3)]",
-    animationClass: "animate-pulse",
+    animationClass: "animate-pulse"
   },
   {
     id: 3,
@@ -57,7 +57,7 @@ const events = [
     backgroundImage: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/12.jpeg",
     specialEffects: true,
     glowEffect: "shadow-[0_0_50px_rgba(218,167,85,0.3)]",
-    animationClass: "animate-pulse",
+    animationClass: "animate-pulse"
   },
   {
     id: 4,
@@ -75,7 +75,7 @@ const events = [
     backgroundImage: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/18.jpeg",
     specialEffects: true,
     glowEffect: "shadow-[0_0_50px_rgba(233,197,121,0.3)]",
-    animationClass: "animate-pulse",
+    animationClass: "animate-pulse"
   },
   {
     id: 5,
@@ -93,7 +93,7 @@ const events = [
     backgroundImage: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/19.jpeg",
     specialEffects: true,
     glowEffect: "shadow-[0_0_50px_rgba(218,167,85,0.3)]",
-    animationClass: "animate-pulse",
+    animationClass: "animate-pulse"
   },
   {
     id: 6,
@@ -111,7 +111,7 @@ const events = [
     backgroundImage: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/13.jpeg",
     specialEffects: true,
     glowEffect: "shadow-[0_0_50px_rgba(233,197,121,0.3)]",
-    animationClass: "animate-pulse",
+    animationClass: "animate-pulse"
   },
   {
     id: 7,
@@ -129,7 +129,7 @@ const events = [
     backgroundImage: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/14.jpeg",
     specialEffects: true,
     glowEffect: "shadow-[0_0_50px_rgba(218,167,85,0.3)]",
-    animationClass: "animate-pulse",
+    animationClass: "animate-pulse"
   },
   {
     id: 8,
@@ -147,7 +147,7 @@ const events = [
     backgroundImage: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/15.jpeg",
     specialEffects: true,
     glowEffect: "shadow-[0_0_50px_rgba(233,197,121,0.3)]",
-    animationClass: "animate-pulse",
+    animationClass: "animate-pulse"
   },
   {
     id: 9,
@@ -165,7 +165,7 @@ const events = [
     backgroundImage: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/16.jpeg",
     specialEffects: true,
     glowEffect: "shadow-[0_0_50px_rgba(218,167,85,0.3)]",
-    animationClass: "animate-pulse",
+    animationClass: "animate-pulse"
   },
   {
     id: 10,
@@ -183,7 +183,7 @@ const events = [
     backgroundImage: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/17.jpeg",
     specialEffects: true,
     glowEffect: "shadow-[0_0_50px_rgba(233,197,121,0.3)]",
-    animationClass: "animate-pulse",
+    animationClass: "animate-pulse"
   },
   {
     id: 11,
@@ -200,7 +200,7 @@ const events = [
     isReversed: false,
     specialEffects: true,
     glowEffect: "shadow-[0_0_50px_rgba(218,167,85,0.3)]",
-    animationClass: "animate-pulse",
+    animationClass: "animate-pulse"
   },
   {
     id: 12,
@@ -217,8 +217,8 @@ const events = [
     isReversed: true,
     specialEffects: true,
     glowEffect: "shadow-[0_0_50px_rgba(233,197,121,0.3)]",
-    animationClass: "animate-pulse",
-  },
+    animationClass: "animate-pulse"
+  }
 ];
 
 export default function EventsSection() {
@@ -227,46 +227,46 @@ export default function EventsSection() {
 
   return (
     <section
-      id="events-section"
-      className="py-20 bg-gradient-to-br from-brand-light via-brand-gold/20 to-brand-amber/10"
+      id='events-section'
+      className='py-20 bg-gradient-to-br from-brand-light via-brand-gold/20 to-brand-amber/10'
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className='container mx-auto px-4 sm:px-6 lg:px-8'>
         {/* Enhanced Section Header */}
-        <div className="text-center mb-20">
-          <div className="inline-flex items-center gap-2 bg-brand-gold/20 px-6 py-2 rounded-full mb-6">
-            <span className="text-brand-brown font-semibold">
+        <div className='text-center mb-20'>
+          <div className='inline-flex items-center gap-2 bg-brand-gold/20 px-6 py-2 rounded-full mb-6'>
+            <span className='text-brand-brown font-semibold'>
               🎯 Fresh Approach to Corporate Gifting
             </span>
           </div>
-          <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-brand-brown mb-6 tracking-wide">
+          <h2 className='font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-brand-brown mb-6 tracking-wide'>
             Building Meaningful Relationships
           </h2>
-          <p className="text-xl lg:text-2xl text-brand-dark max-w-4xl mx-auto leading-relaxed mb-8">
+          <p className='text-xl lg:text-2xl text-brand-dark max-w-4xl mx-auto leading-relaxed mb-8'>
             We believe every gift is an opportunity to strengthen bonds and create lasting
             impressions. Our fresh approach to corporate gifting focuses on genuine connections,
             thoughtful curation, and meaningful experiences that drive real business value.
           </p>
 
           {/* Business Benefits Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-12">
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-brand-gold/20">
-              <div className="text-3xl mb-3">💝</div>
-              <h3 className="font-semibold text-brand-brown mb-2">Genuine Connections</h3>
-              <p className="text-brand-dark text-sm">
+          <div className='grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-12'>
+            <div className='bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-brand-gold/20'>
+              <div className='text-3xl mb-3'>💝</div>
+              <h3 className='font-semibold text-brand-brown mb-2'>Genuine Connections</h3>
+              <p className='text-brand-dark text-sm'>
                 Create authentic relationships through thoughtful, personalized gifting experiences
               </p>
             </div>
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-brand-gold/20">
-              <div className="text-3xl mb-3">🎯</div>
-              <h3 className="font-semibold text-brand-brown mb-2">Strategic Impact</h3>
-              <p className="text-brand-dark text-sm">
+            <div className='bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-brand-gold/20'>
+              <div className='text-3xl mb-3'>🎯</div>
+              <h3 className='font-semibold text-brand-brown mb-2'>Strategic Impact</h3>
+              <p className='text-brand-dark text-sm'>
                 Every gift is designed to strengthen bonds and drive meaningful business outcomes
               </p>
             </div>
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-brand-gold/20">
-              <div className="text-3xl mb-3">✨</div>
-              <h3 className="font-semibold text-brand-brown mb-2">Fresh Perspective</h3>
-              <p className="text-brand-dark text-sm">
+            <div className='bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-brand-gold/20'>
+              <div className='text-3xl mb-3'>✨</div>
+              <h3 className='font-semibold text-brand-brown mb-2'>Fresh Perspective</h3>
+              <p className='text-brand-dark text-sm'>
                 Innovative approaches that blend tradition with modern gifting sensibilities
               </p>
             </div>
@@ -274,7 +274,7 @@ export default function EventsSection() {
         </div>
 
         {/* Category Tabs */}
-        <div className="flex flex-wrap justify-center gap-4 mb-16">
+        <div className='flex flex-wrap justify-center gap-4 mb-16'>
           <button
             onClick={() => setActiveCategory("corporate")}
             className={`px-6 py-3 font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 ${
@@ -308,8 +308,8 @@ export default function EventsSection() {
         </div>
 
         {/* Events Grid with Enhanced Layout */}
-        <div className="space-y-12">
-          {events.map((event) => (
+        <div className='space-y-12'>
+          {events.map(event => (
             <div
               key={event.id}
               className={`relative overflow-hidden rounded-3xl shadow-2xl transition-all duration-700 hover:scale-[1.02] ${
@@ -321,30 +321,30 @@ export default function EventsSection() {
                 className={`relative w-full lg:w-1/2 p-12 lg:p-16 ${event.bgColor} transition-all duration-500`}
               >
                 {/* Business Impact Badge */}
-                <div className="absolute top-6 left-6 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full shadow-lg">
-                  <span className="text-sm font-semibold text-brand-brown">
+                <div className='absolute top-6 left-6 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full shadow-lg'>
+                  <span className='text-sm font-semibold text-brand-brown'>
                     {event.id <= 6
                       ? "🎯 Corporate Ready"
                       : event.id <= 12
-                      ? "🎉 Universal Appeal"
-                      : "🎁 Seasonal Special"}
+                        ? "🎉 Universal Appeal"
+                        : "🎁 Seasonal Special"}
                   </span>
                 </div>
 
                 {/* Futuristic Glow Elements */}
                 {event.specialEffects && (
                   <>
-                    <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-brand-gold/40 to-brand-amber/20 rounded-full blur-2xl animate-pulse"></div>
-                    <div className="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-tr from-brand-amber/30 to-brand-gold/40 rounded-full blur-xl animate-pulse delay-300"></div>
-                    <div className="absolute top-1/2 left-1/4 w-20 h-20 bg-brand-gold/20 rounded-full blur-lg animate-bounce"></div>
+                    <div className='absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-brand-gold/40 to-brand-amber/20 rounded-full blur-2xl animate-pulse' />
+                    <div className='absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-tr from-brand-amber/30 to-brand-gold/40 rounded-full blur-xl animate-pulse delay-300' />
+                    <div className='absolute top-1/2 left-1/4 w-20 h-20 bg-brand-gold/20 rounded-full blur-lg animate-bounce' />
                   </>
                 )}
 
                 {/* Modern Geometric Decorations */}
-                <div className="absolute top-4 right-4 w-16 h-16">
-                  <svg viewBox="0 0 64 64" className="w-full h-full">
+                <div className='absolute top-4 right-4 w-16 h-16'>
+                  <svg viewBox='0 0 64 64' className='w-full h-full'>
                     <polygon
-                      points="32,4 44,20 56,20 48,32 56,44 44,44 32,60 20,44 8,44 16,32 8,20 20,20"
+                      points='32,4 44,20 56,20 48,32 56,44 44,44 32,60 20,44 8,44 16,32 8,20 20,20'
                       fill={event.specialEffects ? "#DAA755" : "#E9C579"}
                       opacity={event.specialEffects ? "0.6" : "0.3"}
                       className={event.specialEffects ? "animate-spin" : ""}
@@ -352,22 +352,22 @@ export default function EventsSection() {
                     />
                   </svg>
                 </div>
-                <div className="absolute bottom-4 left-4 w-12 h-12">
-                  <svg viewBox="0 0 48 48" className="w-full h-full">
+                <div className='absolute bottom-4 left-4 w-12 h-12'>
+                  <svg viewBox='0 0 48 48' className='w-full h-full'>
                     <circle
-                      cx="24"
-                      cy="24"
-                      r="20"
-                      fill="none"
+                      cx='24'
+                      cy='24'
+                      r='20'
+                      fill='none'
                       stroke={event.specialEffects ? "#E9C579" : "#DAA755"}
-                      strokeWidth="2"
+                      strokeWidth='2'
                       opacity={event.specialEffects ? "0.8" : "0.4"}
                       className={event.specialEffects ? "animate-ping" : ""}
                     />
                     <circle
-                      cx="24"
-                      cy="24"
-                      r="12"
+                      cx='24'
+                      cy='24'
+                      r='12'
                       fill={event.specialEffects ? "#DAA755" : "#E9C579"}
                       opacity={event.specialEffects ? "0.6" : "0.3"}
                     />
@@ -375,7 +375,7 @@ export default function EventsSection() {
                 </div>
 
                 {/* Enhanced Content */}
-                <div className="relative z-10">
+                <div className='relative z-10'>
                   <div
                     className={`text-6xl mb-6 ${event.specialEffects ? "animate-bounce" : ""}`}
                     style={{ animationDuration: "3s" }}
@@ -412,13 +412,13 @@ export default function EventsSection() {
 
                   {/* Business Benefits for Corporate Events */}
                   {event.id <= 6 && (
-                    <div className="mb-6 p-4 bg-white/20 backdrop-blur-sm rounded-xl border border-brand-gold/30">
-                      <h5 className="font-semibold text-brand-brown mb-2">💼 Business Value:</h5>
-                      <ul className="text-sm text-brand-dark space-y-1">
+                    <div className='mb-6 p-4 bg-white/20 backdrop-blur-sm rounded-xl border border-brand-gold/30'>
+                      <h5 className='font-semibold text-brand-brown mb-2'>💼 Business Value:</h5>
+                      <ul className='text-sm text-brand-dark space-y-1'>
                         {event.id === 1 && (
                           <>
                             <li>
-                              • Strengthen relationships during India's most important festival
+                              •{"Strengthen relationships during India's most important festival"}
                             </li>
                             <li>• Show cultural appreciation and understanding</li>
                             <li>• Create memorable brand experiences</li>
@@ -428,7 +428,7 @@ export default function EventsSection() {
                           <>
                             <li>• Build a culture of appreciation and recognition</li>
                             <li>• Strengthen team bonds and loyalty</li>
-                            <li>• Show genuine care for your team's well-being</li>
+                            <li>• {"Show genuine care for your team's well-being"}</li>
                           </>
                         )}
                         {event.id === 3 && (
@@ -463,7 +463,7 @@ export default function EventsSection() {
                     </div>
                   )}
 
-                  <div className="flex flex-wrap gap-3">
+                  <div className='flex flex-wrap gap-3'>
                     <Button
                       onClick={() => router.push("/collections")}
                       className={`${
@@ -478,7 +478,7 @@ export default function EventsSection() {
                     </Button>
                     <Button
                       onClick={() => router.push("/contact")}
-                      className="bg-white/80 text-brand-brown font-semibold px-6 py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer border border-brand-gold/30"
+                      className='bg-white/80 text-brand-brown font-semibold px-6 py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer border border-brand-gold/30'
                     >
                       📞 Get Quote
                     </Button>
@@ -497,9 +497,9 @@ export default function EventsSection() {
                 {/* Background Image for Diwali - Right Side Only */}
                 {event.backgroundImage && (
                   <div
-                    className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-110"
+                    className='absolute inset-0 bg-cover bg-center bg-no-repeat scale-110'
                     style={{
-                      backgroundImage: `url('${event.backgroundImage}')`,
+                      backgroundImage: `url('${event.backgroundImage}')`
                     }}
                   />
                 )}
@@ -507,8 +507,10 @@ export default function EventsSection() {
                 {/* Enhanced Golden Overlay */}
                 {event.backgroundImage && (
                   <div
-                    className={`absolute inset-0 bg-gradient-to-br from-brand-light/90 via-brand-gold/30 to-brand-amber/40 scale-110`}
-                  ></div>
+                    className={
+                      "absolute inset-0 bg-gradient-to-br from-brand-light/90 via-brand-gold/30 to-brand-amber/40 scale-110"
+                    }
+                  />
                 )}
               </div>
             </div>
@@ -516,27 +518,28 @@ export default function EventsSection() {
         </div>
 
         {/* Call-to-Action Section */}
-        <div className="text-center mt-20 bg-gradient-to-r from-brand-gold to-brand-amber rounded-3xl p-12 shadow-2xl">
-          <h3 className="text-3xl lg:text-4xl font-bold text-brand-brown mb-6">
+        <div className='text-center mt-20 bg-gradient-to-r from-brand-gold to-brand-amber rounded-3xl p-12 shadow-2xl'>
+          <h3 className='text-3xl lg:text-4xl font-bold text-brand-brown mb-6'>
             Ready to Build Meaningful Connections?
           </h3>
-          <p className="text-xl text-brand-dark mb-8 max-w-2xl mx-auto">
-            Let's work together to create gifting experiences that strengthen your relationships and
-            drive real business value. We're committed to understanding your needs and delivering
-            solutions that make a difference.
+          <p className='text-xl text-brand-dark mb-8 max-w-2xl mx-auto'>
+            {`Let's work together to create gifting experiences that strengthen
+            your relationships and drive real business value. We're committed to
+            understanding your needs and delivering solutions that make a
+            difference.`}
           </p>
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className='flex flex-wrap justify-center gap-4'>
             <Button
               onClick={() => router.push("/collections")}
-              className="bg-brand-brown text-brand-light font-semibold px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 text-lg"
+              className='bg-brand-brown text-brand-light font-semibold px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 text-lg'
             >
               🏢 Start Your Journey
             </Button>
             <Button
               onClick={() => router.push("/contact")}
-              className="bg-white/90 text-brand-brown font-semibold px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 text-lg border border-brand-gold/30"
+              className='bg-white/90 text-brand-brown font-semibold px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 text-lg border border-brand-gold/30'
             >
-              📞 Let's Connect
+              📞 {"Let's Connect"}
             </Button>
           </div>
         </div>

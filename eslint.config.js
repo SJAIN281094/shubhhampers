@@ -1,25 +1,21 @@
-import { dirname } from "path";
-import { fileURLToPath } from "url";
-import { FlatCompat } from "@eslint/eslintrc";
-import js from "@eslint/js";
-import reactHooks from "eslint-plugin-react-hooks";
-import jsxA11y from "eslint-plugin-jsx-a11y";
-import react from "eslint-plugin-react";
-import tseslint from "@typescript-eslint/eslint-plugin";
-import tsparser from "@typescript-eslint/parser";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+const { dirname } = require("path");
+const { fileURLToPath } = require("url");
+const { FlatCompat } = require("@eslint/eslintrc");
+const js = require("@eslint/js");
+const reactHooks = require("eslint-plugin-react-hooks");
+const jsxA11y = require("eslint-plugin-jsx-a11y");
+const react = require("eslint-plugin-react");
+const tseslint = require("@typescript-eslint/eslint-plugin");
+const tsparser = require("@typescript-eslint/parser");
 
 const compat = new FlatCompat({
   baseDirectory: __dirname,
-  recommendedConfig: js.configs.recommended,
+  recommendedConfig: js.configs.recommended
 });
 
 const eslintConfig = [
   ...compat.extends("next/core-web-vitals", "next/typescript"),
   {
-    files: ["**/*.{js,jsx,ts,tsx}"],
     ignores: [
       "node_modules/**",
       ".next/**",
@@ -28,28 +24,38 @@ const eslintConfig = [
       "dist/**",
       "*.config.js",
       "*.config.mjs",
-    ],
+      "*.config.ts",
+      "tailwind.config.ts",
+      "next.config.ts",
+      "postcss.config.mjs",
+      "middleware.ts",
+      "eslint.config.js",
+      "next-env.d.ts"
+    ]
+  },
+  {
+    files: ["**/*.{js,jsx,ts,tsx}"],
     languageOptions: {
       ecmaVersion: 2022,
       sourceType: "module",
       parser: tsparser,
       parserOptions: {
         ecmaFeatures: {
-          jsx: true,
+          jsx: true
         },
-        project: "./tsconfig.json",
-      },
+        project: "./tsconfig.json"
+      }
     },
     plugins: {
       react,
       "react-hooks": reactHooks,
       "jsx-a11y": jsxA11y,
-      "@typescript-eslint": tseslint,
+      "@typescript-eslint": tseslint
     },
     settings: {
       react: {
-        version: "detect",
-      },
+        version: "detect"
+      }
     },
     rules: {
       // React specific rules
@@ -101,8 +107,8 @@ const eslintConfig = [
         "error",
         {
           argsIgnorePattern: "^_",
-          varsIgnorePattern: "^_",
-        },
+          varsIgnorePattern: "^_"
+        }
       ],
       "@typescript-eslint/no-explicit-any": "warn",
       "@typescript-eslint/explicit-function-return-type": "off",
@@ -122,8 +128,8 @@ const eslintConfig = [
       "no-multiple-empty-lines": ["error", { max: 2 }],
       "eol-last": "error",
       "no-trailing-spaces": "error",
-      "comma-dangle": ["error", "always-multiline"],
-      quotes: ["error", "double", { avoidEscape: true }],
+      "comma-dangle": "error",
+      quotes: "error",
       semi: ["error", "always"],
       indent: ["error", 2],
       "object-curly-spacing": ["error", "always"],
@@ -137,8 +143,8 @@ const eslintConfig = [
         {
           anonymous: "always",
           named: "never",
-          asyncArrow: "always",
-        },
+          asyncArrow: "always"
+        }
       ],
       "space-in-parens": ["error", "never"],
       "space-infix-ops": "error",
@@ -157,24 +163,24 @@ const eslintConfig = [
           ignoreComments: false,
           ignoreRegExpLiterals: true,
           ignoreStrings: true,
-          ignoreTemplateLiterals: true,
-        },
-      ],
-    },
+          ignoreTemplateLiterals: true
+        }
+      ]
+    }
   },
   {
     files: ["**/*.test.{js,jsx,ts,tsx}", "**/*.spec.{js,jsx,ts,tsx}"],
     rules: {
       "@typescript-eslint/no-explicit-any": "off",
-      "no-console": "off",
-    },
+      "no-console": "off"
+    }
   },
   {
     files: ["**/pages/**/*.{js,jsx,ts,tsx}", "**/app/**/*.{js,jsx,ts,tsx}"],
     rules: {
-      "import/no-default-export": "off",
-    },
-  },
+      "import/no-default-export": "off"
+    }
+  }
 ];
 
-export default eslintConfig;
+module.exports = eslintConfig;

@@ -6,8 +6,7 @@ export function getMarkdownContent(filename: string): string {
     const filePath = path.join(process.cwd(), "src", "content", `${filename}.md`);
     const content = fs.readFileSync(filePath, "utf8");
     return content;
-  } catch (error) {
-    console.error(`Error reading markdown file: ${filename}`, error);
+  } catch {
     return "# Content Not Found\n\nThe requested content could not be loaded.";
   }
 }

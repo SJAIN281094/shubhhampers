@@ -145,6 +145,7 @@ Corporate clients can:
 ### 7.1 IT Act, 2000 Compliance
 
 - Secure data transmission and storage
+
 ## 8. Children's Privacy
 
 Our services are not intended for children under 13. We do not knowingly collect personal information from children under 13.
