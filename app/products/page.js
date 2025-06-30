@@ -23,16 +23,12 @@ const categories = [
   { name: "All Products", value: "all", current: true },
   { name: "Corporate Gifts", value: "corporate", current: false },
   { name: "Diwali Gifts", value: "diwali", current: false },
-  { name: "Holi Gifts", value: "holi", current: false },
-  { name: "Women's Day Gifts", value: "womens", current: false },
   { name: "Birthday Gifts", value: "birthday", current: false },
-  { name: "Mother's Day", value: "mothers", current: false },
   {
     name: "New Year/Christmas Gifts",
     value: "newyear-christmas",
     current: false,
   },
-  { name: "Wedding Gifts", value: "wedding", current: false },
 ];
 
 function classNames(...classes) {
@@ -41,92 +37,298 @@ function classNames(...classes) {
 
 const mockProducts = {
   data: [
+    // Corporate Gifts
     {
       _id: "1",
-      name: "Luxury Gift Hamper",
-      price: 99.99,
-      description: "A luxury gift hamper with assorted chocolates, wine, and gourmet snacks.",
-      category: "premium",
-      mainImage: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/10.jpeg",
+      name: "Corporate Excellence Gift",
+      price: 149.99,
+      description:
+        "Professional gift hamper perfect for corporate clients and employees.",
+      category: "corporate",
+      mainImage:
+        "https://the-little-basket.s3.us-east-1.amazonaws.com/images/gifts/gift_5.jpeg",
+      createdAt: "2024-05-12",
     },
     {
       _id: "2",
-      name: "Birthday Celebration Hamper",
-      price: 79.99,
-      description: "Perfect birthday gift hamper with cake, balloons, and personalized items.",
+      name: "Executive Corporate Hamper",
+      price: 159.99,
+      description:
+        "Professional hamper for corporate gifting and business relationships.",
       category: "corporate",
-      mainImage: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/11.jpeg",
+      mainImage:
+        "https://the-little-basket.s3.us-east-1.amazonaws.com/images/hampers/corporate-hampers/hampers-corporate_1.jpg",
+      createdAt: "2024-04-20",
     },
+
+    // Diwali Gifts
     {
       _id: "3",
-      name: "Chocolate Lovers Hamper",
-      price: 59.99,
-      description: "Indulgent hamper filled with premium chocolates from around the world.",
-      category: "chocolate",
-      mainImage: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/12.jpeg",
-    },
-    {
-      _id: "8",
-      name: "Tea Lover's Hamper",
-      price: 49.99,
+      name: "Festival Gift Hamper",
+      price: 94.99,
       description:
-        "Delightful hamper for tea enthusiasts with premium teas, honey, and elegant teaware.",
-      category: "tea",
-      mainImage: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/18.jpeg",
-    },
-    {
-      _id: "8",
-      name: "Tea Lover's Hamper",
-      price: 49.99,
-      description:
-        "Delightful hamper for tea enthusiasts with premium teas, honey, and elegant teaware.",
-      category: "tea",
-      mainImage: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/19.jpeg",
+        "Specially curated hamper for festival celebrations and joy.",
+      category: "diwali",
+      mainImage:
+        "https://the-little-basket.s3.us-east-1.amazonaws.com/images/gifts/gift_7.jpeg",
+      createdAt: "2024-06-15",
     },
     {
       _id: "4",
-      name: "Wellness Gift Hamper",
-      price: 89.99,
+      name: "Diwali Celebration Hamper",
+      price: 99.99,
       description:
-        "Self-care hamper with organic skincare products, herbal teas, and aromatherapy items.",
-      category: "wellness",
-      mainImage: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/13.jpeg",
+        "Traditional Diwali hamper with sweets, dry fruits, and festive items.",
+      category: "diwali",
+      mainImage:
+        "https://the-little-basket.s3.us-east-1.amazonaws.com/images/hampers/diwali/hampers-diwali_1.jpeg",
+      createdAt: "2024-05-05",
     },
     {
       _id: "5",
-      name: "Corporate Gift Hampers",
-      price: 129.99,
+      name: "Festival of Lights Hamper",
+      price: 109.99,
       description:
-        "Professional gift hamper for business associates with premium items and elegant packaging.",
-      category: "corporate",
-      mainImage: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/14.jpeg",
+        "Celebrate Diwali with this beautiful collection of traditional treats.",
+      category: "diwali",
+      mainImage:
+        "https://the-little-basket.s3.us-east-1.amazonaws.com/images/hampers/diwali/hampers-diwali_2.jpeg",
+      createdAt: "2024-05-10",
     },
     {
       _id: "6",
-      name: "Wine & Cheese Hamper",
+      name: "Diwali Delights Hamper",
       price: 119.99,
       description:
-        "Sophisticated hamper with selected wines, artisanal cheeses, and gourmet crackers.",
-      category: "gourmet",
-      mainImage: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/15.jpeg",
+        "Delightful Diwali hamper with premium sweets and decorative items.",
+      category: "diwali",
+      mainImage:
+        "https://the-little-basket.s3.us-east-1.amazonaws.com/images/hampers/diwali/hampers-diwali_3.jpeg",
+      createdAt: "2024-05-15",
     },
     {
       _id: "7",
-      name: "Baby Shower Gift Hamper",
-      price: 69.99,
+      name: "Traditional Diwali Gift",
+      price: 94.99,
       description:
-        "Adorable hamper filled with baby essentials, toys, and keepsakes for new parents.",
-      category: "baby",
-      mainImage: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/16.jpeg",
+        "Traditional hamper celebrating the joy and spirit of Diwali.",
+      category: "diwali",
+      mainImage:
+        "https://the-little-basket.s3.us-east-1.amazonaws.com/images/hampers/diwali/hampers-diwali_4.jpeg",
+      createdAt: "2024-05-20",
     },
     {
       _id: "8",
-      name: "Tea Lover's Hamper",
-      price: 49.99,
+      name: "Festive Diwali Collection",
+      price: 104.99,
       description:
-        "Delightful hamper for tea enthusiasts with premium teas, honey, and elegant teaware.",
-      category: "tea",
-      mainImage: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/17.jpeg",
+        "Festive collection perfect for Diwali celebrations and gifting.",
+      category: "diwali",
+      mainImage:
+        "https://the-little-basket.s3.us-east-1.amazonaws.com/images/hampers/diwali/hampers-diwali_5.jpeg",
+      createdAt: "2024-05-25",
+    },
+    {
+      _id: "9",
+      name: "Diwali Special Hamper",
+      price: 114.99,
+      description:
+        "Special Diwali hamper with traditional sweets and modern treats.",
+      category: "diwali",
+      mainImage:
+        "https://the-little-basket.s3.us-east-1.amazonaws.com/images/hampers/diwali/hampers-diwali_6.jpeg",
+      createdAt: "2024-05-30",
+    },
+
+    // New Year/Christmas Gifts
+    {
+      _id: "10",
+      name: "New Year Celebration Hamper",
+      price: 124.99,
+      description:
+        "Ring in the New Year with this celebratory hamper filled with joy.",
+      category: "newyear-christmas",
+      mainImage:
+        "https://the-little-basket.s3.us-east-1.amazonaws.com/images/hampers/new-year/hampers-new-year_1.jpeg",
+      createdAt: "2024-06-05",
+    },
+
+    // Birthday Gifts
+    {
+      _id: "11",
+      name: "Special Birthday Gift",
+      price: 79.99,
+      description:
+        "Perfect gift for birthdays, anniversaries, and celebrations.",
+      category: "birthday",
+      mainImage:
+        "https://the-little-basket.s3.us-east-1.amazonaws.com/images/gifts/gift_3.jpeg",
+      createdAt: "2024-03-10",
+    },
+    {
+      _id: "12",
+      name: "Birthday Celebration Box",
+      price: 84.99,
+      description:
+        "Beautiful gift box perfect for any birthday celebration or milestone.",
+      category: "birthday",
+      mainImage:
+        "https://the-little-basket.s3.us-east-1.amazonaws.com/images/gifts/gift_8.jpeg",
+      createdAt: "2024-06-20",
+    },
+    {
+      _id: "13",
+      name: "Birthday Party Hamper",
+      price: 89.99,
+      description:
+        "Make birthdays extra special with this festive celebration hamper.",
+      category: "birthday",
+      mainImage:
+        "https://the-little-basket.s3.us-east-1.amazonaws.com/images/hampers/birthday/hampers-birthday_1.jpeg",
+      createdAt: "2024-03-15",
+    },
+
+    // All Products / General Gifts
+    {
+      _id: "14",
+      name: "Premium Gift Box",
+      price: 89.99,
+      description:
+        "Elegant gift box with assorted premium items for special occasions.",
+      category: "all",
+      mainImage:
+        "https://the-little-basket.s3.us-east-1.amazonaws.com/images/gifts/gift_1.jpeg",
+      createdAt: "2024-01-15",
+    },
+    {
+      _id: "15",
+      name: "Luxury Gift Collection",
+      price: 129.99,
+      description:
+        "Luxurious collection of handpicked items for discerning recipients.",
+      category: "all",
+      mainImage:
+        "https://the-little-basket.s3.us-east-1.amazonaws.com/images/gifts/gift_2.jpeg",
+      createdAt: "2024-02-20",
+    },
+    {
+      _id: "16",
+      name: "Elegant Gift Hamper",
+      price: 99.99,
+      description:
+        "Sophisticated hamper with carefully curated premium products.",
+      category: "all",
+      mainImage:
+        "https://the-little-basket.s3.us-east-1.amazonaws.com/images/gifts/gift_4.jpeg",
+      createdAt: "2024-04-05",
+    },
+    {
+      _id: "17",
+      name: "Deluxe Gift Set",
+      price: 119.99,
+      description: "Deluxe collection of premium items in beautiful packaging.",
+      category: "all",
+      mainImage:
+        "https://the-little-basket.s3.us-east-1.amazonaws.com/images/gifts/gift_6.jpeg",
+      createdAt: "2024-06-01",
+    },
+    {
+      _id: "18",
+      name: "Gourmet Gift Collection",
+      price: 109.99,
+      description:
+        "Exquisite collection of gourmet treats and premium delicacies.",
+      category: "all",
+      mainImage:
+        "https://the-little-basket.s3.us-east-1.amazonaws.com/images/gifts/gift_9.jpeg",
+      createdAt: "2024-06-25",
+    },
+    {
+      _id: "19",
+      name: "Special Moments Gift",
+      price: 74.99,
+      description: "Perfect for creating special moments and lasting memories.",
+      category: "all",
+      mainImage:
+        "https://the-little-basket.s3.us-east-1.amazonaws.com/images/gifts/gift_10.jpeg",
+      createdAt: "2024-06-28",
+    },
+    {
+      _id: "20",
+      name: "Premium Surprise Box",
+      price: 134.99,
+      description:
+        "Surprise your loved ones with this premium collection of gifts.",
+      category: "all",
+      mainImage:
+        "https://the-little-basket.s3.us-east-1.amazonaws.com/images/gifts/gift_11.jpeg",
+      createdAt: "2024-06-30",
+    },
+    {
+      _id: "21",
+      name: "Baby Shower Blessing Hamper",
+      price: 69.99,
+      description:
+        "Adorable hamper filled with baby essentials and keepsakes for new parents.",
+      category: "all",
+      mainImage:
+        "https://the-little-basket.s3.us-east-1.amazonaws.com/images/hampers/baby-shower/hampers_baby-shower_1.jpeg",
+      createdAt: "2024-01-20",
+    },
+    {
+      _id: "22",
+      name: "Sweet Baby Welcome Hamper",
+      price: 79.99,
+      description:
+        "Welcome the little one with this sweet collection of baby gifts.",
+      category: "all",
+      mainImage:
+        "https://the-little-basket.s3.us-east-1.amazonaws.com/images/hampers/baby-shower/hampers_baby-shower_2.jpeg",
+      createdAt: "2024-02-10",
+    },
+    {
+      _id: "23",
+      name: "Raksha Bandhan Love Hamper",
+      price: 74.99,
+      description:
+        "Celebrate sibling love with this special Raksha Bandhan hamper.",
+      category: "all",
+      mainImage:
+        "https://the-little-basket.s3.us-east-1.amazonaws.com/images/hampers/rakshabandhan/hampers-rakshabandhan_1.jpeg",
+      createdAt: "2024-06-10",
+    },
+    {
+      _id: "24",
+      name: "Brother-Sister Bond Hamper",
+      price: 84.99,
+      description:
+        "Beautiful hamper celebrating the eternal bond between siblings.",
+      category: "all",
+      mainImage:
+        "https://the-little-basket.s3.us-east-1.amazonaws.com/images/hampers/rakshabandhan/hampers-rakshabandhan_2.jpeg",
+      createdAt: "2024-06-12",
+    },
+    {
+      _id: "25",
+      name: "Rakhi Festival Hamper",
+      price: 79.99,
+      description:
+        "Traditional Rakhi hamper with sweets and gifts for your brother.",
+      category: "all",
+      mainImage:
+        "https://the-little-basket.s3.us-east-1.amazonaws.com/images/hampers/rakshabandhan/hampers-rakshabandhan_3.jpeg",
+      createdAt: "2024-06-18",
+    },
+    {
+      _id: "26",
+      name: "Sibling Celebration Hamper",
+      price: 89.99,
+      description:
+        "Celebrate the special bond with this thoughtfully curated hamper.",
+      category: "all",
+      mainImage:
+        "https://the-little-basket.s3.us-east-1.amazonaws.com/images/hampers/rakshabandhan/hampers-rakshabandhan_4.jpeg",
+      createdAt: "2024-06-22",
     },
   ],
 };
@@ -137,21 +339,54 @@ const Products = () => {
   const [selectedSort, setSelectedSort] = useState("popularity");
   const [filteredProducts, setFilteredProducts] = useState([]);
 
+  // Initialize products on mount
   useEffect(() => {
     if (mockProducts?.data) {
-      // Here you would implement actual filtering and sorting
-      setFilteredProducts(mockProducts);
+      setFilteredProducts({ data: mockProducts.data });
     }
-  }, [mockProducts]);
+  }, []);
+
+  useEffect(() => {
+    if (mockProducts?.data) {
+      let filtered = [...mockProducts.data]; // Create a copy to avoid mutating original data
+
+      // Filter by category
+      if (selectedCategory !== "all") {
+        filtered = filtered.filter(
+          (product) => product.category === selectedCategory
+        );
+      }
+
+      // Sort products
+      switch (selectedSort) {
+        case "price-asc":
+          filtered.sort((a, b) => a.price - b.price);
+          break;
+        case "price-desc":
+          filtered.sort((a, b) => b.price - a.price);
+          break;
+        case "newest":
+          filtered.sort(
+            (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+          );
+          break;
+        case "popularity":
+        default:
+          // Keep original order for popularity (based on _id)
+          filtered.sort((a, b) => parseInt(a._id) - parseInt(b._id));
+          break;
+      }
+
+      setFilteredProducts({ data: filtered });
+    }
+  }, [selectedCategory, selectedSort]);
 
   const handleCategoryChange = (category) => {
     setSelectedCategory(category);
-    // Filtering logic would be implemented here
   };
 
   const handleSortChange = (sortOption) => {
     setSelectedSort(sortOption);
-    // Sorting logic would be implemented here
   };
 
   return (
@@ -170,8 +405,8 @@ const Products = () => {
         <div className="container relative z-10 px-6 py-16 mx-auto text-center">
           <h1 className="text-4xl font-bold mb-4">Our Products</h1>
           <p className="text-xl max-w-2xl mx-auto">
-            Discover our beautiful collection of thoughtfully curated gift hampers for every
-            occasion
+            Discover our beautiful collection of thoughtfully curated gift
+            hampers for every occasion
           </p>
         </div>
       </div>
@@ -179,7 +414,11 @@ const Products = () => {
       <div>
         {/* Mobile filter dialog */}
         <Transition.Root show={mobileFiltersOpen} as={Fragment}>
-          <Dialog as="div" className="relative z-40 lg:hidden" onClose={setMobileFiltersOpen}>
+          <Dialog
+            as="div"
+            className="relative z-40 lg:hidden"
+            onClose={setMobileFiltersOpen}
+          >
             <Transition.Child
               as={Fragment}
               enter="transition-opacity ease-linear duration-300"
@@ -204,7 +443,9 @@ const Products = () => {
               >
                 <Dialog.Panel className="relative ml-auto flex h-full w-full max-w-xs flex-col overflow-y-auto bg-white py-4 pb-12 shadow-xl">
                   <div className="flex items-center justify-between px-4">
-                    <h2 className="text-lg font-medium text-gray-900">Filters</h2>
+                    <h2 className="text-lg font-medium text-gray-900">
+                      Filters
+                    </h2>
                     <button
                       type="button"
                       className="-mr-2 flex h-10 w-10 items-center justify-center rounded-md bg-white p-2 text-gray-400"
@@ -218,13 +459,22 @@ const Products = () => {
                   {/* Filters */}
                   <form className="mt-4 border-t border-gray-200">
                     <h3 className="sr-only">Categories</h3>
-                    <ul role="list" className="px-2 py-3 font-medium text-gray-900">
+                    <ul
+                      role="list"
+                      className="px-2 py-3 font-medium text-gray-900"
+                    >
                       {categories.map((category) => (
                         <li key={category.name}>
                           <button
-                            onClick={() => handleCategoryChange(category.value)}
+                            type="button"
+                            onClick={(e) => {
+                              e.preventDefault();
+                              handleCategoryChange(category.value);
+                            }}
                             className={`block px-2 py-3 w-full text-left ${
-                              selectedCategory === category.value ? "text-indigo-600 font-bold" : ""
+                              selectedCategory === category.value
+                                ? "text-indigo-600 font-bold"
+                                : ""
                             }`}
                           >
                             {category.name}
@@ -241,9 +491,11 @@ const Products = () => {
 
         <main className="mx-auto w-11/12 px-4 sm:px-6 lg:px-8">
           <div className="flex items-baseline justify-between border-b border-gray-200 pb-6 pt-8">
-            <h1 className="text-2xl font-bold tracking-tight text-gray-900">Browse Products</h1>
+            <h1 className="text-2xl font-bold tracking-tight text-gray-900">
+              Browse Products
+            </h1>
 
-            {/* <div className="flex items-center">
+            <div className="flex items-center">
               <Menu as="div" className="relative inline-block text-left">
                 <div>
                   <Menu.Button className="group inline-flex justify-center text-sm font-medium text-gray-700 hover:text-gray-900">
@@ -304,7 +556,7 @@ const Products = () => {
                 <span className="sr-only">Filters</span>
                 <FunnelIcon className="h-5 w-5" aria-hidden="true" />
               </button>
-            </div> */}
+            </div>
           </div>
 
           <section aria-labelledby="products-heading" className="pb-24 pt-6">
@@ -315,7 +567,9 @@ const Products = () => {
             <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-4">
               {/* Filters */}
               <form className="hidden lg:block">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">Categories</h3>
+                <h3 className="text-lg font-semibold text-gray-900 mb-4">
+                  Categories
+                </h3>
                 <ul
                   role="list"
                   className="space-y-4 border-b border-gray-200 pb-6 text-sm font-medium text-gray-900"
@@ -323,8 +577,12 @@ const Products = () => {
                   {categories.map((category) => (
                     <li key={category.name}>
                       <button
-                        onClick={() => handleCategoryChange(category.value)}
-                        className={`block text-left ${
+                        type="button"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handleCategoryChange(category.value);
+                        }}
+                        className={`block text-left w-full ${
                           selectedCategory === category.value
                             ? "text-indigo-600 font-bold"
                             : "text-gray-700 hover:text-gray-900"
