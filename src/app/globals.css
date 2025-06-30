@@ -1,0 +1,361 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Brand Color Palette */
+  --brand-light: #f1dea8; /* backgrounds */
+  --brand-gold: #e9c579; /* accents */
+  --brand-amber: #daa755; /* CTAs / buttons */
+  --brand-brown: #9f6920; /* headings */
+  --brand-dark: #462506; /* body text */
+
+  /* Core UI Colors - using only brand colors */
+  --background: var(--brand-light);
+  --foreground: var(--brand-dark);
+  --card: var(--brand-light);
+  --card-foreground: var(--brand-dark);
+  --popover: var(--brand-light);
+  --popover-foreground: var(--brand-dark);
+  --primary: var(--brand-amber);
+  --primary-foreground: var(--brand-dark);
+  --secondary: var(--brand-gold);
+  --secondary-foreground: var(--brand-dark);
+  --muted: var(--brand-gold);
+  --muted-foreground: var(--brand-brown);
+  --accent: var(--brand-brown);
+  --accent-foreground: var(--brand-dark);
+  --destructive: var(--brand-brown);
+  --border: var(--brand-gold);
+  --input: var(--brand-gold);
+  --ring: var(--brand-amber);
+  --radius: 0.625rem;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-brand-light: var(--brand-light);
+  --color-brand-gold: var(--brand-gold);
+  --color-brand-amber: var(--brand-amber);
+  --color-brand-brown: var(--brand-brown);
+  --color-brand-dark: var(--brand-dark);
+  --font-sans: "Poppins", sans-serif;
+  --font-display: "Bonheur Royale", cursive;
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+.font-display {
+  font-family: "Bonheur Royale", cursive;
+  letter-spacing: 0.05em;
+}
+
+.dark {
+  --background: var(--brand-dark);
+  --foreground: var(--brand-light);
+  --card: var(--brand-brown);
+  --card-foreground: var(--brand-light);
+  --popover: var(--brand-brown);
+  --popover-foreground: var(--brand-light);
+  --primary: var(--brand-amber);
+  --primary-foreground: var(--brand-dark);
+  --secondary: var(--brand-brown);
+  --secondary-foreground: var(--brand-light);
+  --muted: var(--brand-brown);
+  --muted-foreground: var(--brand-gold);
+  --accent: var(--brand-amber);
+  --accent-foreground: var(--brand-dark);
+  --destructive: var(--brand-brown);
+  --border: var(--brand-brown);
+  --input: var(--brand-brown);
+  --ring: var(--brand-amber);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Custom Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDelay {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  50% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDelay2 {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  70% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDelay3 {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  85% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes glow {
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(218, 167, 85, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(218, 167, 85, 0.6);
+  }
+}
+
+@keyframes sparkle {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.2;
+    transform: scale(0.5);
+  }
+  25% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.3);
+  }
+  75% {
+    opacity: 0.6;
+    transform: scale(0.8);
+  }
+}
+
+@keyframes shine {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes subtle-blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+@keyframes slideInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out;
+}
+
+.animate-fade-in-delay {
+  animation: fadeInDelay 1.2s ease-out;
+}
+
+.animate-fade-in-delay-2 {
+  animation: fadeInDelay2 1.8s ease-out;
+}
+
+.animate-fade-in-delay-3 {
+  animation: fadeInDelay3 2.4s ease-out;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+.animate-glow {
+  animation: glow 3s ease-in-out infinite;
+}
+
+.animate-sparkle {
+  animation: sparkle 2s ease-in-out infinite;
+}
+
+.animate-twinkle {
+  animation: twinkle 3s ease-in-out infinite;
+}
+
+.animate-shine {
+  animation: shine 4s ease-in-out infinite;
+}
+
+.animate-subtle-blink {
+  animation: subtle-blink 2s ease-in-out infinite;
+}
+
+.animate-slide-in-left {
+  animation: slideInFromLeft 0.8s ease-out;
+}
+
+.animate-slide-in-right {
+  animation: slideInFromRight 0.8s ease-out;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.6s ease-out;
+}
+
+[data-embla-container] {
+  overflow: hidden;
+}
+
+[data-embla-slide] {
+  flex: 0 0 100%;
+  min-width: 0;
+}
+
+[data-embla-slide][data-embla-slide-selected] {
+  z-index: 1;
+}
+
+.hero-slider [data-embla-container] {
+  overflow: hidden;
+  border-radius: 1rem;
+}
+
+.hero-slider [data-embla-slide] {
+  flex: 0 0 100%;
+  min-width: 0;
+  position: relative;
+}
+
+.hero-slider [data-embla-slide][data-embla-slide-selected] {
+  z-index: 1;
+}
