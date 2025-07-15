@@ -17,7 +17,9 @@ const page = () => {
         </div>
         <div className="container relative z-10 px-6 py-20 mx-auto text-center">
           <h1 className="text-4xl font-bold mb-4">About Us</h1>
-          <p className="text-xl max-w-2xl mx-auto">Gift your loved ones a little something</p>
+          <p className="text-xl max-w-2xl mx-auto">
+            Gift your loved ones a little something
+          </p>
         </div>
       </div>
 
@@ -31,7 +33,7 @@ const page = () => {
                     <Image
                       width={300}
                       height={400}
-                      src="https://the-little-basket.s3.us-east-1.amazonaws.com/images/5.jpeg"
+                      src="https://the-little-basket.s3.us-east-1.amazonaws.com/images/hampers/corporate-hampers/hampers-corporate_2.jpeg"
                       alt="Gift hamper for celebrations"
                       className="w-full rounded-2xl"
                     />
@@ -62,14 +64,17 @@ const page = () => {
 
             <div className="w-full px-4 lg:w-1/2 xl:w-5/12">
               <div className="mt-10 lg:mt-0">
-                <span className="block mb-4 text-lg font-semibold text-black">Our Story</span>
+                <span className="block mb-4 text-lg font-semibold text-black">
+                  Our Story
+                </span>
                 <h2 className="mb-5 text-3xl font-bold text-black sm:text-[40px]/[48px]">
                   Shubhhampers, A Lot of Joy
                 </h2>
                 <p className="mb-5 text-base text-gray-600">
-                  We are a small business that specializes in creating beautiful and unique gift
-                  hampers for all occasions. Our journey began with a simple idea: to bring joy to
-                  people through thoughtfully curated gifts that leave lasting impressions.
+                  We are a small business that specializes in creating beautiful
+                  and unique gift hampers for all occasions. Our journey began
+                  with a simple idea: to bring joy to people through
+                  thoughtfully curated gifts that leave lasting impressions.
                 </p>
                 <p className="mb-8 text-base text-gray-600">
                   {`Our hampers are carefully curated with high-quality products
@@ -99,8 +104,12 @@ const page = () => {
                       </svg>
                     </div>
                     <div>
-                      <h4 className="text-xl font-semibold text-black">Customized Gifts</h4>
-                      <p className="text-sm text-gray-600">Tailored for every occasion</p>
+                      <h4 className="text-xl font-semibold text-black">
+                        Customized Gifts
+                      </h4>
+                      <p className="text-sm text-gray-600">
+                        Tailored for every occasion
+                      </p>
                     </div>
                   </div>
                   <div className="flex items-center">
@@ -119,8 +128,12 @@ const page = () => {
                       </svg>
                     </div>
                     <div>
-                      <h4 className="text-xl font-semibold text-black">Premium Quality</h4>
-                      <p className="text-sm text-gray-600">Only the finest products</p>
+                      <h4 className="text-xl font-semibold text-black">
+                        Premium Quality
+                      </h4>
+                      <p className="text-sm text-gray-600">
+                        Only the finest products
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -143,7 +156,8 @@ const page = () => {
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">Our Gift Categories</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Explore our wide range of gift hampers for every occasion and recipient
+              Explore our wide range of gift hampers for every occasion and
+              recipient
             </p>
           </div>
 
@@ -189,10 +203,12 @@ const page = () => {
                   />
                 </svg>
               </div>
-              <h3 className="text-xl font-semibold mb-2">Celebration Hampers</h3>
+              <h3 className="text-xl font-semibold mb-2">
+                Celebration Hampers
+              </h3>
               <p className="text-gray-600">
-                Perfect for birthdays, anniversaries, holidays, and special milestones that deserve
-                to be celebrated in style.
+                Perfect for birthdays, anniversaries, holidays, and special
+                milestones that deserve to be celebrated in style.
               </p>
             </div>
 

@@ -6,10 +6,30 @@ const Collection = () => {
     <section>
       <div className="mx-auto lg:w-10/12 px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
         <header className="text-center">
-          <h2 className="text-xl font-bold text-gray-900 sm:text-3xl">Our Collection</h2>
+          <h2 className="text-xl font-bold text-gray-900 sm:text-3xl">
+            Our Collection
+          </h2>
 
           <p className="mx-auto mt-4 max-w-md text-gray-500"></p>
         </header>
+
+        {/* <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="metadata"
+          poster="https://the-little-basket.s3.us-east-1.amazonaws.com/images/hampers/corporate-hampers/hampers-corporate_video_1.jpg"
+          width={"50%"}
+          height={100}
+          alt=""
+          className="rounded-lg aspect-square transition mx-auto "
+        >
+          <source
+            src="https://the-little-basket.s3.us-east-1.amazonaws.com/images/hampers/corporate-hampers/hampers-corporate_video_1.mp4"
+            type="video/mp4"
+          />
+        </video> */}
 
         <ul className="mt-8 grid grid-cols-1 gap-4 lg:grid-cols-3">
           <li>
@@ -17,7 +37,7 @@ const Collection = () => {
               <Image
                 height={300}
                 width={300}
-                src="https://the-little-basket.s3.us-east-1.amazonaws.com/images/9.jpeg"
+                src="https://the-little-basket.s3.us-east-1.amazonaws.com/images/hampers/corporate-hampers/hampers-corporate_2.jpeg"
                 alt=""
                 className="rounded-lg aspect-square w-full object-cover transition duration-500 group-hover:opacity-90"
               />

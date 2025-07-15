@@ -76,16 +76,7 @@ const HomeProducts = ({ show, products }) => {
         mainImage:
           "https://the-little-basket.s3.us-east-1.amazonaws.com/images/14.jpeg",
       },
-      {
-        _id: "6",
-        name: "Wine & Cheese Hamper",
-        price: 119.99,
-        description:
-          "Sophisticated hamper with selected wines, artisanal cheeses, and gourmet crackers.",
-        category: "gourmet",
-        mainImage:
-          "https://the-little-basket.s3.us-east-1.amazonaws.com/images/15.jpeg",
-      },
+
       {
         _id: "7",
         name: "Baby Shower Gift Hamper",
@@ -97,7 +88,7 @@ const HomeProducts = ({ show, products }) => {
           "https://the-little-basket.s3.us-east-1.amazonaws.com/images/16.jpeg",
       },
       {
-        _id: "8",
+        _id: "6",
         name: "Tea Lover's Hamper",
         price: 49.99,
         description:
@@ -105,6 +96,16 @@ const HomeProducts = ({ show, products }) => {
         category: "tea",
         mainImage:
           "https://the-little-basket.s3.us-east-1.amazonaws.com/images/17.jpeg",
+      },
+      {
+        _id: "8",
+        name: "Wine & Cheese Hamper",
+        price: 119.99,
+        description:
+          "Sophisticated hamper with selected wines, artisanal cheeses, and gourmet crackers.",
+        category: "gourmet",
+        mainImage:
+          "https://the-little-basket.s3.us-east-1.amazonaws.com/images/hampers/corporate-hampers/hampers-corporate_2.jpeg",
       },
     ],
   };

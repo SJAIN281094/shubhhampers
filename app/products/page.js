@@ -37,20 +37,20 @@ function classNames(...classes) {
 
 const mockProducts = {
   data: [
-    // Corporate Gifts
+    // Corporate Gifts : 1
     {
       _id: "1",
-      name: "Corporate Excellence Gift",
-      price: 149.99,
+      name: "Executive Corporate Hamper",
+      price: 159.99,
       description:
-        "Professional gift hamper perfect for corporate clients and employees.",
+        "Professional hamper for corporate gifting and business relationships.",
       category: "corporate",
       mainImage:
-        "https://the-little-basket.s3.us-east-1.amazonaws.com/images/gifts/gift_5.jpeg",
-      createdAt: "2024-05-12",
+        "https://the-little-basket.s3.us-east-1.amazonaws.com/images/hampers/corporate-hampers/hampers-corporate_2.jpeg",
+      createdAt: "2024-04-20",
     },
     {
-      _id: "2",
+      _id: "1.1",
       name: "Executive Corporate Hamper",
       price: 159.99,
       description:
@@ -60,21 +60,9 @@ const mockProducts = {
         "https://the-little-basket.s3.us-east-1.amazonaws.com/images/hampers/corporate-hampers/hampers-corporate_1.jpg",
       createdAt: "2024-04-20",
     },
-
-    // Diwali Gifts
+    // Diwali : 2
     {
-      _id: "3",
-      name: "Festival Gift Hamper",
-      price: 94.99,
-      description:
-        "Specially curated hamper for festival celebrations and joy.",
-      category: "diwali",
-      mainImage:
-        "https://the-little-basket.s3.us-east-1.amazonaws.com/images/gifts/gift_7.jpeg",
-      createdAt: "2024-06-15",
-    },
-    {
-      _id: "4",
+      _id: "2",
       name: "Diwali Celebration Hamper",
       price: 99.99,
       description:
@@ -85,7 +73,7 @@ const mockProducts = {
       createdAt: "2024-05-05",
     },
     {
-      _id: "5",
+      _id: "2.1",
       name: "Festival of Lights Hamper",
       price: 109.99,
       description:
@@ -96,7 +84,7 @@ const mockProducts = {
       createdAt: "2024-05-10",
     },
     {
-      _id: "6",
+      _id: "2.2",
       name: "Diwali Delights Hamper",
       price: 119.99,
       description:
@@ -107,7 +95,7 @@ const mockProducts = {
       createdAt: "2024-05-15",
     },
     {
-      _id: "7",
+      _id: "2.3",
       name: "Traditional Diwali Gift",
       price: 94.99,
       description:
@@ -118,7 +106,7 @@ const mockProducts = {
       createdAt: "2024-05-20",
     },
     {
-      _id: "8",
+      _id: "2.4",
       name: "Festive Diwali Collection",
       price: 104.99,
       description:
@@ -129,7 +117,7 @@ const mockProducts = {
       createdAt: "2024-05-25",
     },
     {
-      _id: "9",
+      _id: "2.5",
       name: "Diwali Special Hamper",
       price: 114.99,
       description:
@@ -139,23 +127,31 @@ const mockProducts = {
         "https://the-little-basket.s3.us-east-1.amazonaws.com/images/hampers/diwali/hampers-diwali_6.jpeg",
       createdAt: "2024-05-30",
     },
-
-    // New Year/Christmas Gifts
+    // Gifts : 3
     {
-      _id: "10",
-      name: "New Year Celebration Hamper",
-      price: 124.99,
+      _id: "3",
+      name: "Corporate Excellence Gift",
+      price: 149.99,
       description:
-        "Ring in the New Year with this celebratory hamper filled with joy.",
-      category: "newyear-christmas",
+        "Professional gift hamper perfect for corporate clients and employees.",
+      category: "corporate",
       mainImage:
-        "https://the-little-basket.s3.us-east-1.amazonaws.com/images/hampers/new-year/hampers-new-year_1.jpeg",
-      createdAt: "2024-06-05",
+        "https://the-little-basket.s3.us-east-1.amazonaws.com/images/gifts/gift_5.jpeg",
+      createdAt: "2024-05-12",
     },
-
-    // Birthday Gifts
     {
-      _id: "11",
+      _id: "3.1",
+      name: "Festival Gift Hamper",
+      price: 94.99,
+      description:
+        "Specially curated hamper for festival celebrations and joy.",
+      category: "diwali",
+      mainImage:
+        "https://the-little-basket.s3.us-east-1.amazonaws.com/images/gifts/gift_7.jpeg",
+      createdAt: "2024-06-15",
+    },
+    {
+      _id: "3.2",
       name: "Special Birthday Gift",
       price: 79.99,
       description:
@@ -166,7 +162,7 @@ const mockProducts = {
       createdAt: "2024-03-10",
     },
     {
-      _id: "12",
+      _id: "3.3",
       name: "Birthday Celebration Box",
       price: 84.99,
       description:
@@ -176,8 +172,22 @@ const mockProducts = {
         "https://the-little-basket.s3.us-east-1.amazonaws.com/images/gifts/gift_8.jpeg",
       createdAt: "2024-06-20",
     },
+
+    // New Year/Christmas Gifts : 4
     {
-      _id: "13",
+      _id: "4",
+      name: "New Year Celebration Hamper",
+      price: 124.99,
+      description:
+        "Ring in the New Year with this celebratory hamper filled with joy.",
+      category: "newyear-christmas",
+      mainImage:
+        "https://the-little-basket.s3.us-east-1.amazonaws.com/images/hampers/new-year/hampers-new-year_1.jpeg",
+      createdAt: "2024-06-05",
+    },
+    // Birthday : 5
+    {
+      _id: "5",
       name: "Birthday Party Hamper",
       price: 89.99,
       description:
@@ -188,7 +198,7 @@ const mockProducts = {
       createdAt: "2024-03-15",
     },
 
-    // All Products / General Gifts
+    // All Products / General Gifts: 6
     {
       _id: "14",
       name: "Premium Gift Box",
