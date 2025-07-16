@@ -80,7 +80,7 @@ export const metadata = {
     siteName: "Shubhhampers",
     images: [
       {
-        url: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/hampers/corporate-hampers/hampers-corporate_2.jpeg",
+        url: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/social-media/social_media_meta_image.jpeg",
         width: 1200,
         height: 630,
         alt: "Shubhhampers - Premium Gift Hampers",
@@ -95,7 +95,7 @@ export const metadata = {
     description:
       "Shubhhampers is a gifting company that specializes in creating unique and personalized gift hampers and boxes for all occasions.",
     images: [
-      "https://the-little-basket.s3.us-east-1.amazonaws.com/images/hampers/corporate-hampers/hampers-corporate_2.jpeg",
+      "https://the-little-basket.s3.us-east-1.amazonaws.com/images/social-media/social_media_meta_image.jpeg",
     ],
     creator: "@shubhhampers",
   },
