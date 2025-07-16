@@ -26,6 +26,41 @@ export const metadata = {
     "Custom Gifts",
     "Luxury Gifts",
     "Unique Gifts",
+    "Corporate Gifts",
+    "Occasion Gifts",
+    "Birthday Gifts",
+    "Anniversary Gifts",
+    "Wedding Gifts",
+    "Festival Gifts",
+    "Gift Ideas",
+    "Gift Shop",
+    "Online Gifts",
+    "Gift Store",
+    "Gift Basket",
+    "Gift Packaging",
+    "Gift Accessories",
+    "Gift Experience",
+    "Gift Services",
+    "Gift Consultation",
+    "Gift Personalization",
+    "Gift Trends",
+    "Gift Inspiration",
+    "Gift Recommendations",
+    "Gift Shopping",
+    "Gift Enthusiasts",
+    "Gift Lovers",
+    "Gift Enthusiast",
+    "Gift Lover",
+    "Gift Givers",
+    "Gift Giving",
+    "Gift Culture",
+    "Gift Community",
+    "Gift Enthusiast Community",
+    "Gift Lover Community",
+    "Gift Giver Community",
+    "Gift Giving Community",
+    "Gift Enthusiast Culture",
+    "Gift Lover Culture",
   ],
   authors: [
     {
@@ -37,6 +72,31 @@ export const metadata = {
   publisher: "Shubhhampers",
   description:
     "Shubhhampers is a gifting company that specializes in creating unique and personalized gift hampers and boxes for all occasions.",
+  openGraph: {
+    title: "Shubhhampers - Unique & Personalized Gift Hampers",
+    description:
+      "Shubhhampers is a gifting company that specializes in creating unique and personalized gift hampers and boxes for all occasions.",
+    url: "https://shubhhampers.com",
+    siteName: "Shubhhampers",
+    images: [
+      {
+        url: "/shubhhampers-full.png",
+        width: 1200,
+        height: 630,
+        alt: "Shubhhampers - Premium Gift Hampers",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Shubhhampers - Unique & Personalized Gift Hampers",
+    description:
+      "Shubhhampers is a gifting company that specializes in creating unique and personalized gift hampers and boxes for all occasions.",
+    images: ["/shubhhampers-full.png"],
+    creator: "@shubhhampers",
+  },
 };
 
 export default function RootLayout({ children }) {
