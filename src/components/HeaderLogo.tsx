@@ -1,14 +1,10 @@
-"use client";
-
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function HeaderLogo() {
-  const router = useRouter();
-
   return (
-    <div
+    <Link
+      href='/'
       className='flex items-center gap-3 cursor-pointer hover:opacity-90 transition-opacity duration-200 flex-shrink-0'
-      onClick={() => router.push("/")}
     >
       <div className='relative flex items-center'>
         <div className='w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 bg-gradient-to-br from-brand-light via-white to-brand-gold/20 rounded-lg overflow-hidden shadow-md border border-brand-gold/20 p-1'>
@@ -28,6 +24,6 @@ export default function HeaderLogo() {
           Hampers that build relationships.
         </p>
       </div>
-    </div>
+    </Link>
   );
 }

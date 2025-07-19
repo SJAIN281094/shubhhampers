@@ -1,8 +1,42 @@
-"use client";
-
+import type { Metadata } from "next";
 import Header from "@components/Header";
 import Footer from "@components/Footer";
-import { Button } from "@ui-kit/button";
+import AboutHero from "@components/AboutHero";
+import OurMission from "@components/OurMission";
+import OurValues from "@components/OurValues";
+import OurApproach from "@components/OurApproach";
+import WhyChooseUs from "@components/WhyChooseUs";
+import AboutCTA from "@components/AboutCTA";
+
+export const metadata: Metadata = {
+  title: "About Shubhhampers - Our Story, Mission & Values | Premium Hamper Curation",
+  description:
+    "Learn about Shubhhampers' mission to build meaningful relationships through thoughtful hamper curation. Discover our authentic approach, core values, and commitment to premium quality service.",
+  keywords: [
+    "about Shubhhampers",
+    "hamper company story",
+    "relationship building mission",
+    "premium hamper curation",
+    "corporate hamper specialists",
+    "authentic hamper service",
+    "business values",
+    "hamper company philosophy",
+    "professional hamper team",
+    "trusted hamper partner"
+  ],
+  openGraph: {
+    title: "About Shubhhampers - Our Story & Mission",
+    description:
+      "Learn about our mission to build meaningful relationships through thoughtful hamper curation. Authentic approach, premium quality.",
+    images: ["/logo-dark.png"]
+  },
+  twitter: {
+    title: "About Shubhhampers - Our Story & Mission",
+    description:
+      "Learn about our mission to build meaningful relationships through thoughtful hamper curation. Authentic approach, premium quality.",
+    images: ["/logo-dark.png"]
+  }
+};
 
 export default function AboutPage() {
   return (
@@ -10,406 +44,12 @@ export default function AboutPage() {
       <Header />
 
       <div className='bg-gradient-to-br from-brand-light via-white to-brand-gold/5'>
-        {/* Hero Section */}
-        <section className='relative py-20 overflow-hidden'>
-          {/* Background Elements */}
-          <div className='absolute inset-0 bg-gradient-to-br from-brand-gold/10 via-transparent to-brand-amber/5' />
-          <div className='absolute top-10 right-10 w-40 h-40 bg-brand-gold/20 rounded-full blur-2xl animate-pulse' />
-          <div className='absolute bottom-20 left-10 w-32 h-32 bg-brand-amber/30 rounded-full blur-xl animate-bounce' />
-
-          <div className='container mx-auto px-4 sm:px-6 lg:px-8 relative z-10'>
-            <div className='text-center max-w-4xl mx-auto'>
-              <div className='inline-flex items-center gap-2 bg-brand-gold/20 px-6 py-2 rounded-full mb-6'>
-                <span className='text-brand-brown font-semibold'>✨ Our Story</span>
-              </div>
-
-              <h1 className='font-display text-5xl sm:text-6xl lg:text-7xl font-bold text-brand-dark mb-6 tracking-wide'>
-                About Shubhhampers
-              </h1>
-
-              <p className='text-xl lg:text-2xl text-gray-700 mb-8 leading-relaxed'>
-                {`We're passionate about creating meaningful connections through
-                thoughtful hampers. Every hamper we curate tells a story of care,
-                appreciation, and genuine human connection.`}
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* Our Mission Section */}
-        <section className='py-20 bg-white'>
-          <div className='container mx-auto px-4 sm:px-6 lg:px-8'>
-            <div className='grid grid-cols-1 lg:grid-cols-2 gap-12 items-center'>
-              <div>
-                <h2 className='font-display text-4xl lg:text-5xl font-bold text-brand-dark mb-6'>
-                  Our Mission
-                </h2>
-                <p className='text-lg text-gray-700 mb-6 leading-relaxed'>
-                  {`At Shubhhampers, we believe that every hamper is an opportunity
-                  to strengthen relationships and create lasting memories. We're
-                  not just delivering packages – we're delivering joy,
-                  appreciation, and genuine human connection.`}
-                </p>
-                <p className='text-lg text-gray-700 mb-8 leading-relaxed'>
-                  {`Whether it's celebrating a festival, appreciating your team,
-                  or nurturing client relationships, we're here to help you make
-                  every moment special and meaningful.`}
-                </p>
-
-                <div className='grid grid-cols-1 sm:grid-cols-3 gap-6'>
-                  <div className='text-center p-4 bg-brand-gold/10 rounded-xl'>
-                    <div className='text-3xl mb-2'>💝</div>
-                    <h3 className='font-semibold text-brand-brown mb-1'>Thoughtful</h3>
-                    <p className='text-sm text-gray-600'>Every item carefully selected</p>
-                  </div>
-                  <div className='text-center p-4 bg-brand-amber/10 rounded-xl'>
-                    <div className='text-3xl mb-2'>🤝</div>
-                    <h3 className='font-semibold text-brand-brown mb-1'>Personal</h3>
-                    <p className='text-sm text-gray-600'>Direct communication & care</p>
-                  </div>
-                  <div className='text-center p-4 bg-brand-brown/10 rounded-xl'>
-                    <div className='text-3xl mb-2'>✨</div>
-                    <h3 className='font-semibold text-brand-brown mb-1'>Quality</h3>
-                    <p className='text-sm text-gray-600'>Premium products & service</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className='relative'>
-                <div className='bg-gradient-to-br from-brand-gold/20 to-brand-amber/20 rounded-3xl p-8 shadow-xl'>
-                  <div className='text-6xl mb-6 text-center'>🎁</div>
-                  <h3 className='text-2xl font-bold text-brand-dark mb-4 text-center'>
-                    Why We Started
-                  </h3>
-                  <p className='text-gray-700 leading-relaxed'>
-                    {`We noticed that many hamper experiences felt impersonal and
-                  generic. We wanted to change that by creating a platform
-                  where every hamper feels personal, thoughtful, and meaningful.
-                  Our journey began with a simple belief: that the best hampers
-                    are those that strengthen relationships and create genuine
-                    connections.`}
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Our Values Section */}
-        <section className='py-20 bg-gradient-to-br from-brand-light/30 to-brand-gold/10'>
-          <div className='container mx-auto px-4 sm:px-6 lg:px-8'>
-            <div className='text-center mb-16'>
-              <h2 className='font-display text-4xl lg:text-5xl font-bold text-brand-dark mb-6'>
-                Our Values
-              </h2>
-              <p className='text-xl text-gray-700 max-w-3xl mx-auto'>
-                {`These core values guide everything we do and every relationship
-                we build.`}
-              </p>
-            </div>
-
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8'>
-              <div className='bg-white rounded-2xl p-8 shadow-lg border border-brand-gold/20 hover:shadow-xl transition-all duration-300'>
-                <div className='text-4xl mb-4'>💫</div>
-                <h3 className='text-xl font-bold text-brand-dark mb-3'>Authenticity</h3>
-                <p className='text-gray-600'>
-                  {`We believe in being genuine in everything we do. No corporate
-                  jargon, no empty promises – just honest, transparent
-                  relationships.`}
-                </p>
-              </div>
-
-              <div className='bg-white rounded-2xl p-8 shadow-lg border border-brand-gold/20 hover:shadow-xl transition-all duration-300'>
-                <div className='text-4xl mb-4'>🎯</div>
-                <h3 className='text-xl font-bold text-brand-dark mb-3'>Purpose</h3>
-                <p className='text-gray-600'>
-                  {`Every hamper we curate has a purpose – to strengthen
-                  relationships, show appreciation, and create meaningful
-                  connections.`}
-                </p>
-              </div>
-
-              <div className='bg-white rounded-2xl p-8 shadow-lg border border-brand-gold/20 hover:shadow-xl transition-all duration-300'>
-                <div className='text-4xl mb-4'>🌟</div>
-                <h3 className='text-xl font-bold text-brand-dark mb-3'>Growth</h3>
-                <p className='text-gray-600'>
-                  {`We're constantly learning, improving, and growing together
-                  with our clients and partners.`}
-                </p>
-              </div>
-
-              <div className='bg-white rounded-2xl p-8 shadow-lg border border-brand-gold/20 hover:shadow-xl transition-all duration-300'>
-                <div className='text-4xl mb-4'>🤝</div>
-                <h3 className='text-xl font-bold text-brand-dark mb-3'>Partnership</h3>
-                <p className='text-gray-600'>
-                  {`We see our clients as partners in creating meaningful
-                  experiences. Your success is our success.`}
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Our Approach Section */}
-        <section className='py-20 bg-white'>
-          <div className='container mx-auto px-4 sm:px-6 lg:px-8'>
-            <div className='grid grid-cols-1 lg:grid-cols-2 gap-12 items-center'>
-              <div className='order-2 lg:order-1'>
-                <div className='bg-gradient-to-br from-brand-amber/20 to-brand-gold/20 rounded-3xl p-8 shadow-xl'>
-                  <h3 className='text-2xl font-bold text-brand-dark mb-6'>How We Work</h3>
-                  <div className='space-y-6'>
-                    <div className='flex items-start gap-4'>
-                      <div className='w-8 h-8 bg-brand-gold rounded-full flex items-center justify-center text-white font-bold text-sm'>
-                        1
-                      </div>
-                      <div>
-                        <h4 className='font-semibold text-brand-dark mb-1'>
-                          Understanding Your Needs
-                        </h4>
-                        <p className='text-gray-600 text-sm'>
-                          {`We take time to understand your goals, values, and the
-                          relationships you want to strengthen.`}
-                        </p>
-                      </div>
-                    </div>
-                    <div className='flex items-start gap-4'>
-                      <div className='w-8 h-8 bg-brand-gold rounded-full flex items-center justify-center text-white font-bold text-sm'>
-                        2
-                      </div>
-                      <div>
-                        <h4 className='font-semibold text-brand-dark mb-1'>Thoughtful Curation</h4>
-                        <p className='text-gray-600 text-sm'>
-                          {`We carefully select items that align with your values
-                          and create meaningful experiences.`}
-                        </p>
-                      </div>
-                    </div>
-                    <div className='flex items-start gap-4'>
-                      <div className='w-8 h-8 bg-brand-gold rounded-full flex items-center justify-center text-white font-bold text-sm'>
-                        3
-                      </div>
-                      <div>
-                        <h4 className='font-semibold text-brand-dark mb-1'>Personal Touch</h4>
-                        <p className='text-gray-600 text-sm'>
-                          {`We add personal touches and ensure every detail
-                          reflects your care and appreciation.`}
-                        </p>
-                      </div>
-                    </div>
-                    <div className='flex items-start gap-4'>
-                      <div className='w-8 h-8 bg-brand-gold rounded-full flex items-center justify-center text-white font-bold text-sm'>
-                        4
-                      </div>
-                      <div>
-                        <h4 className='font-semibold text-brand-dark mb-1'>Ongoing Support</h4>
-                        <p className='text-gray-600 text-sm'>
-                          {`We're here to support you throughout your hamper
-                          journey and help you succeed.`}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className='order-1 lg:order-2'>
-                <h2 className='font-display text-4xl lg:text-5xl font-bold text-brand-dark mb-6'>
-                  Our Approach
-                </h2>
-                <p className='text-lg text-gray-700 mb-6 leading-relaxed'>
-                  {`We don't believe in one-size-fits-all solutions. Every client
-                  is unique, and every relationship deserves personalized
-                  attention. That's why we work closely with you to understand
-                  your specific needs and create hamper experiences that truly
-                  matter.`}
-                </p>
-                <p className='text-lg text-gray-700 mb-8 leading-relaxed'>
-                  {`From the initial consultation to the final delivery, we're
-                  with you every step of the way, ensuring that every hamper
-                  reflects your values and strengthens your relationships.`}
-                </p>
-
-                <Button className='bg-gradient-to-r from-brand-amber to-brand-gold hover:from-brand-gold hover:to-brand-amber text-white font-semibold px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300'>
-                  💬 {"Let's Start Your Journey"}
-                </Button>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Why Choose Us Section */}
-        <section className='py-20 bg-gradient-to-br from-brand-light/30 to-brand-gold/10'>
-          <div className='container mx-auto px-4 sm:px-6 lg:px-8'>
-            <div className='text-center mb-16'>
-              <h2 className='font-display text-4xl lg:text-5xl font-bold text-brand-dark mb-6'>
-                Why Choose Shubhhampers?
-              </h2>
-              <p className='text-xl text-gray-700 max-w-3xl mx-auto'>
-                {`We bring a fresh approach to hamper services, focusing on what
-                matters most: building meaningful relationships and creating
-                lasting business impact.`}
-              </p>
-            </div>
-
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
-              <div className='bg-white rounded-2xl p-8 shadow-lg border border-brand-gold/20 hover:shadow-xl transition-all duration-300'>
-                <div className='w-16 h-16 bg-gradient-to-br from-brand-gold to-brand-amber rounded-full mx-auto mb-6 flex items-center justify-center text-2xl'>
-                  🎯
-                </div>
-                <h3 className='text-xl font-bold text-brand-dark mb-4 text-center'>
-                  Strategic Focus
-                </h3>
-                <p className='text-gray-600 text-center mb-4'>
-                  {`Every hamper is strategically designed to strengthen relationships
-                  and drive business outcomes, not just deliver products.`}
-                </p>
-                <div className='bg-brand-gold/10 rounded-lg p-3 text-center'>
-                  <span className='text-sm font-semibold text-brand-brown'>Relationship ROI</span>
-                </div>
-              </div>
-
-              <div className='bg-white rounded-2xl p-8 shadow-lg border border-brand-gold/20 hover:shadow-xl transition-all duration-300'>
-                <div className='w-16 h-16 bg-gradient-to-br from-brand-amber to-brand-brown rounded-full mx-auto mb-6 flex items-center justify-center text-2xl'>
-                  💎
-                </div>
-                <h3 className='text-xl font-bold text-brand-dark mb-4 text-center'>
-                  Quality Curation
-                </h3>
-                <p className='text-gray-600 text-center mb-4'>
-                  {`Thoughtfully selected items that reflect your values and create
-                  genuine emotional connections with recipients.`}
-                </p>
-                <div className='bg-brand-amber/10 rounded-lg p-3 text-center'>
-                  <span className='text-sm font-semibold text-brand-brown'>Premium Selection</span>
-                </div>
-              </div>
-
-              <div className='bg-white rounded-2xl p-8 shadow-lg border border-brand-gold/20 hover:shadow-xl transition-all duration-300'>
-                <div className='w-16 h-16 bg-gradient-to-br from-brand-brown to-brand-gold rounded-full mx-auto mb-6 flex items-center justify-center text-2xl'>
-                  🚀
-                </div>
-                <h3 className='text-xl font-bold text-brand-dark mb-4 text-center'>
-                  Business Impact
-                </h3>
-                <p className='text-gray-600 text-center mb-4'>
-                  {`Measurable results including improved employee retention,
-                  stronger client relationships, and enhanced brand reputation.`}
-                </p>
-                <div className='bg-brand-brown/10 rounded-lg p-3 text-center'>
-                  <span className='text-sm font-semibold text-brand-brown'>Proven Results</span>
-                </div>
-              </div>
-
-              <div className='bg-white rounded-2xl p-8 shadow-lg border border-brand-gold/20 hover:shadow-xl transition-all duration-300'>
-                <div className='w-16 h-16 bg-gradient-to-br from-brand-gold to-brand-amber rounded-full mx-auto mb-6 flex items-center justify-center text-2xl'>
-                  🤝
-                </div>
-                <h3 className='text-xl font-bold text-brand-dark mb-4 text-center'>
-                  Partnership Approach
-                </h3>
-                <p className='text-gray-600 text-center mb-4'>
-                  {`We're not just vendors - we're strategic partners invested in
-                  your success and relationship-building goals.`}
-                </p>
-                <div className='bg-brand-gold/10 rounded-lg p-3 text-center'>
-                  <span className='text-sm font-semibold text-brand-brown'>True Partnership</span>
-                </div>
-              </div>
-
-              <div className='bg-white rounded-2xl p-8 shadow-lg border border-brand-gold/20 hover:shadow-xl transition-all duration-300'>
-                <div className='w-16 h-16 bg-gradient-to-br from-brand-amber to-brand-brown rounded-full mx-auto mb-6 flex items-center justify-center text-2xl'>
-                  ⚡
-                </div>
-                <h3 className='text-xl font-bold text-brand-dark mb-4 text-center'>
-                  Fresh Approach
-                </h3>
-                <p className='text-gray-600 text-center mb-4'>
-                  {`Modern, authentic, and human-centered - we avoid corporate
-                  jargon and focus on genuine connections.`}
-                </p>
-                <div className='bg-brand-amber/10 rounded-lg p-3 text-center'>
-                  <span className='text-sm font-semibold text-brand-brown'>Authentic Service</span>
-                </div>
-              </div>
-
-              <div className='bg-white rounded-2xl p-8 shadow-lg border border-brand-gold/20 hover:shadow-xl transition-all duration-300'>
-                <div className='w-16 h-16 bg-gradient-to-br from-brand-brown to-brand-gold rounded-full mx-auto mb-6 flex items-center justify-center text-2xl'>
-                  🎨
-                </div>
-                <h3 className='text-xl font-bold text-brand-dark mb-4 text-center'>
-                  Custom Solutions
-                </h3>
-                <p className='text-gray-600 text-center mb-4'>
-                  {`Tailored hampers that reflect your brand, values, and specific
-                  relationship-building objectives.`}
-                </p>
-                <div className='bg-brand-brown/10 rounded-lg p-3 text-center'>
-                  <span className='text-sm font-semibold text-brand-brown'>Personalized Touch</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Trust Indicators */}
-            <div className='mt-16 bg-white rounded-2xl p-8 shadow-lg border border-brand-gold/20'>
-              <div className='text-center mb-8'>
-                <h3 className='text-2xl font-bold text-brand-dark mb-4'>Our Commitment to You</h3>
-                <p className='text-gray-700 max-w-2xl mx-auto'>
-                  {`When you choose Shubhhampers, you're choosing a partner dedicated
-                  to your success and relationship-building goals.`}
-                </p>
-              </div>
-
-              <div className='grid grid-cols-1 md:grid-cols-3 gap-6'>
-                <div className='text-center p-4 bg-brand-gold/5 rounded-lg'>
-                  <div className='text-2xl mb-2'>⏱️</div>
-                  <h4 className='font-semibold text-brand-dark mb-2'>Timely Delivery</h4>
-                  <p className='text-sm text-gray-600'>
-                    On-time delivery that keeps your commitments
-                  </p>
-                </div>
-
-                <div className='text-center p-4 bg-brand-amber/5 rounded-lg'>
-                  <div className='text-2xl mb-2'>💬</div>
-                  <h4 className='font-semibold text-brand-dark mb-2'>Direct Communication</h4>
-                  <p className='text-sm text-gray-600'>
-                    No intermediaries - talk directly with decision makers
-                  </p>
-                </div>
-
-                <div className='text-center p-4 bg-brand-brown/5 rounded-lg'>
-                  <div className='text-2xl mb-2'>🔄</div>
-                  <h4 className='font-semibold text-brand-dark mb-2'>Ongoing Support</h4>
-                  <p className='text-sm text-gray-600'>
-                    Continuous guidance for your relationship strategies
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* CTA Section */}
-        <section className='py-20 bg-gradient-to-br from-brand-brown to-brand-dark text-white'>
-          <div className='container mx-auto px-4 sm:px-6 lg:px-8'>
-            <div className='text-center max-w-4xl mx-auto'>
-              <h2 className='font-display text-4xl lg:text-5xl font-bold mb-6'>
-                Ready to Create Something Special?
-              </h2>
-              <p className='text-xl mb-8 leading-relaxed'>
-                {`Let's work together to create hamper experiences that
-                strengthen your relationships and make every moment meaningful.`}
-              </p>
-              <div className='flex flex-col sm:flex-row gap-4 justify-center'>
-                <Button className='bg-brand-gold text-brand-dark font-semibold px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300'>
-                  💬 Get in Touch
-                </Button>
-                <Button className='bg-transparent text-white font-semibold px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-brand-gold hover:bg-brand-gold hover:text-brand-dark'>
-                  🎁 Explore Collections
-                </Button>
-              </div>
-            </div>
-          </div>
-        </section>
+        <AboutHero />
+        <OurMission />
+        <OurValues />
+        <OurApproach />
+        <WhyChooseUs />
+        <AboutCTA />
       </div>
 
       <Footer />

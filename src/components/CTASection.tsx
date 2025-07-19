@@ -131,7 +131,7 @@ export default function CTASection() {
 
           {/* What Makes Us Different */}
           <div className='bg-white/5 backdrop-blur-sm rounded-3xl p-8 border border-brand-gold/20'>
-            <h3 className='text-xl md:text-2xl font-bold text-brand-light mb-4 md:mb-6'>
+            <h3 className='font-display text-4xl lg:text-5xl font-bold text-brand-light mb-6'>
               Why Choose Shubhhampers?
             </h3>
             <div className='grid grid-cols-1 md:grid-cols-3 gap-8'>

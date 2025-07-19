@@ -110,13 +110,6 @@ export default function QuickAccessBar() {
                 </svg>
                 <span className='text-xs font-medium'>WhatsApp</span>
               </button>
-
-              <div className='w-px h-4 bg-brand-gold/30' />
-
-              <div className='flex items-center space-x-2 text-xs'>
-                <div className='w-2 h-2 bg-green-400 rounded-full animate-pulse' />
-                <span className='text-brand-light/90 font-medium'>Available Now</span>
-              </div>
             </div>
           </div>
         </div>
