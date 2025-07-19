@@ -30,8 +30,8 @@ const CorporateBackground = () => {
 
       {/* Floating Corporate Elements - Hidden on mobile for better performance */}
       <div className='hidden md:block absolute top-20 right-20 w-32 h-32 bg-gradient-to-br from-brand-gold/20 to-brand-amber/20 rounded-full blur-2xl animate-pulse' />
-      <div className='hidden md:block absolute bottom-32 left-16 w-24 h-24 bg-gradient-to-br from-brand-brown/15 to-brand-gold/15 rounded-full blur-xl animate-pulse delay-1000' />
-      <div className='hidden lg:block absolute top-1/2 left-1/3 w-20 h-20 bg-gradient-to-br from-brand-amber/20 to-brand-brown/20 rounded-full blur-lg animate-pulse delay-2000' />
+      <div className='hidden md:block absolute bottom-32 left-16 w-24 h-24 bg-gradient-to-br from-brand-brown/15 to-brand-gold/15 rounded-full blur-xl animate-pulse delay-500' />
+      <div className='hidden lg:block absolute top-1/2 left-1/3 w-20 h-20 bg-gradient-to-br from-brand-amber/20 to-brand-brown/20 rounded-full blur-lg animate-pulse delay-1000' />
 
       {/* Decorative Lines - Hidden on mobile */}
       <div className='hidden lg:block absolute top-1/4 right-1/4 w-32 h-px bg-gradient-to-r from-transparent via-brand-amber/30 to-transparent' />
@@ -164,12 +164,19 @@ export default function HeroSlider() {
       setCurrentSlide(api.selectedScrollSnap());
       setAnimationKey(prev => prev + 1);
     });
+
+    // Add autoplay functionality with faster timing
+    const autoplay = setInterval(() => {
+      api.scrollNext();
+    }, 4000); // 4 seconds instead of default 6-8 seconds
+
+    return () => clearInterval(autoplay);
   }, [api]);
 
   const handleScrollToNext = () => {
-    const eventsSection = document.querySelector("#events-section");
-    if (eventsSection) {
-      eventsSection.scrollIntoView({ behavior: "smooth" });
+    const approachSection = document.querySelector("#our-approach-section");
+    if (approachSection) {
+      approachSection.scrollIntoView({ behavior: "smooth" });
     }
   };
 
@@ -240,19 +247,16 @@ export default function HeroSlider() {
                     {/* CTA Buttons */}
                     <div className='flex flex-col sm:flex-row items-center justify-center space-y-3 sm:space-y-0 sm:space-x-4 md:space-x-6 animate-fade-in-delay-3 px-4 md:px-0'>
                       <Button
-                        size='lg'
                         onClick={() => router.push("/collections")}
-                        className={`${slide.buttonClass} text-white font-semibold px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 border-0 w-full sm:w-auto`}
+                        className={`${slide.buttonClass} text-white font-semibold px-6 py-3 md:px-8 md:py-4 rounded-full shadow-xl hover:shadow-2xl transition-all duration-200 transform hover:scale-105 hover:-translate-y-1 border-0 w-full sm:w-auto`}
                       >
-                        {slide.cta}
+                        🎁 Explore Collections
                       </Button>
                       <Button
-                        variant='outline'
-                        size='lg'
                         onClick={() => router.push("/contact")}
-                        className='bg-white/90 backdrop-blur-sm border-brand-gold text-brand-brown hover:bg-brand-gold hover:text-white font-semibold px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 w-full sm:w-auto'
+                        className='bg-white/90 backdrop-blur-sm text-brand-brown border-2 border-brand-gold font-semibold px-6 py-3 md:px-8 md:py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-105 hover:-translate-y-1 w-full sm:w-auto'
                       >
-                        {slide.secondaryCta}
+                        💬 Start Conversation
                       </Button>
                     </div>
                   </div>
@@ -270,10 +274,10 @@ export default function HeroSlider() {
                   {slides.map((_, idx) => (
                     <div
                       key={`indication-${idx + 1}`}
-                      className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition-all duration-300 cursor-pointer ${
+                      className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition-all duration-200 cursor-pointer ${
                         idx === currentSlide
-                          ? "bg-brand-amber scale-125"
-                          : "bg-brand-brown/30 hover:bg-brand-brown/50"
+                          ? "bg-brand-gold shadow-lg"
+                          : "bg-white/50 hover:bg-white/80"
                       }`}
                       onClick={() => api?.scrollTo(idx)}
                     />
@@ -293,13 +297,13 @@ export default function HeroSlider() {
       <div className='absolute bottom-4 md:bottom-8 left-1/2 transform -translate-x-1/2 z-20'>
         <button
           onClick={handleScrollToNext}
-          className='group flex flex-col items-center space-y-1 md:space-y-2 text-brand-brown hover:text-brand-amber transition-all duration-300 cursor-pointer'
+          className='group flex flex-col items-center space-y-1 md:space-y-2 text-brand-brown hover:text-brand-amber transition-all duration-200 cursor-pointer'
         >
           <span className='text-xs md:text-sm font-medium tracking-wider uppercase drop-shadow-sm animate-subtle-blink'>
             Explore Solutions
           </span>
-          <div className='w-5 h-8 md:w-6 md:h-10 border-2 border-brand-brown/50 rounded-full flex justify-center group-hover:border-brand-amber/50 transition-colors duration-300'>
-            <div className='w-1 h-2 md:h-3 bg-brand-brown/70 rounded-full mt-1 md:mt-2 animate-pulse group-hover:bg-brand-amber/70 transition-colors duration-300' />
+          <div className='w-5 h-8 md:w-6 md:h-10 border-2 border-brand-brown/50 rounded-full flex justify-center group-hover:border-brand-amber/50 transition-colors duration-200'>
+            <div className='w-1 h-2 md:h-3 bg-brand-brown/70 rounded-full mt-1 md:mt-2 animate-pulse group-hover:bg-brand-amber/70 transition-colors duration-200' />
           </div>
         </button>
       </div>

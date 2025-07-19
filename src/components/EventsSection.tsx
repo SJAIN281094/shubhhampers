@@ -376,7 +376,7 @@ export default function EventsSection() {
         <div className='flex flex-wrap justify-center gap-3 md:gap-4 mb-16'>
           <button
             onClick={() => setActiveCategory("business")}
-            className={`px-4 md:px-6 py-2 md:py-3 text-sm md:text-base font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 ${
+            className={`px-4 md:px-6 py-2 md:py-3 text-sm md:text-base font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-200 ${
               activeCategory === "business"
                 ? "bg-brand-gold text-brand-brown"
                 : "bg-white/80 text-brand-dark hover:bg-white"
@@ -386,7 +386,7 @@ export default function EventsSection() {
           </button>
           <button
             onClick={() => setActiveCategory("wedding")}
-            className={`px-4 md:px-6 py-2 md:py-3 text-sm md:text-base font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 ${
+            className={`px-4 md:px-6 py-2 md:py-3 text-sm md:text-base font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-200 ${
               activeCategory === "wedding"
                 ? "bg-brand-gold text-brand-brown"
                 : "bg-white/80 text-brand-dark hover:bg-white"
@@ -396,7 +396,7 @@ export default function EventsSection() {
           </button>
           <button
             onClick={() => setActiveCategory("festivals")}
-            className={`px-4 md:px-6 py-2 md:py-3 text-sm md:text-base font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 ${
+            className={`px-4 md:px-6 py-2 md:py-3 text-sm md:text-base font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-200 ${
               activeCategory === "festivals"
                 ? "bg-brand-gold text-brand-brown"
                 : "bg-white/80 text-brand-dark hover:bg-white"
@@ -406,7 +406,7 @@ export default function EventsSection() {
           </button>
           <button
             onClick={() => setActiveCategory("personal")}
-            className={`px-4 md:px-6 py-2 md:py-3 text-sm md:text-base font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 ${
+            className={`px-4 md:px-6 py-2 md:py-3 text-sm md:text-base font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-200 ${
               activeCategory === "personal"
                 ? "bg-brand-gold text-brand-brown"
                 : "bg-white/80 text-brand-dark hover:bg-white"
@@ -416,7 +416,7 @@ export default function EventsSection() {
           </button>
           <button
             onClick={() => setActiveCategory("luxury")}
-            className={`px-4 md:px-6 py-2 md:py-3 text-sm md:text-base font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 ${
+            className={`px-4 md:px-6 py-2 md:py-3 text-sm md:text-base font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-200 ${
               activeCategory === "luxury"
                 ? "bg-brand-gold text-brand-brown"
                 : "bg-white/80 text-brand-dark hover:bg-white"
@@ -436,17 +436,17 @@ export default function EventsSection() {
           {filteredEvents.map((event, index) => (
             <div
               key={event.id}
-              className='group relative overflow-hidden rounded-2xl bg-white shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-105 hover:-translate-y-2 cursor-pointer z-10'
+              className='group relative overflow-hidden rounded-2xl bg-white shadow-xl hover:shadow-2xl transition-shadow duration-200 transform hover:scale-[1.02] cursor-pointer z-10'
               style={{
-                animationDelay: `${index * 100}ms`
+                animationDelay: `${index * 50}ms`
               }}
             >
               {/* Card Background - Clean Initial State, Hover Effects */}
-              <div className='relative min-h-[600px] sm:min-h-[650px] md:min-h-[600px] lg:min-h-[650px] h-full bg-white group-hover:bg-gradient-to-br group-hover:from-brand-gold/20 group-hover:via-brand-light group-hover:to-brand-amber/10 transition-all duration-500'>
+              <div className='relative min-h-[600px] sm:min-h-[650px] md:min-h-[600px] lg:min-h-[650px] h-full bg-white group-hover:bg-gradient-to-br group-hover:from-brand-gold/20 group-hover:via-brand-light group-hover:to-brand-amber/10 transition-colors duration-200'>
                 {/* Background Image for Initial State - Always Visible */}
                 {event.backgroundImage && (
                   <div
-                    className='absolute inset-0 bg-cover bg-center bg-no-repeat opacity-100 group-hover:opacity-30 transition-opacity duration-500'
+                    className='absolute inset-0 bg-cover bg-center bg-no-repeat opacity-100 group-hover:opacity-30 transition-opacity duration-200'
                     style={{
                       backgroundImage: `url('${event.backgroundImage}')`
                     }}
@@ -454,25 +454,25 @@ export default function EventsSection() {
                 )}
 
                 {/* Subtle Golden Gradient Overlay for Premium Feel */}
-                <div className='absolute inset-0 bg-gradient-to-br from-brand-gold/5 via-transparent to-brand-amber/8 group-hover:opacity-60 transition-all duration-500' />
+                <div className='absolute inset-0 bg-gradient-to-br from-brand-gold/5 via-transparent to-brand-amber/8 group-hover:opacity-60 transition-opacity duration-200' />
 
                 {/* Overlay for better text readability in initial state */}
-                <div className='absolute inset-0 bg-gradient-to-t from-black/50 via-black/15 to-transparent group-hover:from-brand-gold/15 group-hover:via-transparent group-hover:to-brand-amber/10 transition-all duration-500' />
+                <div className='absolute inset-0 bg-gradient-to-t from-black/50 via-black/15 to-transparent group-hover:from-brand-gold/15 group-hover:via-transparent group-hover:to-brand-amber/10 transition-colors duration-200' />
 
                 {/* Hover Decorative Elements */}
-                <div className='absolute top-4 right-4 w-8 h-8 bg-brand-gold/30 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 animate-pulse' />
-                <div className='absolute bottom-20 right-4 w-6 h-6 bg-brand-amber/40 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 animate-bounce' />
+                <div className='absolute top-4 right-4 w-8 h-8 bg-brand-gold/30 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200 animate-pulse' />
+                <div className='absolute bottom-20 right-4 w-6 h-6 bg-brand-amber/40 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200 animate-bounce' />
 
                 {/* INITIAL STATE - Background Image with Enhanced Title Tag */}
-                <div className='absolute inset-0 flex flex-col opacity-100 group-hover:opacity-0 transition-all duration-500'>
+                <div className='absolute inset-0 flex flex-col opacity-100 group-hover:opacity-0 transition-opacity duration-200'>
                   {/* Enhanced Title Tag at Bottom */}
                   <div className='absolute bottom-6 left-1/2 transform -translate-x-1/2'>
                     <div className='relative group'>
                       {/* Tag Shadow/Glow Effect */}
-                      <div className='absolute inset-0 bg-gradient-to-r from-brand-gold to-brand-amber rounded-full blur-sm opacity-30 group-hover:opacity-50 transition-opacity duration-300' />
+                      <div className='absolute inset-0 bg-gradient-to-r from-brand-gold to-brand-amber rounded-full blur-sm opacity-30 group-hover:opacity-50 transition-opacity duration-150' />
 
                       {/* Main Tag */}
-                      <div className='relative bg-gradient-to-r from-white via-brand-light/95 to-white backdrop-blur-md px-6 py-3 rounded-full border border-brand-gold/30 shadow-xl'>
+                      <div className='relative bg-gradient-to-r from-white via-brand-light/95 to-white backdrop-blur-sm px-6 py-3 rounded-full border border-brand-gold/30 shadow-xl'>
                         {/* Golden accent line */}
                         <div className='absolute top-0 left-1/2 transform -translate-x-1/2 w-12 h-0.5 bg-gradient-to-r from-transparent via-brand-gold to-transparent rounded-full' />
 
@@ -489,7 +489,7 @@ export default function EventsSection() {
                 </div>
 
                 {/* HOVER STATE - Full Content Reveal */}
-                <div className='absolute inset-0 p-6 sm:p-8 flex flex-col opacity-0 group-hover:opacity-100 transition-all duration-500 ease-out'>
+                <div className='absolute inset-0 p-6 sm:p-8 flex flex-col opacity-0 group-hover:opacity-100 transition-opacity duration-200 ease-out'>
                   {/* Header with Enhanced Icon */}
                   <div className='text-center mb-6'>
                     <div className='w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-brand-amber via-brand-gold to-brand-brown rounded-xl flex items-center justify-center shadow-lg mx-auto mb-4 animate-bounce'>
@@ -522,7 +522,7 @@ export default function EventsSection() {
                       event.category === "festivals" ||
                       event.category === "personal" ||
                       event.category === "luxury") && (
-                      <div className='mb-4 p-3 sm:p-4 bg-white/30 backdrop-blur-sm rounded-lg border border-brand-gold/30 shadow-lg'>
+                      <div className='mb-4 p-3 sm:p-4 bg-white/80 rounded-lg border border-brand-gold/30 shadow-lg'>
                         <h5 className='flex items-center justify-center gap-2 font-bold text-brand-brown mb-3 text-sm sm:text-base text-center'>
                           {event.category === "business" && "💼 Business Impact"}
                           {event.category === "wedding" && "💒 Wedding Value"}
@@ -581,11 +581,11 @@ export default function EventsSection() {
                     <div className='flex gap-2 sm:gap-3'>
                       <button
                         onClick={() => router.push("/collections")}
-                        className={`${event.buttonColor} text-white font-semibold px-3 sm:px-4 py-2 text-xs sm:text-sm rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-1 sm:gap-2 flex-1`}
+                        className={`${event.buttonColor} text-white font-semibold px-3 sm:px-4 py-2 text-xs sm:text-sm rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-200 flex items-center justify-center gap-1 sm:gap-2 flex-1`}
                       >
                         <span>Explore</span>
                         <svg
-                          className='w-3 h-3 sm:w-4 sm:h-4 transition-transform duration-300 group-hover:translate-x-1'
+                          className='w-3 h-3 sm:w-4 sm:h-4 transition-transform duration-200 group-hover:translate-x-1'
                           fill='none'
                           stroke='currentColor'
                           viewBox='0 0 24 24'
@@ -600,7 +600,7 @@ export default function EventsSection() {
                       </button>
                       <button
                         onClick={() => router.push("/contact")}
-                        className='bg-white/90 backdrop-blur-sm border-brand-gold text-brand-brown hover:bg-brand-gold hover:text-white font-semibold px-3 sm:px-4 py-2 text-xs sm:text-sm rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border flex items-center justify-center gap-1 sm:gap-2'
+                        className='bg-white/90 border-brand-gold text-brand-brown hover:bg-brand-gold hover:text-white font-semibold px-3 sm:px-4 py-2 text-xs sm:text-sm rounded-lg shadow-lg hover:shadow-xl transition-colors duration-200 border flex items-center justify-center gap-1 sm:gap-2'
                       >
                         <span>Quote</span>
                         <span>💬</span>
@@ -610,8 +610,8 @@ export default function EventsSection() {
                 </div>
 
                 {/* Status Indicator - Always Visible */}
-                <div className='absolute bottom-4 right-4 transition-all duration-300'>
-                  <div className='w-3 h-3 bg-brand-gold/70 rounded-full animate-pulse group-hover:bg-brand-gold group-hover:scale-125' />
+                <div className='absolute bottom-4 right-4 transition-transform duration-200'>
+                  <div className='w-3 h-3 bg-brand-gold/70 rounded-full animate-pulse group-hover:bg-brand-gold group-hover:scale-110' />
                 </div>
               </div>
             </div>

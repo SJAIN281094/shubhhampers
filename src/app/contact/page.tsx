@@ -93,7 +93,9 @@ export default function ContactPage() {
                 </div>
                 <h3 className='text-xl font-bold text-brand-dark mb-3'>Email Us</h3>
                 <p className='text-gray-600 mb-4'>Send us a detailed message</p>
-                <div className='text-lg font-semibold text-brand-brown'>hello@Shubhhampers.com</div>
+                <div className='text-lg font-semibold text-brand-brown'>
+                  connect@shubhhampers.com
+                </div>
                 <div className='text-sm text-gray-500 mt-2'>We reply within 24 hours</div>
               </div>
 
@@ -113,7 +115,7 @@ export default function ContactPage() {
                 </div>
                 <h3 className='text-xl font-bold text-brand-dark mb-3'>Visit Us</h3>
                 <p className='text-gray-600 mb-4'>Meet us in person</p>
-                <div className='text-lg font-semibold text-brand-brown'>Mumbai, India</div>
+                <div className='text-lg font-semibold text-brand-brown'>Faridabad, India</div>
                 <div className='text-sm text-gray-500 mt-2'>By appointment only</div>
               </div>
             </div>
