@@ -17,6 +17,11 @@ export default function ContactPage() {
     message: "",
     contactMethod: "email"
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: "success" | "error" | null;
+    message: string;
+  }>({ type: null, message: "" });
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -28,11 +33,51 @@ export default function ContactPage() {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log("Form submitted:", formData);
-    // You can add your form submission logic here
+    setIsSubmitting(true);
+    setSubmitStatus({ type: null, message: "" });
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(formData)
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        setSubmitStatus({
+          type: "success",
+          message:
+            "Thank you! Your message has been sent successfully. We'll get back to you within 24 hours."
+        });
+        // Reset form
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          company: "",
+          message: "",
+          contactMethod: "email"
+        });
+      } else {
+        setSubmitStatus({
+          type: "error",
+          message: result.error || "Something went wrong. Please try again or contact us directly."
+        });
+      }
+    } catch {
+      setSubmitStatus({
+        type: "error",
+        message: "Network error. Please check your connection and try again."
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -268,7 +313,6 @@ export default function ContactPage() {
                       className='w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-gold focus:border-transparent transition-all duration-300'
                     >
                       <option value='email'>Email</option>
-                      <option value='phone'>Phone Call</option>
                       <option value='whatsapp'>WhatsApp</option>
                     </select>
                   </div>
@@ -292,11 +336,41 @@ export default function ContactPage() {
                     />
                   </div>
 
+                  {/* Success/Error Messages */}
+                  {submitStatus.type && (
+                    <div
+                      className={`p-4 rounded-lg border-l-4 ${
+                        submitStatus.type === "success"
+                          ? "bg-green-50 border-green-400 text-green-700"
+                          : "bg-red-50 border-red-400 text-red-700"
+                      }`}
+                    >
+                      <div className='flex items-center'>
+                        <span className='mr-2'>
+                          {submitStatus.type === "success" ? "✅" : "❌"}
+                        </span>
+                        <p className='font-medium'>{submitStatus.message}</p>
+                      </div>
+                    </div>
+                  )}
+
                   <Button
                     type='submit'
-                    className='w-full bg-gradient-to-r from-brand-amber to-brand-gold hover:from-brand-gold hover:to-brand-amber text-white font-semibold px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300'
+                    disabled={isSubmitting}
+                    className={`w-full font-semibold px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 ${
+                      isSubmitting
+                        ? "bg-gray-400 cursor-not-allowed"
+                        : "bg-gradient-to-r from-brand-amber to-brand-gold hover:from-brand-gold hover:to-brand-amber text-white"
+                    }`}
                   >
-                    💬 Send Message
+                    {isSubmitting ? (
+                      <div className='flex items-center justify-center'>
+                        <div className='animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2' />
+                        Sending Message...
+                      </div>
+                    ) : (
+                      "💬 Send Message"
+                    )}
                   </Button>
                 </form>
               </div>
