@@ -1,11 +1,14 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import Header from "@components/Header";
 import Footer from "@components/Footer";
 import { Button } from "@ui-kit/button";
+import { handleWhatsApp } from "../../lib/contact-utils";
 
 export default function ContactPage() {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -309,128 +312,141 @@ export default function ContactPage() {
                 Frequently Asked Questions
               </h2>
               <p className='text-xl text-gray-700 max-w-3xl mx-auto'>
-                Quick answers to common questions about our services and process.
+                Strategic insights about our relationship-focused approach to business hamper
+                solutions and how we help companies build meaningful connections.
               </p>
             </div>
 
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto'>
               <div className='bg-gradient-to-br from-brand-gold/5 to-brand-amber/5 rounded-2xl p-6 border border-brand-gold/20'>
                 <h3 className='text-lg font-bold text-brand-dark mb-3'>
-                  How quickly can you deliver?
+                  How can hampers improve our business relationships?
                 </h3>
                 <p className='text-gray-600'>
-                  We offer flexible delivery options from same-day to scheduled delivery. Standard
-                  delivery takes 3-5 business days across India.
+                  Strategic hamper gifting strengthens emotional connections, increases employee
+                  retention by 23%, improves client loyalty, and creates memorable moments that
+                  transform business relationships from transactional to personal partnerships.
                 </p>
               </div>
 
               <div className='bg-gradient-to-br from-brand-amber/5 to-brand-brown/5 rounded-2xl p-6 border border-brand-amber/20'>
                 <h3 className='text-lg font-bold text-brand-dark mb-3'>
-                  Do you offer custom branding?
+                  What makes your approach different from other hamper companies?
                 </h3>
                 <p className='text-gray-600'>
-                  Yes! We can add your company logo, custom messages, and personalized packaging to
-                  make your hampers truly special.
+                  We're relationship strategists, not just hamper vendors. We focus on understanding
+                  your business goals, creating emotional connections, and measuring relationship
+                  ROI rather than just delivering products.
                 </p>
               </div>
 
               <div className='bg-gradient-to-br from-brand-brown/5 to-brand-gold/5 rounded-2xl p-6 border border-brand-brown/20'>
                 <h3 className='text-lg font-bold text-brand-dark mb-3'>
-                  {"What's your minimum order?"}
+                  Can you help us develop a comprehensive gifting strategy?
                 </h3>
                 <p className='text-gray-600'>
-                  We work with orders of all sizes. For business clients, we offer special pricing
-                  on bulk orders starting from 10 pieces.
+                  Absolutely! We create customized gifting strategies aligned with your business
+                  calendar, budget, and relationship goals. This includes employee recognition
+                  programs, client appreciation schedules, and seasonal campaigns.
                 </p>
               </div>
 
               <div className='bg-gradient-to-br from-brand-gold/5 to-brand-amber/5 rounded-2xl p-6 border border-brand-gold/20'>
                 <h3 className='text-lg font-bold text-brand-dark mb-3'>
-                  Can you help with hamper strategy?
+                  How do you measure the success of hamper campaigns?
                 </h3>
                 <p className='text-gray-600'>
-                  Absolutely! We love helping clients develop hamper strategies that align with
-                  their goals and strengthen relationships.
+                  We track meaningful metrics like employee engagement scores, client feedback,
+                  retention rates, and relationship quality improvements. We provide detailed
+                  reports showing the business impact of your hamper investments.
                 </p>
               </div>
 
               <div className='bg-gradient-to-br from-brand-amber/5 to-brand-brown/5 rounded-2xl p-6 border border-brand-amber/20'>
                 <h3 className='text-lg font-bold text-brand-dark mb-3'>
-                  {"What's included in your pricing?"}
+                  What consultation process do you follow for business clients?
                 </h3>
                 <p className='text-gray-600'>
-                  Our pricing includes the hamper items, premium packaging, delivery, and basic
-                  customization. Additional services like custom branding may have extra charges.
+                  We start with understanding your company culture, relationship goals, and budget.
+                  Then we design a strategic approach, create sample hampers, gather feedback, and
+                  implement campaigns with ongoing optimization.
                 </p>
               </div>
 
               <div className='bg-gradient-to-br from-brand-brown/5 to-brand-gold/5 rounded-2xl p-6 border border-brand-brown/20'>
                 <h3 className='text-lg font-bold text-brand-dark mb-3'>
-                  Do you ship internationally?
+                  How quickly can you deliver for urgent business needs?
                 </h3>
                 <p className='text-gray-600'>
-                  Currently, we focus on domestic delivery across India. We're working on expanding
-                  our international shipping capabilities.
+                  For business clients, we offer same-day delivery in Delhi NCR and 24-48 hour
+                  delivery across major Indian cities. We maintain ready inventory for popular
+                  business hamper configurations.
                 </p>
               </div>
 
               <div className='bg-gradient-to-br from-brand-gold/5 to-brand-amber/5 rounded-2xl p-6 border border-brand-gold/20'>
                 <h3 className='text-lg font-bold text-brand-dark mb-3'>
-                  {"What's your return policy?"}
+                  Do you offer ongoing account management for businesses?
                 </h3>
                 <p className='text-gray-600'>
-                  We offer a 30-day return policy for unused items in original packaging. Custom or
-                  personalized items may have different return terms.
+                  Yes! Business clients get dedicated account managers who understand your company
+                  culture, maintain gift histories, remind you of important dates, and continuously
+                  optimize your relationship-building strategies.
                 </p>
               </div>
 
               <div className='bg-gradient-to-br from-brand-amber/5 to-brand-brown/5 rounded-2xl p-6 border border-brand-amber/20'>
                 <h3 className='text-lg font-bold text-brand-dark mb-3'>
-                  Can I schedule delivery for a specific date?
+                  How do you customize hampers for different cultural celebrations?
                 </h3>
                 <p className='text-gray-600'>
-                  Yes! We offer scheduled delivery for special occasions. Just let us know your
-                  preferred delivery date when placing your order.
+                  We have deep cultural understanding and create authentic hampers for Diwali, Eid,
+                  Christmas, regional festivals, and international celebrations. Each hamper
+                  respects traditions while maintaining professional quality.
                 </p>
               </div>
 
               <div className='bg-gradient-to-br from-brand-brown/5 to-brand-gold/5 rounded-2xl p-6 border border-brand-brown/20'>
                 <h3 className='text-lg font-bold text-brand-dark mb-3'>
-                  Do you offer business accounts?
+                  What ROI can businesses expect from strategic hamper programs?
                 </h3>
                 <p className='text-gray-600'>
-                  Yes! We provide dedicated business accounts with special pricing, bulk order
-                  management, and dedicated support for business clients.
+                  Our clients typically see 15-30% improvement in employee satisfaction, 20%
+                  increase in client retention, and significant enhancement in brand perception. The
+                  emotional connections created often lead to measurable business growth.
                 </p>
               </div>
 
               <div className='bg-gradient-to-br from-brand-gold/5 to-brand-amber/5 rounded-2xl p-6 border border-brand-gold/20'>
                 <h3 className='text-lg font-bold text-brand-dark mb-3'>
-                  What payment methods do you accept?
+                  Can you handle large corporate events and bulk orders?
                 </h3>
                 <p className='text-gray-600'>
-                  We accept all major credit cards, UPI, net banking, and digital wallets. Business
-                  clients can also opt for invoice-based payments.
+                  Absolutely! We manage corporate events for 500+ recipients, annual conferences,
+                  and company-wide celebrations. Our logistics team ensures flawless execution for
+                  large-scale hamper distributions.
                 </p>
               </div>
 
               <div className='bg-gradient-to-br from-brand-amber/5 to-brand-brown/5 rounded-2xl p-6 border border-brand-amber/20'>
                 <h3 className='text-lg font-bold text-brand-dark mb-3'>
-                  Can you create custom hampers?
+                  How do you ensure consistent quality across all hampers?
                 </h3>
                 <p className='text-gray-600'>
-                  Absolutely! We love creating custom hampers tailored to your specific needs,
-                  budget, and occasion. Just share your requirements with us.
+                  Every hamper goes through our 5-point quality process: product selection from
+                  premium suppliers, freshness checks, presentation standards, packaging quality,
+                  and final inspection before dispatch.
                 </p>
               </div>
 
               <div className='bg-gradient-to-br from-brand-brown/5 to-brand-gold/5 rounded-2xl p-6 border border-brand-brown/20'>
                 <h3 className='text-lg font-bold text-brand-dark mb-3'>
-                  How do you ensure hamper quality?
+                  What business intelligence do you provide with hamper campaigns?
                 </h3>
                 <p className='text-gray-600'>
-                  We carefully select each item from trusted suppliers and conduct quality checks
-                  before packaging. We only work with premium brands and products.
+                  We provide detailed analytics including delivery confirmations, recipient
+                  feedback, engagement metrics, and relationship impact assessments. This helps you
+                  understand the effectiveness of your relationship investments.
                 </p>
               </div>
             </div>
@@ -450,10 +466,20 @@ export default function ContactPage() {
                 special.`}
               </p>
               <div className='flex flex-col sm:flex-row gap-4 justify-center'>
-                <Button className='bg-brand-gold text-brand-dark font-semibold px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300'>
-                  📞 Call Now
+                <Button
+                  onClick={() =>
+                    handleWhatsApp(
+                      "Hi! I'd like to get in touch about your hamper services. Could you please provide more information?"
+                    )
+                  }
+                  className='bg-brand-gold text-brand-dark font-semibold px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300'
+                >
+                  💬 WhatsApp Now
                 </Button>
-                <Button className='bg-transparent text-white font-semibold px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-brand-gold hover:bg-brand-gold hover:text-brand-dark'>
+                <Button
+                  onClick={() => router.push("/collections")}
+                  className='bg-transparent text-white font-semibold px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-brand-gold hover:bg-brand-gold hover:text-brand-dark'
+                >
                   🎁 Explore Collections
                 </Button>
               </div>

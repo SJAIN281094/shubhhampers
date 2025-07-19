@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { Button } from "../ui-kit/button";
+import { handleWhatsApp } from "../lib/contact-utils";
 
 export default function HowWeWorkSection() {
   const router = useRouter();
@@ -170,10 +171,14 @@ export default function HowWeWorkSection() {
                 💬 Start Consultation
               </Button>
               <Button
-                onClick={() => window.open("tel:+919685847274", "_self")}
+                onClick={() =>
+                  handleWhatsApp(
+                    "Hi! I'd like to understand your hamper process and how you can help us create meaningful connections."
+                  )
+                }
                 className='bg-transparent text-white font-semibold px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-brand-gold hover:bg-brand-gold hover:text-brand-dark hover:scale-105'
               >
-                📞 Call Us Now
+                💬 WhatsApp Us Now
               </Button>
             </div>
           </div>

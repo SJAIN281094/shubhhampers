@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import Header from "@components/Header";
 import Footer from "@components/Footer";
 import { Button } from "@ui-kit/button";
+import { handleWhatsApp } from "../../lib/contact-utils";
 
 export default function ServicesPage() {
   const router = useRouter();
@@ -377,10 +378,14 @@ export default function ServicesPage() {
                   💬 Discuss Your Needs
                 </Button>
                 <Button
-                  onClick={() => window.open("tel:+919685847274", "_self")}
+                  onClick={() =>
+                    handleWhatsApp(
+                      "Hi! I'm interested in your professional hamper services and would like to discuss our requirements."
+                    )
+                  }
                   className='bg-transparent text-white font-semibold px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-brand-gold hover:bg-gradient-to-r hover:from-brand-gold hover:to-brand-amber hover:text-brand-dark transform hover:scale-105'
                 >
-                  📞 Call Us Today
+                  💬 WhatsApp Us Today
                 </Button>
               </div>
             </div>

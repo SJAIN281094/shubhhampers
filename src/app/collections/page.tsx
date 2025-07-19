@@ -4,6 +4,7 @@ import { useState, useEffect, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Header from "@components/Header";
 import Footer from "@components/Footer";
+import { handleWhatsApp } from "../../lib/contact-utils";
 
 // Separate component that uses useSearchParams
 function CollectionsContent() {
@@ -14,10 +15,7 @@ function CollectionsContent() {
   // Handle URL parameters for category filtering
   useEffect(() => {
     const categoryParam = searchParams.get("category");
-    if (
-      categoryParam &&
-      ["business", "wedding", "festivals", "personal", "luxury"].includes(categoryParam)
-    ) {
+    if (categoryParam && ["business", "wedding", "festivals", "personal"].includes(categoryParam)) {
       setActiveCategory(categoryParam);
     }
   }, [searchParams]);
@@ -27,8 +25,7 @@ function CollectionsContent() {
     { id: "business", name: "Business Hampers", icon: "🏢" },
     { id: "wedding", name: "Wedding Hampers", icon: "💒" },
     { id: "festivals", name: "Festival Hampers", icon: "🎊" },
-    { id: "personal", name: "Personal Hampers", icon: "💝" },
-    { id: "luxury", name: "Luxury Hampers", icon: "✨" }
+    { id: "personal", name: "Personal Hampers", icon: "💝" }
   ];
 
   const collections = [
@@ -184,7 +181,7 @@ function CollectionsContent() {
     // WEDDING HAMPERS - Enhanced emotional content
     {
       id: "wedding-welcome-hampers",
-      title: "Wedding Welcome Hampers",
+      title: "Wedding Room Hampers",
       subtitle: "Embrace Guests with Love",
       description:
         "Welcome your beloved guests with hampers that express the overflowing joy in your hearts. Create that perfect first moment when loved ones feel the warmth of your celebration and the depth of your gratitude for their presence.",
@@ -214,10 +211,10 @@ function CollectionsContent() {
     },
     {
       id: "bridal-party-hampers",
-      title: "Bridal Party Appreciation",
+      title: "Bridesmaid Hampers",
       subtitle: "Honor Your Closest Supporters",
       description:
-        "Show your bridal party how much their love and support means to you. These specially curated hampers express gratitude to the special people who've stood by your side through your journey to this beautiful moment.",
+        "Show your bridesmaids how much their love and support means to you. These specially curated hampers express gratitude to the special people who've stood by your side through your journey to this beautiful moment.",
       image: "👰",
       category: "wedding",
       startingPrice: "₹1,500",
@@ -251,7 +248,7 @@ function CollectionsContent() {
     },
     {
       id: "anniversary-bliss",
-      title: "Anniversary Love Stories",
+      title: "Marriage & Anniversary",
       subtitle: "Celebrate Your Journey Together",
       description:
         "Honor the beautiful love story you're writing together. Our anniversary hampers celebrate the precious milestones that mark your journey, creating moments that remind you both of the love that grows stronger each year.",
@@ -266,7 +263,7 @@ function CollectionsContent() {
     },
     {
       id: "new-baby-celebration",
-      title: "New Baby Blessings",
+      title: "Baby Announcement",
       subtitle: "Welcome Little Miracles",
       description:
         "Celebrate the arrival of precious new life with hampers that honor this beautiful beginning. Create joy for new parents and families as they embark on the most wonderful journey of their lives.",
@@ -275,51 +272,9 @@ function CollectionsContent() {
       startingPrice: "₹1,000",
       minimumOrder: "1 piece",
       bulkBenefit: "10% off on 3+ orders",
-      features: ["New Life Celebration", "Family Joy", "Precious Moments", "Blessing Touch"],
+      features: ["Baby Announcement", "Family Joy", "Precious Moments", "Blessing Touch"],
       bgColor: "bg-gradient-to-br from-brand-light/20 to-brand-gold/20",
       accentColor: "from-brand-gold to-brand-brown"
-    },
-
-    // LUXURY HAMPERS - Enhanced premium content
-    {
-      id: "luxury-experience",
-      title: "Luxury Experience Collection",
-      subtitle: "Beyond Expectations",
-      description:
-        "Indulge in the extraordinary with hampers that redefine luxury. Every meticulously selected item creates an unforgettable experience, leaving lasting impressions that speak to the finest tastes and deepest appreciation.",
-      image: "✨",
-      category: "luxury",
-      startingPrice: "₹10,000",
-      minimumOrder: "1 piece",
-      bulkBenefit: "20% off on 10+ orders",
-      features: [
-        "Exceptional Quality",
-        "Exclusive Items",
-        "VIP Experience",
-        "Premium Presentation"
-      ],
-      bgColor: "bg-gradient-to-br from-brand-brown/20 to-brand-gold/20",
-      accentColor: "from-brand-gold to-brand-amber"
-    },
-    {
-      id: "executive-prestige",
-      title: "Executive Prestige Collection",
-      subtitle: "Sophisticated Business Excellence",
-      description:
-        "Make powerful statements with hampers designed for discerning executives. These sophisticated collections balance elegance with purpose, perfect for high-level appreciation that commands respect and builds lasting professional relationships.",
-      image: "💼",
-      category: "luxury",
-      startingPrice: "₹8,000",
-      minimumOrder: "3 pieces",
-      bulkBenefit: "25% off on 15+ orders",
-      features: [
-        "Executive Quality",
-        "Business Prestige",
-        "Sophisticated Appeal",
-        "Professional Excellence"
-      ],
-      bgColor: "bg-gradient-to-br from-brand-gold/20 to-brand-amber/20",
-      accentColor: "from-brand-amber to-brand-brown"
     }
   ];
 
@@ -422,28 +377,6 @@ function CollectionsContent() {
                 <p className='text-gray-700 mb-6 leading-relaxed relative z-10 flex-grow'>
                   {collection.description}
                 </p>
-
-                {/* Collection Details with Golden Accents */}
-                <div className='space-y-3 mb-6 relative z-10'>
-                  <div className='flex justify-between items-center p-3 bg-white/20 backdrop-blur-sm rounded-lg border border-brand-gold/20'>
-                    <span className='text-sm text-gray-600 font-medium'>Starting from:</span>
-                    <span className='text-sm font-bold text-brand-brown'>
-                      {collection.startingPrice}
-                    </span>
-                  </div>
-                  <div className='flex justify-between items-center p-3 bg-white/20 backdrop-blur-sm rounded-lg border border-brand-gold/20'>
-                    <span className='text-sm text-gray-600 font-medium'>Minimum Order:</span>
-                    <span className='text-sm font-bold text-brand-brown'>
-                      {collection.minimumOrder}
-                    </span>
-                  </div>
-                  <div className='flex justify-between items-center p-3 bg-white/20 backdrop-blur-sm rounded-lg border border-brand-gold/20'>
-                    <span className='text-sm text-gray-600 font-medium'>Bulk Benefit:</span>
-                    <span className='text-sm font-bold text-brand-brown'>
-                      {collection.bulkBenefit}
-                    </span>
-                  </div>
-                </div>
 
                 {/* Enhanced Features */}
                 <div className='mb-6 relative z-10'>
@@ -592,10 +525,14 @@ function CollectionsContent() {
                 💬 Start Your Journey
               </button>
               <button
-                onClick={() => window.open("tel:+9196858472274", "_self")}
+                onClick={() =>
+                  handleWhatsApp(
+                    "Hi! I'm interested in your hamper collections and would like to know more about your offerings."
+                  )
+                }
                 className='bg-transparent text-white font-semibold px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-brand-gold hover:bg-gradient-to-r hover:from-brand-gold hover:to-brand-amber hover:text-brand-dark transform hover:scale-105'
               >
-                📞 Call Us
+                💬 WhatsApp Us
               </button>
             </div>
           </div>

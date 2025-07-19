@@ -1,14 +1,18 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import Link from "next/link";
 import { Button } from "../ui-kit/button";
 import { Sheet, SheetContent, SheetTrigger } from "../ui-kit/sheet";
 
 export default function MobileNavigation() {
   const router = useRouter();
+  const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
+
+  const isActive = (path: string) => pathname === path;
+  const isCollectionsActive = pathname === "/collections" || pathname.startsWith("/collections");
 
   return (
     <div className='lg:hidden'>
@@ -81,7 +85,11 @@ export default function MobileNavigation() {
               <div>
                 <Link
                   href='/collections'
-                  className='font-semibold text-brand-brown mb-3 flex items-center hover:text-brand-dark transition-colors'
+                  className={`font-semibold mb-3 flex items-center transition-colors ${
+                    isCollectionsActive
+                      ? "text-brand-dark bg-brand-gold/10 px-3 py-2 rounded-lg"
+                      : "text-brand-brown hover:text-brand-dark"
+                  }`}
                   onClick={() => setIsOpen(false)}
                 >
                   🎁 Collections
@@ -123,15 +131,6 @@ export default function MobileNavigation() {
                       Personal Celebrations
                     </Link>
                   </li>
-                  <li>
-                    <Link
-                      href='/collections?category=luxury'
-                      className='text-gray-700 hover:text-brand-brown cursor-pointer'
-                      onClick={() => setIsOpen(false)}
-                    >
-                      Luxury Hampers
-                    </Link>
-                  </li>
                 </ul>
               </div>
 
@@ -139,65 +138,26 @@ export default function MobileNavigation() {
               <div>
                 <Link
                   href='/services'
-                  className='font-semibold text-brand-brown mb-3 flex items-center hover:text-brand-dark transition-colors'
+                  className={`font-semibold flex items-center transition-colors ${
+                    isActive("/services")
+                      ? "text-brand-dark bg-brand-gold/10 px-3 py-2 rounded-lg"
+                      : "text-brand-brown hover:text-brand-dark"
+                  }`}
                   onClick={() => setIsOpen(false)}
                 >
                   🎯 Services
                 </Link>
-                <ul className='space-y-2 ml-6'>
-                  <li>
-                    <Link
-                      href='/contact?service=business'
-                      className='text-gray-700 hover:text-brand-brown cursor-pointer'
-                      onClick={() => setIsOpen(false)}
-                    >
-                      Business Solutions
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href='/contact?service=wedding'
-                      className='text-gray-700 hover:text-brand-brown cursor-pointer'
-                      onClick={() => setIsOpen(false)}
-                    >
-                      Wedding Services
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href='/contact?service=consultation'
-                      className='text-gray-700 hover:text-brand-brown cursor-pointer'
-                      onClick={() => setIsOpen(false)}
-                    >
-                      Consultation
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href='/contact?service=bulk'
-                      className='text-gray-700 hover:text-brand-brown cursor-pointer'
-                      onClick={() => setIsOpen(false)}
-                    >
-                      Bulk Orders
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href='/contact'
-                      className='text-gray-700 hover:text-brand-brown cursor-pointer'
-                      onClick={() => setIsOpen(false)}
-                    >
-                      Get Consultation
-                    </Link>
-                  </li>
-                </ul>
               </div>
 
               {/* For Business */}
               <div>
                 <Link
                   href='/business'
-                  className='font-semibold text-brand-brown flex items-center hover:text-brand-dark transition-colors'
+                  className={`font-semibold flex items-center transition-colors ${
+                    isActive("/business")
+                      ? "text-brand-dark bg-brand-gold/10 px-3 py-2 rounded-lg"
+                      : "text-brand-brown hover:text-brand-dark"
+                  }`}
                   onClick={() => setIsOpen(false)}
                 >
                   🏢 For Business
@@ -250,12 +210,24 @@ export default function MobileNavigation() {
               </div>
 
               <div>
-                <h3 className='font-semibold text-brand-brown mb-3 flex items-center'>ℹ️ About</h3>
+                <h3
+                  className={`font-semibold mb-3 flex items-center ${
+                    isActive("/about") || pathname.startsWith("/about")
+                      ? "text-brand-dark bg-brand-gold/10 px-3 py-2 rounded-lg"
+                      : "text-brand-brown"
+                  }`}
+                >
+                  ℹ️ About
+                </h3>
                 <ul className='space-y-2 ml-6'>
                   <li>
                     <Link
                       href='/about'
-                      className='text-gray-700 hover:text-brand-brown'
+                      className={`${
+                        isActive("/about")
+                          ? "text-brand-dark font-semibold"
+                          : "text-gray-700 hover:text-brand-brown"
+                      }`}
                       onClick={() => setIsOpen(false)}
                     >
                       Our Story
@@ -292,10 +264,14 @@ export default function MobileNavigation() {
               </div>
 
               <div>
-                <h3 className='font-semibold text-brand-brown mb-3'>
+                <h3 className='font-semibold mb-3'>
                   <Link
                     href='/contact'
-                    className='text-brand-brown hover:text-brand-amber'
+                    className={`${
+                      isActive("/contact")
+                        ? "text-brand-dark bg-brand-gold/10 px-3 py-2 rounded-lg"
+                        : "text-brand-brown hover:text-brand-amber"
+                    }`}
                     onClick={() => setIsOpen(false)}
                   >
                     📞 Contact Us

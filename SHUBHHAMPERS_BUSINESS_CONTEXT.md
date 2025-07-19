@@ -254,7 +254,7 @@ When using stock photos, ensure:
 - **Premium & Sophisticated** - High-quality imagery, professional presentation
 - **Warm & Human** - Real people, genuine emotions, authentic moments
 - **Clean & Modern** - Uncluttered, focused compositions
-- **Golden Accents** - Subtle luxury touches without being ostentatious
+- **Golden Accents** - Subtle premium touches without being ostentatious
 - **Professional Photography** - Well-lit, crisp, lifestyle-focused
 
 ### **Photography Guidelines**
@@ -288,13 +288,6 @@ When using stock photos, ensure:
 **Practical Benefit:** Cultural appreciation, personal milestones, relationship building  
 **Use Cases:** Diwali, Rakhi, birthdays, achievements  
 **Key Message:** "Honor traditions while building connections"
-
-### **4. Luxury Collections**
-
-**Emotional Hook:** "Experiences beyond expectations"  
-**Practical Benefit:** Premium positioning, exclusive access, sophisticated impact  
-**Use Cases:** VIP clients, major milestones, high-stakes relationships  
-**Key Message:** "When relationships matter most, choose extraordinary"
 
 ---
 

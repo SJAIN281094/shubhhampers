@@ -48,13 +48,7 @@
    - Personal milestones
    - Friendship appreciation
 
-5. **Luxury Hampers**
-   - Premium product selection
-   - High-end presentation
-   - Exclusive items
-   - Elite client focus
-
-6. **Custom Hampers**
+5. **Custom Hampers**
    - Bespoke curation
    - Client-specific requirements
    - Corporate branding options
@@ -141,8 +135,6 @@ Collections (Dropdown):
 ├── Wedding Hampers
 ├── Festival Hampers
 ├── Personal Hampers
-
-├── Luxury Hampers
 └── Custom Hampers
 
 Services (Dropdown):
@@ -241,7 +233,7 @@ Contact:
 - Standardized all category names across components
 - Fixed "festive"/"festivals"/"Festival" inconsistencies
 - Added missing "Wedding" category content
-- Updated navigation to include Luxury categories
+- Updated navigation structure for clarity
 
 ### Layout Fixes
 

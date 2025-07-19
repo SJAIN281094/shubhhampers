@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Button } from "@ui-kit/button";
 import Link from "next/link";
 import CatalogueModal from "./CatalogueModal";
+import { handleWhatsApp } from "../lib/contact-utils";
 
 export default function Footer() {
   const [isCatalogueModalOpen, setIsCatalogueModalOpen] = useState(false);
@@ -111,8 +112,15 @@ export default function Footer() {
                 </div>
 
                 {/* Quick CTA */}
-                <Button className='bg-brand-gold text-brand-dark font-semibold px-6 py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105'>
-                  📞 Get Business Quote
+                <Button
+                  onClick={() =>
+                    handleWhatsApp(
+                      "Hi! I'm interested in getting a business quote for your hamper services. Could you please provide more details?"
+                    )
+                  }
+                  className='bg-brand-gold text-brand-dark font-semibold px-6 py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105'
+                >
+                  💬 Get Business Quote
                 </Button>
               </div>
 
@@ -184,7 +192,7 @@ export default function Footer() {
                       className='text-brand-gold hover:text-brand-light transition-colors cursor-pointer flex items-center gap-2 hover:translate-x-1 transition-transform'
                     >
                       <span>💒</span>
-                      Guest Welcome Hampers
+                      Wedding Room Hampers
                     </Link>
                   </li>
                   <li>
@@ -297,7 +305,7 @@ export default function Footer() {
             <div className='flex flex-col lg:flex-row justify-between items-center gap-6'>
               <div className='flex flex-col sm:flex-row items-center gap-4'>
                 <p className='text-brand-gold text-sm'>
-                  © 2024 Shubhhampers. All rights reserved.
+                  © 2025 Shubhhampers. All rights reserved.
                 </p>
                 <div className='flex items-center gap-2'>
                   <span className='text-brand-gold/60'>|</span>

@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@ui-kit/button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { handleWhatsApp } from "../lib/contact-utils";
 
 const events = [
   // BUSINESS HAMPER EVENTS
@@ -68,7 +69,7 @@ const events = [
   // WEDDING HAMPER EVENTS
   {
     id: 4,
-    title: "Guest Welcome Hampers",
+    title: "Wedding Room Hampers",
     subtitle: "Warm Welcome to Your Celebration",
     description:
       "Welcome your wedding guests with thoughtfully curated hampers that show your appreciation for their presence. From traditional treats to modern comforts, these hampers create the perfect first impression and set the tone for your celebration.",
@@ -205,8 +206,8 @@ const events = [
   },
   {
     id: 11,
-    title: "Anniversary Hampers",
-    subtitle: "Celebrate Love Stories",
+    title: "Marriage & Anniversary Hampers",
+    subtitle: "Celebrate Your Journey Together",
     description:
       "Every anniversary tells a story of love, commitment, and shared memories. Our anniversary hampers honor these precious milestones with thoughtful collections that reflect the depth of relationships and the joy of togetherness.",
     image: "💖",
@@ -224,10 +225,10 @@ const events = [
   },
   {
     id: 12,
-    title: "New Baby Celebration",
+    title: "Baby Announcement",
     subtitle: "Welcome Little Miracles",
     description:
-      "Celebrate the arrival of new life with hampers that honor this precious beginning. Our new baby collections bring comfort to parents and joy to families, creating beautiful first memories for everyone involved.",
+      "Celebrate the arrival of new life with hampers that honor this precious beginning. Our baby announcement collections bring comfort to parents and joy to families, creating beautiful first memories for everyone involved.",
     image: "👶",
     bgColor: "bg-gradient-to-br from-brand-light via-brand-gold to-brand-amber",
     accentColor: "bg-gradient-to-br from-brand-gold to-brand-brown",
@@ -240,65 +241,6 @@ const events = [
     glowEffect: "shadow-[0_0_50px_rgba(218,167,85,0.3)]",
     animationClass: "animate-pulse",
     category: "personal"
-  },
-
-  // LUXURY HAMPERS - NEW CATEGORY
-  {
-    id: 13,
-    title: "Premium Luxury Collection",
-    subtitle: "Exceptional Experiences",
-    description:
-      "For moments that demand the extraordinary. Our premium luxury hampers feature the finest selections, rare delicacies, and exclusive items that create unforgettable experiences and leave lasting impressions.",
-    image: "👑",
-    bgColor: "bg-gradient-to-br from-brand-gold via-brand-amber to-brand-light",
-    accentColor: "bg-gradient-to-br from-brand-light to-brand-gold",
-    textColor: "text-brand-dark",
-    buttonColor:
-      "bg-gradient-to-r from-brand-amber to-brand-brown hover:from-brand-brown hover:to-brand-amber",
-    isReversed: true,
-    backgroundImage: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/19.jpeg",
-    specialEffects: true,
-    glowEffect: "shadow-[0_0_50px_rgba(233,197,121,0.3)]",
-    animationClass: "animate-pulse",
-    category: "luxury"
-  },
-  {
-    id: 14,
-    title: "Executive Gift Hampers",
-    subtitle: "Sophisticated Impressions",
-    description:
-      "Make powerful business statements with our executive hampers. Designed for discerning professionals, these collections balance sophistication with thoughtfulness, perfect for high-level client appreciation and executive recognition.",
-    image: "💼",
-    bgColor: "bg-gradient-to-br from-brand-light via-brand-gold to-brand-amber",
-    accentColor: "bg-gradient-to-br from-brand-gold to-brand-brown",
-    textColor: "text-brand-dark",
-    buttonColor:
-      "bg-gradient-to-r from-brand-amber to-brand-brown hover:from-brand-brown hover:to-brand-amber",
-    isReversed: false,
-    backgroundImage: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/11.jpeg",
-    specialEffects: true,
-    glowEffect: "shadow-[0_0_50px_rgba(218,167,85,0.3)]",
-    animationClass: "animate-pulse",
-    category: "luxury"
-  },
-  {
-    id: 15,
-    title: "VIP Experience Hampers",
-    subtitle: "Beyond Expectations",
-    description:
-      "For your most valued relationships. Our VIP hampers go beyond products to create experiences—featuring exclusive items, personalized touches, and premium presentation that demonstrates the highest level of appreciation.",
-    image: "⭐",
-    bgColor: "bg-gradient-to-br from-brand-gold via-brand-amber to-brand-light",
-    accentColor: "bg-gradient-to-br from-brand-light to-brand-gold",
-    textColor: "text-brand-dark",
-    buttonColor:
-      "bg-gradient-to-r from-brand-amber to-brand-brown hover:from-brand-brown hover:to-brand-amber",
-    isReversed: true,
-    backgroundImage: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/12.jpeg",
-    specialEffects: true,
-    glowEffect: "shadow-[0_0_50px_rgba(233,197,121,0.3)]",
-    animationClass: "animate-pulse",
-    category: "luxury"
   }
 ];
 
@@ -307,7 +249,7 @@ export default function EventsSection() {
   const [activeCategory, setActiveCategory] = useState("business");
 
   // Define categories for navigation
-  const categories = ["business", "wedding", "festivals", "personal", "luxury"];
+  const categories = ["business", "wedding", "festivals", "personal"];
 
   // Navigation functions with infinite looping
   const handlePrevious = () => {
@@ -352,14 +294,14 @@ export default function EventsSection() {
             Hampers for Every Occasion
           </h2>
           <p className='text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-gray-700 max-w-4xl mx-auto leading-relaxed mb-6 md:mb-8 px-4 md:px-0 font-normal drop-shadow-sm relative z-10'>
-            From business relationships to personal celebrations, festive traditions to luxury
-            experiences—we curate meaningful hampers that strengthen bonds and create lasting
+            From business relationships to personal celebrations, festive traditions to meaningful
+            experiences—we curate thoughtful hampers that strengthen bonds and create lasting
             memories for every important occasion in life.
           </p>
 
           {/* Enhanced Benefits Grid */}
           <div className='mb-6 p-4 bg-white/20 backdrop-blur-sm rounded-xl border border-brand-gold/30'>
-            <div className='grid grid-cols-2 md:grid-cols-5 gap-4 text-center'>
+            <div className='grid grid-cols-2 md:grid-cols-4 gap-4 text-center'>
               <div className='p-3'>
                 <div className='text-xl md:text-2xl mb-2'>🧑‍💼</div>
                 <p className='text-xs md:text-sm font-semibold text-brand-brown'>Business</p>
@@ -379,11 +321,6 @@ export default function EventsSection() {
                 <div className='text-xl md:text-2xl mb-2'>🎂</div>
                 <p className='text-xs md:text-sm font-semibold text-brand-brown'>Personal</p>
                 <p className='text-xs text-brand-dark'>Life milestones</p>
-              </div>
-              <div className='p-3'>
-                <div className='text-xl md:text-2xl mb-2'>👑</div>
-                <p className='text-xs md:text-sm font-semibold text-brand-brown'>Luxury</p>
-                <p className='text-xs text-brand-dark'>Premium experiences</p>
               </div>
             </div>
           </div>
@@ -430,16 +367,6 @@ export default function EventsSection() {
             }`}
           >
             🎂 Personal
-          </button>
-          <button
-            onClick={() => setActiveCategory("luxury")}
-            className={`px-4 md:px-6 py-2 md:py-3 text-sm md:text-base font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-200 ${
-              activeCategory === "luxury"
-                ? "bg-brand-gold text-brand-brown"
-                : "bg-white/80 text-brand-dark hover:bg-white"
-            }`}
-          >
-            👑 Luxury
           </button>
         </div>
 
@@ -557,15 +484,13 @@ export default function EventsSection() {
                       {(event.category === "business" ||
                         event.category === "wedding" ||
                         event.category === "festivals" ||
-                        event.category === "personal" ||
-                        event.category === "luxury") && (
+                        event.category === "personal") && (
                         <div className='mb-4 p-3 sm:p-4 bg-white/80 rounded-lg border border-brand-gold/30 shadow-lg'>
                           <h5 className='flex items-center justify-center gap-2 font-bold text-brand-brown mb-3 text-sm sm:text-base text-center'>
                             {event.category === "business" && "💼 Business Impact"}
                             {event.category === "wedding" && "💒 Wedding Value"}
                             {event.category === "festivals" && "🎊 Cultural Significance"}
                             {event.category === "personal" && "🎂 Personal Value"}
-                            {event.category === "luxury" && "👑 Luxury Value"}
                           </h5>
 
                           {/* Simplified Benefits List */}
@@ -583,11 +508,8 @@ export default function EventsSection() {
                                 {event.id === 8 && "Celebrate sacred bonds"}
                                 {event.id === 9 && "Celebrate new beginnings"}
                                 {event.id === 10 && "Create genuine joy & memorable moments"}
-                                {event.id === 11 && "Honor love stories & milestones"}
+                                {event.id === 11 && "Honor marriages & milestones"}
                                 {event.id === 12 && "Welcome little miracles"}
-                                {event.id === 13 && "Create unforgettable experiences"}
-                                {event.id === 14 && "Sophisticated business statements"}
-                                {event.id === 15 && "Beyond products to experiences"}
                               </span>
                             </div>
                             <div className='flex items-center justify-center gap-2'>
@@ -605,9 +527,6 @@ export default function EventsSection() {
                                 {event.id === 10 && "Show appreciation for special occasions"}
                                 {event.id === 11 && "Strengthen relationships"}
                                 {event.id === 12 && "Create beautiful first memories"}
-                                {event.id === 13 && "Premium selections & rare delicacies"}
-                                {event.id === 14 && "Executive recognition"}
-                                {event.id === 15 && "Exclusive items & personalization"}
                               </span>
                             </div>
                           </div>
@@ -704,10 +623,14 @@ export default function EventsSection() {
               🏢 Start Your Journey
             </Button>
             <Button
-              onClick={() => router.push("/contact")}
+              onClick={() =>
+                handleWhatsApp(
+                  "Hi! I'm interested in your hamper services and would like to learn more about how you can help strengthen our relationships."
+                )
+              }
               className='bg-white/90 text-brand-brown font-semibold px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 text-lg border border-brand-gold/30'
             >
-              📞 {"Let's Connect"}
+              💬 {"Let's Connect"}
             </Button>
           </div>
         </div>
