@@ -25,12 +25,22 @@ export const metadata: Metadata = {
     "trusted hamper partner"
   ],
   openGraph: {
+    type: "website",
     title: "About Shubhhampers - Our Story & Mission",
     description:
       "Learn about our mission to build meaningful relationships through thoughtful hamper curation. Authentic approach, premium quality.",
+    url: "https://www.shubhhampers.com/about",
+    siteName: "Shubhhampers",
+    locale: "en_US",
     images: [
       {
         url: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/social-media/social_media_meta_image.png",
+        width: 1200,
+        height: 630,
+        alt: "Shubhhampers - Premium Gift Hampers"
+      },
+      {
+        url: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/social-media/social_media_meta_image_300x200.png",
         width: 1200,
         height: 630,
         alt: "Shubhhampers - Premium Gift Hampers"
@@ -47,8 +57,20 @@ export const metadata: Metadata = {
         width: 1200,
         height: 630,
         alt: "Shubhhampers - Premium Gift Hampers"
+      },
+      {
+        url: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/social-media/social_media_meta_image_300x200.png",
+        width: 300,
+        height: 200,
+        alt: "Shubhhampers - Premium Gift Hampers"
       }
     ]
+  },
+  other: {
+    "pinterest-rich-pin": "true",
+    "article:author": "Shubhhampers Team",
+    "article:publisher": "Shubhhampers",
+    "article:section": "About Us"
   }
 };
 

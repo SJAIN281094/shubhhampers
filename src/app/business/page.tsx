@@ -29,14 +29,24 @@ export const metadata: Metadata = {
     "business client hampers"
   ],
   openGraph: {
+    type: "website",
     title: "Business Hamper Solutions - Corporate Employee & Client Appreciation",
     description:
       "Strengthen business relationships with strategic corporate hampers. Employee recognition, client appreciation, measurable ROI.",
+    url: "https://www.shubhhampers.com/business",
+    siteName: "Shubhhampers",
+    locale: "en_US",
     images: [
       {
         url: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/social-media/social_media_meta_image.png",
         width: 1200,
         height: 630,
+        alt: "Shubhhampers - Premium Gift Hampers"
+      },
+      {
+        url: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/social-media/social_media_meta_image_300x200.png",
+        width: 300,
+        height: 200,
         alt: "Shubhhampers - Premium Gift Hampers"
       }
     ]
@@ -51,8 +61,20 @@ export const metadata: Metadata = {
         width: 1200,
         height: 630,
         alt: "Shubhhampers - Premium Gift Hampers"
+      },
+      {
+        url: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/social-media/social_media_meta_image_300x200.png",
+        width: 300,
+        height: 200,
+        alt: "Shubhhampers - Premium Gift Hampers"
       }
     ]
+  },
+  other: {
+    "pinterest-rich-pin": "true",
+    "article:author": "Shubhhampers Team",
+    "article:publisher": "Shubhhampers",
+    "article:section": "Business Solutions"
   }
 };
 

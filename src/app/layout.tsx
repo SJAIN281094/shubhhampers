@@ -96,21 +96,20 @@ export const metadata: Metadata = {
   creator: "Shubhhampers",
   publisher: "Shubhhampers",
   openGraph: {
+    type: "website",
+    locale: "en_US",
+    siteName: "Shubhhampers",
     title: "Shubhhampers - Premium Hampers that Build Relationships",
     description:
-      "Discover handcrafted hampers perfect for corporate appreciation, weddings, festivals, and personal celebrations. Unique, personalized, and delivered with care.",
-    url: "https://www.shubhhampers.com",
-    siteName: "Shubhhampers",
+      "Transform your relationships with thoughtfully curated hampers. Corporate appreciation, employee recognition, weddings, festivals & personal celebrations.",
     images: [
       {
         url: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/social-media/social_media_meta_image.png",
         width: 1200,
         height: 630,
-        alt: "Shubhhampers - Premium Gift Hampers"
+        alt: "Shubhhampers - Premium Hampers that Build Relationships"
       }
-    ],
-    locale: "en_US",
-    type: "website"
+    ]
   },
   twitter: {
     card: "summary_large_image",

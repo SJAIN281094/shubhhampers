@@ -26,14 +26,24 @@ export const metadata: Metadata = {
     "corporate gifting services"
   ],
   openGraph: {
+    type: "website",
     title: "Hamper Services - Custom Curation, Bulk Orders & Business Solutions",
     description:
       "Comprehensive hamper services including custom curation, bulk orders, and business account management. Professional consultation available.",
+    url: "https://www.shubhhampers.com/services",
+    siteName: "Shubhhampers",
+    locale: "en_US",
     images: [
       {
         url: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/social-media/social_media_meta_image.png",
         width: 1200,
         height: 630,
+        alt: "Shubhhampers - Premium Gift Hampers"
+      },
+      {
+        url: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/social-media/social_media_meta_image_300x200.png",
+        width: 300,
+        height: 200,
         alt: "Shubhhampers - Premium Gift Hampers"
       }
     ]
@@ -48,8 +58,20 @@ export const metadata: Metadata = {
         width: 1200,
         height: 630,
         alt: "Shubhhampers - Premium Gift Hampers"
+      },
+      {
+        url: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/social-media/social_media_meta_image_300x200.png",
+        width: 300,
+        height: 200,
+        alt: "Shubhhampers - Premium Gift Hampers"
       }
     ]
+  },
+  other: {
+    "pinterest-rich-pin": "true",
+    "article:author": "Shubhhampers Team",
+    "article:publisher": "Shubhhampers",
+    "article:section": "Services"
   }
 };
 

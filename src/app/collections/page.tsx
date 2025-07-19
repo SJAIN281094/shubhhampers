@@ -23,14 +23,24 @@ export const metadata: Metadata = {
     "luxury hamper collections"
   ],
   openGraph: {
+    type: "website",
     title: "Hamper Collections - Corporate, Wedding, Festival & Personal",
     description:
       "Explore our curated hamper collections for every occasion. Corporate, wedding, festival, and personal celebrations.",
+    url: "https://www.shubhhampers.com/collections",
+    siteName: "Shubhhampers",
+    locale: "en_US",
     images: [
       {
         url: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/social-media/social_media_meta_image.png",
         width: 1200,
         height: 630,
+        alt: "Shubhhampers - Premium Gift Hampers"
+      },
+      {
+        url: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/social-media/social_media_meta_image_300x200.png",
+        width: 300,
+        height: 200,
         alt: "Shubhhampers - Premium Gift Hampers"
       }
     ]
@@ -45,8 +55,21 @@ export const metadata: Metadata = {
         width: 1200,
         height: 630,
         alt: "Shubhhampers - Premium Gift Hampers"
+      },
+      {
+        url: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/social-media/social_media_meta_image_300x200.png",
+        width: 300,
+        height: 200,
+        alt: "Shubhhampers - Premium Gift Hampers"
       }
     ]
+  },
+  other: {
+    "pinterest-rich-pin": "true",
+    "product:brand": "Shubhhampers",
+    "product:availability": "in stock",
+    "product:category": "Gift Hampers",
+    "product:retailer": "Shubhhampers"
   }
 };
 
