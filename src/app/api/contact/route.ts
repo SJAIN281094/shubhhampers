@@ -144,7 +144,7 @@ export async function POST(request: NextRequest) {
 
     // Send auto-reply to customer
     await transporter.sendMail({
-      from: `"Shubhhampers" <${process.env.SMTP_USER}>`,
+      from: `"Shubhhampers" <${process.env.BUSINESS_EMAIL}>`,
       to: email,
       subject: "Thank you for contacting Shubhhampers! We'll be in touch soon 🎁",
       html: customerEmailContent
