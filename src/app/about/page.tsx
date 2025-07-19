@@ -24,12 +24,12 @@ export default function AboutPage() {
               </div>
 
               <h1 className='font-display text-5xl sm:text-6xl lg:text-7xl font-bold text-brand-dark mb-6 tracking-wide'>
-                About Shubhampers
+                About Shubhhampers
               </h1>
 
               <p className='text-xl lg:text-2xl text-gray-700 mb-8 leading-relaxed'>
                 {`We're passionate about creating meaningful connections through
-                thoughtful gifting. Every gift we curate tells a story of care,
+                thoughtful hampers. Every hamper we curate tells a story of care,
                 appreciation, and genuine human connection.`}
               </p>
             </div>
@@ -45,7 +45,7 @@ export default function AboutPage() {
                   Our Mission
                 </h2>
                 <p className='text-lg text-gray-700 mb-6 leading-relaxed'>
-                  {`At Shubhampers, we believe that every gift is an opportunity
+                  {`At Shubhhampers, we believe that every hamper is an opportunity
                   to strengthen relationships and create lasting memories. We're
                   not just delivering packages – we're delivering joy,
                   appreciation, and genuine human connection.`}
@@ -82,10 +82,10 @@ export default function AboutPage() {
                     Why We Started
                   </h3>
                   <p className='text-gray-700 leading-relaxed'>
-                    {`We noticed that many gifting experiences felt impersonal and
-                    generic. We wanted to change that by creating a platform
-                    where every gift feels personal, thoughtful, and meaningful.
-                    Our journey began with a simple belief: that the best gifts
+                    {`We noticed that many hamper experiences felt impersonal and
+                  generic. We wanted to change that by creating a platform
+                  where every hamper feels personal, thoughtful, and meaningful.
+                  Our journey began with a simple belief: that the best hampers
                     are those that strengthen relationships and create genuine
                     connections.`}
                   </p>
@@ -123,7 +123,7 @@ export default function AboutPage() {
                 <div className='text-4xl mb-4'>🎯</div>
                 <h3 className='text-xl font-bold text-brand-dark mb-3'>Purpose</h3>
                 <p className='text-gray-600'>
-                  {`Every gift we curate has a purpose – to strengthen
+                  {`Every hamper we curate has a purpose – to strengthen
                   relationships, show appreciation, and create meaningful
                   connections.`}
                 </p>
@@ -203,7 +203,7 @@ export default function AboutPage() {
                       <div>
                         <h4 className='font-semibold text-brand-dark mb-1'>Ongoing Support</h4>
                         <p className='text-gray-600 text-sm'>
-                          {`We're here to support you throughout your gifting
+                          {`We're here to support you throughout your hamper
                           journey and help you succeed.`}
                         </p>
                       </div>
@@ -220,12 +220,12 @@ export default function AboutPage() {
                   {`We don't believe in one-size-fits-all solutions. Every client
                   is unique, and every relationship deserves personalized
                   attention. That's why we work closely with you to understand
-                  your specific needs and create gifting experiences that truly
+                  your specific needs and create hamper experiences that truly
                   matter.`}
                 </p>
                 <p className='text-lg text-gray-700 mb-8 leading-relaxed'>
                   {`From the initial consultation to the final delivery, we're
-                  with you every step of the way, ensuring that every gift
+                  with you every step of the way, ensuring that every hamper
                   reflects your values and strengthens your relationships.`}
                 </p>
 
@@ -245,7 +245,7 @@ export default function AboutPage() {
                 Meet Our Team
               </h2>
               <p className='text-xl text-gray-700 max-w-3xl mx-auto'>
-                {`We're a small, passionate team dedicated to making every gifting
+                {`We're a small, passionate team dedicated to making every hamper
                 experience special.`}
               </p>
             </div>
@@ -258,7 +258,7 @@ export default function AboutPage() {
                 <h3 className='text-xl font-bold text-brand-dark mb-2'>Founder & CEO</h3>
                 <p className='text-gray-600 mb-4'>
                   {`Passionate about creating meaningful connections through
-                  thoughtful gifting.`}
+                  thoughtful hampers.`}
                 </p>
                 <div className='text-sm text-brand-gold'>Vision & Strategy</div>
               </div>
@@ -298,7 +298,7 @@ export default function AboutPage() {
                 Ready to Create Something Special?
               </h2>
               <p className='text-xl mb-8 leading-relaxed'>
-                {`Let's work together to create gifting experiences that
+                {`Let's work together to create hamper experiences that
                 strengthen your relationships and make every moment meaningful.`}
               </p>
               <div className='flex flex-col sm:flex-row gap-4 justify-center'>

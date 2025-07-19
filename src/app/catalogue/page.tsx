@@ -10,15 +10,15 @@ const catalogueItems = [
     title: "Diwali Magic",
     subtitle: "Illuminate Relationships",
     description:
-      "We believe Diwali is more than a festival—it's a celebration of relationships. Our carefully curated Diwali collection blends traditional warmth with modern elegance, creating gifts that strengthen bonds and create lasting memories.",
+      "We believe Diwali is more than a festival—it's a celebration of relationships. Our carefully curated Diwali collection blends traditional warmth with modern elegance, creating hampers that strengthen bonds and create lasting memories.",
     image: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/10.jpeg",
-    category: "Festival",
+    category: "festivals",
     priceRange: "₹1,500 - ₹5,000",
     features: [
       "Traditional sweets and snacks",
       "Elegant packaging",
       "Customizable content",
-      "Corporate branding available"
+      "Business branding available"
     ],
     businessValue: [
       "Strengthen relationships during India's most important festival",
@@ -31,9 +31,9 @@ const catalogueItems = [
     title: "Employee Recognition",
     subtitle: "Celebrate Their Journey",
     description:
-      "Your team's dedication deserves meaningful recognition. We help you create appreciation programs that go beyond traditional gifts—building a culture where every achievement is celebrated.",
+      "Your team's dedication deserves meaningful recognition. We help you create appreciation programs that go beyond traditional hampers—building a culture where every achievement is celebrated.",
     image: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/11.jpeg",
-    category: "Corporate",
+    category: "Business",
     priceRange: "₹2,000 - ₹8,000",
     features: [
       "Premium quality products",
@@ -52,15 +52,15 @@ const catalogueItems = [
     title: "Client Appreciation",
     subtitle: "Nurture Partnerships",
     description:
-      "Every client relationship is precious. Our client appreciation gifts are designed to show genuine gratitude and strengthen the bonds that drive your business forward.",
+      "Every client relationship is precious. Our client appreciation hampers are designed to show genuine gratitude and strengthen the bonds that drive your business forward.",
     image: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/12.jpeg",
-    category: "Corporate",
+    category: "Business",
     priceRange: "₹3,000 - ₹10,000",
     features: [
       "Luxury items selection",
       "Professional presentation",
       "Direct client delivery",
-      "Custom corporate messaging"
+      "Custom business messaging"
     ],
     businessValue: [
       "Demonstrate genuine gratitude to clients",
@@ -75,7 +75,7 @@ const catalogueItems = [
     description:
       "India's festivals are celebrations of life, love, and togetherness. Our festival collections honor these traditions while adding modern touches that make celebrations more meaningful.",
     image: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/18.jpeg",
-    category: "Festival",
+    category: "festivals",
     priceRange: "₹1,200 - ₹4,500",
     features: [
       "Festival-specific items",
@@ -91,54 +91,33 @@ const catalogueItems = [
   },
   {
     id: 5,
-    title: "Corporate Excellence",
+    title: "Business Excellence",
     subtitle: "Elevate Your Brand",
     description:
-      "Your corporate gifts reflect your brand values. We help you create gifting experiences that align with your company's culture and strengthen your professional relationships.",
+      "Your business hampers reflect your brand values. We help you create hamper experiences that align with your company's culture and strengthen your professional relationships.",
     image: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/19.jpeg",
-    category: "Corporate",
+    category: "Business",
     priceRange: "₹2,500 - ₹12,000",
     features: [
       "Brand-aligned products",
       "Premium packaging",
-      "Corporate logo integration",
+      "Business logo integration",
       "Executive presentation"
     ],
     businessValue: [
-      "Align gifting with your brand values",
+      "Align hampers with your brand values",
       "Strengthen professional relationships",
       "Demonstrate commitment to excellence"
     ]
   },
   {
     id: 6,
-    title: "Wellness & Care",
-    subtitle: "Prioritize Well-being",
-    description:
-      "We believe in gifting wellness and care. Our wellness collection focuses on mental and physical well-being, helping you show genuine concern for your team's health.",
-    image: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/13.jpeg",
-    category: "Wellness",
-    priceRange: "₹1,800 - ₹6,000",
-    features: [
-      "Health and wellness products",
-      "Organic and natural items",
-      "Stress relief components",
-      "Self-care essentials"
-    ],
-    businessValue: [
-      "Show genuine concern for team well-being",
-      "Create a supportive work environment",
-      "Build a culture of care and empathy"
-    ]
-  },
-  {
-    id: 7,
     title: "Holi Festival",
     subtitle: "Colors of Unity",
     description:
       "Holi celebrates the triumph of good over evil and the arrival of spring. Our Holi collection brings communities together with traditional sweets, organic colors, and festive treats.",
     image: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/14.jpeg",
-    category: "Festival",
+    category: "festivals",
     priceRange: "₹1,000 - ₹3,500",
     features: [
       "Organic Holi colors",
@@ -157,9 +136,9 @@ const catalogueItems = [
     title: "New Year Dreams",
     subtitle: "Fresh Beginnings",
     description:
-      "Every new year brings hope and possibilities. Our New Year collection helps you inspire and motivate your team and clients with gifts that symbolize fresh starts.",
+      "Every new year brings hope and possibilities. Our New Year collection helps you inspire and motivate your team and clients with hampers that symbolize fresh starts.",
     image: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/15.jpeg",
-    category: "Celebration",
+    category: "personal",
     priceRange: "₹2,000 - ₹7,000",
     features: [
       "Inspirational items",
@@ -178,13 +157,13 @@ const catalogueItems = [
     title: "Raksha Bandhan",
     subtitle: "Sacred Bonds",
     description:
-      "Raksha Bandhan celebrates the sacred bond between siblings. Our collection honors this beautiful relationship with traditional sweets, beautiful rakhis, and thoughtful gifts.",
+      "Raksha Bandhan celebrates the sacred bond between siblings. Our collection honors this beautiful relationship with traditional sweets, beautiful rakhis, and thoughtful hampers.",
     image: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/16.jpeg",
-    category: "Festival",
+    category: "festivals",
     priceRange: "₹800 - ₹2,500",
     features: [
       "Traditional rakhis",
-      "Sibling-focused gifts",
+      "Sibling-focused hampers",
       "Cultural authenticity",
       "Emotional connection"
     ],
@@ -199,7 +178,7 @@ const catalogueItems = [
     title: "Housewarming Joy",
     subtitle: "Bless New Beginnings",
     description:
-      "A new home is a new chapter in life. Our housewarming collection helps you welcome friends and family to their new space with thoughtful gifts that bring positive energy.",
+      "A new home is a new chapter in life. Our housewarming collection helps you welcome friends and family to their new space with thoughtful hampers that bring positive energy.",
     image: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/17.jpeg",
     category: "Personal",
     priceRange: "₹1,500 - ₹5,500",
@@ -223,10 +202,10 @@ export default function CataloguePage() {
 
   const categories = [
     { id: "all", name: "All Collections", icon: "🎁" },
-    { id: "corporate", name: "Corporate", icon: "🏢" },
-    { id: "festival", name: "Festivals", icon: "🎊" },
-    { id: "wellness", name: "Wellness", icon: "💚" },
-    { id: "celebration", name: "Celebrations", icon: "🎉" },
+    { id: "business", name: "Business", icon: "🏢" },
+    { id: "wedding", name: "Wedding", icon: "💒" },
+    { id: "festivals", name: "Festivals", icon: "🎊" },
+
     { id: "personal", name: "Personal", icon: "💝" }
   ];
 
@@ -249,7 +228,7 @@ export default function CataloguePage() {
           <div className='flex flex-col sm:flex-row justify-between items-center gap-4'>
             <div>
               <h1 className='text-3xl font-bold text-brand-brown'>Product Catalogue</h1>
-              <p className='text-brand-dark'>Discover our curated collection of corporate gifts</p>
+              <p className='text-brand-dark'>Discover our curated collection of business hampers</p>
             </div>
             <div className='flex gap-3'>
               <Button
@@ -292,16 +271,15 @@ export default function CataloguePage() {
       <div className='container mx-auto px-4 pb-20'>
         {/* Print Header */}
         <div className='hidden print:block text-center mb-8'>
-          <h1 className='text-4xl font-bold text-brand-brown mb-2'>Shubhampers</h1>
-          <h2 className='text-2xl font-semibold text-brand-dark mb-4'>
-            Corporate Gifting Catalogue
-          </h2>
+          <h1 className='text-4xl font-bold text-brand-brown mb-2'>Shubhhampers</h1>
+          <h2 className='text-2xl font-semibold text-brand-dark mb-4'>Business Hamper Catalogue</h2>
           <p className='text-brand-dark'>
-            Building meaningful relationships through thoughtful gifting
+            Building meaningful relationships through thoughtful hampers
           </p>
           <div className='border-t-2 border-brand-gold mt-4 pt-4'>
             <p className='text-sm text-brand-dark'>
-              Contact: +91 98765 43210 | Email: info@shubhampers.com | Website: www.shubhampers.com
+              Contact: +91 96858 47274 | Email: info@Shubhhampers.com | Website:
+              www.Shubhhampers.com
             </p>
           </div>
         </div>
@@ -381,7 +359,7 @@ export default function CataloguePage() {
         <div className='hidden print:block mt-12 text-center'>
           <div className='border-t-2 border-brand-gold pt-4'>
             <p className='text-sm text-brand-dark'>
-              Thank you for choosing Shubhampers for your corporate gifting needs.
+              Thank you for choosing Shubhhampers for your business hamper needs.
             </p>
             <p className='text-sm text-brand-dark mt-2'>
               For custom solutions and bulk orders, please contact us directly.

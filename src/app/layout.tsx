@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Shubhampers - Gifts that connect hearts.",
-  description: "Shubhampers - Gifts that connect hearts."
+  title: "Shubhhampers - Hampers that connect hearts.",
+  description: "Shubhhampers - Hampers that connect hearts."
 };
 
 export default function RootLayout({

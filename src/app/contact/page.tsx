@@ -56,7 +56,7 @@ export default function ContactPage() {
 
               <p className='text-xl lg:text-2xl text-gray-700 mb-8 leading-relaxed'>
                 {`We'd love to hear from you! Whether you have questions, need a
-                quote, or want to discuss your gifting needs, we're here to
+                quote, or want to discuss your hamper needs, we're here to
                 help.`}
               </p>
             </div>
@@ -72,7 +72,7 @@ export default function ContactPage() {
               </h2>
               <p className='text-xl text-gray-700 max-w-3xl mx-auto'>
                 Choose the way that works best for you. We're here to help you create meaningful
-                gifting experiences.
+                hamper experiences.
               </p>
             </div>
 
@@ -83,7 +83,7 @@ export default function ContactPage() {
                 </div>
                 <h3 className='text-xl font-bold text-brand-dark mb-3'>Call Us</h3>
                 <p className='text-gray-600 mb-4'>Speak directly with our team</p>
-                <div className='text-lg font-semibold text-brand-brown'>+91 98765 43210</div>
+                <div className='text-lg font-semibold text-brand-brown'>+91 96858 47274</div>
                 <div className='text-sm text-gray-500 mt-2'>Mon-Fri: 9AM-6PM</div>
               </div>
 
@@ -93,7 +93,7 @@ export default function ContactPage() {
                 </div>
                 <h3 className='text-xl font-bold text-brand-dark mb-3'>Email Us</h3>
                 <p className='text-gray-600 mb-4'>Send us a detailed message</p>
-                <div className='text-lg font-semibold text-brand-brown'>hello@shubhampers.com</div>
+                <div className='text-lg font-semibold text-brand-brown'>hello@Shubhhampers.com</div>
                 <div className='text-sm text-gray-500 mt-2'>We reply within 24 hours</div>
               </div>
 
@@ -129,13 +129,13 @@ export default function ContactPage() {
                   Send Us a Message
                 </h2>
                 <p className='text-lg text-gray-700 mb-6 leading-relaxed'>
-                  {`Tell us about your gifting needs, and we'll get back to you
+                  {`Tell us about your hamper needs, and we'll get back to you
                     with personalized solutions. We love hearing about your ideas
                     and helping you create meaningful experiences.`}
                 </p>
                 <p className='text-lg text-gray-700 mb-8 leading-relaxed'>
-                  {`Whether it's for corporate events, personal celebrations, or
-                    special occasions, we're here to make your gifting journey
+                  {`Whether it's for business events, personal celebrations, or
+                                          special occasions, we're here to make your hamper journey
                     special.`}
                 </p>
 
@@ -226,7 +226,7 @@ export default function ContactPage() {
                         value={formData.phone}
                         onChange={handleInputChange}
                         className='w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-gold focus:border-transparent transition-all duration-300'
-                        placeholder='+91 98765 43210'
+                        placeholder='+91 96858 47274'
                       />
                     </div>
                     <div>
@@ -283,7 +283,7 @@ export default function ContactPage() {
                       required
                       rows={5}
                       className='w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-gold focus:border-transparent transition-all duration-300 resize-none'
-                      placeholder='Tell us about your gifting needs, occasion, budget, or any questions you have...'
+                      placeholder='Tell us about your hamper needs, occasion, budget, or any questions you have...'
                     />
                   </div>
 
@@ -328,7 +328,7 @@ export default function ContactPage() {
                 </h3>
                 <p className='text-gray-600'>
                   Yes! We can add your company logo, custom messages, and personalized packaging to
-                  make your gifts truly special.
+                  make your hampers truly special.
                 </p>
               </div>
 
@@ -337,17 +337,17 @@ export default function ContactPage() {
                   {"What's your minimum order?"}
                 </h3>
                 <p className='text-gray-600'>
-                  We work with orders of all sizes. For corporate clients, we offer special pricing
+                  We work with orders of all sizes. For business clients, we offer special pricing
                   on bulk orders starting from 10 pieces.
                 </p>
               </div>
 
               <div className='bg-gradient-to-br from-brand-gold/5 to-brand-amber/5 rounded-2xl p-6 border border-brand-gold/20'>
                 <h3 className='text-lg font-bold text-brand-dark mb-3'>
-                  Can you help with gifting strategy?
+                  Can you help with hamper strategy?
                 </h3>
                 <p className='text-gray-600'>
-                  Absolutely! We love helping clients develop gifting strategies that align with
+                  Absolutely! We love helping clients develop hamper strategies that align with
                   their goals and strengthen relationships.
                 </p>
               </div>
@@ -357,7 +357,7 @@ export default function ContactPage() {
                   {"What's included in your pricing?"}
                 </h3>
                 <p className='text-gray-600'>
-                  Our pricing includes the gift items, premium packaging, delivery, and basic
+                  Our pricing includes the hamper items, premium packaging, delivery, and basic
                   customization. Additional services like custom branding may have extra charges.
                 </p>
               </div>
@@ -394,10 +394,10 @@ export default function ContactPage() {
 
               <div className='bg-gradient-to-br from-brand-brown/5 to-brand-gold/5 rounded-2xl p-6 border border-brand-brown/20'>
                 <h3 className='text-lg font-bold text-brand-dark mb-3'>
-                  Do you offer corporate accounts?
+                  Do you offer business accounts?
                 </h3>
                 <p className='text-gray-600'>
-                  Yes! We provide dedicated corporate accounts with special pricing, bulk order
+                  Yes! We provide dedicated business accounts with special pricing, bulk order
                   management, and dedicated support for business clients.
                 </p>
               </div>
@@ -407,14 +407,14 @@ export default function ContactPage() {
                   What payment methods do you accept?
                 </h3>
                 <p className='text-gray-600'>
-                  We accept all major credit cards, UPI, net banking, and digital wallets. Corporate
+                  We accept all major credit cards, UPI, net banking, and digital wallets. Business
                   clients can also opt for invoice-based payments.
                 </p>
               </div>
 
               <div className='bg-gradient-to-br from-brand-amber/5 to-brand-brown/5 rounded-2xl p-6 border border-brand-amber/20'>
                 <h3 className='text-lg font-bold text-brand-dark mb-3'>
-                  Can you create custom gift hampers?
+                  Can you create custom hampers?
                 </h3>
                 <p className='text-gray-600'>
                   Absolutely! We love creating custom hampers tailored to your specific needs,
@@ -424,7 +424,7 @@ export default function ContactPage() {
 
               <div className='bg-gradient-to-br from-brand-brown/5 to-brand-gold/5 rounded-2xl p-6 border border-brand-brown/20'>
                 <h3 className='text-lg font-bold text-brand-dark mb-3'>
-                  How do you ensure gift quality?
+                  How do you ensure hamper quality?
                 </h3>
                 <p className='text-gray-600'>
                   We carefully select each item from trusted suppliers and conduct quality checks
@@ -440,10 +440,10 @@ export default function ContactPage() {
           <div className='container mx-auto px-4 sm:px-6 lg:px-8'>
             <div className='text-center max-w-4xl mx-auto'>
               <h2 className='font-display text-4xl lg:text-5xl font-bold mb-6'>
-                Ready to Start Your Gifting Journey?
+                Ready to Start Your Hamper Journey?
               </h2>
               <p className='text-xl mb-8 leading-relaxed'>
-                {`Let's work together to create meaningful gifting experiences
+                {`Let's work together to create meaningful hamper experiences
                 that strengthen your relationships and make every moment
                 special.`}
               </p>

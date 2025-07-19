@@ -2,7 +2,9 @@
 
 import Header from "@components/Header";
 import HeroSlider from "@components/HeroSlider";
+import OurApproachSection from "@components/OurApproachSection";
 import EventsSection from "@components/EventsSection";
+import HowWeWorkSection from "@components/HowWeWorkSection";
 import CTASection from "@components/CTASection";
 import Footer from "@components/Footer";
 
@@ -11,7 +13,9 @@ export default function Home() {
     <main className='min-h-screen'>
       <Header />
       <HeroSlider />
+      <OurApproachSection />
       <EventsSection />
+      <HowWeWorkSection />
       <CTASection />
       <Footer />
     </main>

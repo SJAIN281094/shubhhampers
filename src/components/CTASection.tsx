@@ -48,43 +48,45 @@ export default function CTASection() {
       <div className='container mx-auto px-4 sm:px-6 lg:px-8 relative z-10'>
         <div className='text-center max-w-5xl mx-auto'>
           {/* Fresh Business Badge */}
-          <div className='inline-flex items-center gap-2 bg-brand-gold/20 px-6 py-2 rounded-full mb-6'>
-            <span className='text-brand-light font-semibold'>✨ Fresh Perspective on Gifting</span>
+          <div className='inline-flex items-center gap-2 bg-brand-gold/20 px-4 py-2 md:px-6 md:py-2 rounded-full mb-4 md:mb-6'>
+            <span className='text-brand-light font-semibold text-sm md:text-base'>
+              ✨ Fresh Perspective on Hampers
+            </span>
           </div>
 
           {/* Authentic Main Heading */}
-          <h2 className='font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-brand-light mb-6 tracking-wide'>
+          <h2 className='font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-brand-light mb-4 md:mb-6 tracking-wide'>
             Ready to Create Meaningful Connections?
           </h2>
 
           {/* Honest Description */}
-          <p className='text-xl lg:text-2xl text-brand-gold mb-8 leading-relaxed max-w-4xl mx-auto'>
+          <p className='text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-brand-gold mb-6 md:mb-8 leading-relaxed max-w-4xl mx-auto px-4 md:px-0'>
             {`We're passionate about helping you strengthen relationships through
-            thoughtful gifting. Whether it's appreciating your team, celebrating
-            with clients, or honoring traditions, we're here to make every gift
+            thoughtful hampers. Whether it's appreciating your team, celebrating
+            with clients, or honoring traditions, we're here to make every hamper
             moment special and meaningful.`}
           </p>
 
           {/* Authentic CTA Buttons */}
-          <div className='flex flex-col sm:flex-row gap-4 justify-center items-center mb-12'>
+          <div className='flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-center mb-8 md:mb-12 px-4 md:px-0'>
             <Button
               size='lg'
               onClick={() => router.push("/collections")}
-              className='bg-gradient-to-r from-brand-amber to-brand-gold hover:from-brand-gold hover:to-brand-amber text-brand-dark font-bold px-10 py-4 text-lg rounded-full shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer hover:scale-105'
+              className='bg-gradient-to-r from-brand-amber to-brand-gold hover:from-brand-gold hover:to-brand-amber text-brand-dark font-bold px-6 py-3 sm:px-8 sm:py-4 md:px-10 md:py-4 text-sm sm:text-base md:text-lg rounded-full shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer hover:scale-105 w-full sm:w-auto'
             >
               🎁 Explore Our Collections
             </Button>
             <Button
               size='lg'
               onClick={() => router.push("/contact")}
-              className='bg-brand-dark hover:bg-brand-brown text-brand-light font-semibold px-10 py-4 text-lg rounded-full shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer border-2 border-brand-gold/50 hover:scale-105'
+              className='bg-brand-dark hover:bg-brand-brown text-brand-light font-semibold px-6 py-3 sm:px-8 sm:py-4 md:px-10 md:py-4 text-sm sm:text-base md:text-lg rounded-full shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer border-2 border-brand-gold/50 hover:scale-105 w-full sm:w-auto'
             >
               💬 {"Let's Chat"}
             </Button>
             <Button
               size='lg'
               onClick={() => router.push("/collections")}
-              className='bg-white/10 backdrop-blur-sm text-brand-light font-semibold px-10 py-4 text-lg rounded-full shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer border-2 border-brand-gold/30 hover:bg-white/20 hover:scale-105'
+              className='bg-white/10 backdrop-blur-sm text-brand-light font-semibold px-6 py-3 sm:px-8 sm:py-4 md:px-10 md:py-4 text-sm sm:text-base md:text-lg rounded-full shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer border-2 border-brand-gold/30 hover:bg-white/20 hover:scale-105 w-full sm:w-auto'
             >
               🛒 Start Shopping
             </Button>
@@ -94,29 +96,33 @@ export default function CTASection() {
           <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16'>
             <div className='bg-white/10 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-brand-gold/20 hover:bg-white/15 transition-all duration-300'>
               <div className='text-4xl mb-4'>💝</div>
-              <h3 className='text-xl font-bold text-brand-light mb-2'>Thoughtful Curation</h3>
-              <p className='text-brand-gold text-sm'>
+              <h3 className='text-lg md:text-xl font-bold text-brand-light mb-2'>
+                Thoughtful Curation
+              </h3>
+              <p className='text-brand-gold text-xs sm:text-sm'>
                 Every item is carefully selected to create meaningful, memorable experiences
               </p>
             </div>
             <div className='bg-white/10 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-brand-gold/20 hover:bg-white/15 transition-all duration-300'>
               <div className='text-4xl mb-4'>🤝</div>
-              <h3 className='text-xl font-bold text-brand-light mb-2'>Personal Touch</h3>
-              <p className='text-brand-gold text-sm'>
+              <h3 className='text-lg md:text-xl font-bold text-brand-light mb-2'>Personal Touch</h3>
+              <p className='text-brand-gold text-xs sm:text-sm'>
                 We work closely with you to understand your needs and create perfect solutions
               </p>
             </div>
             <div className='bg-white/10 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-brand-gold/20 hover:bg-white/15 transition-all duration-300'>
               <div className='text-4xl mb-4'>✨</div>
-              <h3 className='text-xl font-bold text-brand-light mb-2'>Quality Focus</h3>
-              <p className='text-brand-gold text-sm'>
+              <h3 className='text-lg md:text-xl font-bold text-brand-light mb-2'>Quality Focus</h3>
+              <p className='text-brand-gold text-xs sm:text-sm'>
                 Premium products that reflect your values and strengthen your relationships
               </p>
             </div>
             <div className='bg-white/10 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-brand-gold/20 hover:bg-white/15 transition-all duration-300'>
               <div className='text-4xl mb-4'>🚀</div>
-              <h3 className='text-xl font-bold text-brand-light mb-2'>Flexible Solutions</h3>
-              <p className='text-brand-gold text-sm'>
+              <h3 className='text-lg md:text-xl font-bold text-brand-light mb-2'>
+                Flexible Solutions
+              </h3>
+              <p className='text-brand-gold text-xs sm:text-sm'>
                 From small gestures to large celebrations, we adapt to your needs
               </p>
             </div>
@@ -124,26 +130,34 @@ export default function CTASection() {
 
           {/* What Makes Us Different */}
           <div className='bg-white/5 backdrop-blur-sm rounded-3xl p-8 border border-brand-gold/20'>
-            <h3 className='text-2xl font-bold text-brand-light mb-6'>Why Choose Shubhampers?</h3>
+            <h3 className='text-xl md:text-2xl font-bold text-brand-light mb-4 md:mb-6'>
+              Why Choose Shubhhampers?
+            </h3>
             <div className='grid grid-cols-1 md:grid-cols-3 gap-8'>
               <div className='text-center'>
                 <div className='text-5xl mb-4'>🎯</div>
-                <h4 className='text-lg font-semibold text-brand-light mb-2'>Fresh Approach</h4>
-                <p className='text-brand-gold text-sm'>
-                  We bring new perspectives to traditional gifting, making every moment special
+                <h4 className='text-base md:text-lg font-semibold text-brand-light mb-2'>
+                  Fresh Approach
+                </h4>
+                <p className='text-brand-gold text-xs sm:text-sm'>
+                  We bring new perspectives to traditional hampers, making every moment special
                 </p>
               </div>
               <div className='text-center'>
                 <div className='text-5xl mb-4'>💫</div>
-                <h4 className='text-lg font-semibold text-brand-light mb-2'>Personal Attention</h4>
-                <p className='text-brand-gold text-sm'>
+                <h4 className='text-base md:text-lg font-semibold text-brand-light mb-2'>
+                  Personal Attention
+                </h4>
+                <p className='text-brand-gold text-xs sm:text-sm'>
                   Direct communication and dedicated support for every client
                 </p>
               </div>
               <div className='text-center'>
                 <div className='text-5xl mb-4'>🌟</div>
-                <h4 className='text-lg font-semibold text-brand-light mb-2'>Growing Together</h4>
-                <p className='text-brand-gold text-sm'>
+                <h4 className='text-base md:text-lg font-semibold text-brand-light mb-2'>
+                  Growing Together
+                </h4>
+                <p className='text-brand-gold text-xs sm:text-sm'>
                   {`We're building lasting partnerships and learning from every
                   interaction`}
                 </p>
@@ -154,7 +168,7 @@ export default function CTASection() {
           {/* Final Authentic CTA */}
           <div className='mt-12'>
             <p className='text-lg text-brand-gold mb-6'>
-              {`Ready to start your gifting journey? We'd love to hear from you
+              {`Ready to start your hamper journey? We'd love to hear from you
               and help create something special together.`}
             </p>
             <div className='flex flex-wrap justify-center gap-4'>
@@ -165,7 +179,7 @@ export default function CTASection() {
                 📧 Get in Touch
               </Button>
               <Button
-                onClick={() => window.open("tel:+919876543210", "_self")}
+                onClick={() => window.open("tel:+919685847274", "_self")}
                 className='bg-transparent text-brand-light font-semibold px-8 py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-brand-gold hover:bg-brand-gold hover:text-brand-dark hover:scale-105'
               >
                 📞 Call Us

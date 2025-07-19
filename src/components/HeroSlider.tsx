@@ -28,137 +28,124 @@ const CorporateBackground = () => {
       {/* Overlay for better text readability */}
       <div className='absolute inset-0 bg-gradient-to-br from-brand-light/40 via-white/30 to-brand-gold/20' />
 
-      {/* Floating Corporate Elements */}
-      <div className='absolute top-20 right-20 w-32 h-32 bg-gradient-to-br from-brand-gold/20 to-brand-amber/20 rounded-full blur-2xl animate-pulse' />
-      <div className='absolute bottom-32 left-16 w-24 h-24 bg-gradient-to-br from-brand-brown/15 to-brand-gold/15 rounded-full blur-xl animate-pulse delay-1000' />
-      <div className='absolute top-1/2 left-1/3 w-20 h-20 bg-gradient-to-br from-brand-amber/20 to-brand-brown/20 rounded-full blur-lg animate-pulse delay-2000' />
+      {/* Floating Corporate Elements - Hidden on mobile for better performance */}
+      <div className='hidden md:block absolute top-20 right-20 w-32 h-32 bg-gradient-to-br from-brand-gold/20 to-brand-amber/20 rounded-full blur-2xl animate-pulse' />
+      <div className='hidden md:block absolute bottom-32 left-16 w-24 h-24 bg-gradient-to-br from-brand-brown/15 to-brand-gold/15 rounded-full blur-xl animate-pulse delay-1000' />
+      <div className='hidden lg:block absolute top-1/2 left-1/3 w-20 h-20 bg-gradient-to-br from-brand-amber/20 to-brand-brown/20 rounded-full blur-lg animate-pulse delay-2000' />
 
-      {/* Decorative Lines */}
-      <div className='absolute top-1/4 right-1/4 w-32 h-px bg-gradient-to-r from-transparent via-brand-amber/30 to-transparent' />
-      <div className='absolute bottom-1/3 left-1/4 w-24 h-px bg-gradient-to-r from-transparent via-brand-gold/30 to-transparent' />
-      <div className='absolute top-1/2 left-1/4 w-16 h-px bg-gradient-to-r from-transparent via-brand-brown/20 to-transparent' />
+      {/* Decorative Lines - Hidden on mobile */}
+      <div className='hidden lg:block absolute top-1/4 right-1/4 w-32 h-px bg-gradient-to-r from-transparent via-brand-amber/30 to-transparent' />
+      <div className='hidden lg:block absolute bottom-1/3 left-1/4 w-24 h-px bg-gradient-to-r from-transparent via-brand-gold/30 to-transparent' />
+      <div className='hidden lg:block absolute top-1/2 left-1/4 w-16 h-px bg-gradient-to-r from-transparent via-brand-brown/20 to-transparent' />
     </div>
   );
 };
 
 // Corporate Stats Component
 const CorporateStats = () => (
-  <div className='absolute top-8 left-8 bg-white/90 backdrop-blur-sm rounded-xl p-4 shadow-lg border border-brand-gold/20'>
-    <div className='flex items-center space-x-6'>
+  <div className='absolute top-4 left-4 md:top-8 md:left-8 bg-white/90 backdrop-blur-sm rounded-xl p-3 md:p-4 shadow-lg border border-brand-gold/20'>
+    <div className='flex items-center space-x-3 md:space-x-6'>
       <div className='text-center'>
-        <div className='text-2xl font-bold text-brand-brown'>100%</div>
+        <div className='text-lg md:text-2xl font-bold text-brand-brown'>100%</div>
         <div className='text-xs text-gray-600'>Commitment</div>
       </div>
-      <div className='w-px h-8 bg-brand-gold/30' />
+      <div className='w-px h-6 md:h-8 bg-brand-gold/30' />
       <div className='text-center'>
-        <div className='text-2xl font-bold text-brand-brown'>Premium</div>
+        <div className='text-lg md:text-2xl font-bold text-brand-brown'>Premium</div>
         <div className='text-xs text-gray-600'>Quality</div>
       </div>
-      <div className='w-px h-8 bg-brand-gold/30' />
+      <div className='w-px h-6 md:h-8 bg-brand-gold/30' />
       <div className='text-center'>
-        <div className='text-2xl font-bold text-brand-brown'>24/7</div>
+        <div className='text-lg md:text-2xl font-bold text-brand-brown'>24/7</div>
         <div className='text-xs text-gray-600'>Support</div>
       </div>
     </div>
   </div>
 );
 
-// Trust Badges Component
-const TrustBadges = () => (
-  <div className='absolute top-8 right-8 flex items-center space-x-3'>
-    <div className='bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-medium border border-green-200'>
-      GST Compliant
-    </div>
-    <div className='bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-medium border border-blue-200'>
-      MSME Registered
-    </div>
-    <div className='bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-xs font-medium border border-purple-200'>
-      ISO Certified
-    </div>
-  </div>
-);
+// Trust Badges Component - Removed certification badges
 
 const slides = [
   {
     id: 1,
-    title: "Corporate Gifting",
-    subtitle: "A Fresh Perspective",
+    title: "When Business Becomes Personal",
+    subtitle: "Hearts Connect Through Thoughtful Gestures",
     description:
-      "We're reimagining corporate gifting with a blend of innovation and tradition. Every gift we curate tells your brand's story, strengthening relationships and creating lasting impressions that drive business growth.",
-    cta: "Discover Our Approach",
-    secondaryCta: "Schedule Consultation",
-    icon: "🏢",
+      "Behind every successful business are people who care. Our business hampers turn professional relationships into personal connections, creating moments that matter and memories that last beyond quarterly reports.",
+    cta: "Create Meaningful Connections",
+    secondaryCta: "Start Your Journey",
+    icon: "💼",
     gradient: "from-brand-gold/20 via-brand-light to-brand-amber/10",
     buttonClass:
       "bg-gradient-to-r from-brand-amber to-brand-brown hover:from-brand-brown hover:to-brand-amber",
     features: [
-      "Innovative Solutions",
-      "Personalized Approach",
-      "Quality Assurance",
-      "Dedicated Support"
+      "Heartfelt Onboarding",
+      "Milestone Celebrations",
+      "Festival Joy",
+      "Genuine Appreciation"
     ],
-    stats: { innovation: "100%", quality: "Premium", support: "24/7" }
+    stats: { connections: "Deeper", impact: "Lasting", relationships: "Authentic" }
   },
   {
     id: 2,
-    title: "Festival Celebrations",
-    subtitle: "Honoring Traditions",
+    title: "Love That Multiplies",
+    subtitle: "Celebrating Life's Most Beautiful Moments",
     description:
-      "We believe every festival is an opportunity to strengthen bonds. Our carefully curated collections blend India's rich cultural heritage with modern gifting sensibilities, making celebrations more meaningful and memorable.",
-    cta: "Explore Collections",
-    secondaryCta: "Custom Festival Gifts",
-    icon: "🎊",
+      "Some celebrations are once in a lifetime. Our wedding hampers help you share your joy with everyone who matters, turning your special day into treasured memories that your loved ones will carry in their hearts forever.",
+    cta: "Share Your Joy",
+    secondaryCta: "Plan Together",
+    icon: "💝",
     gradient: "from-brand-gold/20 via-brand-light to-brand-amber/10",
     buttonClass:
       "bg-gradient-to-r from-brand-brown to-brand-amber hover:from-brand-amber hover:to-brand-brown",
-    features: ["Diwali Special", "Holi Collection", "Raksha Bandhan", "New Year Dreams"],
+    features: ["Welcome Warmth", "Family Bonds", "Guest Happiness", "Precious Memories"],
     stats: {
-      traditions: "Respected",
-      celebrations: "Enhanced",
-      memories: "Timeless"
+      love: "Shared",
+      moments: "Treasured",
+      memories: "Forever"
     }
   },
   {
     id: 3,
-    title: "Employee Recognition",
-    subtitle: "Building Culture",
+    title: "The People Who Make It Possible",
+    subtitle: "Recognizing Hearts That Care",
     description:
-      "Your team is your greatest asset. We help you create recognition programs that not only celebrate achievements but also build a culture of appreciation, motivation, and loyalty that drives organizational success.",
-    cta: "Design Your Program",
-    secondaryCta: "Culture Strategy",
-    icon: "👥",
+      "Your team doesn't just work for you—they believe in you. Show them they're valued not just as employees, but as the incredible humans who make dreams happen. Because appreciation felt deeply creates loyalty that lasts.",
+    cta: "Honor Their Dedication",
+    secondaryCta: "Show You Care",
+    icon: "🌟",
     gradient: "from-brand-amber/15 via-brand-light to-brand-gold/20",
     buttonClass:
       "bg-gradient-to-r from-brand-gold to-brand-brown hover:from-brand-brown hover:to-brand-gold",
     features: [
-      "Performance Recognition",
-      "Milestone Celebrations",
-      "Team Building",
-      "Wellness Programs"
+      "Heartfelt Recognition",
+      "Personal Touch",
+      "Meaningful Gestures",
+      "Genuine Gratitude"
     ],
     stats: {
-      culture: "Enhanced",
-      motivation: "Boosted",
-      loyalty: "Strengthened"
+      appreciation: "Felt",
+      motivation: "Inspired",
+      loyalty: "Earned"
     }
   },
   {
     id: 4,
-    title: "Client Appreciation",
-    subtitle: "Nurturing Relationships",
+    title: "Traditions That Bring Us Together",
+    subtitle: "Festivals That Touch Every Soul",
     description:
-      "Every client interaction is an opportunity to demonstrate your commitment to excellence. Our gifting solutions help you create meaningful touchpoints that strengthen relationships and build trust for long-term partnerships.",
-    cta: "Build Relationships",
-    secondaryCta: "Partnership Strategy",
-    icon: "🤝",
+      "Festivals aren't just dates on a calendar—they're moments when hearts come home. Our festive hampers help you celebrate the traditions that bind us, spreading joy that echoes through families and communities.",
+    cta: "Spread Festival Joy",
+    secondaryCta: "Celebrate Together",
+    icon: "🎆",
     gradient: "from-brand-brown/10 via-brand-light to-brand-amber/15",
     buttonClass:
       "bg-gradient-to-r from-brand-amber to-brand-gold hover:from-brand-gold hover:to-brand-amber",
-    features: ["Onboarding Gifts", "Milestone Celebrations", "Holiday Gifts", "VIP Programs"],
+    features: ["Festival Magic", "Cultural Pride", "Shared Happiness", "Timeless Traditions"],
     stats: {
-      relationships: "Strengthened",
-      trust: "Built",
-      partnerships: "Long-term"
+      traditions: "Honored",
+      joy: "Multiplied",
+      communities: "United"
     }
   }
 ];
@@ -187,7 +174,7 @@ export default function HeroSlider() {
   };
 
   return (
-    <section className='relative w-full h-[calc(100vh-120px)] overflow-hidden bg-gradient-to-br from-brand-light via-white to-brand-gold/5'>
+    <section className='relative w-full h-[calc(100vh-120px)] min-h-[600px] overflow-hidden bg-gradient-to-br from-brand-light via-white to-brand-gold/5'>
       <Carousel
         setApi={setApi}
         opts={{
@@ -204,56 +191,58 @@ export default function HeroSlider() {
                 <CorporateBackground />
 
                 {/* Content Container */}
-                <div className='relative z-10 flex items-center justify-center h-full px-4 sm:px-6 lg:px-8'>
+                <div className='relative z-10 flex items-center justify-center h-full px-4 sm:px-6 lg:px-8 pt-16 pb-20'>
                   <div className='text-center max-w-6xl mx-auto'>
                     {/* Icon */}
-                    <div className='mb-6 animate-bounce'>
-                      <span className='text-5xl sm:text-6xl lg:text-7xl filter drop-shadow-lg'>
+                    <div className='mb-4 md:mb-6 animate-bounce'>
+                      <span className='text-4xl sm:text-5xl md:text-6xl lg:text-7xl filter drop-shadow-lg'>
                         {slide.icon}
                       </span>
                     </div>
 
                     {/* Subtitle */}
-                    <div className='mb-4 animate-fade-in-delay'>
-                      <h2 className='text-lg sm:text-xl lg:text-2xl font-medium text-brand-brown tracking-wider uppercase drop-shadow-sm'>
+                    <div className='mb-3 md:mb-4 animate-fade-in-delay'>
+                      <h2 className='text-sm sm:text-lg md:text-xl lg:text-2xl font-medium text-brand-brown tracking-wider uppercase drop-shadow-sm'>
                         {slide.subtitle}
                       </h2>
                     </div>
 
                     {/* Main Title */}
-                    <div className='mb-6 animate-fade-in-delay-2'>
-                      <h1 className='font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-brand-dark leading-tight tracking-wide drop-shadow-sm'>
+                    <div className='mb-4 md:mb-6 animate-fade-in-delay-2'>
+                      <h1 className='font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold text-brand-dark leading-tight tracking-wide drop-shadow-sm px-2'>
                         {slide.title}
                       </h1>
                     </div>
 
                     {/* Description */}
-                    <div className='mb-8 animate-fade-in-delay-3'>
-                      <p className='text-base sm:text-lg lg:text-xl text-gray-700 leading-relaxed max-w-4xl mx-auto font-normal drop-shadow-sm'>
+                    <div className='mb-6 md:mb-8 animate-fade-in-delay-3'>
+                      <p className='text-sm sm:text-base md:text-lg lg:text-xl text-gray-700 leading-relaxed max-w-4xl mx-auto font-normal drop-shadow-sm px-4 md:px-0'>
                         {slide.description}
                       </p>
                     </div>
 
                     {/* Features Grid */}
-                    <div className='mb-8 animate-fade-in-delay-3'>
-                      <div className='grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto'>
+                    <div className='mb-6 md:mb-8 animate-fade-in-delay-3'>
+                      <div className='grid grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3 md:gap-4 max-w-2xl mx-auto px-4 md:px-0'>
                         {slide.features.map((feature, idx) => (
                           <div
                             key={`feature-${idx + 1}`}
-                            className='bg-white/80 backdrop-blur-sm rounded-lg p-3 shadow-sm border border-brand-gold/20'
+                            className='bg-white/80 backdrop-blur-sm rounded-lg p-2 sm:p-3 shadow-sm border border-brand-gold/20'
                           >
-                            <div className='text-sm font-medium text-brand-brown'>{feature}</div>
+                            <div className='text-xs sm:text-sm font-medium text-brand-brown text-center'>
+                              {feature}
+                            </div>
                           </div>
                         ))}
                       </div>
                     </div>
 
                     {/* CTA Buttons */}
-                    <div className='flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6 animate-fade-in-delay-3'>
+                    <div className='flex flex-col sm:flex-row items-center justify-center space-y-3 sm:space-y-0 sm:space-x-4 md:space-x-6 animate-fade-in-delay-3 px-4 md:px-0'>
                       <Button
                         size='lg'
                         onClick={() => router.push("/collections")}
-                        className={`${slide.buttonClass} text-white font-semibold px-8 py-4 text-lg rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 border-0`}
+                        className={`${slide.buttonClass} text-white font-semibold px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 border-0 w-full sm:w-auto`}
                       >
                         {slide.cta}
                       </Button>
@@ -261,7 +250,7 @@ export default function HeroSlider() {
                         variant='outline'
                         size='lg'
                         onClick={() => router.push("/contact")}
-                        className='bg-white/90 backdrop-blur-sm border-brand-gold text-brand-brown hover:bg-brand-gold hover:text-white font-semibold px-8 py-4 text-lg rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-1'
+                        className='bg-white/90 backdrop-blur-sm border-brand-gold text-brand-brown hover:bg-brand-gold hover:text-white font-semibold px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 w-full sm:w-auto'
                       >
                         {slide.secondaryCta}
                       </Button>
@@ -269,18 +258,19 @@ export default function HeroSlider() {
                   </div>
                 </div>
 
-                {/* Corporate Stats - Only show on first slide */}
-                {index === 0 && <CorporateStats />}
-
-                {/* Trust Badges - Only show on first slide */}
-                {index === 0 && <TrustBadges />}
+                {/* Corporate Stats - Only show on first slide, hidden on small mobile */}
+                {index === 0 && (
+                  <div className='hidden sm:block'>
+                    <CorporateStats />
+                  </div>
+                )}
 
                 {/* Slide Indicator */}
-                <div className='absolute bottom-8 right-8 flex space-x-2'>
+                <div className='absolute bottom-4 right-4 md:bottom-8 md:right-8 flex space-x-2'>
                   {slides.map((_, idx) => (
                     <div
                       key={`indication-${idx + 1}`}
-                      className={`w-3 h-3 rounded-full transition-all duration-300 cursor-pointer ${
+                      className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition-all duration-300 cursor-pointer ${
                         idx === currentSlide
                           ? "bg-brand-amber scale-125"
                           : "bg-brand-brown/30 hover:bg-brand-brown/50"
@@ -295,21 +285,21 @@ export default function HeroSlider() {
         </CarouselContent>
 
         {/* Navigation Arrows */}
-        <CarouselPrevious className='absolute left-8 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white border-0 text-brand-dark hover:text-brand-amber shadow-lg hover:shadow-xl transition-all duration-300 w-12 h-12 rounded-full' />
-        <CarouselNext className='absolute right-8 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white border-0 text-brand-dark hover:text-brand-amber shadow-lg hover:shadow-xl transition-all duration-300 w-12 h-12 rounded-full' />
+        <CarouselPrevious className='absolute left-4 md:left-8 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white border-0 text-brand-dark hover:text-brand-amber shadow-lg hover:shadow-xl transition-all duration-300 w-10 h-10 md:w-12 md:h-12 rounded-full' />
+        <CarouselNext className='absolute right-4 md:right-8 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white border-0 text-brand-dark hover:text-brand-amber shadow-lg hover:shadow-xl transition-all duration-300 w-10 h-10 md:w-12 md:h-12 rounded-full' />
       </Carousel>
 
       {/* Scroll to Explore Indicator */}
-      <div className='absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20'>
+      <div className='absolute bottom-4 md:bottom-8 left-1/2 transform -translate-x-1/2 z-20'>
         <button
           onClick={handleScrollToNext}
-          className='group flex flex-col items-center space-y-2 text-brand-brown hover:text-brand-amber transition-all duration-300 cursor-pointer'
+          className='group flex flex-col items-center space-y-1 md:space-y-2 text-brand-brown hover:text-brand-amber transition-all duration-300 cursor-pointer'
         >
-          <span className='text-sm font-medium tracking-wider uppercase drop-shadow-sm animate-subtle-blink'>
+          <span className='text-xs md:text-sm font-medium tracking-wider uppercase drop-shadow-sm animate-subtle-blink'>
             Explore Solutions
           </span>
-          <div className='w-6 h-10 border-2 border-brand-brown/50 rounded-full flex justify-center group-hover:border-brand-amber/50 transition-colors duration-300'>
-            <div className='w-1 h-3 bg-brand-brown/70 rounded-full mt-2 animate-pulse group-hover:bg-brand-amber/70 transition-colors duration-300' />
+          <div className='w-5 h-8 md:w-6 md:h-10 border-2 border-brand-brown/50 rounded-full flex justify-center group-hover:border-brand-amber/50 transition-colors duration-300'>
+            <div className='w-1 h-2 md:h-3 bg-brand-brown/70 rounded-full mt-1 md:mt-2 animate-pulse group-hover:bg-brand-amber/70 transition-colors duration-300' />
           </div>
         </button>
       </div>
