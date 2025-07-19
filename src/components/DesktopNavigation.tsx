@@ -53,7 +53,7 @@ export default function DesktopNavigation() {
               </li>
               <li>
                 <Link
-                  href='/collections?category=festivals'
+                  href='/collections?category=festival'
                   className='block px-3 py-2 text-gray-700 hover:text-brand-brown hover:bg-brand-gold/10 rounded text-sm'
                 >
                   Festival Hampers

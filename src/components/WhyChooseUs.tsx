@@ -14,7 +14,7 @@ export default function WhyChooseUs() {
         </div>
 
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
-          <div className='bg-white rounded-2xl p-8 shadow-lg border border-brand-gold/20 hover:shadow-xl transition-all duration-300'>
+          <div className='bg-white rounded-2xl p-8 shadow-lg border border-brand-gold/20 hover:shadow-xl transition-shadow duration-200'>
             <div className='w-16 h-16 bg-gradient-to-br from-brand-gold to-brand-amber rounded-full mx-auto mb-6 flex items-center justify-center text-2xl'>
               🎯
             </div>
@@ -28,7 +28,7 @@ export default function WhyChooseUs() {
             </div>
           </div>
 
-          <div className='bg-white rounded-2xl p-8 shadow-lg border border-brand-gold/20 hover:shadow-xl transition-all duration-300'>
+          <div className='bg-white rounded-2xl p-8 shadow-lg border border-brand-gold/20 hover:shadow-xl transition-shadow duration-200'>
             <div className='w-16 h-16 bg-gradient-to-br from-brand-amber to-brand-brown rounded-full mx-auto mb-6 flex items-center justify-center text-2xl'>
               💎
             </div>
@@ -42,7 +42,7 @@ export default function WhyChooseUs() {
             </div>
           </div>
 
-          <div className='bg-white rounded-2xl p-8 shadow-lg border border-brand-gold/20 hover:shadow-xl transition-all duration-300'>
+          <div className='bg-white rounded-2xl p-8 shadow-lg border border-brand-gold/20 hover:shadow-xl transition-shadow duration-200'>
             <div className='w-16 h-16 bg-gradient-to-br from-brand-brown to-brand-gold rounded-full mx-auto mb-6 flex items-center justify-center text-2xl'>
               🚀
             </div>
@@ -56,7 +56,7 @@ export default function WhyChooseUs() {
             </div>
           </div>
 
-          <div className='bg-white rounded-2xl p-8 shadow-lg border border-brand-gold/20 hover:shadow-xl transition-all duration-300'>
+          <div className='bg-white rounded-2xl p-8 shadow-lg border border-brand-gold/20 hover:shadow-xl transition-shadow duration-200'>
             <div className='w-16 h-16 bg-gradient-to-br from-brand-gold to-brand-amber rounded-full mx-auto mb-6 flex items-center justify-center text-2xl'>
               🤝
             </div>
@@ -72,7 +72,7 @@ export default function WhyChooseUs() {
             </div>
           </div>
 
-          <div className='bg-white rounded-2xl p-8 shadow-lg border border-brand-gold/20 hover:shadow-xl transition-all duration-300'>
+          <div className='bg-white rounded-2xl p-8 shadow-lg border border-brand-gold/20 hover:shadow-xl transition-shadow duration-200'>
             <div className='w-16 h-16 bg-gradient-to-br from-brand-amber to-brand-brown rounded-full mx-auto mb-6 flex items-center justify-center text-2xl'>
               ⚡
             </div>
@@ -86,7 +86,7 @@ export default function WhyChooseUs() {
             </div>
           </div>
 
-          <div className='bg-white rounded-2xl p-8 shadow-lg border border-brand-gold/20 hover:shadow-xl transition-all duration-300'>
+          <div className='bg-white rounded-2xl p-8 shadow-lg border border-brand-gold/20 hover:shadow-xl transition-shadow duration-200'>
             <div className='w-16 h-16 bg-gradient-to-br from-brand-brown to-brand-gold rounded-full mx-auto mb-6 flex items-center justify-center text-2xl'>
               🎨
             </div>

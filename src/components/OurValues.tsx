@@ -13,7 +13,7 @@ export default function OurValues() {
         </div>
 
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8'>
-          <div className='bg-white rounded-2xl p-8 shadow-lg border border-brand-gold/20 hover:shadow-xl transition-all duration-300'>
+          <div className='bg-white rounded-2xl p-8 shadow-lg border border-brand-gold/20 hover:shadow-xl transition-shadow duration-200'>
             <div className='text-4xl mb-4'>💫</div>
             <h3 className='text-xl font-bold text-brand-dark mb-3'>Authenticity</h3>
             <p className='text-gray-600'>
@@ -23,7 +23,7 @@ export default function OurValues() {
             </p>
           </div>
 
-          <div className='bg-white rounded-2xl p-8 shadow-lg border border-brand-gold/20 hover:shadow-xl transition-all duration-300'>
+          <div className='bg-white rounded-2xl p-8 shadow-lg border border-brand-gold/20 hover:shadow-xl transition-shadow duration-200'>
             <div className='text-4xl mb-4'>🎯</div>
             <h3 className='text-xl font-bold text-brand-dark mb-3'>Purpose</h3>
             <p className='text-gray-600'>
@@ -33,7 +33,7 @@ export default function OurValues() {
             </p>
           </div>
 
-          <div className='bg-white rounded-2xl p-8 shadow-lg border border-brand-gold/20 hover:shadow-xl transition-all duration-300'>
+          <div className='bg-white rounded-2xl p-8 shadow-lg border border-brand-gold/20 hover:shadow-xl transition-shadow duration-200'>
             <div className='text-4xl mb-4'>🌟</div>
             <h3 className='text-xl font-bold text-brand-dark mb-3'>Growth</h3>
             <p className='text-gray-600'>
@@ -42,7 +42,7 @@ export default function OurValues() {
             </p>
           </div>
 
-          <div className='bg-white rounded-2xl p-8 shadow-lg border border-brand-gold/20 hover:shadow-xl transition-all duration-300'>
+          <div className='bg-white rounded-2xl p-8 shadow-lg border border-brand-gold/20 hover:shadow-xl transition-shadow duration-200'>
             <div className='text-4xl mb-4'>🤝</div>
             <h3 className='text-xl font-bold text-brand-dark mb-3'>Partnership</h3>
             <p className='text-gray-600'>

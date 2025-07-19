@@ -76,7 +76,7 @@ export default function ContactForm() {
   };
 
   return (
-    <div className='bg-white rounded-3xl p-8 shadow-xl border border-brand-gold/20'>
+    <div className='bg-white rounded-3xl p-8 shadow-lg border border-brand-gold/20'>
       <form onSubmit={handleSubmit} className='space-y-6'>
         <div className='grid grid-cols-1 sm:grid-cols-2 gap-6'>
           <div>
@@ -90,7 +90,7 @@ export default function ContactForm() {
               value={formData.name}
               onChange={handleInputChange}
               required
-              className='w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-gold focus:border-transparent transition-all duration-300'
+              className='w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-gold focus:border-transparent transition-colors duration-200'
               placeholder='Your full name'
             />
           </div>
@@ -105,7 +105,7 @@ export default function ContactForm() {
               value={formData.email}
               onChange={handleInputChange}
               required
-              className='w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-gold focus:border-transparent transition-all duration-300'
+              className='w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-gold focus:border-transparent transition-colors duration-200'
               placeholder='your@email.com'
             />
           </div>
@@ -122,7 +122,7 @@ export default function ContactForm() {
               name='phone'
               value={formData.phone}
               onChange={handleInputChange}
-              className='w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-gold focus:border-transparent transition-all duration-300'
+              className='w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-gold focus:border-transparent transition-colors duration-200'
               placeholder='+91 96858 47274'
             />
           </div>
@@ -136,7 +136,7 @@ export default function ContactForm() {
               name='company'
               value={formData.company}
               onChange={handleInputChange}
-              className='w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-gold focus:border-transparent transition-all duration-300'
+              className='w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-gold focus:border-transparent transition-colors duration-200'
               placeholder='Your company name'
             />
           </div>
@@ -154,7 +154,7 @@ export default function ContactForm() {
             name='contactMethod'
             value={formData.contactMethod}
             onChange={handleInputChange}
-            className='w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-gold focus:border-transparent transition-all duration-300'
+            className='w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-gold focus:border-transparent transition-colors duration-200'
           >
             <option value='email'>Email</option>
             <option value='whatsapp'>WhatsApp</option>
@@ -172,7 +172,7 @@ export default function ContactForm() {
             onChange={handleInputChange}
             required
             rows={5}
-            className='w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-gold focus:border-transparent transition-all duration-300 resize-none'
+            className='w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-gold focus:border-transparent transition-colors duration-200 resize-none'
             placeholder='Tell us about your hamper needs, occasion, budget, or any questions you have...'
           />
         </div>
@@ -196,7 +196,7 @@ export default function ContactForm() {
         <Button
           type='submit'
           disabled={isSubmitting}
-          className={`w-full font-semibold px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 ${
+          className={`w-full font-semibold px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-shadow duration-200 ${
             isSubmitting
               ? "bg-gray-400 cursor-not-allowed"
               : "bg-gradient-to-r from-brand-amber to-brand-gold hover:from-brand-gold hover:to-brand-amber text-white"

@@ -39,7 +39,7 @@ export default function OurMission() {
           </div>
 
           <div className='relative'>
-            <div className='bg-gradient-to-br from-brand-gold/20 to-brand-amber/20 rounded-3xl p-8 shadow-xl'>
+            <div className='bg-gradient-to-br from-brand-gold/20 to-brand-amber/20 rounded-3xl p-8 shadow-lg'>
               <div className='text-6xl mb-6 text-center'>🎁</div>
               <h3 className='text-2xl font-bold text-brand-dark mb-4 text-center'>
                 Why We Started

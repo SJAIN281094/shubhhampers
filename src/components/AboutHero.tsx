@@ -2,9 +2,9 @@ export default function AboutHero() {
   return (
     <section className='relative py-20 overflow-hidden'>
       {/* Background Elements */}
-      <div className='absolute inset-0 bg-gradient-to-br from-brand-gold/10 via-transparent to-brand-amber/5' />
-      <div className='absolute top-10 right-10 w-40 h-40 bg-brand-gold/20 rounded-full blur-2xl animate-pulse' />
-      <div className='absolute bottom-20 left-10 w-32 h-32 bg-brand-amber/30 rounded-full blur-xl animate-bounce' />
+      <div className='absolute inset-0 bg-brand-gold/8' />
+      <div className='absolute top-10 right-10 w-40 h-40 bg-brand-gold/15 rounded-full opacity-60' />
+      <div className='absolute bottom-20 left-10 w-32 h-32 bg-brand-amber/20 rounded-full opacity-50' />
 
       <div className='container mx-auto px-4 sm:px-6 lg:px-8 relative z-10'>
         <div className='text-center max-w-4xl mx-auto'>

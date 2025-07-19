@@ -15,12 +15,12 @@ export default function AboutCTA() {
           </p>
           <div className='flex flex-col sm:flex-row gap-4 justify-center'>
             <Link href='/contact'>
-              <Button className='bg-brand-gold text-brand-dark font-semibold px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300'>
+              <Button className='bg-brand-gold text-brand-dark font-semibold px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-shadow duration-200'>
                 💬 Get in Touch
               </Button>
             </Link>
             <Link href='/collections'>
-              <Button className='bg-transparent text-white font-semibold px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-brand-gold hover:bg-brand-gold hover:text-brand-dark'>
+              <Button className='bg-transparent text-white font-semibold px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-200 border-2 border-brand-gold hover:bg-brand-gold/20'>
                 🎁 Explore Collections
               </Button>
             </Link>

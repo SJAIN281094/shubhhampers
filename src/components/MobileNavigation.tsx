@@ -115,7 +115,7 @@ export default function MobileNavigation() {
                   </li>
                   <li>
                     <Link
-                      href='/collections?category=festivals'
+                      href='/collections?category=festival'
                       className='text-gray-700 hover:text-brand-brown cursor-pointer'
                       onClick={() => setIsOpen(false)}
                     >

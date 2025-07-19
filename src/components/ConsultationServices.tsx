@@ -17,7 +17,7 @@ export default function ConsultationServices() {
         </div>
 
         <div className='grid grid-cols-1 md:grid-cols-3 gap-8 mb-12'>
-          <div className='bg-white rounded-2xl p-8 shadow-lg border border-brand-gold/20 hover:shadow-xl transition-all duration-300'>
+          <div className='bg-white rounded-2xl p-8 shadow-lg border border-brand-gold/20 hover:shadow-xl transition-shadow duration-200'>
             <div className='text-4xl mb-4'>💡</div>
             <h3 className='text-xl font-bold text-brand-dark mb-3'>Strategy Development</h3>
             <p className='text-gray-600'>
@@ -26,7 +26,7 @@ export default function ConsultationServices() {
             </p>
           </div>
 
-          <div className='bg-white rounded-2xl p-8 shadow-lg border border-brand-gold/20 hover:shadow-xl transition-all duration-300'>
+          <div className='bg-white rounded-2xl p-8 shadow-lg border border-brand-gold/20 hover:shadow-xl transition-shadow duration-200'>
             <div className='text-4xl mb-4'>🗺️</div>
             <h3 className='text-xl font-bold text-brand-dark mb-3'>Relationship Mapping</h3>
             <p className='text-gray-600'>
@@ -35,7 +35,7 @@ export default function ConsultationServices() {
             </p>
           </div>
 
-          <div className='bg-white rounded-2xl p-8 shadow-lg border border-brand-gold/20 hover:shadow-xl transition-all duration-300'>
+          <div className='bg-white rounded-2xl p-8 shadow-lg border border-brand-gold/20 hover:shadow-xl transition-shadow duration-200'>
             <div className='text-4xl mb-4'>🎨</div>
             <h3 className='text-xl font-bold text-brand-dark mb-3'>Culture Alignment</h3>
             <p className='text-gray-600'>
@@ -51,7 +51,7 @@ export default function ConsultationServices() {
             culture, build lasting partnerships, and achieve the emotional impact you're seeking.
           </p>
           <Link href='/contact?service=consultation'>
-            <Button className='bg-gradient-to-r from-brand-brown to-brand-gold hover:from-brand-gold hover:to-brand-brown text-white font-semibold px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300'>
+            <Button className='bg-gradient-to-r from-brand-brown to-brand-gold hover:from-brand-gold hover:to-brand-brown text-white font-semibold px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-shadow duration-200'>
               💬 Schedule Consultation
             </Button>
           </Link>

@@ -13,7 +13,7 @@ export default function ContactMethods() {
         </div>
 
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8'>
-          <div className='bg-gradient-to-br from-brand-gold/10 to-brand-amber/10 rounded-2xl p-8 text-center hover:shadow-xl transition-all duration-300 border border-brand-gold/20'>
+          <div className='bg-gradient-to-br from-brand-gold/10 to-brand-amber/10 rounded-2xl p-8 text-center hover:shadow-xl transition-shadow duration-200 border border-brand-gold/20'>
             <div className='w-16 h-16 bg-brand-gold rounded-full mx-auto mb-6 flex items-center justify-center'>
               <span className='text-2xl'>📞</span>
             </div>
@@ -23,7 +23,7 @@ export default function ContactMethods() {
             <div className='text-sm text-gray-500 mt-2'>Mon-Fri: 9AM-6PM</div>
           </div>
 
-          <div className='bg-gradient-to-br from-brand-amber/10 to-brand-brown/10 rounded-2xl p-8 text-center hover:shadow-xl transition-all duration-300 border border-brand-amber/20'>
+          <div className='bg-gradient-to-br from-brand-amber/10 to-brand-brown/10 rounded-2xl p-8 text-center hover:shadow-xl transition-shadow duration-200 border border-brand-amber/20'>
             <div className='w-16 h-16 bg-brand-amber rounded-full mx-auto mb-6 flex items-center justify-center'>
               <span className='text-2xl'>✉️</span>
             </div>
@@ -33,7 +33,7 @@ export default function ContactMethods() {
             <div className='text-sm text-gray-500 mt-2'>We reply within 24 hours</div>
           </div>
 
-          <div className='bg-gradient-to-br from-brand-brown/10 to-brand-gold/10 rounded-2xl p-8 text-center hover:shadow-xl transition-all duration-300 border border-brand-brown/20'>
+          <div className='bg-gradient-to-br from-brand-brown/10 to-brand-gold/10 rounded-2xl p-8 text-center hover:shadow-xl transition-shadow duration-200 border border-brand-brown/20'>
             <div className='w-16 h-16 bg-brand-brown rounded-full mx-auto mb-6 flex items-center justify-center'>
               <span className='text-2xl'>💬</span>
             </div>
@@ -42,7 +42,7 @@ export default function ContactMethods() {
             <div className='text-sm text-gray-500 mt-2'>24/7 customer support</div>
           </div>
 
-          <div className='bg-gradient-to-br from-brand-gold/10 to-brand-amber/10 rounded-2xl p-8 text-center hover:shadow-xl transition-all duration-300 border border-brand-gold/20'>
+          <div className='bg-gradient-to-br from-brand-gold/10 to-brand-amber/10 rounded-2xl p-8 text-center hover:shadow-xl transition-shadow duration-200 border border-brand-gold/20'>
             <div className='w-16 h-16 bg-brand-gold rounded-full mx-auto mb-6 flex items-center justify-center'>
               <span className='text-2xl'>📍</span>
             </div>

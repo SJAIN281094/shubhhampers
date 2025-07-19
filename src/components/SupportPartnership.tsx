@@ -52,7 +52,7 @@ export default function SupportPartnership() {
             </div>
 
             <Link href='/contact?service=support'>
-              <Button className='bg-gradient-to-r from-brand-amber to-brand-gold hover:from-brand-gold hover:to-brand-amber text-white font-semibold px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300'>
+              <Button className='bg-gradient-to-r from-brand-amber to-brand-gold hover:from-brand-gold hover:to-brand-amber text-white font-semibold px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-shadow duration-200'>
                 🤝 Explore Partnership Options
               </Button>
             </Link>
@@ -69,7 +69,7 @@ export default function SupportPartnership() {
                 ongoing support helps you maximize the impact of your hamper programs while
                 continuously strengthening the relationships that matter most to your business.
               </p>
-              <div className='bg-white/20 backdrop-blur-sm rounded-lg p-4 border border-brand-gold/20'>
+              <div className='bg-white/30 rounded-lg p-4 border border-brand-gold/20'>
                 <p className='text-sm text-brand-brown font-medium italic text-center'>
                   "Your success in building meaningful relationships is our ultimate measure of
                   success"

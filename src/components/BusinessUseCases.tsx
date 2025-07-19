@@ -1,53 +1,49 @@
 import Link from "next/link";
 import { Button } from "@ui-kit/button";
 
-export default function BusinessUseCases() {
-  const businessUseCases = [
-    {
-      title: "Employee Appreciation",
-      description:
-        "Show your team they're valued with thoughtful hampers that strengthen workplace culture and boost morale.",
-      icon: "👥",
-      examples: [
-        "Work anniversaries",
-        "Achievement recognition",
-        "Holiday appreciation",
-        "Welcome new hires"
-      ]
-    },
-    {
-      title: "Client Relationships",
-      description:
-        "Deepen business partnerships with clients through meaningful gestures that go beyond transactions.",
-      icon: "🤝",
-      examples: [
-        "Thank you gifts",
-        "Project milestones",
-        "Seasonal greetings",
-        "Contract celebrations"
-      ]
-    },
-    {
-      title: "Corporate Events",
-      description:
-        "Make corporate events memorable with hampers that guests will treasure long after the event ends.",
-      icon: "🎉",
-      examples: ["Conference gifts", "Launch events", "Annual meetings", "Trade show giveaways"]
-    },
-    {
-      title: "Business Development",
-      description:
-        "Open doors and strengthen prospects with thoughtful hampers that make your business memorable.",
-      icon: "📈",
-      examples: [
-        "Prospect outreach",
-        "Partnership building",
-        "Referral thanks",
-        "Networking events"
-      ]
-    }
-  ];
+// Move business use cases data outside component for better performance
+const BUSINESS_USE_CASES = [
+  {
+    title: "Employee Appreciation",
+    description:
+      "Show your team they're valued with thoughtful hampers that strengthen workplace culture and boost morale.",
+    icon: "👥",
+    examples: [
+      "Work anniversaries",
+      "Achievement recognition",
+      "Holiday appreciation",
+      "Welcome new hires"
+    ]
+  },
+  {
+    title: "Client Relationships",
+    description:
+      "Deepen business partnerships with clients through meaningful gestures that go beyond transactions.",
+    icon: "🤝",
+    examples: [
+      "Thank you gifts",
+      "Project milestones",
+      "Seasonal greetings",
+      "Contract celebrations"
+    ]
+  },
+  {
+    title: "Corporate Events",
+    description:
+      "Make corporate events memorable with hampers that guests will treasure long after the event ends.",
+    icon: "🎉",
+    examples: ["Conference gifts", "Launch events", "Annual meetings", "Trade show giveaways"]
+  },
+  {
+    title: "Business Development",
+    description:
+      "Open doors and strengthen prospects with thoughtful hampers that make your business memorable.",
+    icon: "📈",
+    examples: ["Prospect outreach", "Partnership building", "Referral thanks", "Networking events"]
+  }
+];
 
+export default function BusinessUseCases() {
   return (
     <section className='py-20 bg-white'>
       <div className='container mx-auto px-4 sm:px-6 lg:px-8'>
@@ -62,10 +58,10 @@ export default function BusinessUseCases() {
         </div>
 
         <div className='grid grid-cols-1 md:grid-cols-2 gap-12'>
-          {businessUseCases.map((useCase, index) => (
+          {BUSINESS_USE_CASES.map((useCase: any, index: number) => (
             <div
               key={index}
-              className='bg-gradient-to-br from-brand-light/20 to-brand-gold/10 rounded-3xl p-8 shadow-xl border border-brand-gold/20 hover:shadow-2xl transition-all duration-500'
+              className='bg-gradient-to-br from-brand-light/20 to-brand-gold/10 rounded-3xl p-8 shadow-lg border border-brand-gold/20 hover:shadow-xl transition-shadow duration-200'
             >
               <div className='flex items-start gap-6 mb-6'>
                 <div className='text-5xl'>{useCase.icon}</div>
@@ -75,17 +71,14 @@ export default function BusinessUseCases() {
                 </div>
               </div>
 
-              <div className='bg-white/40 backdrop-blur-sm rounded-xl p-4 border border-brand-gold/20'>
+              <div className='bg-white/50 rounded-xl p-4 border border-brand-gold/20'>
                 <h4 className='font-semibold text-brand-brown mb-3 flex items-center gap-2'>
                   <span className='w-2 h-2 bg-brand-gold rounded-full' />
                   Perfect For:
                 </h4>
                 <div className='grid grid-cols-2 gap-2'>
-                  {useCase.examples.map((example, idx) => (
-                    <div
-                      key={idx}
-                      className='flex items-center gap-2 p-2 bg-white/50 backdrop-blur-sm rounded-lg'
-                    >
+                  {useCase.examples.map((example: any, idx: number) => (
+                    <div key={idx} className='flex items-center gap-2 p-2 bg-white/60 rounded-lg'>
                       <div className='w-1.5 h-1.5 bg-gradient-to-r from-brand-gold to-brand-amber rounded-full' />
                       <span className='text-sm text-gray-700'>{example}</span>
                     </div>
@@ -98,7 +91,7 @@ export default function BusinessUseCases() {
 
         <div className='text-center mt-12'>
           <Link href='/contact?inquiry=use-cases'>
-            <Button className='bg-gradient-to-r from-brand-amber to-brand-gold hover:from-brand-gold hover:to-brand-amber text-white font-semibold px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300'>
+            <Button className='bg-gradient-to-r from-brand-amber to-brand-gold hover:from-brand-gold hover:to-brand-amber text-white font-semibold px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-shadow duration-200'>
               💬 Discuss Your Specific Needs
             </Button>
           </Link>

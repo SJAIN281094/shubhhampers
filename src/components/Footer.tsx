@@ -206,7 +206,7 @@ export default function Footer() {
                   </li>
                   <li>
                     <Link
-                      href='/collections?category=festivals'
+                      href='/collections?category=festival'
                       className='text-brand-gold hover:text-brand-light transition-colors cursor-pointer flex items-center gap-2 hover:translate-x-1 transition-transform'
                     >
                       <span>✨</span>
@@ -215,7 +215,7 @@ export default function Footer() {
                   </li>
                   <li>
                     <Link
-                      href='/collections?category=festivals'
+                      href='/collections?category=festival'
                       className='text-brand-gold hover:text-brand-light transition-colors cursor-pointer flex items-center gap-2 hover:translate-x-1 transition-transform'
                     >
                       <span>🪢</span>
@@ -224,7 +224,7 @@ export default function Footer() {
                   </li>
                   <li>
                     <Link
-                      href='/collections?category=festivals'
+                      href='/collections?category=festival'
                       className='text-brand-gold hover:text-brand-light transition-colors cursor-pointer flex items-center gap-2 hover:translate-x-1 transition-transform'
                     >
                       <span>🎄</span>

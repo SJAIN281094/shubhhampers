@@ -13,7 +13,7 @@ export default function BusinessBenefits() {
         </div>
 
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
-          <div className='bg-white rounded-2xl p-6 shadow-lg border border-brand-gold/20 hover:shadow-xl transition-all duration-300 text-center'>
+          <div className='bg-white rounded-2xl p-6 shadow-lg border border-brand-gold/20 hover:shadow-xl transition-shadow duration-200 text-center'>
             <div className='text-4xl mb-4'>🏢</div>
             <h3 className='text-xl font-bold text-brand-dark mb-3'>Strengthen Company Culture</h3>
             <p className='text-gray-600 mb-4'>
@@ -25,7 +25,7 @@ export default function BusinessBenefits() {
             </div>
           </div>
 
-          <div className='bg-white rounded-2xl p-6 shadow-lg border border-brand-gold/20 hover:shadow-xl transition-all duration-300 text-center'>
+          <div className='bg-white rounded-2xl p-6 shadow-lg border border-brand-gold/20 hover:shadow-xl transition-shadow duration-200 text-center'>
             <div className='text-4xl mb-4'>🤝</div>
             <h3 className='text-xl font-bold text-brand-dark mb-3'>Build Client Partnerships</h3>
             <p className='text-gray-600 mb-4'>
@@ -37,7 +37,7 @@ export default function BusinessBenefits() {
             </div>
           </div>
 
-          <div className='bg-white rounded-2xl p-6 shadow-lg border border-brand-gold/20 hover:shadow-xl transition-all duration-300 text-center'>
+          <div className='bg-white rounded-2xl p-6 shadow-lg border border-brand-gold/20 hover:shadow-xl transition-shadow duration-200 text-center'>
             <div className='text-4xl mb-4'>📊</div>
             <h3 className='text-xl font-bold text-brand-dark mb-3'>Drive Business Growth</h3>
             <p className='text-gray-600 mb-4'>

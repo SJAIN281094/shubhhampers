@@ -7,7 +7,7 @@ export default function OurApproach() {
       <div className='container mx-auto px-4 sm:px-6 lg:px-8'>
         <div className='grid grid-cols-1 lg:grid-cols-2 gap-12 items-center'>
           <div className='order-2 lg:order-1'>
-            <div className='bg-gradient-to-br from-brand-amber/20 to-brand-gold/20 rounded-3xl p-8 shadow-xl'>
+            <div className='bg-gradient-to-br from-brand-amber/20 to-brand-gold/20 rounded-3xl p-8 shadow-lg'>
               <h3 className='text-2xl font-bold text-brand-dark mb-6'>How We Work</h3>
               <div className='space-y-6'>
                 <div className='flex items-start gap-4'>
@@ -80,7 +80,7 @@ export default function OurApproach() {
             </p>
 
             <Link href='/contact'>
-              <Button className='bg-gradient-to-r from-brand-amber to-brand-gold hover:from-brand-gold hover:to-brand-amber text-white font-semibold px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300'>
+              <Button className='bg-gradient-to-r from-brand-amber to-brand-gold hover:from-brand-gold hover:to-brand-amber text-white font-semibold px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-shadow duration-200'>
                 💬 {"Let's Start Your Journey"}
               </Button>
             </Link>
