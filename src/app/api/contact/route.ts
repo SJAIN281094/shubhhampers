@@ -3,14 +3,23 @@ import nodemailer from "nodemailer";
 
 // Email configuration
 const createTransporter = () => {
+  const port = parseInt(process.env.SMTP_PORT || "587");
   return nodemailer.createTransport({
     host: process.env.SMTP_HOST || "smtp.gmail.com",
-    port: parseInt(process.env.SMTP_PORT || "587"),
-    secure: false, // true for 465, false for other ports
+    port: port,
+    secure: port === 465, // true for 465, false for other ports
     auth: {
       user: process.env.SMTP_USER,
       pass: process.env.SMTP_PASS
-    }
+    },
+    // Additional options for better compatibility
+    tls: {
+      rejectUnauthorized: false, // Accept self-signed certificates
+      ciphers: "SSLv3"
+    },
+    connectionTimeout: 60000, // 60 seconds
+    greetingTimeout: 30000, // 30 seconds
+    socketTimeout: 60000 // 60 seconds
   });
 };
 
@@ -29,7 +38,6 @@ export async function POST(request: NextRequest) {
 
     // Create transporter
     const transporter = createTransporter();
-
     // Email content for the business
     const businessEmailContent = `
     <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f9f9f9;">
