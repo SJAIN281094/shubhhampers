@@ -29,6 +29,36 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9
     },
     {
+      url: `${baseUrl}/collections?category=all`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.8
+    },
+    {
+      url: `${baseUrl}/collections?category=business`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.9
+    },
+    {
+      url: `${baseUrl}/collections?category=wedding`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.8
+    },
+    {
+      url: `${baseUrl}/collections?category=festival`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.8
+    },
+    {
+      url: `${baseUrl}/collections?category=personal`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.7
+    },
+    {
       url: `${baseUrl}/services`,
       lastModified: new Date(),
       changeFrequency: "weekly",
