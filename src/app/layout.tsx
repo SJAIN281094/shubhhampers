@@ -103,10 +103,10 @@ export const metadata: Metadata = {
     siteName: "Shubhhampers",
     images: [
       {
-        url: "/logo-dark.png",
+        url: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/social-media/social_media_meta_image.png",
         width: 1200,
         height: 630,
-        alt: "Shubhhampers - Premium Hampers that Build Relationships"
+        alt: "Shubhhampers - Premium Gift Hampers"
       }
     ],
     locale: "en_US",
@@ -117,7 +117,9 @@ export const metadata: Metadata = {
     title: "Shubhhampers - Premium Hampers that Build Relationships",
     description:
       "Discover handcrafted hampers perfect for corporate appreciation, weddings, festivals, and personal celebrations.",
-    images: ["/logo-dark.png"],
+    images: [
+      "https://the-little-basket.s3.us-east-1.amazonaws.com/images/social-media/social_media_meta_image.png"
+    ],
     creator: "@shubhhampers",
     site: "@shubhhampers"
   }

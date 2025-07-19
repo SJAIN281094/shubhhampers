@@ -28,13 +28,27 @@ export const metadata: Metadata = {
     title: "About Shubhhampers - Our Story & Mission",
     description:
       "Learn about our mission to build meaningful relationships through thoughtful hamper curation. Authentic approach, premium quality.",
-    images: ["/logo-dark.png"]
+    images: [
+      {
+        url: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/social-media/social_media_meta_image.png",
+        width: 1200,
+        height: 630,
+        alt: "Shubhhampers - Premium Gift Hampers"
+      }
+    ]
   },
   twitter: {
     title: "About Shubhhampers - Our Story & Mission",
     description:
       "Learn about our mission to build meaningful relationships through thoughtful hamper curation. Authentic approach, premium quality.",
-    images: ["/logo-dark.png"]
+    images: [
+      {
+        url: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/social-media/social_media_meta_image.png",
+        width: 1200,
+        height: 630,
+        alt: "Shubhhampers - Premium Gift Hampers"
+      }
+    ]
   }
 };
 

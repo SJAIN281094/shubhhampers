@@ -32,13 +32,27 @@ export const metadata: Metadata = {
     title: "Business Hamper Solutions - Corporate Employee & Client Appreciation",
     description:
       "Strengthen business relationships with strategic corporate hampers. Employee recognition, client appreciation, measurable ROI.",
-    images: ["/logo-dark.png"]
+    images: [
+      {
+        url: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/social-media/social_media_meta_image.png",
+        width: 1200,
+        height: 630,
+        alt: "Shubhhampers - Premium Gift Hampers"
+      }
+    ]
   },
   twitter: {
     title: "Business Hamper Solutions - Corporate Employee & Client Appreciation",
     description:
       "Strengthen business relationships with strategic corporate hampers. Employee recognition, client appreciation, measurable ROI.",
-    images: ["/logo-dark.png"]
+    images: [
+      {
+        url: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/social-media/social_media_meta_image.png",
+        width: 1200,
+        height: 630,
+        alt: "Shubhhampers - Premium Gift Hampers"
+      }
+    ]
   }
 };
 

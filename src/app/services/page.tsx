@@ -29,13 +29,27 @@ export const metadata: Metadata = {
     title: "Hamper Services - Custom Curation, Bulk Orders & Business Solutions",
     description:
       "Comprehensive hamper services including custom curation, bulk orders, and business account management. Professional consultation available.",
-    images: ["/logo-dark.png"]
+    images: [
+      {
+        url: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/social-media/social_media_meta_image.png",
+        width: 1200,
+        height: 630,
+        alt: "Shubhhampers - Premium Gift Hampers"
+      }
+    ]
   },
   twitter: {
     title: "Hamper Services - Custom Curation, Bulk Orders & Business Solutions",
     description:
       "Comprehensive hamper services including custom curation, bulk orders, and business account management. Professional consultation available.",
-    images: ["/logo-dark.png"]
+    images: [
+      {
+        url: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/social-media/social_media_meta_image.png",
+        width: 1200,
+        height: 630,
+        alt: "Shubhhampers - Premium Gift Hampers"
+      }
+    ]
   }
 };
 

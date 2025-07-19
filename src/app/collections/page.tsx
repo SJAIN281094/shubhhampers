@@ -26,13 +26,27 @@ export const metadata: Metadata = {
     title: "Hamper Collections - Corporate, Wedding, Festival & Personal",
     description:
       "Explore our curated hamper collections for every occasion. Corporate, wedding, festival, and personal celebrations.",
-    images: ["/logo-dark.png"]
+    images: [
+      {
+        url: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/social-media/social_media_meta_image.png",
+        width: 1200,
+        height: 630,
+        alt: "Shubhhampers - Premium Gift Hampers"
+      }
+    ]
   },
   twitter: {
     title: "Hamper Collections - Corporate, Wedding, Festival & Personal",
     description:
       "Explore our curated hamper collections for every occasion. Corporate, wedding, festival, and personal celebrations.",
-    images: ["/logo-dark.png"]
+    images: [
+      {
+        url: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/social-media/social_media_meta_image.png",
+        width: 1200,
+        height: 630,
+        alt: "Shubhhampers - Premium Gift Hampers"
+      }
+    ]
   }
 };
 
