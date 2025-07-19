@@ -37,7 +37,6 @@
 
 3. **Festival Hampers**
    - Diwali collections
-   - Holi celebrations
    - Raksha Bandhan
    - Christmas/New Year
    - Regional festival support

@@ -84,7 +84,7 @@ export default function MobileNavigation() {
             <nav className='space-y-6'>
               <div>
                 <Link
-                  href='/collections'
+                  href='/collections?category=all'
                   className={`font-semibold mb-3 flex items-center transition-colors ${
                     isCollectionsActive
                       ? "text-brand-dark bg-brand-gold/10 px-3 py-2 rounded-lg"

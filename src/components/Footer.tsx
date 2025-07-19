@@ -206,7 +206,7 @@ export default function Footer() {
                   </li>
                   <li>
                     <Link
-                      href='/collections?category=festive'
+                      href='/collections?category=festivals'
                       className='text-brand-gold hover:text-brand-light transition-colors cursor-pointer flex items-center gap-2 hover:translate-x-1 transition-transform'
                     >
                       <span>✨</span>
@@ -215,7 +215,7 @@ export default function Footer() {
                   </li>
                   <li>
                     <Link
-                      href='/collections?category=festive'
+                      href='/collections?category=festivals'
                       className='text-brand-gold hover:text-brand-light transition-colors cursor-pointer flex items-center gap-2 hover:translate-x-1 transition-transform'
                     >
                       <span>🪢</span>
@@ -224,7 +224,7 @@ export default function Footer() {
                   </li>
                   <li>
                     <Link
-                      href='/collections?category=festive'
+                      href='/collections?category=festivals'
                       className='text-brand-gold hover:text-brand-light transition-colors cursor-pointer flex items-center gap-2 hover:translate-x-1 transition-transform'
                     >
                       <span>🎄</span>
@@ -328,7 +328,7 @@ export default function Footer() {
                   Contact Us
                 </a>
                 <a
-                  href='/collections'
+                  href='/collections?category=all'
                   className='text-brand-gold hover:text-brand-light text-sm transition-colors cursor-pointer hover:underline'
                 >
                   Collections

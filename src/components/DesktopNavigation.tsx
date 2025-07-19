@@ -15,7 +15,7 @@ export default function DesktopNavigation() {
       {/* Collections Dropdown */}
       <div className='relative group'>
         <Link
-          href='/collections'
+          href='/collections?category=all'
           className={`px-3 py-2 text-sm font-medium transition-colors duration-200 flex items-center gap-1 ${
             isCollectionsActive
               ? "text-brand-brown bg-brand-gold/10 rounded-lg"
@@ -29,7 +29,7 @@ export default function DesktopNavigation() {
         <div className='absolute top-full left-0 mt-1 w-64 bg-white border border-gray-200 rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50'>
           <div className='p-4'>
             <Link
-              href='/collections'
+              href='/collections?category=all'
               className='block font-semibold text-brand-brown mb-3 text-sm hover:text-brand-dark transition-colors'
             >
               🎁 Our Collections
@@ -53,7 +53,7 @@ export default function DesktopNavigation() {
               </li>
               <li>
                 <Link
-                  href='/collections?category=festival'
+                  href='/collections?category=festivals'
                   className='block px-3 py-2 text-gray-700 hover:text-brand-brown hover:bg-brand-gold/10 rounded text-sm'
                 >
                   Festival Hampers

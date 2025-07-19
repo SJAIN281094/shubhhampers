@@ -15,7 +15,10 @@ function CollectionsContent() {
   // Handle URL parameters for category filtering
   useEffect(() => {
     const categoryParam = searchParams.get("category");
-    if (categoryParam && ["business", "wedding", "festivals", "personal"].includes(categoryParam)) {
+    if (
+      categoryParam &&
+      ["all", "business", "wedding", "festivals", "personal"].includes(categoryParam)
+    ) {
       setActiveCategory(categoryParam);
     }
   }, [searchParams]);
@@ -129,21 +132,6 @@ function CollectionsContent() {
         "Custom Packaging",
         "Cultural Authenticity"
       ],
-      bgColor: "bg-gradient-to-br from-brand-gold/20 to-brand-amber/20",
-      accentColor: "from-brand-amber to-brand-brown"
-    },
-    {
-      id: "holi-celebration",
-      title: "Holi Festival Joy",
-      subtitle: "Colors of Unity and Happiness",
-      description:
-        "Embrace the vibrant spirit of Holi with hampers that spread joy and bring people together. Experience the festival of colors through thoughtfully selected items that create laughter, memories, and stronger community bonds.",
-      image: "🎨",
-      category: "festivals",
-      startingPrice: "₹800",
-      minimumOrder: "25 pieces",
-      bulkBenefit: "30% off on 100+ orders",
-      features: ["Festive Colors", "Traditional Treats", "Celebration Essentials", "Community Joy"],
       bgColor: "bg-gradient-to-br from-brand-gold/20 to-brand-amber/20",
       accentColor: "from-brand-amber to-brand-brown"
     },
@@ -397,19 +385,17 @@ function CollectionsContent() {
                   </div>
                 </div>
 
-                {/* Compact CTA Buttons - Fixed at bottom */}
-                <div className='flex gap-2 relative z-10 mt-auto'>
+                {/* CTA Button - Fixed at bottom */}
+                <div className='relative z-10 mt-auto'>
                   <button
-                    onClick={() => router.push(`/collections/${collection.id}`)}
-                    className={`bg-gradient-to-r ${collection.accentColor} text-white font-medium px-4 py-2 text-sm rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 flex-1`}
+                    onClick={() =>
+                      handleWhatsApp(
+                        `Hi! I'm interested in your "${collection.title}" collection. Could you please provide me with a quote and more details about pricing, customization options, and delivery?`
+                      )
+                    }
+                    className={`w-full bg-gradient-to-r ${collection.accentColor} text-white font-semibold px-6 py-3 text-sm rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105`}
                   >
-                    View
-                  </button>
-                  <button
-                    onClick={() => router.push(`/contact?collection=${collection.id}`)}
-                    className='bg-white/90 backdrop-blur-sm text-brand-brown font-medium px-4 py-2 text-sm rounded-lg shadow-md hover:shadow-lg transition-all duration-300 border border-brand-gold/30 hover:bg-gradient-to-r hover:from-brand-gold hover:to-brand-amber hover:text-white transform hover:scale-105 flex-1'
-                  >
-                    Quote
+                    💬 Get Quote on WhatsApp
                   </button>
                 </div>
 
