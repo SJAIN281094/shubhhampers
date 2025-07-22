@@ -4,6 +4,7 @@ import { useState, useEffect, useMemo, useCallback } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { Button } from "@ui-kit/button";
+import { CONTACT_INFO } from "../lib/contact-utils";
 
 // Move collections data outside component to prevent recreation on every render
 const COLLECTIONS_DATA = [
@@ -281,8 +282,7 @@ export default function CollectionsClient() {
   // Memoize WhatsApp inquiry handler
   const handleWhatsAppInquiry = useCallback((collection: any) => {
     const message = `Hi! I'm interested in the "${collection.title}" hamper collection. Could you provide more details about customization options and pricing?`;
-    const phoneNumber = "919999999999";
-    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/${CONTACT_INFO.whatsappNumber}?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, "_blank");
   }, []);
 
