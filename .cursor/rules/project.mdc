@@ -50,6 +50,71 @@ Creating ContactForm component:
 
 **RULE**: Never duplicate existing components. Always reuse from lower levels of the hierarchy.
 
+## 🎨 COMPONENT VARIATION RULES (MANDATORY)
+
+**NO custom properties - CREATE variations instead:**
+
+### Variation Rules:
+
+1. **NO Custom Props**: Avoid complex prop-based variations like `variant`, `size`, `type` props
+2. **SAME Elements**: If variation has same elements → Create component variation
+3. **DIFFERENT Elements**: If elements change → Create separate component first, then use
+4. **Composition Over Configuration**: Prefer multiple specific components over one configurable component
+
+### Variation Examples:
+
+❌ **AVOID** - Complex prop-based components:
+
+```typescript
+// DON'T DO THIS
+<Button variant="primary" size="large" icon="arrow" />
+<Button variant="secondary" size="small" />
+<Card type="product" layout="grid" showImage={true} />
+```
+
+✅ **DO** - Create specific variations:
+
+```typescript
+// DO THIS - Same elements, different styling
+<PrimaryButton>Contact Us</PrimaryButton>
+<SecondaryButton>Learn More</SecondaryButton>
+<PrimaryLargeButton icon="arrow">Get Started</PrimaryLargeButton>
+
+// DO THIS - Different elements, separate components
+<ProductCard />      // has image + title + price + button
+<ServiceCard />      // has icon + title + description + link
+<TestimonialCard />  // has quote + author + rating
+```
+
+### Implementation Process:
+
+```
+Need a variation?
+1. ANALYZE: Are the elements the same or different?
+2. SAME ELEMENTS: Create variation (PrimaryButton, SecondaryButton)
+3. DIFFERENT ELEMENTS: Create new component (ProductCard vs ServiceCard)
+4. COMPOSE: Use atomic design hierarchy for new components
+```
+
+### File Organization for Variations:
+
+```
+src/ui-kit/
+├── Button/
+│   ├── Button.tsx           // Base button atom
+│   ├── PrimaryButton.tsx    // Variation
+│   ├── SecondaryButton.tsx  // Variation
+│   └── IconButton.tsx       // Different elements = separate component
+
+src/components/molecules/
+├── Cards/
+│   ├── ProductCard.tsx      // Different elements
+│   ├── ServiceCard.tsx      // Different elements
+│   └── TestimonialCard.tsx  // Different elements
+```
+
+**RULE**: Prefer multiple simple components over one complex configurable component.
+
 ## ♿ ACCESSIBILITY & SEMANTIC HTML (MANDATORY)
 
 **ALWAYS implement accessibility when creating ANY component:**
