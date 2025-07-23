@@ -8,9 +8,10 @@ import CollectionsClient from "@components/CollectionsClient";
 export async function generateMetadata({
   searchParams
 }: {
-  searchParams: { category?: string };
+  searchParams: Promise<{ category?: string }>;
 }): Promise<Metadata> {
-  const category = searchParams?.category;
+  const resolvedSearchParams = await searchParams;
+  const category = resolvedSearchParams?.category;
 
   // Handle canonical URLs for different categories
   const getCanonicalUrl = () => {

@@ -1,1 +1,8 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# Run quick verification (type-check, lint, format-check) on entire codebase
+npm run verify:quick
+
+# Run lint-staged on staged files (ESLint --fix and Prettier --write)
 npx lint-staged

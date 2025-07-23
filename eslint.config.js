@@ -106,7 +106,7 @@ const eslintConfig = [
       "comma-dangle": "error",
       quotes: ["error", "double"],
       semi: ["error", "always"],
-      indent: ["error", 2],
+      // indent: ["error", 2], // Disabled - Prettier handles indentation
       "object-curly-spacing": ["error", "always"],
       "array-bracket-spacing": ["error", "never"],
       "comma-spacing": ["error", { before: false, after: true }],

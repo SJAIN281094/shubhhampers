@@ -1,0 +1,3 @@
+# Run full verification including build before pushing
+echo "🔍 Running full verification before push..."
+npm run verify 
