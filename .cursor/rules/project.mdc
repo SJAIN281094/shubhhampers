@@ -17,6 +17,117 @@ so when you write or design something. CURRENT THEME SHOULD NOT IMPACT and also 
 --brand-light: #f1dea8; --brand-gold: #e9c579; --brand-amber: #daa755;
 --brand-brown: #9f6920; --brand-dark: #462506;
 
+## 📚 STORYBOOK-FIRST DEVELOPMENT (MANDATORY)
+
+**ALWAYS create in Storybook FIRST, then implement in actual place:**
+
+### Storybook-First Workflow:
+
+1. **FIRST**: Create component story in Storybook with all variations
+2. **DESIGN**: Test all states, props, and variations in isolation
+3. **DOCUMENT**: Add proper documentation, accessibility notes, usage examples
+4. **VALIDATE**: Ensure component meets design system standards
+5. **IMPLEMENT**: Only after Storybook approval, integrate into actual application
+
+### Mandatory Storybook Structure:
+
+```
+stories/
+├── atoms/
+│   ├── Button/
+│   │   ├── PrimaryButton.stories.ts      # Create FIRST
+│   │   ├── SecondaryButton.stories.ts    # Create FIRST
+│   │   └── IconButton.stories.ts         # Create FIRST
+├── molecules/
+│   ├── FormField/
+│   │   └── FormField.stories.ts          # Create FIRST
+├── organisms/
+│   ├── ContactForm/
+│   │   └── ContactForm.stories.ts        # Create FIRST
+```
+
+### Story Documentation Template:
+
+```typescript
+// MANDATORY: Every story MUST include this documentation
+import type { Meta, StoryObj } from "@storybook/react";
+import { PrimaryButton } from "@atoms/Button/PrimaryButton";
+
+const meta: Meta<typeof PrimaryButton> = {
+  title: "Atoms/Button/PrimaryButton",
+  component: PrimaryButton,
+  parameters: {
+    docs: {
+      description: {
+        component: `
+          Primary button following Shubhhampers brand guidelines.
+          
+          **Accessibility**: WCAG AA compliant with proper focus states
+          **Usage**: Main call-to-action buttons like "Contact Us", "Get Quote"
+          **Brand Compliance**: Uses brand-amber to brand-gold gradient
+        `
+      }
+    }
+  },
+  argTypes: {
+    children: { control: "text", description: "Button content" },
+    disabled: { control: "boolean", description: "Disabled state" },
+    onClick: { action: "clicked", description: "Click handler" }
+  }
+};
+
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+// MANDATORY: Must include these variations
+export const Default: Story = {
+  args: { children: "Contact Us" }
+};
+
+export const Disabled: Story = {
+  args: { children: "Contact Us", disabled: true }
+};
+
+export const Accessibility: Story = {
+  args: { children: "Contact Us" },
+  parameters: {
+    docs: {
+      description: {
+        story: "Demonstrates focus states and keyboard navigation compliance"
+      }
+    }
+  }
+};
+```
+
+### Storybook Validation Checklist:
+
+Before implementing in app, verify in Storybook:
+
+- ✅ **All Variations**: Primary, secondary, disabled, loading states
+- ✅ **Accessibility**: Focus states, keyboard navigation, screen reader support
+- ✅ **Responsive**: Mobile, tablet, desktop views
+- ✅ **Brand Compliance**: Colors, fonts, spacing match design system
+- ✅ **Documentation**: Clear usage examples and guidelines
+- ✅ **Edge Cases**: Empty states, error states, long content
+
+### Implementation Rules:
+
+```typescript
+// ❌ NEVER do this - implement directly in app
+const ContactForm = () => {
+  // Building component directly in app
+};
+
+// ✅ ALWAYS do this - Storybook first, then implement
+// 1. Create ContactForm.stories.ts with all variations
+// 2. Test and validate in Storybook
+// 3. Get approval on design and functionality
+// 4. THEN implement in actual application using exact same props/interface
+```
+
+**RULE**: No component goes to production without Storybook documentation and validation.
+
 ## 📁 ABSOLUTE PATH RULES (MANDATORY)
 
 **ALWAYS use absolute paths - NO relative paths:**
