@@ -52,13 +52,13 @@ export const metadata: Metadata = {
     locale: "en_US",
     images: [
       {
-        url: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/social-media/social_media_meta_image.png",
+        url: "https://shubhhampers.s3.ap-south-1.amazonaws.com/website/images/social-media/social_media_meta_image.png",
         width: 1200,
         height: 630,
         alt: "Shubhhampers Homepage - Premium Gift Hampers for Every Occasion"
       },
       {
-        url: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/social-media/social_media_meta_image_300x200.png",
+        url: "https://shubhhampers.s3.ap-south-1.amazonaws.com/website/images/social-media/social_media_meta_image_300x200.png",
         width: 300,
         height: 200,
         alt: "Shubhhampers - Premium Gift Hampers"
@@ -72,7 +72,7 @@ export const metadata: Metadata = {
       "Transform your relationships with thoughtfully curated hampers. Corporate appreciation, weddings, festivals & personal celebrations.",
     images: [
       {
-        url: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/social-media/social_media_meta_image.png",
+        url: "https://shubhhampers.s3.ap-south-1.amazonaws.com/website/images/social-media/social_media_meta_image.png",
         width: 1200,
         height: 630,
         alt: "Shubhhampers Homepage - Premium Gift Hampers for Every Occasion"

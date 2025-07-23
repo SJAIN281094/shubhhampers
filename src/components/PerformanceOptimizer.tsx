@@ -10,17 +10,11 @@ export default function PerformanceOptimizer() {
   // Memoize critical resources list
   const criticalResources = useMemo(
     () => ({
-      images: [
-        IMAGES.LOGO_DARK,
-        IMAGES.BUSINESS_CELEBRATION,
-        IMAGES.FAMILY_HAMPER,
-        IMAGES.MILESTONE,
-        IMAGES.WEDDING_HAMPERS
-      ],
+      images: Object.values(IMAGES),
       domains: [
         "fonts.googleapis.com",
         "fonts.gstatic.com",
-        "the-little-basket.s3.us-east-1.amazonaws.com"
+        "shubhhampers.s3.ap-south-1.amazonaws.com"
       ]
     }),
     []

@@ -8,9 +8,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { handleWhatsApp } from "../lib/contact-utils";
 import { IMAGES } from "../lib/image-constants";
 
-// Events data matching actual collections from CollectionsClient.tsx
 const EVENTS_DATA = [
-  // Business Collections
   {
     id: "employee-onboarding",
     title: "Employee Onboarding Excellence",
@@ -20,8 +18,7 @@ const EVENTS_DATA = [
       "Transform first days into lasting memories. Our thoughtfully curated onboarding hampers help new team members feel genuinely valued from day one, creating positive impressions that strengthen company culture and employee loyalty.",
     image: "🎯",
     features: ["Personal Recognition", "Milestone Celebration", "Team Building", "Loyalty Boost"],
-    backgroundImage:
-      "https://the-little-basket.s3.us-east-1.amazonaws.com/images/hampers/corporate-hampers/hampers-corporate_1.jpg",
+    backgroundImage: IMAGES.EMPLOYEE_ONBOARDING,
     textColor: "text-white",
     bgGradient: "from-brand-amber/90 via-brand-gold/80 to-brand-brown/90"
   },
@@ -34,7 +31,7 @@ const EVENTS_DATA = [
       "Success tastes sweeter when shared. Our milestone celebration hampers help you commemorate significant achievements with your team, creating shared pride and motivation that propels your organization toward even greater accomplishments.",
     image: "🏆",
     features: ["Achievement Honor", "Team Unity", "Success Sharing", "Future Motivation"],
-    backgroundImage: IMAGES.MILESTONE, // Now using optimized WebP (96% smaller!)
+    backgroundImage: IMAGES.MILESTONE,
     textColor: "text-white",
     bgGradient: "from-brand-brown/90 via-brand-gold/80 to-brand-amber/90"
   },
@@ -47,40 +44,9 @@ const EVENTS_DATA = [
       "Transform corporate gatherings into memorable experiences. Our event hampers ensure every attendee leaves with something special, strengthening business relationships and creating positive associations with your brand that last long after the event ends.",
     image: "🏢",
     features: ["Event Enhancement", "Brand Building", "Guest Delight", "Lasting Impression"],
-    backgroundImage: IMAGES.BUSINESS_CELEBRATION, // Now using optimized WebP (94% smaller!)
+    backgroundImage: IMAGES.CORPORATE_EVENT, // Now using optimized WebP (94% smaller!)
     textColor: "text-white",
     bgGradient: "from-brand-gold/90 via-brand-amber/80 to-brand-brown/90"
-  },
-  {
-    id: "client-appreciation",
-    title: "Client Appreciation Excellence",
-    subtitle: "Strengthen Business Partnerships",
-    category: "business",
-    description:
-      "Show clients they're truly valued with hampers that speak volumes about your gratitude. Every carefully selected item reflects your commitment to excellence and deepens business relationships that drive mutual success.",
-    image: "🤝",
-    features: [
-      "Premium Quality",
-      "Custom Branding",
-      "Executive Presentation",
-      "Relationship Building"
-    ],
-    backgroundImage: IMAGES.CLIENT_APPRECIATION,
-    textColor: "text-white",
-    bgGradient: "from-brand-brown/90 via-brand-gold/80 to-brand-amber/90"
-  },
-  {
-    id: "business-festivals",
-    title: "Corporate Festival Celebrations",
-    subtitle: "Unite Teams Through Tradition",
-    category: "business",
-    description:
-      "Honor traditions while building stronger workplace bonds. Our corporate festival hampers help teams celebrate together, creating shared moments of joy that transcend professional boundaries and build lasting connections.",
-    image: "🏢",
-    features: ["Cultural Sensitivity", "Team Unity", "Traditional Elements", "Modern Presentation"],
-    backgroundImage: IMAGES.CORPORATE_FESTIVALS,
-    textColor: "text-white",
-    bgGradient: "from-brand-light/90 via-brand-gold/80 to-brand-brown/90"
   },
 
   // Wedding Collections
@@ -96,61 +62,6 @@ const EVENTS_DATA = [
     backgroundImage: IMAGES.WEDDING_WELCOME_HAMPERS,
     textColor: "text-white",
     bgGradient: "from-brand-light/90 via-brand-gold/80 to-brand-amber/90"
-  },
-  {
-    id: "baby-shower",
-    title: "Baby Shower",
-    subtitle: "Celebrating new beginnings with love",
-    category: "festivals",
-    description:
-      "Welcome the little miracle with hampers that celebrate new life and motherhood. Our baby shower collections create precious moments of joy, offering thoughtful gifts that honor this beautiful journey and show your love for the growing family.",
-    image: "👶",
-    features: ["New Life Celebration", "Motherhood Honor", "Family Joy", "Precious Moments"],
-    backgroundImage:
-      "https://the-little-basket.s3.us-east-1.amazonaws.com/images/hampers/baby-shower/hampers_baby-shower_1.jpeg",
-    textColor: "text-white",
-    bgGradient: "from-pink-400/90 via-blue-300/80 to-yellow-200/90"
-  },
-  {
-    id: "rakshabandhan",
-    title: "Rakshabandhan",
-    subtitle: "Celebrating the sacred bond of siblings",
-    category: "festivals",
-    description:
-      "Honor the unbreakable bond between siblings with hampers that speak of love, protection, and lifelong connection. Our Rakshabandhan collections strengthen family ties and create memories that last beyond the festival celebrations.",
-    image: "🪔",
-    features: ["Sibling Bond", "Family Tradition", "Love Expression", "Cultural Heritage"],
-    backgroundImage:
-      "https://the-little-basket.s3.us-east-1.amazonaws.com/images/hampers/rakshabandhan/hampers-rakshabandhan_2.jpeg",
-    textColor: "text-white",
-    bgGradient: "from-orange-400/90 via-red-300/80 to-yellow-300/90"
-  },
-  {
-    id: "diwali",
-    title: "Diwali",
-    subtitle: "Illuminating hearts with joy and prosperity",
-    category: "festivals",
-    description:
-      "Celebrate the festival of lights with hampers that spread joy, prosperity, and togetherness. Our Diwali collections bring the warmth of tradition and the spirit of celebration to your loved ones, creating bright memories that last throughout the year.",
-    image: "🪔",
-    features: ["Festival of Lights", "Prosperity Wishes", "Traditional Joy", "Family Togetherness"],
-    backgroundImage:
-      "https://the-little-basket.s3.us-east-1.amazonaws.com/images/hampers/diwali/hampers-diwali_6.jpeg",
-    textColor: "text-white",
-    bgGradient: "from-yellow-400/90 via-orange-300/80 to-red-300/90"
-  },
-  {
-    id: "family-occasions",
-    title: "Family Celebrations",
-    subtitle: "Honoring bonds that define us",
-    category: "personal",
-    description:
-      "Express heartfelt thanks with hampers that guests will treasure long after your special day. Each meaningful keepsake reminds loved ones of the joy they helped create and the love that surrounded your celebration.",
-    image: "🎁",
-    features: ["Lasting Keepsakes", "Heartfelt Thanks", "Memory Creation", "Love Tokens"],
-    backgroundImage: IMAGES.WEDDING_RETURN_HAMPERS,
-    textColor: "text-white",
-    bgGradient: "from-brand-amber/90 via-brand-light/80 to-brand-gold/90"
   },
   {
     id: "bridal-party-hampers",
@@ -170,21 +81,21 @@ const EVENTS_DATA = [
     textColor: "text-white",
     bgGradient: "from-brand-gold/90 via-brand-amber/80 to-brand-brown/90"
   },
-
-  // Festival Collections (Note: category is "festival" not "festivals")
   {
-    id: "diwali-magic",
-    title: "Diwali Magic Collection",
-    subtitle: "Illuminate Hearts and Relationships",
-    category: "festival",
+    id: "wedding-return-hamper",
+    title: "Wedding Return Hampers",
+    subtitle: "Show Your Appreciation",
+    category: "wedding",
     description:
-      "Feel the warmth of Diwali through hampers that capture the festival's true spirit. Each carefully curated collection brings traditional joy and modern elegance together, creating moments that strengthen bonds and illuminate relationships for years to come.",
-    image: "✨",
-    features: ["Traditional Sweets", "Premium Items", "Custom Packaging", "Cultural Authenticity"],
-    backgroundImage: IMAGES.DIWALI_MAGIC,
+      "Express your gratitude to guests who made your day special. These thoughtfully curated hampers are a perfect way to say thank you and leave a lasting impression.",
+    image: "👰",
+    features: ["Heartfelt Gratitude", "Memorable Tokens", "Personalized Touch", "Lasting Memories"],
+    backgroundImage: IMAGES.WEDDING_RETURN_HAMPERS,
     textColor: "text-white",
     bgGradient: "from-brand-gold/90 via-brand-amber/80 to-brand-brown/90"
   },
+
+  // Festival Collections
   {
     id: "raksha-bandhan",
     title: "Raksha Bandhan Bonds",
@@ -194,9 +105,22 @@ const EVENTS_DATA = [
       "Honor the unbreakable bond between siblings with hampers that touch the heart. Our Raksha Bandhan collection celebrates this sacred relationship with traditional elements and modern touches that create treasured memories.",
     image: "💕",
     features: ["Sacred Rakhis", "Sweet Traditions", "Heartfelt Messages", "Sibling Love"],
-    backgroundImage: IMAGES.RAKSHA_BANDHAN,
+    backgroundImage: IMAGES.RAKSHABANDHAN,
     textColor: "text-white",
     bgGradient: "from-brand-amber/90 via-brand-light/80 to-brand-gold/90"
+  },
+  {
+    id: "diwali-magic",
+    title: "Diwali Magic Collection",
+    subtitle: "Illuminate Hearts and Relationships",
+    category: "festival",
+    description:
+      "Feel the warmth of Diwali through hampers that capture the festival's true spirit. Each carefully curated collection brings traditional joy and modern elegance together, creating moments that strengthen bonds and illuminate relationships for years to come.",
+    image: "✨",
+    features: ["Traditional Sweets", "Premium Items", "Custom Packaging", "Cultural Authenticity"],
+    backgroundImage: IMAGES.DIWALI,
+    textColor: "text-white",
+    bgGradient: "from-brand-gold/90 via-brand-amber/80 to-brand-brown/90"
   },
   {
     id: "christmas-new-year",
@@ -214,23 +138,17 @@ const EVENTS_DATA = [
 
   // Personal Collections
   {
-    id: "birthday-celebration",
-    title: "Birthday Celebration Magic",
-    subtitle: "Making Special Days Unforgettable",
+    id: "baby-shower",
+    title: "Baby Shower",
+    subtitle: "Celebrating new beginnings with love",
     category: "personal",
     description:
-      "Some goodbyes deserve extraordinary gratitude. Our farewell hampers help you express heartfelt appreciation that honors shared experiences and ensures that departing colleagues, partners, or friends carry your sincere thanks in their hearts.",
-    image: "🎁",
-    features: [
-      "Heartfelt Gratitude",
-      "Memory Preservation",
-      "Relationship Honor",
-      "Lasting Impact"
-    ],
-    backgroundImage:
-      "https://the-little-basket.s3.us-east-1.amazonaws.com/images/gifts/gift_5.jpeg", // Now using optimized WebP (96% smaller!)
+      "Welcome the little miracle with hampers that celebrate new life and motherhood. Our baby shower collections create precious moments of joy, offering thoughtful gifts that honor this beautiful journey and show your love for the growing family.",
+    image: "👶",
+    features: ["New Life Celebration", "Motherhood Honor", "Family Joy", "Precious Moments"],
+    backgroundImage: IMAGES.NEW_BABY_BLESSINGS,
     textColor: "text-white",
-    bgGradient: "from-brand-brown/90 via-brand-amber/80 to-brand-gold/90"
+    bgGradient: "from-pink-400/90 via-blue-300/80 to-yellow-200/90"
   },
   {
     id: "birthday-celebration",
@@ -241,18 +159,31 @@ const EVENTS_DATA = [
       "Transform birthdays into extraordinary celebrations that create lasting memories. Our birthday hampers add magic to special days, showing your loved ones how much they mean to you with thoughtfully curated gifts that bring joy and smiles.",
     image: "🎂",
     features: ["Birthday Magic", "Personal Joy", "Memory Creation", "Love Expression"],
-    backgroundImage:
-      "https://the-little-basket.s3.us-east-1.amazonaws.com/images/hampers/birthday/hampers-birthday_1.jpeg",
+    backgroundImage: IMAGES.ANNIVERSARY_LOVE_STORY,
     textColor: "text-white",
     bgGradient: "from-purple-400/90 via-pink-300/80 to-blue-200/90"
+  },
+  {
+    id: "family-hamper",
+    title: "Family Hampers",
+    subtitle: "Strengthening bonds with thoughtful gifts",
+    category: "personal",
+    description:
+      "Celebrate the love that binds families together. Our family hampers are designed to create shared moments of joy, bringing loved ones closer with thoughtful gifts that express appreciation and strengthen family ties.",
+    image: "👪",
+    features: ["Family Togetherness", "Shared Joy", "Thoughtful Gifts", "Bond Strengthening"],
+    backgroundImage: IMAGES.FAMILY_HAMPER,
+    textColor: "text-white",
+    bgGradient: "from-brand-brown/90 via-brand-amber/80 to-brand-gold/90"
   }
 ];
+
 export default function EventsSection() {
   const router = useRouter();
   const [activeCategory, setActiveCategory] = useState("business");
 
   // Define categories for navigation
-  const categories = ["business", "festivals", "wedding", "personal"];
+  const categories = ["business", "festival", "wedding", "personal"];
 
   // Navigation functions with infinite looping
   const handlePrevious = () => {
@@ -342,9 +273,9 @@ export default function EventsSection() {
             🧑‍💼 Business
           </button>
           <button
-            onClick={() => setActiveCategory("festivals")}
+            onClick={() => setActiveCategory("festival")}
             className={`px-4 md:px-6 py-2 md:py-3 text-sm md:text-base font-semibold rounded-full shadow-lg hover:shadow-xl transition-all cursor-pointer duration-200 ${
-              activeCategory === "festivals"
+              activeCategory === "festival"
                 ? "bg-brand-gold text-brand-brown"
                 : "bg-white/80 text-brand-dark hover:bg-white"
             }`}
@@ -557,53 +488,69 @@ export default function EventsSection() {
                       </div>
                     </div>
 
-                    {/* Benefits Section - Updated for all categories including festivals */}
+                    {/* Benefits Section - Updated for all categories */}
                     <div className='mt-auto'>
                       <div className='mb-4 p-3 sm:p-4 bg-white/80 rounded-lg border border-brand-gold/30 shadow-lg'>
                         <h5 className='flex items-center justify-center gap-2 font-bold text-brand-brown mb-3 text-sm sm:text-base text-center'>
                           {event.category === "business" && "💼 Business Impact"}
                           {event.category === "wedding" && "💒 Wedding Value"}
-                          {event.category === "festivals" && "🎊 Festival Significance"}
+                          {event.category === "festival" && "🎊 Festival Significance"}
                           {event.category === "personal" && "🎂 Personal Value"}
                         </h5>
 
-                        {/* Simplified Benefits List - Updated for festivals */}
+                        {/* Simplified Benefits List - Updated for all events */}
                         <div className='text-center'>
                           <div className='flex items-center justify-center gap-2 mb-2'>
                             <span className='text-brand-gold text-base'>✨</span>
                             <span className='text-xs sm:text-sm font-medium text-gray-700'>
-                              {event.id === "employee-appreciation" && "Personal Recognition"}
+                              {/* Business Events */}
+                              {event.id === "employee-onboarding" && "Personal Recognition"}
                               {event.id === "milestone-celebration" && "Achievement Honor"}
                               {event.id === "corporate-events" && "Event Enhancement"}
-                              {event.id === "wedding-celebration" && "Guest Appreciation"}
-                              {event.id === "family-occasions" && "Family Bonding"}
-                              {event.id === "farewell-appreciation" && "Heartfelt Gratitude"}
+
+                              {/* Wedding Events */}
+                              {event.id === "wedding-welcome-hampers" && "Warm Welcomes"}
+                              {event.id === "bridal-party-hampers" && "Friendship Celebration"}
+                              {event.id === "wedding-return-hamper" && "Heartfelt Gratitude"}
+
+                              {/* Festival Events */}
+                              {event.id === "raksha-bandhan" && "Sacred Rakhis"}
+                              {event.id === "diwali-magic" && "Traditional Sweets"}
+                              {event.id === "christmas-new-year" && "Holiday Magic"}
+
+                              {/* Personal Events */}
                               {event.id === "baby-shower" && "New Life Celebration"}
-                              {event.id === "rakshabandhan" && "Sibling Bond"}
                               {event.id === "birthday-celebration" && "Birthday Magic"}
-                              {event.id === "diwali" && "Festival of Lights"}
+                              {event.id === "family-hamper" && "Family Togetherness"}
                             </span>
                           </div>
                           <div className='flex items-center justify-center gap-2'>
                             <span className='text-brand-gold text-base'>✨</span>
                             <span className='text-xs sm:text-sm font-medium text-gray-700'>
-                              {event.id === "employee-appreciation" &&
-                                "Strengthen loyalty & morale"}
+                              {/* Business Events */}
+                              {event.id === "employee-onboarding" &&
+                                "Strengthen company culture & loyalty"}
                               {event.id === "milestone-celebration" &&
                                 "Create shared pride & motivation"}
-                              {event.id === "corporate-events" && "Enhance corporate gatherings"}
-                              {event.id === "wedding-celebration" &&
-                                "Express gratitude & create memories"}
-                              {event.id === "family-occasions" &&
-                                "Honor family bonds & create warm memories"}
-                              {event.id === "farewell-appreciation" &&
-                                "Express heartfelt gratitude"}
+                              {event.id === "corporate-events" &&
+                                "Strengthen business relationships"}
+
+                              {/* Wedding Events */}
+                              {event.id === "wedding-welcome-hampers" &&
+                                "Express joy & gratitude to guests"}
+                              {event.id === "bridal-party-hampers" && "Honor special supporters"}
+                              {event.id === "wedding-return-hamper" && "Leave lasting impressions"}
+
+                              {/* Festival Events */}
+                              {event.id === "raksha-bandhan" && "Celebrate sacred sibling bonds"}
+                              {event.id === "diwali-magic" && "Illuminate hearts & relationships"}
+                              {event.id === "christmas-new-year" && "Spread joy & fresh beginnings"}
+
+                              {/* Personal Events */}
                               {event.id === "baby-shower" && "Honor motherhood & new beginnings"}
-                              {event.id === "rakshabandhan" &&
-                                "Celebrate sacred sibling traditions"}
                               {event.id === "birthday-celebration" &&
                                 "Create extraordinary celebrations"}
-                              {event.id === "diwali" && "Spread joy, prosperity & togetherness"}
+                              {event.id === "family-hamper" && "Strengthen family bonds"}
                             </span>
                           </div>
                         </div>

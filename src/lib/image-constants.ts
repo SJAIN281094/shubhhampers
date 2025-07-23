@@ -1,40 +1,44 @@
 // Image Constants - Replace these URLs with S3 URLs later
 export const IMAGES = {
   // Logo
-  LOGO_DARK: "/logo-dark.png",
-  LOGO_LIGHT: "/logo-light.png",
-
-  // Existing Event Background Images (these actually exist)
-  BUSINESS_CELEBRATION: "/business-celebration.png",
-  FAMILY_HAMPER: "/family-hamper.png",
-  MILESTONE: "/milestone.png",
-  RETURN_HAMPER: "/return-hamper.png",
-  WEDDING_HAMPERS: "/wedding-hampers.png",
-  WELCOME_GIFT: "/welcome-gift.png",
+  LOGO_DARK: "https://shubhhampers.s3.ap-south-1.amazonaws.com/website/images/logo-dark.png",
+  LOGO_LIGHT: "https://shubhhampers.s3.ap-south-1.amazonaws.com/website/images/logo-light.png",
 
   // Map Collections to Existing Images
   // Business Collections
-  EMPLOYEE_ONBOARDING: "/welcome-gift.png", // Use welcome-gift for onboarding
-  CLIENT_APPRECIATION: "/business-celebration.png", // Use business-celebration for client appreciation
-  CORPORATE_FESTIVALS: "/milestone.png", // Use milestone for corporate festivals
-
-  // Wedding Collections
-  WEDDING_WELCOME_HAMPERS: "/wedding-hampers.png", // Use wedding-hampers for welcome
-  WEDDING_RETURN_HAMPERS: "/return-hamper.png", // Use return-hamper for wedding return
-  BRIDAL_PARTY_HAMPERS: "/family-hamper.png", // Use family-hamper for bridal party
+  EMPLOYEE_ONBOARDING:
+    "https://shubhhampers.s3.ap-south-1.amazonaws.com/website/images/hampers-corporate_1.jpg",
+  MILESTONE: "https://shubhhampers.s3.ap-south-1.amazonaws.com/website/images/welcome-gift_1.png",
+  CORPORATE_EVENT:
+    "https://shubhhampers.s3.ap-south-1.amazonaws.com/website/images/milestone_1.png",
 
   // Festival Collections (map to existing images)
-  DIWALI_MAGIC: "/milestone.png", // Use milestone for Diwali
-  RAKSHA_BANDHAN: "/family-hamper.png", // Use family-hamper for Raksha Bandhan
-  CHRISTMAS_NEW_YEAR: "/business-celebration.png", // Use business-celebration for Christmas
+  DIWALI: "https://shubhhampers.s3.ap-south-1.amazonaws.com/website/images/hampers-diwali_6.jpeg",
+  RAKSHABANDHAN:
+    "https://shubhhampers.s3.ap-south-1.amazonaws.com/website/images/hampers-rakshabandhan_2.jpeg",
+  CHRISTMAS_NEW_YEAR:
+    "https://shubhhampers.s3.ap-south-1.amazonaws.com/website/images/business-celebration.png",
+
+  // Wedding Collections
+  WEDDING_WELCOME_HAMPERS:
+    "https://shubhhampers.s3.ap-south-1.amazonaws.com/website/images/wedding-hampers_1.png",
+  WEDDING_RETURN_HAMPERS:
+    "https://shubhhampers.s3.ap-south-1.amazonaws.com/website/images/wedding-hampers_1.png",
+  BRIDAL_PARTY_HAMPERS:
+    "https://shubhhampers.s3.ap-south-1.amazonaws.com/website/images/wedding-hampers_1.png",
 
   // Personal Collections (map to existing images)
-  BIRTHDAY_CELEBRATION_MAGIC: "/welcome-gift.png", // Use welcome-gift for birthday
-  ANNIVERSARY_LOVE_STORY: "/family-hamper.png", // Use family-hamper for anniversary
-  NEW_BABY_BLESSINGS: "/welcome-gift.png", // Use welcome-gift for baby
+  BIRTHDAY_CELEBRATION:
+    "https://shubhhampers.s3.ap-south-1.amazonaws.com/website/images/gifts/gift_5.jpeg",
+  ANNIVERSARY_LOVE_STORY:
+    "https://shubhhampers.s3.ap-south-1.amazonaws.com/website/images/hampers-birthday_1.jpeg",
+  FAMILY_HAMPER:
+    "https://shubhhampers.s3.ap-south-1.amazonaws.com/website/images/family-hamper_1.png",
+  NEW_BABY_BLESSINGS:
+    "https://shubhhampers.s3.ap-south-1.amazonaws.com/website/images/hampers_baby-shower_1.jpeg",
 
   // Hero/Background Images
-  HERO_BACKGROUND: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/17.jpeg"
+  HERO_BACKGROUND: "https://shubhhampers.s3.ap-south-1.amazonaws.com/website/images/gift_9.jpeg"
 } as const;
 
 // Image Alt Text Constants

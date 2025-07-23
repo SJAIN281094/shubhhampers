@@ -38,13 +38,13 @@ export const metadata: Metadata = {
     locale: "en_US",
     images: [
       {
-        url: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/social-media/social_media_meta_image.png",
+        url: "https://shubhhampers.s3.ap-south-1.amazonaws.com/website/images/social-media/social_media_meta_image.png",
         width: 1200,
         height: 630,
         alt: "Shubhhampers Services - Custom Gift Baskets & Bulk Orders"
       },
       {
-        url: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/social-media/social_media_meta_image_300x200.png",
+        url: "https://shubhhampers.s3.ap-south-1.amazonaws.com/website/images/social-media/social_media_meta_image_300x200.png",
         width: 300,
         height: 200,
         alt: "Custom Hamper Services - Shubhhampers"
@@ -58,7 +58,7 @@ export const metadata: Metadata = {
       "Comprehensive hamper services including custom curation, bulk orders, and business account management. Professional consultation available.",
     images: [
       {
-        url: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/social-media/social_media_meta_image.png",
+        url: "https://shubhhampers.s3.ap-south-1.amazonaws.com/website/images/social-media/social_media_meta_image.png",
         width: 1200,
         height: 630,
         alt: "Shubhhampers Services - Custom Gift Baskets & Bulk Orders"

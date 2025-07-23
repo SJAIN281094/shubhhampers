@@ -11,6 +11,7 @@ import {
   type CarouselApi
 } from "../ui-kit/carousel";
 import { Button } from "../ui-kit/button";
+import { IMAGES } from "../lib/image-constants";
 
 // Corporate Background Elements
 const CorporateBackground = () => {
@@ -20,8 +21,7 @@ const CorporateBackground = () => {
       <div
         className='absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30'
         style={{
-          backgroundImage:
-            "url('https://the-little-basket.s3.us-east-1.amazonaws.com/images/gifts/gift_9.jpeg')"
+          backgroundImage: `url(${IMAGES.HERO_BACKGROUND})`
         }}
       />
 

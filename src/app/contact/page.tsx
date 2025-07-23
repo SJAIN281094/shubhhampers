@@ -35,13 +35,13 @@ export const metadata: Metadata = {
     locale: "en_US",
     images: [
       {
-        url: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/social-media/social_media_meta_image.png",
+        url: "https://shubhhampers.s3.ap-south-1.amazonaws.com/website/images/social-media/social_media_meta_image.png",
         width: 1200,
         height: 630,
         alt: "Contact Shubhhampers - Get Premium Hamper Consultation"
       },
       {
-        url: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/social-media/social_media_meta_image_300x200.png",
+        url: "https://shubhhampers.s3.ap-south-1.amazonaws.com/website/images/social-media/social_media_meta_image_300x200.png",
         width: 300,
         height: 200,
         alt: "Contact Us - Shubhhampers"
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
       "Contact us for premium hamper curation services. Professional consultation for corporate, wedding, and personal hampers.",
     images: [
       {
-        url: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/social-media/social_media_meta_image.png",
+        url: "https://shubhhampers.s3.ap-south-1.amazonaws.com/website/images/social-media/social_media_meta_image.png",
         width: 1200,
         height: 630,
         alt: "Contact Shubhhampers - Get Premium Hamper Consultation"

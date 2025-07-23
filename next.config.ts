@@ -20,9 +20,9 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "the-little-basket.s3.us-east-1.amazonaws.com",
+        hostname: "shubhhampers.s3.ap-south-1.amazonaws.com",
         port: "",
-        pathname: "/images/**"
+        pathname: "/website/images/**"
       }
     ]
   },

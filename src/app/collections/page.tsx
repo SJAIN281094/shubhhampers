@@ -93,13 +93,13 @@ export async function generateMetadata({
       locale: "en_US",
       images: [
         {
-          url: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/social-media/social_media_meta_image.png",
+          url: "https://shubhhampers.s3.ap-south-1.amazonaws.com/website/images/social-media/social_media_meta_image.png",
           width: 1200,
           height: 630,
           alt: "Shubhhampers Collections - Premium Gift Hamper Catalog"
         },
         {
-          url: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/social-media/social_media_meta_image_300x200.png",
+          url: "https://shubhhampers.s3.ap-south-1.amazonaws.com/website/images/social-media/social_media_meta_image_300x200.png",
           width: 300,
           height: 200,
           alt: "Gift Hamper Collections - Shubhhampers"
@@ -112,7 +112,7 @@ export async function generateMetadata({
       description: description,
       images: [
         {
-          url: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/social-media/social_media_meta_image.png",
+          url: "https://shubhhampers.s3.ap-south-1.amazonaws.com/website/images/social-media/social_media_meta_image.png",
           width: 1200,
           height: 630,
           alt: "Shubhhampers Collections - Premium Gift Hamper Catalog"
