@@ -17,6 +17,39 @@ so when you write or design something. CURRENT THEME SHOULD NOT IMPACT and also 
 --brand-light: #f1dea8; --brand-gold: #e9c579; --brand-amber: #daa755;
 --brand-brown: #9f6920; --brand-dark: #462506;
 
+## 🧬 ATOMIC DESIGN COMPONENT RULES (MANDATORY)
+
+**ALWAYS follow Atomic Design structure when creating ANY component:**
+
+### Component Creation Process:
+
+1. **FIRST**: Break down the new component into its smallest elements
+2. **CHECK**: Are any of these elements already available as atoms? → USE THEM
+3. **CHECK**: Are any combinations available as molecules? → USE THEM
+4. **CHECK**: Are any sections available as organisms? → USE THEM
+5. **CREATE**: Only create NEW components in the relevant category if they don't exist
+
+### Component Hierarchy:
+
+- **🔬 Atoms**: Basic elements (Button, Input, Typography, Icon) → Location: `src/ui-kit/`
+- **🧪 Molecules**: Simple combinations (SearchBox, ContactCard, FormField) → Location: `src/components/molecules/`
+- **🦠 Organisms**: Complex sections (Header, Footer, ProductGrid) → Location: `src/components/organisms/`
+- **📋 Templates**: Page layouts → Location: `src/components/templates/`
+- **📄 Pages**: Actual content → Location: `src/app/`
+
+### Example Process:
+
+```
+Creating ContactForm component:
+1. Break down: Form + Label + Input + Button + ErrorMessage
+2. Check atoms: Button exists in ui-kit/ → USE IT
+3. Check atoms: Input exists in ui-kit/ → USE IT
+4. Check molecules: FormField (Label+Input+Error) doesn't exist → CREATE as molecule
+5. Result: ContactForm organism uses FormField molecule + Button atom
+```
+
+**RULE**: Never duplicate existing components. Always reuse from lower levels of the hierarchy.
+
 ## 🔒 SECURITY GAPS (HIGH PRIORITY)
 
 - No CSP headers
