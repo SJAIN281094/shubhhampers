@@ -9,9 +9,12 @@ import WhyChooseUs from "@components/WhyChooseUs";
 import AboutCTA from "@components/AboutCTA";
 
 export const metadata: Metadata = {
-  title: "About Shubhhampers - Our Story, Mission & Values | Premium Hamper Curation",
+  title: "About Us - Premium Gift Hamper Company | Shubhhampers",
   description:
-    "Learn about Shubhhampers' mission to build meaningful relationships through thoughtful hamper curation. Discover our authentic approach, core values, and commitment to premium quality service.",
+    "Meet Shubhhampers - premium gift hamper company building meaningful relationships through thoughtful curation. Our story, mission & values.",
+  alternates: {
+    canonical: "https://www.shubhhampers.com/about"
+  },
   keywords: [
     "about Shubhhampers",
     "hamper company story",
@@ -26,7 +29,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     type: "website",
-    title: "About Shubhhampers - Our Story & Mission",
+    title: "About Shubhhampers - Premium Gift Hamper Company",
     description:
       "Learn about our mission to build meaningful relationships through thoughtful hamper curation. Authentic approach, premium quality.",
     url: "https://www.shubhhampers.com/about",
@@ -37,18 +40,19 @@ export const metadata: Metadata = {
         url: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/social-media/social_media_meta_image.png",
         width: 1200,
         height: 630,
-        alt: "Shubhhampers - Premium Gift Hampers"
+        alt: "About Shubhhampers - Our Story and Mission"
       },
       {
         url: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/social-media/social_media_meta_image_300x200.png",
-        width: 1200,
-        height: 630,
-        alt: "Shubhhampers - Premium Gift Hampers"
+        width: 300,
+        height: 200,
+        alt: "Shubhhampers Team - Premium Gift Hampers"
       }
     ]
   },
   twitter: {
-    title: "About Shubhhampers - Our Story & Mission",
+    card: "summary_large_image",
+    title: "About Shubhhampers - Premium Gift Hamper Company",
     description:
       "Learn about our mission to build meaningful relationships through thoughtful hamper curation. Authentic approach, premium quality.",
     images: [
@@ -56,15 +60,11 @@ export const metadata: Metadata = {
         url: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/social-media/social_media_meta_image.png",
         width: 1200,
         height: 630,
-        alt: "Shubhhampers - Premium Gift Hampers"
-      },
-      {
-        url: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/social-media/social_media_meta_image_300x200.png",
-        width: 300,
-        height: 200,
-        alt: "Shubhhampers - Premium Gift Hampers"
+        alt: "About Shubhhampers - Our Story and Mission"
       }
-    ]
+    ],
+    creator: "@shubhhampers",
+    site: "@shubhhampers"
   },
   other: {
     "pinterest-rich-pin": "true",

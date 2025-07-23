@@ -160,7 +160,7 @@ Contact:
 
 ### Quick Access Bar Features
 
-- **Phone**: +91 99999 99999
+- **Phone**: +91 96858 47274
 - **Email**: connect@shubhhampers.com
 - **WhatsApp**: Direct messaging integration
 - **Quick Quote**: Fast inquiry option

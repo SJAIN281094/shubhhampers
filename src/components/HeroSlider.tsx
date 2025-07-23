@@ -131,7 +131,13 @@ export default function HeroSlider() {
   const [api, setApi] = useState<CarouselApi>();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
   const autoplayRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Prevent hydration mismatch
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   // Memoized navigation handlers to prevent re-renders
   const navigateToCollections = useCallback(() => {
@@ -151,6 +157,7 @@ export default function HeroSlider() {
 
   // Optimized autoplay with pause/resume functionality
   const startAutoplay = useCallback(() => {
+    if (!isMounted) return; // Only start autoplay after mount
     if (autoplayRef.current) clearInterval(autoplayRef.current);
 
     autoplayRef.current = setInterval(() => {
@@ -158,7 +165,7 @@ export default function HeroSlider() {
         api?.scrollNext();
       }
     }, 6000); // Increased to 6 seconds for better UX
-  }, [api, isPaused]);
+  }, [api, isPaused, isMounted]);
 
   const stopAutoplay = useCallback(() => {
     if (autoplayRef.current) {
@@ -178,7 +185,7 @@ export default function HeroSlider() {
 
   // Main effect for carousel setup
   useEffect(() => {
-    if (!api) return;
+    if (!api || !isMounted) return;
 
     // Set initial slide
     setCurrentSlide(api.selectedScrollSnap());
@@ -199,10 +206,12 @@ export default function HeroSlider() {
       api.off("select", handleSelect);
       stopAutoplay();
     };
-  }, [api, startAutoplay, stopAutoplay]);
+  }, [api, startAutoplay, stopAutoplay, isMounted]);
 
   // Handle page visibility changes (pause when tab is not active)
   useEffect(() => {
+    if (!isMounted) return;
+
     const handleVisibilityChange = () => {
       if (document.visibilityState === "hidden") {
         stopAutoplay();
@@ -213,16 +222,18 @@ export default function HeroSlider() {
 
     document.addEventListener("visibilitychange", handleVisibilityChange);
     return () => document.removeEventListener("visibilitychange", handleVisibilityChange);
-  }, [startAutoplay, stopAutoplay]);
+  }, [startAutoplay, stopAutoplay, isMounted]);
 
   // Handle autoplay state changes
   useEffect(() => {
+    if (!isMounted) return;
+
     if (isPaused) {
       stopAutoplay();
     } else {
       startAutoplay();
     }
-  }, [isPaused, startAutoplay, stopAutoplay]);
+  }, [isPaused, startAutoplay, stopAutoplay, isMounted]);
 
   return (
     <section
@@ -230,6 +241,11 @@ export default function HeroSlider() {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
+      {/* SEO-optimized H1 tag for the homepage - hidden but accessible */}
+      <h1 className='sr-only'>
+        Premium Gift Hampers & Baskets for Corporate, Wedding & Personal Celebrations | Shubhhampers
+      </h1>
+
       <Carousel
         setApi={setApi}
         opts={{
@@ -253,13 +269,13 @@ export default function HeroSlider() {
                       {slide.icon}
                     </div>
 
-                    {/* Title & Subtitle */}
-                    <h1 className='font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-brand-dark mb-4 md:mb-6 leading-tight tracking-wide animate-fade-in-delay-1'>
+                    {/* Title & Subtitle - Using H2 for slider titles */}
+                    <h2 className='font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-brand-dark mb-4 md:mb-6 leading-tight tracking-wide animate-fade-in-delay-1'>
                       {slide.title}
-                    </h1>
-                    <h2 className='text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-brand-brown mb-6 md:mb-8 animate-fade-in-delay-2'>
-                      {slide.subtitle}
                     </h2>
+                    <h3 className='text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-brand-brown mb-6 md:mb-8 animate-fade-in-delay-2'>
+                      {slide.subtitle}
+                    </h3>
 
                     {/* Description */}
                     <p className='text-base sm:text-lg md:text-xl lg:text-2xl text-gray-700 mb-8 md:mb-10 leading-relaxed max-w-3xl mx-auto animate-fade-in-delay-2 px-4'>

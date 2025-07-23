@@ -319,7 +319,7 @@ export default function CollectionsClient() {
             </div>
 
             <h1 className='font-display text-5xl sm:text-6xl lg:text-7xl font-bold text-brand-dark mb-6 tracking-wide'>
-              Discover Our Collections
+              Premium Gift Hamper Collections
             </h1>
 
             <p className='text-xl lg:text-2xl text-gray-700 mb-8 leading-relaxed'>

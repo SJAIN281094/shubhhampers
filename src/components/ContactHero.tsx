@@ -13,7 +13,7 @@ export default function ContactHero() {
           </div>
 
           <h1 className='font-display text-5xl sm:text-6xl lg:text-7xl font-bold text-brand-dark mb-6 tracking-wide'>
-            Contact Us
+            Contact Premium Hamper Company
           </h1>
 
           <p className='text-xl lg:text-2xl text-gray-700 mb-8 leading-relaxed'>

@@ -3,8 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "next dev",
     "build": "next build",
+    "build:production": "BUILD_ID=$(date +%s) npm_package_version=$(node -p \"require('./package.json').version\")-$(date +%s) next build",
+    "build:analyze": "ANALYZE=true next build",
     "start": "next start",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
@@ -14,7 +16,11 @@
     "compress-images": "node scripts/compress-images.js",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "prepare": "husky"
+    "prepare": "husky",
+    "deploy": "npm run build:production && npm run start",
+    "cache:clear": "rm -rf .next && npm run build",
+    "perf:analyze": "npm run build:analyze",
+    "perf:monitor": "npm run build && npm run start"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.14",

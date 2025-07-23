@@ -1,12 +1,30 @@
 import type { Metadata } from "next";
 import Script from "next/script";
+import dynamic from "next/dynamic";
+import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
+
+// Font configurations
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-display" });
+
+// Dynamic imports for client-side only components to prevent hydration issues
+const PerformanceOptimizer = dynamic(() => import("@components/PerformanceOptimizer"));
+
+const CacheInvalidator = dynamic(() => import("@components/CacheInvalidator"));
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.shubhhampers.com"),
-  title: "Shubhhampers - Premium Hampers that Build Relationships",
+  // Global fallback metadata - will be overridden by page-specific metadata
+  title: {
+    default: "Premium Gift Hampers & Baskets | Shubhhampers",
+    template: "%s | Shubhhampers"
+  },
   description:
-    "Shubhhampers specializes in creating unique and personalized hampers for corporate clients, weddings, festivals, and special occasions. Building meaningful relationships through thoughtful hamper curation.",
+    "Premium gift hampers for corporate clients, weddings & festivals. Custom curated baskets that build meaningful relationships. Order today!",
+  alternates: {
+    canonical: "https://www.shubhhampers.com"
+  },
   icons: {
     icon: "/logo-dark.png",
     shortcut: "/logo-dark.png",
@@ -96,30 +114,10 @@ export const metadata: Metadata = {
   ],
   creator: "Shubhhampers",
   publisher: "Shubhhampers",
-  openGraph: {
-    type: "website",
-    locale: "en_US",
-    siteName: "Shubhhampers",
-    title: "Shubhhampers - Premium Hampers that Build Relationships",
-    description:
-      "Transform your relationships with thoughtfully curated hampers. Corporate appreciation, employee recognition, weddings, festivals & personal celebrations.",
-    images: [
-      {
-        url: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/social-media/social_media_meta_image.png",
-        width: 1200,
-        height: 630,
-        alt: "Shubhhampers - Premium Hampers that Build Relationships"
-      }
-    ]
-  },
+  // Removed duplicate Open Graph tags - each page will define its own
+  // Global Twitter fallback
   twitter: {
     card: "summary_large_image",
-    title: "Shubhhampers - Premium Hampers that Build Relationships",
-    description:
-      "Discover handcrafted hampers perfect for corporate appreciation, weddings, festivals, and personal celebrations.",
-    images: [
-      "https://the-little-basket.s3.us-east-1.amazonaws.com/images/social-media/social_media_meta_image.png"
-    ],
     creator: "@shubhhampers",
     site: "@shubhhampers"
   }
@@ -133,11 +131,17 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <head>
-        {/* Optimized Font Loading with preconnect */}
+        {/* Optimized Font Loading with preconnect and font-display swap */}
         <link rel='preconnect' href='https://fonts.googleapis.com' />
         <link rel='preconnect' href='https://fonts.gstatic.com' crossOrigin='anonymous' />
+
+        {/* Load fonts with font-display swap for better performance */}
         <link
-          href='https://fonts.googleapis.com/css2?family=Bonheur+Royale&family=Poppins:wght@400;500&display=swap'
+          href='https://fonts.googleapis.com/css2?family=Bonheur+Royale&display=swap'
+          rel='stylesheet'
+        />
+        <link
+          href='https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap'
           rel='stylesheet'
         />
 
@@ -178,7 +182,13 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className='antialiased'>
+      <body className={`${inter.variable} ${playfair.variable} antialiased`}>
+        {/* Performance Optimizer - Preloads critical resources and optimizes rendering */}
+        <PerformanceOptimizer />
+
+        {/* Cache Invalidator - Automatically detects new deployments */}
+        <CacheInvalidator checkInterval={3 * 60 * 1000} />
+
         {/* Google Tag Manager (noscript) */}
         <noscript>
           <iframe
@@ -224,12 +234,6 @@ export default function RootLayout({
             />
           </>
         )}
-
-        {/*
-          Instagram Embed Script removed from global scope.
-          Use OptimizedInstagramEmbed component instead for better performance.
-          Script will only load when Instagram content is actually visible.
-        */}
       </body>
     </html>
   );

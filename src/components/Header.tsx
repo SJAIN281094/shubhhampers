@@ -9,6 +9,7 @@ import MobileNavigation from "./MobileNavigation";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
   const ticking = useRef(false);
 
   // Throttled scroll handler for better performance
@@ -32,13 +33,21 @@ export default function Header() {
     }
   }, []);
 
+  // Prevent hydration mismatch
   useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  useEffect(() => {
+    // Only run after component is mounted
+    if (!isMounted) return;
+
     // Set initial scroll state
     handleScroll();
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [handleScroll]);
+  }, [handleScroll, isMounted]);
 
   return (
     <>

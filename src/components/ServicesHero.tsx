@@ -12,7 +12,7 @@ export default function ServicesHero() {
           </div>
 
           <h1 className='font-display text-5xl sm:text-6xl lg:text-7xl font-bold text-brand-dark mb-6 tracking-wide'>
-            Services That Strengthen Bonds
+            Custom Gift Baskets & Bulk Hamper Services
           </h1>
 
           <p className='text-xl lg:text-2xl text-gray-700 mb-8 leading-relaxed'>

@@ -2,20 +2,22 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 import { Button } from "@ui-kit/button";
-import OptimizedImage from "./OptimizedImage";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { handleWhatsApp } from "../lib/contact-utils";
+import { IMAGES } from "../lib/image-constants";
 
-// Enhanced events data with optimized image paths
+// Events data matching actual collections from CollectionsClient.tsx
 const EVENTS_DATA = [
+  // Business Collections
   {
-    id: "employee-appreciation",
-    title: "Employee Appreciation",
-    subtitle: "Recognizing the hearts that make success possible",
+    id: "employee-onboarding",
+    title: "Employee Onboarding Excellence",
+    subtitle: "Welcome New Team Members with Heart",
     category: "business",
     description:
-      "Every exceptional team member deserves recognition that touches their heart. Our employee appreciation hampers transform routine acknowledgments into meaningful moments that strengthen loyalty, boost morale, and create lasting emotional connections within your organization.",
+      "Transform first days into lasting memories. Our thoughtfully curated onboarding hampers help new team members feel genuinely valued from day one, creating positive impressions that strengthen company culture and employee loyalty.",
     image: "🎯",
     features: ["Personal Recognition", "Milestone Celebration", "Team Building", "Loyalty Boost"],
     backgroundImage:
@@ -50,15 +52,48 @@ const EVENTS_DATA = [
     bgGradient: "from-brand-gold/90 via-brand-amber/80 to-brand-brown/90"
   },
   {
-    id: "wedding-celebration",
-    title: "Wedding Celebrations",
-    subtitle: "Sharing joy with everyone who matters",
+    id: "client-appreciation",
+    title: "Client Appreciation Excellence",
+    subtitle: "Strengthen Business Partnerships",
+    category: "business",
+    description:
+      "Show clients they're truly valued with hampers that speak volumes about your gratitude. Every carefully selected item reflects your commitment to excellence and deepens business relationships that drive mutual success.",
+    image: "🤝",
+    features: [
+      "Premium Quality",
+      "Custom Branding",
+      "Executive Presentation",
+      "Relationship Building"
+    ],
+    backgroundImage: IMAGES.CLIENT_APPRECIATION,
+    textColor: "text-white",
+    bgGradient: "from-brand-brown/90 via-brand-gold/80 to-brand-amber/90"
+  },
+  {
+    id: "business-festivals",
+    title: "Corporate Festival Celebrations",
+    subtitle: "Unite Teams Through Tradition",
+    category: "business",
+    description:
+      "Honor traditions while building stronger workplace bonds. Our corporate festival hampers help teams celebrate together, creating shared moments of joy that transcend professional boundaries and build lasting connections.",
+    image: "🏢",
+    features: ["Cultural Sensitivity", "Team Unity", "Traditional Elements", "Modern Presentation"],
+    backgroundImage: IMAGES.CORPORATE_FESTIVALS,
+    textColor: "text-white",
+    bgGradient: "from-brand-light/90 via-brand-gold/80 to-brand-brown/90"
+  },
+
+  // Wedding Collections
+  {
+    id: "wedding-welcome-hampers",
+    title: "Wedding Room Hampers",
+    subtitle: "Embrace Guests with Love",
     category: "wedding",
     description:
-      "Your wedding day joy deserves to be shared with every cherished guest. Our wedding hampers help you express gratitude while creating beautiful memories that your loved ones will treasure as tokens of your special day and the love you share.",
+      "Welcome your beloved guests with hampers that express the overflowing joy in your hearts. Create that perfect first moment when loved ones feel the warmth of your celebration and the depth of your gratitude for their presence.",
     image: "💒",
-    features: ["Guest Appreciation", "Love Sharing", "Memory Creation", "Joy Expression"],
-    backgroundImage: "wedding-hampers.png", // Now using optimized WebP (95% smaller!)
+    features: ["Warm Welcomes", "Guest Appreciation", "Traditional Touch", "Joyful Presentation"],
+    backgroundImage: IMAGES.WEDDING_WELCOME_HAMPERS,
     textColor: "text-white",
     bgGradient: "from-brand-light/90 via-brand-gold/80 to-brand-amber/90"
   },
@@ -110,17 +145,78 @@ const EVENTS_DATA = [
     subtitle: "Honoring bonds that define us",
     category: "personal",
     description:
-      "Family moments deserve special recognition. Our family celebration hampers help you honor the people who matter most, creating warm memories and strengthening the bonds that form the foundation of your happiness and success in life.",
-    image: "💝",
-    features: ["Family Bonding", "Love Expression", "Tradition Honor", "Heart Connections"],
-    backgroundImage: "family-hamper.png", // Now using optimized WebP (94% smaller!)
+      "Express heartfelt thanks with hampers that guests will treasure long after your special day. Each meaningful keepsake reminds loved ones of the joy they helped create and the love that surrounded your celebration.",
+    image: "🎁",
+    features: ["Lasting Keepsakes", "Heartfelt Thanks", "Memory Creation", "Love Tokens"],
+    backgroundImage: IMAGES.WEDDING_RETURN_HAMPERS,
     textColor: "text-white",
     bgGradient: "from-brand-amber/90 via-brand-light/80 to-brand-gold/90"
   },
   {
-    id: "farewell-appreciation",
-    title: "Farewell & Thank You",
-    subtitle: "Gratitude that echoes beyond goodbye",
+    id: "bridal-party-hampers",
+    title: "Bridesmaid Hampers",
+    subtitle: "Honor Your Closest Supporters",
+    category: "wedding",
+    description:
+      "Show your bridal party how much their love and support means to you. These specially curated hampers express gratitude to the special people who've stood by your side through your journey to this beautiful moment.",
+    image: "👰",
+    features: [
+      "Friendship Celebration",
+      "Support Recognition",
+      "Personal Touch",
+      "Beautiful Memories"
+    ],
+    backgroundImage: IMAGES.BRIDAL_PARTY_HAMPERS,
+    textColor: "text-white",
+    bgGradient: "from-brand-gold/90 via-brand-amber/80 to-brand-brown/90"
+  },
+
+  // Festival Collections (Note: category is "festival" not "festivals")
+  {
+    id: "diwali-magic",
+    title: "Diwali Magic Collection",
+    subtitle: "Illuminate Hearts and Relationships",
+    category: "festival",
+    description:
+      "Feel the warmth of Diwali through hampers that capture the festival's true spirit. Each carefully curated collection brings traditional joy and modern elegance together, creating moments that strengthen bonds and illuminate relationships for years to come.",
+    image: "✨",
+    features: ["Traditional Sweets", "Premium Items", "Custom Packaging", "Cultural Authenticity"],
+    backgroundImage: IMAGES.DIWALI_MAGIC,
+    textColor: "text-white",
+    bgGradient: "from-brand-gold/90 via-brand-amber/80 to-brand-brown/90"
+  },
+  {
+    id: "raksha-bandhan",
+    title: "Raksha Bandhan Bonds",
+    subtitle: "Celebrate Sacred Sibling Love",
+    category: "festival",
+    description:
+      "Honor the unbreakable bond between siblings with hampers that touch the heart. Our Raksha Bandhan collection celebrates this sacred relationship with traditional elements and modern touches that create treasured memories.",
+    image: "💕",
+    features: ["Sacred Rakhis", "Sweet Traditions", "Heartfelt Messages", "Sibling Love"],
+    backgroundImage: IMAGES.RAKSHA_BANDHAN,
+    textColor: "text-white",
+    bgGradient: "from-brand-amber/90 via-brand-light/80 to-brand-gold/90"
+  },
+  {
+    id: "christmas-new-year",
+    title: "Christmas & New Year Celebration",
+    subtitle: "Joy, Hope, and Fresh Beginnings",
+    category: "festival",
+    description:
+      "Welcome the season of giving and new possibilities with hampers that inspire hope and spread joy. Create magical moments that celebrate achievements and set the tone for wonderful new beginnings ahead.",
+    image: "🎄",
+    features: ["Holiday Magic", "New Year Inspiration", "Seasonal Joy", "Hope & Renewal"],
+    backgroundImage: IMAGES.CHRISTMAS_NEW_YEAR,
+    textColor: "text-white",
+    bgGradient: "from-brand-light/90 via-brand-gold/80 to-brand-brown/90"
+  },
+
+  // Personal Collections
+  {
+    id: "birthday-celebration",
+    title: "Birthday Celebration Magic",
+    subtitle: "Making Special Days Unforgettable",
     category: "personal",
     description:
       "Some goodbyes deserve extraordinary gratitude. Our farewell hampers help you express heartfelt appreciation that honors shared experiences and ensures that departing colleagues, partners, or friends carry your sincere thanks in their hearts.",
@@ -221,7 +317,7 @@ export default function EventsSection() {
               </div>
               <div className='p-3'>
                 <div className='text-xl md:text-2xl mb-2'>🪔</div>
-                <p className='text-xs md:text-sm font-semibold text-brand-brown'>Festivals</p>
+                <p className='text-xs md:text-sm font-semibold text-brand-brown'>Festival</p>
                 <p className='text-xs text-brand-dark'>Cultural traditions</p>
               </div>
               <div className='p-3'>
@@ -253,7 +349,7 @@ export default function EventsSection() {
                 : "bg-white/80 text-brand-dark hover:bg-white"
             }`}
           >
-            🪔 Festivals
+            🪔 Festival
           </button>
           <button
             onClick={() => setActiveCategory("wedding")}
@@ -309,15 +405,31 @@ export default function EventsSection() {
                 key={event.id}
                 className='group relative overflow-hidden rounded-2xl bg-white shadow-xl hover:shadow-2xl transition-shadow duration-200 transform hover:scale-[1.02] z-10'
                 style={{
-                  animationDelay: `${index * 50}ms`
+                  animationDelay: `${index * 50}ms`,
+                  willChange: "transform, box-shadow",
+                  backfaceVisibility: "hidden",
+                  transform: "translateZ(0)"
                 }}
               >
                 {/* Card Background - Clean Initial State, Hover Effects */}
-                <div className='relative min-h-[600px] sm:min-h-[650px] md:min-h-[600px] lg:min-h-[650px] h-full bg-white group-hover:bg-gradient-to-br group-hover:from-brand-gold/20 group-hover:via-brand-light group-hover:to-brand-amber/10 transition-colors duration-200'>
-                  {/* Optimized Background Image - 94% smaller with zero quality loss! */}
+                <div
+                  className='relative min-h-[600px] sm:min-h-[650px] md:min-h-[600px] lg:min-h-[650px] h-full bg-white group-hover:bg-gradient-to-br group-hover:from-brand-gold/20 group-hover:via-brand-light group-hover:to-brand-amber/10 transition-all duration-300 ease-out'
+                  style={{
+                    willChange: "background-color",
+                    backfaceVisibility: "hidden"
+                  }}
+                >
+                  {/* Simple Background Image */}
                   {event.backgroundImage && (
-                    <div className='absolute inset-0 opacity-100 group-hover:opacity-30 transition-opacity duration-200'>
-                      <OptimizedImage
+                    <div
+                      className='absolute inset-0 opacity-100 group-hover:opacity-30 transition-opacity duration-300 ease-out'
+                      style={{
+                        willChange: "opacity",
+                        backfaceVisibility: "hidden",
+                        transform: "translateZ(0)"
+                      }}
+                    >
+                      <Image
                         src={event.backgroundImage}
                         alt={event.title}
                         fill
@@ -325,28 +437,67 @@ export default function EventsSection() {
                         sizes='(max-width: 768px) 100vw, 50vw'
                         loading='lazy'
                         priority={false}
-                        quality={90}
+                        quality={85}
                       />
                     </div>
                   )}
 
                   {/* Subtle Golden Gradient Overlay for Premium Feel */}
-                  <div className='absolute inset-0 bg-gradient-to-br from-brand-gold/5 via-transparent to-brand-amber/8 group-hover:opacity-60 transition-opacity duration-200' />
+                  <div
+                    className='absolute inset-0 bg-gradient-to-br from-brand-gold/5 via-transparent to-brand-amber/8 group-hover:opacity-60 transition-opacity duration-300 ease-out'
+                    style={{
+                      willChange: "opacity",
+                      backfaceVisibility: "hidden"
+                    }}
+                  />
 
                   {/* Overlay for better text readability in initial state */}
-                  <div className='absolute inset-0 bg-gradient-to-t from-black/50 via-black/15 to-transparent group-hover:from-brand-gold/15 group-hover:via-transparent group-hover:to-brand-amber/10 transition-colors duration-200' />
+                  <div
+                    className='absolute inset-0 bg-gradient-to-t from-black/50 via-black/15 to-transparent group-hover:from-brand-gold/15 group-hover:via-transparent group-hover:to-brand-amber/10 transition-all duration-300 ease-out'
+                    style={{
+                      willChange: "background-image",
+                      backfaceVisibility: "hidden"
+                    }}
+                  />
 
                   {/* Hover Decorative Elements */}
-                  <div className='absolute top-4 right-4 w-8 h-8 bg-brand-gold/30 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200 animate-pulse' />
-                  <div className='absolute bottom-20 right-4 w-6 h-6 bg-brand-amber/40 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200 animate-bounce' />
+                  <div
+                    className='absolute top-4 right-4 w-8 h-8 bg-brand-gold/30 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 ease-out animate-pulse'
+                    style={{
+                      willChange: "opacity, transform",
+                      backfaceVisibility: "hidden",
+                      transform: "translateZ(0)"
+                    }}
+                  />
+                  <div
+                    className='absolute bottom-20 right-4 w-6 h-6 bg-brand-amber/40 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 ease-out animate-bounce'
+                    style={{
+                      willChange: "opacity, transform",
+                      backfaceVisibility: "hidden",
+                      transform: "translateZ(0)"
+                    }}
+                  />
 
                   {/* INITIAL STATE - Background Image with Enhanced Title Tag */}
-                  <div className='absolute inset-0 flex flex-col opacity-100 group-hover:opacity-0 transition-opacity duration-200'>
+                  <div
+                    className='absolute inset-0 flex flex-col opacity-100 group-hover:opacity-0 transition-all duration-300 ease-out'
+                    style={{
+                      willChange: "opacity, transform",
+                      backfaceVisibility: "hidden",
+                      transform: "translateZ(0)"
+                    }}
+                  >
                     {/* Enhanced Title Tag at Bottom */}
                     <div className='absolute bottom-6 left-1/2 transform -translate-x-1/2'>
                       <div className='relative group'>
                         {/* Tag Shadow/Glow Effect */}
-                        <div className='absolute inset-0 bg-gradient-to-r from-brand-gold to-brand-amber rounded-full blur-sm opacity-30 group-hover:opacity-50 transition-opacity duration-150' />
+                        <div
+                          className='absolute inset-0 bg-gradient-to-r from-brand-gold to-brand-amber rounded-full blur-sm opacity-30 group-hover:opacity-50 transition-opacity duration-300 ease-out'
+                          style={{
+                            willChange: "opacity",
+                            backfaceVisibility: "hidden"
+                          }}
+                        />
 
                         {/* Main Tag */}
                         <div className='relative bg-gradient-to-r from-white via-brand-light/95 to-white backdrop-blur-sm px-6 py-3 rounded-full border border-brand-gold/30 shadow-xl'>
@@ -366,16 +517,30 @@ export default function EventsSection() {
                   </div>
 
                   {/* HOVER STATE - Full Content Reveal */}
-                  <div className='absolute inset-0 p-6 sm:p-8 flex flex-col opacity-0 group-hover:opacity-100 transition-opacity duration-200 ease-out'>
+                  <div
+                    className='absolute inset-0 p-6 sm:p-8 flex flex-col opacity-0 group-hover:opacity-100 transition-all duration-300 ease-out'
+                    style={{
+                      willChange: "opacity, transform",
+                      backfaceVisibility: "hidden",
+                      transform: "translateZ(0)"
+                    }}
+                  >
                     {/* Header with Enhanced Icon */}
                     <div className='text-center mb-6'>
-                      <div className='w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-brand-amber via-brand-gold to-brand-brown rounded-xl flex items-center justify-center shadow-lg mx-auto mb-4 animate-bounce'>
+                      <div
+                        className='w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-brand-amber via-brand-gold to-brand-brown rounded-xl flex items-center justify-center shadow-lg mx-auto mb-4 animate-bounce'
+                        style={{
+                          willChange: "transform",
+                          backfaceVisibility: "hidden",
+                          transform: "translateZ(0)"
+                        }}
+                      >
                         <span className='text-2xl sm:text-3xl filter drop-shadow-lg'>
                           {event.image}
                         </span>
                       </div>
 
-                      <h3 className='font-display text-xl sm:text-2xl md:text-xl lg:text-2xl font-bold text-brand-dark leading-tight tracking-wide drop-shadow-sm mb-2'>
+                      <h3 className='font-display text-2xl sm:text-3xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-brand-dark leading-tight tracking-wide drop-shadow-sm mb-2'>
                         {event.title}
                       </h3>
                       <h4 className='text-sm sm:text-base md:text-sm lg:text-base font-medium text-brand-brown tracking-wider uppercase drop-shadow-sm opacity-90'>
@@ -450,9 +615,8 @@ export default function EventsSection() {
                           onClick={() => router.push("/collections")}
                           className={`${event.bgGradient} text-white font-semibold px-3 sm:px-4 py-2 text-xs sm:text-sm rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-200 flex items-center justify-center gap-1 sm:gap-2 flex-1 cursor-pointer`}
                         >
-                          <span>Explore</span>
                           <svg
-                            className='w-3 h-3 sm:w-4 sm:h-4 transition-transform duration-200 group-hover:translate-x-1'
+                            className='w-4 h-4 transition-transform duration-300 ease-out group-hover:translate-x-1'
                             fill='none'
                             stroke='currentColor'
                             viewBox='0 0 24 24'
@@ -464,6 +628,7 @@ export default function EventsSection() {
                               d='M9 5l7 7-7 7'
                             />
                           </svg>
+                          <span>Explore</span>
                         </button>
                         <button
                           onClick={() => router.push("/contact")}
@@ -477,8 +642,21 @@ export default function EventsSection() {
                   </div>
 
                   {/* Status Indicator - Always Visible */}
-                  <div className='absolute bottom-4 right-4 transition-transform duration-200'>
-                    <div className='w-3 h-3 bg-brand-gold/70 rounded-full animate-pulse group-hover:bg-brand-gold group-hover:scale-110' />
+                  <div
+                    className='absolute bottom-4 right-4 transition-transform duration-300 ease-out'
+                    style={{
+                      willChange: "transform",
+                      backfaceVisibility: "hidden",
+                      transform: "translateZ(0)"
+                    }}
+                  >
+                    <div
+                      className='w-3 h-3 bg-brand-gold/70 rounded-full animate-pulse group-hover:bg-brand-gold group-hover:scale-110 transition-all duration-300 ease-out'
+                      style={{
+                        willChange: "transform, background-color",
+                        backfaceVisibility: "hidden"
+                      }}
+                    />
                   </div>
                 </div>
               </div>
@@ -528,7 +706,7 @@ export default function EventsSection() {
           </p>
           <div className='flex flex-wrap justify-center gap-4'>
             <Button
-              onClick={() => router.push("/collections")}
+              onClick={() => router.push("/collections?category=all")}
               className='bg-brand-brown text-brand-light font-semibold px-6 py-3 sm:px-8 sm:py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 text-sm sm:text-base md:text-lg'
             >
               🏢 Start Your Journey

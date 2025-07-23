@@ -8,9 +8,12 @@ import SupportPartnership from "@components/SupportPartnership";
 import ServicesCTA from "@components/ServicesCTA";
 
 export const metadata: Metadata = {
-  title: "Hamper Services - Custom Curation, Bulk Orders & Business Solutions | Shubhhampers",
+  title: "Custom Gift Baskets & Bulk Hampers | Shubhhampers",
   description:
-    "Comprehensive hamper services including custom curation, bulk corporate orders, business account management, and personalized packaging. Professional consultation for all your hamper needs.",
+    "Custom gift basket curation, bulk corporate orders & personalized packaging. Professional hamper consultation for businesses. Get quote today!",
+  alternates: {
+    canonical: "https://www.shubhhampers.com/services"
+  },
   keywords: [
     "hamper services",
     "custom hamper curation",
@@ -27,7 +30,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     type: "website",
-    title: "Hamper Services - Custom Curation, Bulk Orders & Business Solutions",
+    title: "Custom Gift Baskets & Bulk Hamper Services",
     description:
       "Comprehensive hamper services including custom curation, bulk orders, and business account management. Professional consultation available.",
     url: "https://www.shubhhampers.com/services",
@@ -38,18 +41,19 @@ export const metadata: Metadata = {
         url: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/social-media/social_media_meta_image.png",
         width: 1200,
         height: 630,
-        alt: "Shubhhampers - Premium Gift Hampers"
+        alt: "Shubhhampers Services - Custom Gift Baskets & Bulk Orders"
       },
       {
         url: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/social-media/social_media_meta_image_300x200.png",
         width: 300,
         height: 200,
-        alt: "Shubhhampers - Premium Gift Hampers"
+        alt: "Custom Hamper Services - Shubhhampers"
       }
     ]
   },
   twitter: {
-    title: "Hamper Services - Custom Curation, Bulk Orders & Business Solutions",
+    card: "summary_large_image",
+    title: "Custom Gift Baskets & Bulk Hamper Services",
     description:
       "Comprehensive hamper services including custom curation, bulk orders, and business account management. Professional consultation available.",
     images: [
@@ -57,15 +61,11 @@ export const metadata: Metadata = {
         url: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/social-media/social_media_meta_image.png",
         width: 1200,
         height: 630,
-        alt: "Shubhhampers - Premium Gift Hampers"
-      },
-      {
-        url: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/social-media/social_media_meta_image_300x200.png",
-        width: 300,
-        height: 200,
-        alt: "Shubhhampers - Premium Gift Hampers"
+        alt: "Shubhhampers Services - Custom Gift Baskets & Bulk Orders"
       }
-    ]
+    ],
+    creator: "@shubhhampers",
+    site: "@shubhhampers"
   },
   other: {
     "pinterest-rich-pin": "true",

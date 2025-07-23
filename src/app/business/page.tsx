@@ -7,10 +7,12 @@ import BusinessBenefits from "@components/BusinessBenefits";
 import BusinessCTA from "@components/BusinessCTA";
 
 export const metadata: Metadata = {
-  title:
-    "Business Hamper Solutions - Corporate Employee Appreciation & Client Relations | Shubhhampers",
+  title: "Corporate Gift Baskets & Business Hampers | Shubhhampers",
   description:
-    "Strengthen your business relationships with strategic corporate hampers. Employee recognition, client appreciation, team building, and business milestone celebrations. Professional hamper curation for measurable ROI.",
+    "Boost business relationships with corporate gift hampers. Employee recognition, client appreciation & team building. Measurable ROI guaranteed!",
+  alternates: {
+    canonical: "https://www.shubhhampers.com/business"
+  },
   keywords: [
     "business hampers",
     "corporate hampers",
@@ -30,7 +32,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     type: "website",
-    title: "Business Hamper Solutions - Corporate Employee & Client Appreciation",
+    title: "Corporate Gift Baskets & Business Hamper Solutions",
     description:
       "Strengthen business relationships with strategic corporate hampers. Employee recognition, client appreciation, measurable ROI.",
     url: "https://www.shubhhampers.com/business",
@@ -41,18 +43,19 @@ export const metadata: Metadata = {
         url: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/social-media/social_media_meta_image.png",
         width: 1200,
         height: 630,
-        alt: "Shubhhampers - Premium Gift Hampers"
+        alt: "Shubhhampers Business Solutions - Corporate Gift Hampers"
       },
       {
         url: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/social-media/social_media_meta_image_300x200.png",
         width: 300,
         height: 200,
-        alt: "Shubhhampers - Premium Gift Hampers"
+        alt: "Corporate Hampers - Business Solutions"
       }
     ]
   },
   twitter: {
-    title: "Business Hamper Solutions - Corporate Employee & Client Appreciation",
+    card: "summary_large_image",
+    title: "Corporate Gift Baskets & Business Hamper Solutions",
     description:
       "Strengthen business relationships with strategic corporate hampers. Employee recognition, client appreciation, measurable ROI.",
     images: [
@@ -60,15 +63,11 @@ export const metadata: Metadata = {
         url: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/social-media/social_media_meta_image.png",
         width: 1200,
         height: 630,
-        alt: "Shubhhampers - Premium Gift Hampers"
-      },
-      {
-        url: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/social-media/social_media_meta_image_300x200.png",
-        width: 300,
-        height: 200,
-        alt: "Shubhhampers - Premium Gift Hampers"
+        alt: "Shubhhampers Business Solutions - Corporate Gift Hampers"
       }
-    ]
+    ],
+    creator: "@shubhhampers",
+    site: "@shubhhampers"
   },
   other: {
     "pinterest-rich-pin": "true",

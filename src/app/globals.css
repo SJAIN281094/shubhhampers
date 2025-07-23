@@ -357,3 +357,27 @@ body {
 .hero-slider [data-embla-slide][data-embla-slide-selected] {
   z-index: 1;
 }
+
+/* Event Card Performance Optimizations - No visual changes, just smoother animations */
+.group {
+  /* Enable hardware acceleration for event cards */
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Optimize hover performance for animated elements */
+.animate-pulse,
+.animate-bounce {
+  /* Ensure animations use GPU */
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Smooth transitions for gradients and overlays */
+.transition-colors,
+.transition-opacity,
+.transition-all {
+  /* Better performance for transitioning properties */
+  will-change: auto;
+}
