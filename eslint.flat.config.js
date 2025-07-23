@@ -1,14 +1,61 @@
-const { FlatCompat } = require("@eslint/eslintrc");
-const js = require("@eslint/js");
+/**
+ * ESLint 9 Flat Config
+ *
+ * This is the modern ESLint flat config with advanced features.
+ *
+ * Usage:
+ *   npm run lint:flat        - Run ESLint with flat config
+ *   npm run lint:flat:fix    - Auto-fix with flat config
+ *   npm run verify:flat      - Full verification with flat config
+ *
+ * Default usage (Next.js compatible):
+ *   npm run lint             - Uses .eslintrc.json (Next.js compatible)
+ *   npm run build            - Uses .eslintrc.json (no warnings)
+ *
+ * Benefits of flat config:
+ *   - Modern ESLint 9 features
+ *   - Better performance
+ *   - More explicit configuration
+ *   - typescript-eslint integration
+ */
 
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-  recommendedConfig: js.configs.recommended
-});
+const js = require("@eslint/js");
+const nextPlugin = require("@next/eslint-plugin-next");
+const tseslint = require("typescript-eslint");
+const reactPlugin = require("eslint-plugin-react");
+const reactHooksPlugin = require("eslint-plugin-react-hooks");
+const jsxA11yPlugin = require("eslint-plugin-jsx-a11y");
 
 const eslintConfig = [
-  // Extend Next.js configurations using FlatCompat
-  ...compat.extends("next/core-web-vitals", "next/typescript"),
+  // Basic ESLint recommended rules
+  js.configs.recommended,
+
+  // Next.js flat config - this should be properly detected by Next.js
+  nextPlugin.flatConfig.recommended,
+  nextPlugin.flatConfig.coreWebVitals,
+
+  // TypeScript ESLint configuration
+  ...tseslint.configs.recommended,
+
+  // React configuration
+  {
+    plugins: {
+      react: reactPlugin,
+      "react-hooks": reactHooksPlugin,
+      "jsx-a11y": jsxA11yPlugin
+    },
+    rules: {
+      ...reactPlugin.configs.recommended.rules,
+      ...reactPlugin.configs["jsx-runtime"].rules,
+      ...reactHooksPlugin.configs.recommended.rules,
+      ...jsxA11yPlugin.configs.recommended.rules
+    },
+    settings: {
+      react: {
+        version: "detect"
+      }
+    }
+  },
 
   {
     ignores: [
@@ -25,58 +72,24 @@ const eslintConfig = [
       "postcss.config.mjs",
       "middleware.ts",
       "next-env.d.ts",
-      "scripts/**" // Ignore Node.js scripts directory
+      "scripts/**"
     ]
   },
 
   {
     files: ["**/*.{js,jsx,ts,tsx}"],
-    ignores: ["scripts/**"], // Additional ignore for the main config
+    ignores: ["scripts/**"],
+    languageOptions: {
+      parser: tseslint.parser,
+      parserOptions: {
+        ecmaFeatures: {
+          jsx: true
+        },
+        ecmaVersion: "latest",
+        sourceType: "module"
+      }
+    },
     rules: {
-      // React specific rules
-      "react/react-in-jsx-scope": "off",
-      "react/prop-types": "off",
-      "react/display-name": "warn",
-      "react/no-unescaped-entities": "warn",
-      "react/jsx-key": "error",
-      "react/jsx-no-duplicate-props": "error",
-      "react/jsx-no-undef": "error",
-      "react/jsx-uses-react": "off",
-      "react/jsx-uses-vars": "error",
-      "react/no-array-index-key": "warn",
-      "react/no-danger": "off",
-      "react/no-deprecated": "error",
-      "react/no-direct-mutation-state": "error",
-      "react/no-find-dom-node": "error",
-      "react/no-is-mounted": "error",
-      "react/no-render-return-value": "error",
-      "react/no-string-refs": "error",
-      "react/no-unknown-property": "error",
-      "react/self-closing-comp": "error",
-      "react/style-prop-object": "error",
-      "react/void-dom-elements-no-children": "error",
-
-      // React Hooks rules
-      "react-hooks/rules-of-hooks": "error",
-      "react-hooks/exhaustive-deps": "warn",
-
-      // Accessibility rules
-      "jsx-a11y/alt-text": "error",
-      "jsx-a11y/anchor-has-content": "error",
-      "jsx-a11y/anchor-is-valid": "error",
-      "jsx-a11y/aria-props": "error",
-      "jsx-a11y/aria-proptypes": "error",
-      "jsx-a11y/aria-unsupported-elements": "error",
-      "jsx-a11y/heading-has-content": "error",
-      "jsx-a11y/iframe-has-title": "error",
-      "jsx-a11y/img-redundant-alt": "error",
-      "jsx-a11y/no-access-key": "error",
-      "jsx-a11y/no-distracting-elements": "error",
-      "jsx-a11y/no-redundant-roles": "error",
-      "jsx-a11y/role-has-required-aria-props": "error",
-      "jsx-a11y/role-supports-aria-props": "error",
-      "jsx-a11y/scope": "error",
-
       // TypeScript rules
       "@typescript-eslint/no-unused-vars": [
         "error",
@@ -106,7 +119,6 @@ const eslintConfig = [
       "comma-dangle": "error",
       quotes: ["error", "double"],
       semi: ["error", "always"],
-      // indent: ["error", 2], // Disabled - Prettier handles indentation
       "object-curly-spacing": ["error", "always"],
       "array-bracket-spacing": ["error", "never"],
       "comma-spacing": ["error", { before: false, after: true }],
@@ -144,7 +156,7 @@ const eslintConfig = [
     }
   },
 
-  // Node.js scripts configuration (for scripts directory)
+  // Node.js scripts configuration
   {
     files: ["scripts/**/*.js"],
     rules: {
