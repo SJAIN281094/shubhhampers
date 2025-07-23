@@ -50,6 +50,137 @@ Creating ContactForm component:
 
 **RULE**: Never duplicate existing components. Always reuse from lower levels of the hierarchy.
 
+## ♿ ACCESSIBILITY & SEMANTIC HTML (MANDATORY)
+
+**ALWAYS implement accessibility when creating ANY component:**
+
+### A11y Requirements for ALL Components:
+
+1. **Semantic HTML**: Use proper HTML5 semantic tags (`<button>`, `<nav>`, `<main>`, `<section>`, `<article>`, `<header>`, `<footer>`)
+2. **ARIA Labels**: Add `aria-label`, `aria-describedby`, `aria-labelledby` for screen readers
+3. **Focus Management**: Visible focus indicators with `focus:ring-2 focus:ring-brand-gold`
+4. **Keyboard Navigation**: All interactive elements accessible via keyboard
+5. **Color Contrast**: Ensure WCAG 2.1 AA compliance (4.5:1 ratio minimum)
+
+### Required A11y Patterns:
+
+```typescript
+// Button Component
+<button
+  aria-label="Contact us via WhatsApp"
+  className="focus:outline-none focus:ring-2 focus:ring-brand-gold"
+  onKeyDown={(e) => e.key === 'Enter' && onClick?.(e)}
+>
+
+// Form Field
+<div>
+  <label htmlFor={fieldId} className="sr-only sm:not-sr-only">
+    {label} {required && <span aria-label="required">*</span>}
+  </label>
+  <input
+    id={fieldId}
+    aria-describedby={error ? `${fieldId}-error` : undefined}
+    aria-invalid={error ? 'true' : 'false'}
+  />
+  {error && (
+    <div id={`${fieldId}-error`} role="alert" aria-live="polite">
+      {error}
+    </div>
+  )}
+</div>
+
+// Navigation
+<nav role="navigation" aria-label="Main navigation">
+  <ul role="list">
+    <li><a href="/collections" aria-current={isActive ? 'page' : undefined}>Collections</a></li>
+  </ul>
+</nav>
+```
+
+## 🔒 SECURITY IMPLEMENTATION (MANDATORY)
+
+**ALWAYS implement security when components require it:**
+
+### Security Rules for Components:
+
+1. **Input Validation**: Use Zod schemas for all form inputs
+2. **XSS Prevention**: Sanitize user inputs with DOMPurify
+3. **CSRF Protection**: Use Next.js built-in CSRF protection
+4. **Rate Limiting**: Implement for API-calling components
+5. **Content Security**: Never use `dangerouslySetInnerHTML` without sanitization
+
+### Security Patterns:
+
+```typescript
+// Input Validation with Zod
+import { z } from 'zod';
+const schema = z.object({
+  email: z.string().email(),
+  message: z.string().min(10).max(1000)
+});
+
+// Sanitization
+import DOMPurify from 'isomorphic-dompurify';
+const sanitized = DOMPurify.sanitize(userInput);
+
+// Safe HTML Rendering
+<div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(content) }} />
+```
+
+## 📋 FORM HANDLING (MANDATORY)
+
+**ALWAYS use React Hook Form for ALL forms:**
+
+### Form Requirements:
+
+1. **React Hook Form ONLY**: Never use useState for form management
+2. **Validation**: Integrate with Zod for schema validation
+3. **Error Handling**: Proper error states with accessibility
+4. **Loading States**: Show loading during submission
+5. **Success Feedback**: Clear success/failure messages
+
+### React Hook Form Pattern:
+
+```typescript
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+
+const ContactForm = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+    reset
+  } = useForm({
+    resolver: zodResolver(contactSchema)
+  });
+
+  const onSubmit = async (data) => {
+    try {
+      await submitForm(data);
+      reset();
+    } catch (error) {
+      // Handle error
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <input
+        {...register('email')}
+        aria-invalid={errors.email ? 'true' : 'false'}
+        aria-describedby={errors.email ? 'email-error' : undefined}
+      />
+      {errors.email && (
+        <div id="email-error" role="alert">
+          {errors.email.message}
+        </div>
+      )}
+    </form>
+  );
+};
+```
+
 ## 🔒 SECURITY GAPS (HIGH PRIORITY)
 
 - No CSP headers
