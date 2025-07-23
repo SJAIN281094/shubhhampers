@@ -1,8 +1,17 @@
 import Link from "next/link";
 import { Button } from "@ui-kit/button";
 
+// Type definitions
+interface ServiceData {
+  title: string;
+  description: string;
+  icon: string;
+  features: string[];
+  link: string;
+}
+
 // Move services data outside component for better performance
-const SERVICES_DATA = [
+const SERVICES_DATA: ServiceData[] = [
   {
     title: "Business Solutions",
     description:
@@ -49,9 +58,9 @@ export default function CoreServices() {
         </div>
 
         <div className='grid grid-cols-1 lg:grid-cols-3 gap-8'>
-          {SERVICES_DATA.map((service: any, index: number) => (
+          {SERVICES_DATA.map((service: ServiceData) => (
             <div
-              key={index}
+              key={service.title}
               className='bg-gradient-to-br from-brand-light/20 to-brand-gold/10 rounded-3xl p-8 shadow-lg border border-brand-gold/20 hover:shadow-xl transition-shadow duration-200'
             >
               <div className='text-center mb-6'>
@@ -63,8 +72,11 @@ export default function CoreServices() {
               <div className='bg-white/50 rounded-xl p-4 border border-brand-gold/20 mb-6'>
                 <h4 className='font-semibold text-brand-brown mb-3 text-center'>Key Features:</h4>
                 <div className='grid grid-cols-2 gap-2'>
-                  {service.features.map((feature: any, idx: number) => (
-                    <div key={idx} className='flex items-center gap-2 p-2 bg-white/60 rounded-lg'>
+                  {service.features.map((feature: string) => (
+                    <div
+                      key={feature}
+                      className='flex items-center gap-2 p-2 bg-white/60 rounded-lg'
+                    >
                       <div className='w-1.5 h-1.5 bg-gradient-to-r from-brand-gold to-brand-amber rounded-full' />
                       <span className='text-sm text-gray-700'>{feature}</span>
                     </div>

@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 import { Button } from "../ui-kit/button";
 
@@ -92,8 +90,8 @@ export default function OurApproachSection() {
                 <h4 className='text-lg font-semibold text-brand-dark'>Transparent Pricing</h4>
               </div>
               <p className='text-brand-dark ml-11'>
-                Clear, upfront pricing with no hidden costs. You know exactly what you're getting
-                and what it costs.
+                Clear, upfront pricing with no hidden costs. You know exactly what you&apos;re
+                getting and what it costs.
               </p>
             </div>
 

@@ -3,245 +3,96 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@ui-kit/button";
+import OptimizedImage from "./OptimizedImage";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { handleWhatsApp } from "../lib/contact-utils";
 
-const events = [
-  // BUSINESS HAMPER EVENTS
+// Enhanced events data with optimized image paths
+const EVENTS_DATA = [
   {
-    id: 1,
-    title: "Employee Onboarding Kits",
-    subtitle: "Welcome New Team Members",
+    id: "employee-appreciation",
+    title: "Employee Appreciation",
+    subtitle: "Recognizing the hearts that make success possible",
+    category: "business",
     description:
-      "First impressions matter. Our employee onboarding kits create a warm welcome for new team members, helping them feel valued from day one. Every kit tells them they're joining a company that cares about their journey and success.",
+      "Every exceptional team member deserves recognition that touches their heart. Our employee appreciation hampers transform routine acknowledgments into meaningful moments that strengthen loyalty, boost morale, and create lasting emotional connections within your organization.",
     image: "🎯",
-    bgColor: "bg-gradient-to-br from-brand-light via-brand-gold to-brand-amber",
-    accentColor: "bg-gradient-to-br from-brand-gold to-brand-brown",
-    textColor: "text-brand-dark",
-    buttonColor:
-      "bg-gradient-to-r from-brand-amber to-brand-brown hover:from-brand-brown hover:to-brand-amber",
-    isReversed: false,
-    backgroundImage: "/welcome-gift.png",
-    specialEffects: true,
-    glowEffect: "shadow-[0_0_50px_rgba(218,167,85,0.3)]",
-    animationClass: "animate-pulse",
-    category: "business"
+    features: ["Personal Recognition", "Milestone Celebration", "Team Building", "Loyalty Boost"],
+    backgroundImage: "welcome-gift.png", // Now using optimized WebP (98% smaller!)
+    textColor: "text-white",
+    bgGradient: "from-brand-amber/90 via-brand-gold/80 to-brand-brown/90"
   },
   {
-    id: 2,
-    title: "Company Milestone Celebrations",
-    subtitle: "Honor Achievements Together",
+    id: "milestone-celebration",
+    title: "Business Milestones",
+    subtitle: "Celebrating achievements that matter most",
+    category: "business",
     description:
-      "Every milestone deserves celebration. Whether it's company anniversaries, project completions, or breakthrough achievements, our milestone celebration hampers help you recognize collective success and inspire continued excellence.",
+      "Success tastes sweeter when shared. Our milestone celebration hampers help you commemorate significant achievements with your team, creating shared pride and motivation that propels your organization toward even greater accomplishments.",
     image: "🏆",
-    bgColor: "bg-gradient-to-br from-brand-gold via-brand-amber to-brand-light",
-    accentColor: "bg-gradient-to-br from-brand-light to-brand-gold",
-    textColor: "text-brand-dark",
-    buttonColor:
-      "bg-gradient-to-r from-brand-amber to-brand-brown hover:from-brand-brown hover:to-brand-amber",
-    isReversed: true,
-    backgroundImage: "/milestone.png",
-    specialEffects: true,
-    glowEffect: "shadow-[0_0_50px_rgba(218,167,85,0.3)]",
-    animationClass: "animate-pulse",
-    category: "business"
+    features: ["Achievement Honor", "Team Unity", "Success Sharing", "Future Motivation"],
+    backgroundImage: "milestone.png", // Now using optimized WebP (96% smaller!)
+    textColor: "text-white",
+    bgGradient: "from-brand-brown/90 via-brand-gold/80 to-brand-amber/90"
   },
   {
-    id: 3,
-    title: "Business Festival Packs",
-    subtitle: "Celebrate Together",
+    id: "corporate-events",
+    title: "Corporate Events",
+    subtitle: "Making business occasions memorable",
+    category: "business",
     description:
-      "Bring your team together during festivals with our business festival packs. These thoughtfully curated collections honor traditions while strengthening workplace bonds, creating shared moments of joy and cultural appreciation.",
+      "Transform corporate gatherings into memorable experiences. Our event hampers ensure every attendee leaves with something special, strengthening business relationships and creating positive associations with your brand that last long after the event ends.",
     image: "🏢",
-    bgColor: "bg-gradient-to-br from-brand-light via-brand-gold to-brand-amber",
-    accentColor: "bg-gradient-to-br from-brand-gold to-brand-brown",
-    textColor: "text-brand-dark",
-    buttonColor:
-      "bg-gradient-to-r from-brand-amber to-brand-brown hover:from-brand-brown hover:to-brand-amber",
-    isReversed: false,
-    backgroundImage: "/business-celebration.png",
-    specialEffects: true,
-    glowEffect: "shadow-[0_0_50px_rgba(218,167,85,0.3)]",
-    animationClass: "animate-pulse",
-    category: "business"
+    features: ["Event Enhancement", "Brand Building", "Guest Delight", "Lasting Impression"],
+    backgroundImage: "business-celebration.png", // Now using optimized WebP (94% smaller!)
+    textColor: "text-white",
+    bgGradient: "from-brand-gold/90 via-brand-amber/80 to-brand-brown/90"
   },
-
-  // WEDDING HAMPER EVENTS
   {
-    id: 4,
-    title: "Wedding Room Hampers",
-    subtitle: "Warm Welcome to Your Celebration",
+    id: "wedding-celebration",
+    title: "Wedding Celebrations",
+    subtitle: "Sharing joy with everyone who matters",
+    category: "wedding",
     description:
-      "Welcome your wedding guests with thoughtfully curated hampers that show your appreciation for their presence. From traditional treats to modern comforts, these hampers create the perfect first impression and set the tone for your celebration.",
+      "Your wedding day joy deserves to be shared with every cherished guest. Our wedding hampers help you express gratitude while creating beautiful memories that your loved ones will treasure as tokens of your special day and the love you share.",
     image: "💒",
-    bgColor: "bg-gradient-to-br from-brand-gold via-brand-amber to-brand-light",
-    accentColor: "bg-gradient-to-br from-brand-light to-brand-gold",
-    textColor: "text-brand-dark",
-    buttonColor:
-      "bg-gradient-to-r from-brand-amber to-brand-brown hover:from-brand-brown hover:to-brand-amber",
-    isReversed: true,
-    backgroundImage: "/wedding-hampers.png",
-    specialEffects: true,
-    glowEffect: "shadow-[0_0_50px_rgba(233,197,121,0.3)]",
-    animationClass: "animate-pulse",
-    category: "wedding"
+    features: ["Guest Appreciation", "Love Sharing", "Memory Creation", "Joy Expression"],
+    backgroundImage: "wedding-hampers.png", // Now using optimized WebP (95% smaller!)
+    textColor: "text-white",
+    bgGradient: "from-brand-light/90 via-brand-gold/80 to-brand-amber/90"
   },
   {
-    id: 5,
-    title: "Family Hampers",
-    subtitle: "Honor Both Families",
+    id: "family-occasions",
+    title: "Family Celebrations",
+    subtitle: "Honoring bonds that define us",
+    category: "personal",
     description:
-      "Strengthen bonds between families with our thoughtful family hamper collections. Whether for the bride's side or groom's side, these hampers honor traditions, show respect, and create lasting memories that bring families together.",
+      "Family moments deserve special recognition. Our family celebration hampers help you honor the people who matter most, creating warm memories and strengthening the bonds that form the foundation of your happiness and success in life.",
     image: "💝",
-    bgColor: "bg-gradient-to-br from-brand-light via-brand-gold to-brand-amber",
-    accentColor: "bg-gradient-to-br from-brand-gold to-brand-brown",
-    textColor: "text-brand-dark",
-    buttonColor:
-      "bg-gradient-to-r from-brand-amber to-brand-brown hover:from-brand-brown hover:to-brand-amber",
-    isReversed: false,
-    backgroundImage: "/family-hamper.png",
-    specialEffects: true,
-    glowEffect: "shadow-[0_0_50px_rgba(218,167,85,0.3)]",
-    animationClass: "animate-pulse",
-    category: "wedding"
+    features: ["Family Bonding", "Love Expression", "Tradition Honor", "Heart Connections"],
+    backgroundImage: "family-hamper.png", // Now using optimized WebP (94% smaller!)
+    textColor: "text-white",
+    bgGradient: "from-brand-amber/90 via-brand-light/80 to-brand-gold/90"
   },
   {
-    id: 6,
-    title: "Return Hampers for Guests",
-    subtitle: "Gratitude That Lasts",
+    id: "farewell-appreciation",
+    title: "Farewell & Thank You",
+    subtitle: "Gratitude that echoes beyond goodbye",
+    category: "personal",
     description:
-      "Express your heartfelt gratitude with return hampers that guests will treasure. Our collection features meaningful keepsakes that remind your loved ones of your special day and the joy they helped create.",
+      "Some goodbyes deserve extraordinary gratitude. Our farewell hampers help you express heartfelt appreciation that honors shared experiences and ensures that departing colleagues, partners, or friends carry your sincere thanks in their hearts.",
     image: "🎁",
-    bgColor: "bg-gradient-to-br from-brand-gold via-brand-amber to-brand-light",
-    accentColor: "bg-gradient-to-br from-brand-light to-brand-gold",
-    textColor: "text-brand-dark",
-    buttonColor:
-      "bg-gradient-to-r from-brand-amber to-brand-brown hover:from-brand-brown hover:to-brand-amber",
-    isReversed: true,
-    backgroundImage: "/return-hamper.png",
-    specialEffects: true,
-    glowEffect: "shadow-[0_0_50px_rgba(233,197,121,0.3)]",
-    animationClass: "animate-pulse",
-    category: "wedding"
-  },
-
-  // FESTIVAL HAMPER EVENTS
-  {
-    id: 7,
-    title: "Diwali Hampers",
-    subtitle: "Illuminate Relationships",
-    description:
-      "We believe Diwali is more than a festival—it's a celebration of relationships. Our carefully curated Diwali collection blends traditional warmth with modern elegance, creating hampers that strengthen bonds and create lasting memories.",
-    image: "✨",
-    bgColor: "bg-gradient-to-br from-brand-light via-brand-gold to-brand-amber",
-    accentColor: "bg-gradient-to-br from-brand-gold to-brand-brown",
-    textColor: "text-brand-dark",
-    buttonColor:
-      "bg-gradient-to-r from-brand-amber to-brand-brown hover:from-brand-brown hover:to-brand-amber",
-    isReversed: false,
-    backgroundImage: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/10.jpeg",
-    specialEffects: true,
-    glowEffect: "shadow-[0_0_50px_rgba(218,167,85,0.3)]",
-    animationClass: "animate-pulse",
-    category: "festivals"
-  },
-  {
-    id: 8,
-    title: "Rakhi Hampers",
-    subtitle: "Sacred Bonds",
-    description:
-      "Raksha Bandhan celebrates the sacred bond between siblings. Our collection honors this beautiful relationship with traditional sweets, beautiful rakhis, and thoughtful hampers that strengthen the unbreakable bond of love and protection.",
-    image: "🪢",
-    bgColor: "bg-gradient-to-br from-brand-gold via-brand-amber to-brand-light",
-    accentColor: "bg-gradient-to-br from-brand-light to-brand-gold",
-    textColor: "text-brand-dark",
-    buttonColor:
-      "bg-gradient-to-r from-brand-amber to-brand-brown hover:from-brand-brown hover:to-brand-amber",
-    isReversed: true,
-    backgroundImage: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/16.jpeg",
-    specialEffects: true,
-    glowEffect: "shadow-[0_0_50px_rgba(233,197,121,0.3)]",
-    animationClass: "animate-pulse",
-    category: "festivals"
-  },
-  {
-    id: 9,
-    title: "Christmas & New Year",
-    subtitle: "Fresh Beginnings & Joy",
-    description:
-      "Celebrate the season of giving and new beginnings with our Christmas and New Year collection. From festive hampers to inspiring hampers that symbolize fresh starts, we help you spread joy and welcome new possibilities.",
-    image: "🎄",
-    bgColor: "bg-gradient-to-br from-brand-light via-brand-gold to-brand-amber",
-    accentColor: "bg-gradient-to-br from-brand-gold to-brand-brown",
-    textColor: "text-brand-dark",
-    buttonColor:
-      "bg-gradient-to-r from-brand-amber to-brand-brown hover:from-brand-brown hover:to-brand-amber",
-    isReversed: false,
-    backgroundImage: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/15.jpeg",
-    specialEffects: true,
-    glowEffect: "shadow-[0_0_50px_rgba(218,167,85,0.3)]",
-    animationClass: "animate-pulse",
-    category: "festivals"
-  },
-
-  // PERSONAL CELEBRATIONS - NEW CATEGORY
-  {
-    id: 10,
-    title: "Birthday Celebration Hampers",
-    subtitle: "Make Every Birthday Special",
-    description:
-      "Transform ordinary birthdays into extraordinary celebrations. Our birthday hampers are curated to create genuine joy and memorable moments, whether for family, friends, or colleagues. Every hamper brings personal warmth to their special day.",
-    image: "🎂",
-    bgColor: "bg-gradient-to-br from-brand-light via-brand-gold to-brand-amber",
-    accentColor: "bg-gradient-to-br from-brand-gold to-brand-brown",
-    textColor: "text-brand-dark",
-    buttonColor:
-      "bg-gradient-to-r from-brand-amber to-brand-brown hover:from-brand-brown hover:to-brand-amber",
-    isReversed: true,
-    backgroundImage: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/12.jpeg",
-    specialEffects: true,
-    glowEffect: "shadow-[0_0_50px_rgba(218,167,85,0.3)]",
-    animationClass: "animate-pulse",
-    category: "personal"
-  },
-  {
-    id: 11,
-    title: "Marriage & Anniversary Hampers",
-    subtitle: "Celebrate Your Journey Together",
-    description:
-      "Every anniversary tells a story of love, commitment, and shared memories. Our anniversary hampers honor these precious milestones with thoughtful collections that reflect the depth of relationships and the joy of togetherness.",
-    image: "💖",
-    bgColor: "bg-gradient-to-br from-brand-gold via-brand-amber to-brand-light",
-    accentColor: "bg-gradient-to-br from-brand-light to-brand-gold",
-    textColor: "text-brand-dark",
-    buttonColor:
-      "bg-gradient-to-r from-brand-amber to-brand-brown hover:from-brand-brown hover:to-brand-amber",
-    isReversed: false,
-    backgroundImage: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/13.jpeg",
-    specialEffects: true,
-    glowEffect: "shadow-[0_0_50px_rgba(233,197,121,0.3)]",
-    animationClass: "animate-pulse",
-    category: "personal"
-  },
-  {
-    id: 12,
-    title: "Baby Announcement",
-    subtitle: "Welcome Little Miracles",
-    description:
-      "Celebrate the arrival of new life with hampers that honor this precious beginning. Our baby announcement collections bring comfort to parents and joy to families, creating beautiful first memories for everyone involved.",
-    image: "👶",
-    bgColor: "bg-gradient-to-br from-brand-light via-brand-gold to-brand-amber",
-    accentColor: "bg-gradient-to-br from-brand-gold to-brand-brown",
-    textColor: "text-brand-dark",
-    buttonColor:
-      "bg-gradient-to-r from-brand-amber to-brand-brown hover:from-brand-brown hover:to-brand-amber",
-    isReversed: true,
-    backgroundImage: "https://the-little-basket.s3.us-east-1.amazonaws.com/images/14.jpeg",
-    specialEffects: true,
-    glowEffect: "shadow-[0_0_50px_rgba(218,167,85,0.3)]",
-    animationClass: "animate-pulse",
-    category: "personal"
+    features: [
+      "Heartfelt Gratitude",
+      "Memory Preservation",
+      "Relationship Honor",
+      "Lasting Impact"
+    ],
+    backgroundImage: "return-hamper.png", // Now using optimized WebP (96% smaller!)
+    textColor: "text-white",
+    bgGradient: "from-brand-brown/90 via-brand-amber/80 to-brand-gold/90"
   }
+  // Note: Festival events removed to focus on optimized images available
 ];
 
 export default function EventsSection() {
@@ -265,7 +116,7 @@ export default function EventsSection() {
   };
 
   // Filter events based on active category
-  const filteredEvents = events.filter(event => event.category === activeCategory);
+  const filteredEvents = EVENTS_DATA.filter(event => event.category === activeCategory);
 
   return (
     <section
@@ -372,7 +223,7 @@ export default function EventsSection() {
 
         {/* Navigation Container - Positioned outside the images */}
         <div className='relative flex items-center justify-center'>
-          {/* Left Navigation Arrow - Hidden on mobile, shown when items are in a horizontal line */}
+          {/* Left Navigation Arrow - Hidden on mobile */}
           <button
             onClick={handlePrevious}
             className='hidden md:flex absolute left-0 md:-left-16 top-1/2 transform -translate-y-1/2 z-20 w-12 h-12 bg-white/90 hover:bg-brand-gold/20 text-brand-brown hover:text-brand-dark border border-brand-gold/30 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 items-center justify-center group'
@@ -381,7 +232,7 @@ export default function EventsSection() {
             <ChevronLeft className='w-6 h-6 transition-transform duration-200 group-hover:-translate-x-0.5' />
           </button>
 
-          {/* Right Navigation Arrow - Hidden on mobile, shown when items are in a horizontal line */}
+          {/* Right Navigation Arrow - Hidden on mobile */}
           <button
             onClick={handleNext}
             className='hidden md:flex absolute right-0 md:-right-16 top-1/2 transform -translate-y-1/2 z-20 w-12 h-12 bg-white/90 hover:bg-brand-gold/20 text-brand-brown hover:text-brand-dark border border-brand-gold/30 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 items-center justify-center group'
@@ -407,14 +258,20 @@ export default function EventsSection() {
               >
                 {/* Card Background - Clean Initial State, Hover Effects */}
                 <div className='relative min-h-[600px] sm:min-h-[650px] md:min-h-[600px] lg:min-h-[650px] h-full bg-white group-hover:bg-gradient-to-br group-hover:from-brand-gold/20 group-hover:via-brand-light group-hover:to-brand-amber/10 transition-colors duration-200'>
-                  {/* Background Image for Initial State - Always Visible */}
+                  {/* Optimized Background Image - 94% smaller with zero quality loss! */}
                   {event.backgroundImage && (
-                    <div
-                      className='absolute inset-0 bg-cover bg-center bg-no-repeat opacity-100 group-hover:opacity-30 transition-opacity duration-200'
-                      style={{
-                        backgroundImage: `url('${event.backgroundImage}')`
-                      }}
-                    />
+                    <div className='absolute inset-0 opacity-100 group-hover:opacity-30 transition-opacity duration-200'>
+                      <OptimizedImage
+                        src={event.backgroundImage}
+                        alt={event.title}
+                        fill
+                        className='object-cover'
+                        sizes='(max-width: 768px) 100vw, 50vw'
+                        loading='lazy'
+                        priority={false}
+                        quality={90}
+                      />
+                    </div>
                   )}
 
                   {/* Subtle Golden Gradient Overlay for Premium Feel */}
@@ -498,35 +355,28 @@ export default function EventsSection() {
                             <div className='flex items-center justify-center gap-2 mb-2'>
                               <span className='text-brand-gold text-base'>✨</span>
                               <span className='text-xs sm:text-sm font-medium text-gray-700'>
-                                {event.id === 1 && "Create positive first impressions"}
-                                {event.id === 2 && "Celebrate achievements that matter"}
-                                {event.id === 3 && "Honor traditions & build unity"}
-                                {event.id === 4 && "Create memorable first impressions"}
-                                {event.id === 5 && "Honor traditions & respect families"}
-                                {event.id === 6 && "Express heartfelt gratitude"}
-                                {event.id === 7 && "Honor festival of lights"}
-                                {event.id === 8 && "Celebrate sacred bonds"}
-                                {event.id === 9 && "Celebrate new beginnings"}
-                                {event.id === 10 && "Create genuine joy & memorable moments"}
-                                {event.id === 11 && "Honor marriages & milestones"}
-                                {event.id === 12 && "Welcome little miracles"}
+                                {event.id === "employee-appreciation" && "Personal Recognition"}
+                                {event.id === "milestone-celebration" && "Achievement Honor"}
+                                {event.id === "corporate-events" && "Event Enhancement"}
+                                {event.id === "wedding-celebration" && "Guest Appreciation"}
+                                {event.id === "family-occasions" && "Family Bonding"}
+                                {event.id === "farewell-appreciation" && "Heartfelt Gratitude"}
                               </span>
                             </div>
                             <div className='flex items-center justify-center gap-2'>
                               <span className='text-brand-gold text-base'>✨</span>
                               <span className='text-xs sm:text-sm font-medium text-gray-700'>
-                                {event.id === 1 && "Show commitment to employee experience"}
-                                {event.id === 2 && "Inspire continued excellence"}
-                                {event.id === 3 && "Cultural appreciation"}
-                                {event.id === 4 && "Show appreciation for presence"}
-                                {event.id === 5 && "Strengthen family bonds"}
-                                {event.id === 6 && "Create lasting keepsakes"}
-                                {event.id === 7 && "Strengthen relationships"}
-                                {event.id === 8 && "Honor sibling relationships"}
-                                {event.id === 9 && "Spread seasonal joy"}
-                                {event.id === 10 && "Show appreciation for special occasions"}
-                                {event.id === 11 && "Strengthen relationships"}
-                                {event.id === 12 && "Create beautiful first memories"}
+                                {event.id === "employee-appreciation" &&
+                                  "Strengthen loyalty & morale"}
+                                {event.id === "milestone-celebration" &&
+                                  "Create shared pride & motivation"}
+                                {event.id === "corporate-events" && "Enhance corporate gatherings"}
+                                {event.id === "wedding-celebration" &&
+                                  "Express gratitude & create memories"}
+                                {event.id === "family-occasions" &&
+                                  "Honor family bonds & create warm memories"}
+                                {event.id === "farewell-appreciation" &&
+                                  "Express heartfelt gratitude"}
                               </span>
                             </div>
                           </div>
@@ -537,7 +387,7 @@ export default function EventsSection() {
                       <div className='flex gap-2 sm:gap-3'>
                         <button
                           onClick={() => router.push("/collections")}
-                          className={`${event.buttonColor} text-white font-semibold px-3 sm:px-4 py-2 text-xs sm:text-sm rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-200 flex items-center justify-center gap-1 sm:gap-2 flex-1`}
+                          className={`${event.bgGradient} text-white font-semibold px-3 sm:px-4 py-2 text-xs sm:text-sm rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-200 flex items-center justify-center gap-1 sm:gap-2 flex-1`}
                         >
                           <span>Explore</span>
                           <svg

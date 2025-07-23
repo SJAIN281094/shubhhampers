@@ -6,8 +6,26 @@ import Link from "next/link";
 import { Button } from "@ui-kit/button";
 import { CONTACT_INFO } from "../lib/contact-utils";
 
+// Type definitions
+interface Collection {
+  id: string;
+  title: string;
+  subtitle: string;
+  category: string;
+  priceRange: string;
+  startingPrice: string;
+  image: string;
+  description: string;
+  features: string[];
+  deliveryTime: string;
+  minimumOrder: string;
+  bulkBenefit: string;
+  bgColor: string;
+  accentColor: string;
+}
+
 // Move collections data outside component to prevent recreation on every render
-const COLLECTIONS_DATA = [
+const COLLECTIONS_DATA: Collection[] = [
   // BUSINESS HAMPERS - Enhanced collection
   {
     id: "employee-onboarding",
@@ -259,7 +277,7 @@ export default function CollectionsClient() {
   const filteredCollections = useMemo(() => {
     return activeCategory === "all"
       ? COLLECTIONS_DATA
-      : COLLECTIONS_DATA.filter((collection: any) => collection.category === activeCategory);
+      : COLLECTIONS_DATA.filter((collection: Collection) => collection.category === activeCategory);
   }, [activeCategory]);
 
   // Memoize category change handler
@@ -280,7 +298,7 @@ export default function CollectionsClient() {
   );
 
   // Memoize WhatsApp inquiry handler
-  const handleWhatsAppInquiry = useCallback((collection: any) => {
+  const handleWhatsAppInquiry = useCallback((collection: Collection) => {
     const message = `Hi! I'm interested in the "${collection.title}" hamper collection. Could you provide more details about customization options and pricing?`;
     const whatsappUrl = `https://wa.me/${CONTACT_INFO.whatsappNumber}?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, "_blank");
@@ -350,7 +368,7 @@ export default function CollectionsClient() {
           </div>
 
           <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
-            {filteredCollections.map((collection: any) => (
+            {filteredCollections.map((collection: Collection) => (
               <div
                 key={collection.id}
                 className={`${collection.bgColor} rounded-3xl p-8 shadow-lg border border-brand-gold/20 hover:shadow-xl transition-shadow duration-300 group cursor-pointer relative overflow-hidden flex flex-col h-full`}
@@ -379,9 +397,9 @@ export default function CollectionsClient() {
                     Key Features:
                   </h4>
                   <div className='grid grid-cols-2 gap-2'>
-                    {collection.features.map((feature: any, index: number) => (
+                    {collection.features.map((feature: string) => (
                       <div
-                        key={index}
+                        key={feature}
                         className='flex items-center gap-2 p-2 bg-white/40 rounded-lg'
                       >
                         <div className='w-1.5 h-1.5 bg-gradient-to-r from-brand-gold to-brand-amber rounded-full' />
@@ -417,8 +435,8 @@ export default function CollectionsClient() {
               <div className='text-6xl mb-4'>🎁</div>
               <h3 className='text-2xl font-bold text-brand-dark mb-4'>No Collections Found</h3>
               <p className='text-gray-600 mb-6'>
-                We're working on adding more collections in this category. Meanwhile, explore our
-                other amazing collections!
+                We&apos;re working on adding more collections in this category. Meanwhile, explore
+                our other amazing collections!
               </p>
               <Button
                 onClick={() => handleCategoryChange("all")}
@@ -439,8 +457,8 @@ export default function CollectionsClient() {
               Need Something Custom?
             </h2>
             <p className='text-xl mb-8 leading-relaxed'>
-              Can't find exactly what you're looking for? We specialize in creating custom hampers
-              tailored to your specific needs and relationship goals.
+              Can&apos;t find exactly what you&apos;re looking for? We specialize in creating custom
+              hampers tailored to your specific needs and relationship goals.
             </p>
             <div className='flex flex-col sm:flex-row gap-4 justify-center'>
               <Link href='/contact?service=custom'>

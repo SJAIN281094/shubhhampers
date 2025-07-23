@@ -13,8 +13,9 @@ export default function ServicesCTA() {
             Ready to Strengthen Your Relationships?
           </h2>
           <p className='text-xl mb-8 leading-relaxed'>
-            Let's work together to create service experiences that build lasting connections,
-            strengthen business relationships, and achieve the meaningful impact you're seeking.
+            Let&apos;s work together to create service experiences that build lasting connections,
+            strengthen business relationships, and achieve the meaningful impact you&apos;re
+            seeking.
           </p>
           <div className='flex flex-col sm:flex-row gap-4 justify-center'>
             <Link href='/contact'>

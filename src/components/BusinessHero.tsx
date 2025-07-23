@@ -26,7 +26,8 @@ export default function BusinessHero() {
 
           <div className='bg-white/40 rounded-xl p-6 border border-brand-gold/20 shadow-md'>
             <p className='text-lg text-brand-brown font-medium italic mb-4'>
-              "Every hamper is an investment in relationships that drive business success"
+              &ldquo;Every hamper is an investment in relationships that drive business
+              success&rdquo;
             </p>
             <div className='flex flex-col sm:flex-row gap-4 justify-center'>
               <Link href='/contact?service=business'>

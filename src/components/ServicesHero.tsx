@@ -23,7 +23,8 @@ export default function ServicesHero() {
 
           <div className='bg-white/40 rounded-xl p-4 border border-brand-gold/20 shadow-md'>
             <p className='text-lg text-brand-brown font-medium italic'>
-              "Every service designed to deepen connections and create meaningful moments"
+              &ldquo;Every service designed to deepen connections and create meaningful
+              moments&rdquo;
             </p>
           </div>
         </div>

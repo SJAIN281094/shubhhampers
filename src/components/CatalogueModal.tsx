@@ -179,7 +179,9 @@ export default function CatalogueModal({ isOpen, onClose }: CatalogueModalProps)
                   Catalogue Sent Successfully!
                 </h2>
                 <div className='bg-gradient-to-br from-brand-gold/10 to-brand-amber/10 rounded-xl p-6 border border-brand-gold/20 mb-6'>
-                  <p className='text-gray-700 mb-3'>We've sent our complete hamper catalogue to:</p>
+                  <p className='text-gray-700 mb-3'>
+                    We&apos;ve sent our complete hamper catalogue to:
+                  </p>
                   <div className='bg-white/50 backdrop-blur-sm rounded-lg p-3 border border-brand-gold/20'>
                     <p className='font-semibold text-brand-brown'>
                       {contactMethod === "email" ? <>📧 {email}</> : <>💬 {phone}</>}

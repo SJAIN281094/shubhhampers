@@ -1,4 +1,22 @@
-import ContactForm from "@components/ContactForm";
+import dynamic from "next/dynamic";
+
+// Dynamic import for the contact form component
+const ContactForm = dynamic(() => import("./ContactForm"), {
+  loading: () => (
+    <div className='bg-white rounded-2xl p-8 shadow-lg border border-brand-gold/20'>
+      <div className='space-y-6'>
+        <div className='h-6 bg-brand-gold/20 rounded w-48 animate-pulse' />
+        <div className='space-y-4'>
+          <div className='h-12 bg-gray-100 rounded-lg animate-pulse' />
+          <div className='h-12 bg-gray-100 rounded-lg animate-pulse' />
+          <div className='h-12 bg-gray-100 rounded-lg animate-pulse' />
+          <div className='h-24 bg-gray-100 rounded-lg animate-pulse' />
+          <div className='h-12 bg-brand-amber/20 rounded-lg animate-pulse' />
+        </div>
+      </div>
+    </div>
+  )
+});
 
 export default function ContactFormSection() {
   return (

@@ -16,9 +16,9 @@ export default function SupportPartnership() {
               maintain the quality that makes them special.
             </p>
             <p className='text-lg text-gray-700 mb-8 leading-relaxed'>
-              We're invested in your success and the strength of your relationships. Whether you
-              need program management, success tracking, or dedicated account support, we're here as
-              your long-term partner.
+              We&apos;re invested in your success and the strength of your relationships. Whether
+              you need program management, success tracking, or dedicated account support,
+              we&apos;re here as your long-term partner.
             </p>
 
             <div className='space-y-4 mb-8'>
@@ -71,8 +71,8 @@ export default function SupportPartnership() {
               </p>
               <div className='bg-white/30 rounded-lg p-4 border border-brand-gold/20'>
                 <p className='text-sm text-brand-brown font-medium italic text-center'>
-                  "Your success in building meaningful relationships is our ultimate measure of
-                  success"
+                  &ldquo;Your success in building meaningful relationships is our ultimate measure
+                  of success&rdquo;
                 </p>
               </div>
             </div>

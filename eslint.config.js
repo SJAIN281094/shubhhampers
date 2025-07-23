@@ -1,12 +1,5 @@
-const { dirname } = require("path");
-const { fileURLToPath } = require("url");
 const { FlatCompat } = require("@eslint/eslintrc");
 const js = require("@eslint/js");
-const reactHooks = require("eslint-plugin-react-hooks");
-const jsxA11y = require("eslint-plugin-jsx-a11y");
-const react = require("eslint-plugin-react");
-const tseslint = require("@typescript-eslint/eslint-plugin");
-const tsparser = require("@typescript-eslint/parser");
 
 const compat = new FlatCompat({
   baseDirectory: __dirname,
@@ -14,7 +7,9 @@ const compat = new FlatCompat({
 });
 
 const eslintConfig = [
+  // Extend Next.js configurations using FlatCompat
   ...compat.extends("next/core-web-vitals", "next/typescript"),
+
   {
     ignores: [
       "node_modules/**",
@@ -29,34 +24,14 @@ const eslintConfig = [
       "next.config.ts",
       "postcss.config.mjs",
       "middleware.ts",
-      "eslint.config.js",
-      "next-env.d.ts"
+      "next-env.d.ts",
+      "scripts/**" // Ignore Node.js scripts directory
     ]
   },
+
   {
     files: ["**/*.{js,jsx,ts,tsx}"],
-    languageOptions: {
-      ecmaVersion: 2022,
-      sourceType: "module",
-      parser: tsparser,
-      parserOptions: {
-        ecmaFeatures: {
-          jsx: true
-        },
-        project: "./tsconfig.json"
-      }
-    },
-    plugins: {
-      react,
-      "react-hooks": reactHooks,
-      "jsx-a11y": jsxA11y,
-      "@typescript-eslint": tseslint
-    },
-    settings: {
-      react: {
-        version: "detect"
-      }
-    },
+    ignores: ["scripts/**"], // Additional ignore for the main config
     rules: {
       // React specific rules
       "react/react-in-jsx-scope": "off",
@@ -129,7 +104,7 @@ const eslintConfig = [
       "eol-last": "error",
       "no-trailing-spaces": "error",
       "comma-dangle": "error",
-      quotes: "error",
+      quotes: ["error", "double"],
       semi: ["error", "always"],
       indent: ["error", 2],
       "object-curly-spacing": ["error", "always"],
@@ -168,6 +143,19 @@ const eslintConfig = [
       ]
     }
   },
+
+  // Node.js scripts configuration (for scripts directory)
+  {
+    files: ["scripts/**/*.js"],
+    rules: {
+      "@typescript-eslint/no-var-requires": "off",
+      "@typescript-eslint/no-require-imports": "off",
+      "no-console": "off",
+      quotes: ["error", "single"]
+    }
+  },
+
+  // Test files configuration
   {
     files: ["**/*.test.{js,jsx,ts,tsx}", "**/*.spec.{js,jsx,ts,tsx}"],
     rules: {
@@ -175,6 +163,8 @@ const eslintConfig = [
       "no-console": "off"
     }
   },
+
+  // Next.js pages and app directory configuration
   {
     files: ["**/pages/**/*.{js,jsx,ts,tsx}", "**/app/**/*.{js,jsx,ts,tsx}"],
     rules: {

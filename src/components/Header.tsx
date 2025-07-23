@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import QuickAccessBar from "./QuickAccessBar";
 import HeaderLogo from "./HeaderLogo";
 import DesktopNavigation from "./DesktopNavigation";
@@ -9,14 +9,36 @@ import MobileNavigation from "./MobileNavigation";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const ticking = useRef(false);
+
+  // Throttled scroll handler for better performance
+  const handleScroll = useCallback(() => {
+    if (!ticking.current) {
+      requestAnimationFrame(() => {
+        const scrollY = window.scrollY;
+        const shouldBeScrolled = scrollY > 20;
+
+        // Only update state if the value actually changed
+        setIsScrolled(prevScrolled => {
+          if (prevScrolled !== shouldBeScrolled) {
+            return shouldBeScrolled;
+          }
+          return prevScrolled;
+        });
+
+        ticking.current = false;
+      });
+      ticking.current = true;
+    }
+  }, []);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener("scroll", handleScroll);
+    // Set initial scroll state
+    handleScroll();
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [handleScroll]);
 
   return (
     <>

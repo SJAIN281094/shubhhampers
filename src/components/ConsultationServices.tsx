@@ -39,8 +39,8 @@ export default function ConsultationServices() {
             <div className='text-4xl mb-4'>🎨</div>
             <h3 className='text-xl font-bold text-brand-dark mb-3'>Culture Alignment</h3>
             <p className='text-gray-600'>
-              Ensure every hamper reflects your organization's culture and communicates your values
-              effectively.
+              Ensure every hamper reflects your organization&apos;s culture and communicates your
+              values effectively.
             </p>
           </div>
         </div>
@@ -48,7 +48,8 @@ export default function ConsultationServices() {
         <div className='text-center'>
           <p className='text-lg text-gray-700 mb-6 max-w-2xl mx-auto'>
             Our consultation process helps you create hamper programs that strengthen company
-            culture, build lasting partnerships, and achieve the emotional impact you're seeking.
+            culture, build lasting partnerships, and achieve the emotional impact you&apos;re
+            seeking.
           </p>
           <Link href='/contact?service=consultation'>
             <Button className='bg-gradient-to-r from-brand-brown to-brand-gold hover:from-brand-gold hover:to-brand-brown text-white font-semibold px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-shadow duration-200'>

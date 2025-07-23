@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import {
   Carousel,
@@ -40,30 +40,6 @@ const CorporateBackground = () => {
     </div>
   );
 };
-
-// Corporate Stats Component
-const CorporateStats = () => (
-  <div className='absolute top-4 left-4 md:top-8 md:left-8 bg-white/90 backdrop-blur-sm rounded-xl p-3 md:p-4 shadow-lg border border-brand-gold/20'>
-    <div className='flex items-center space-x-3 md:space-x-6'>
-      <div className='text-center'>
-        <div className='text-lg md:text-2xl font-bold text-brand-brown'>100%</div>
-        <div className='text-xs text-gray-600'>Commitment</div>
-      </div>
-      <div className='w-px h-6 md:h-8 bg-brand-gold/30' />
-      <div className='text-center'>
-        <div className='text-lg md:text-2xl font-bold text-brand-brown'>Premium</div>
-        <div className='text-xs text-gray-600'>Quality</div>
-      </div>
-      <div className='w-px h-6 md:h-8 bg-brand-gold/30' />
-      <div className='text-center'>
-        <div className='text-lg md:text-2xl font-bold text-brand-brown'>24/7</div>
-        <div className='text-xs text-gray-600'>Support</div>
-      </div>
-    </div>
-  </div>
-);
-
-// Trust Badges Component - Removed certification badges
 
 const slides = [
   {
@@ -154,34 +130,106 @@ export default function HeroSlider() {
   const router = useRouter();
   const [api, setApi] = useState<CarouselApi>();
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [animationKey, setAnimationKey] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const autoplayRef = useRef<NodeJS.Timeout | null>(null);
 
+  // Memoized navigation handlers to prevent re-renders
+  const navigateToCollections = useCallback(() => {
+    router.push("/collections");
+  }, [router]);
+
+  const navigateToContact = useCallback(() => {
+    router.push("/contact");
+  }, [router]);
+
+  const scrollToSlide = useCallback(
+    (index: number) => {
+      api?.scrollTo(index);
+    },
+    [api]
+  );
+
+  // Optimized autoplay with pause/resume functionality
+  const startAutoplay = useCallback(() => {
+    if (autoplayRef.current) clearInterval(autoplayRef.current);
+
+    autoplayRef.current = setInterval(() => {
+      if (!isPaused && document.visibilityState === "visible") {
+        api?.scrollNext();
+      }
+    }, 6000); // Increased to 6 seconds for better UX
+  }, [api, isPaused]);
+
+  const stopAutoplay = useCallback(() => {
+    if (autoplayRef.current) {
+      clearInterval(autoplayRef.current);
+      autoplayRef.current = null;
+    }
+  }, []);
+
+  // Pause/resume handlers
+  const handleMouseEnter = useCallback(() => {
+    setIsPaused(true);
+  }, []);
+
+  const handleMouseLeave = useCallback(() => {
+    setIsPaused(false);
+  }, []);
+
+  // Main effect for carousel setup
   useEffect(() => {
     if (!api) return;
 
+    // Set initial slide
     setCurrentSlide(api.selectedScrollSnap());
-    api.on("select", () => {
-      setCurrentSlide(api.selectedScrollSnap());
-      setAnimationKey(prev => prev + 1);
-    });
 
-    // Add autoplay functionality with faster timing
-    const autoplay = setInterval(() => {
-      api.scrollNext();
-    }, 4000); // 4 seconds instead of default 6-8 seconds
+    // Listen for slide changes (optimized to avoid unnecessary re-renders)
+    const handleSelect = () => {
+      const newSlide = api.selectedScrollSnap();
+      setCurrentSlide(newSlide);
+    };
 
-    return () => clearInterval(autoplay);
-  }, [api]);
+    api.on("select", handleSelect);
 
-  const handleScrollToNext = () => {
-    const approachSection = document.querySelector("#our-approach-section");
-    if (approachSection) {
-      approachSection.scrollIntoView({ behavior: "smooth" });
+    // Start autoplay
+    startAutoplay();
+
+    // Cleanup
+    return () => {
+      api.off("select", handleSelect);
+      stopAutoplay();
+    };
+  }, [api, startAutoplay, stopAutoplay]);
+
+  // Handle page visibility changes (pause when tab is not active)
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === "hidden") {
+        stopAutoplay();
+      } else {
+        startAutoplay();
+      }
+    };
+
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+    return () => document.removeEventListener("visibilitychange", handleVisibilityChange);
+  }, [startAutoplay, stopAutoplay]);
+
+  // Handle autoplay state changes
+  useEffect(() => {
+    if (isPaused) {
+      stopAutoplay();
+    } else {
+      startAutoplay();
     }
-  };
+  }, [isPaused, startAutoplay, stopAutoplay]);
 
   return (
-    <section className='relative w-full h-[calc(100vh-120px)] min-h-[600px] overflow-hidden bg-gradient-to-br from-brand-light via-white to-brand-gold/5'>
+    <section
+      className='relative w-full h-[calc(100vh-120px)] min-h-[600px] overflow-hidden bg-gradient-to-br from-brand-light via-white to-brand-gold/5'
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
       <Carousel
         setApi={setApi}
         opts={{
@@ -191,49 +239,39 @@ export default function HeroSlider() {
         className='w-full h-full'
       >
         <CarouselContent className='h-full'>
-          {slides.map((slide, index) => (
-            <CarouselItem key={`${slide.id}-${animationKey}`} className='h-full'>
+          {slides.map(slide => (
+            <CarouselItem key={slide.id} className='h-full'>
               <div className={`relative w-full h-full bg-gradient-to-br ${slide.gradient}`}>
                 {/* Corporate Background */}
                 <CorporateBackground />
 
                 {/* Content Container */}
                 <div className='relative z-10 flex items-center justify-center h-full px-4 sm:px-6 lg:px-8 pt-16 pb-20'>
-                  <div className='text-center max-w-6xl mx-auto'>
-                    {/* Icon */}
-                    <div className='mb-4 md:mb-6 animate-bounce'>
-                      <span className='text-4xl sm:text-5xl md:text-6xl lg:text-7xl filter drop-shadow-lg'>
-                        {slide.icon}
-                      </span>
+                  <div className='text-center max-w-4xl lg:max-w-5xl mx-auto'>
+                    {/* Emoji Icon */}
+                    <div className='text-6xl sm:text-7xl md:text-8xl mb-6 md:mb-8 animate-fade-in drop-shadow-lg'>
+                      {slide.icon}
                     </div>
 
-                    {/* Subtitle */}
-                    <div className='mb-3 md:mb-4 animate-fade-in-delay'>
-                      <h2 className='text-sm sm:text-lg md:text-xl lg:text-2xl font-medium text-brand-brown tracking-wider uppercase drop-shadow-sm'>
-                        {slide.subtitle}
-                      </h2>
-                    </div>
-
-                    {/* Main Title */}
-                    <div className='mb-4 md:mb-6 animate-fade-in-delay-2'>
-                      <h1 className='font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold text-brand-dark leading-tight tracking-wide drop-shadow-sm px-2'>
-                        {slide.title}
-                      </h1>
-                    </div>
+                    {/* Title & Subtitle */}
+                    <h1 className='font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-brand-dark mb-4 md:mb-6 leading-tight tracking-wide animate-fade-in-delay-1'>
+                      {slide.title}
+                    </h1>
+                    <h2 className='text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-brand-brown mb-6 md:mb-8 animate-fade-in-delay-2'>
+                      {slide.subtitle}
+                    </h2>
 
                     {/* Description */}
-                    <div className='mb-6 md:mb-8 animate-fade-in-delay-3'>
-                      <p className='text-sm sm:text-base md:text-lg lg:text-xl text-gray-700 leading-relaxed max-w-4xl mx-auto font-normal drop-shadow-sm px-4 md:px-0'>
-                        {slide.description}
-                      </p>
-                    </div>
+                    <p className='text-base sm:text-lg md:text-xl lg:text-2xl text-gray-700 mb-8 md:mb-10 leading-relaxed max-w-3xl mx-auto animate-fade-in-delay-2 px-4'>
+                      {slide.description}
+                    </p>
 
                     {/* Features Grid */}
                     <div className='mb-6 md:mb-8 animate-fade-in-delay-3'>
                       <div className='grid grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3 md:gap-4 max-w-2xl mx-auto px-4 md:px-0'>
-                        {slide.features.map((feature, idx) => (
+                        {slide.features.map(feature => (
                           <div
-                            key={`feature-${idx + 1}`}
+                            key={`slide-${slide.id}-feature-${feature.replace(/\s+/g, "-").toLowerCase()}`}
                             className='bg-white/80 backdrop-blur-sm rounded-lg p-2 sm:p-3 shadow-sm border border-brand-gold/20'
                           >
                             <div className='text-xs sm:text-sm font-medium text-brand-brown text-center'>
@@ -247,13 +285,13 @@ export default function HeroSlider() {
                     {/* CTA Buttons */}
                     <div className='flex flex-col sm:flex-row items-center justify-center space-y-3 sm:space-y-0 sm:space-x-4 md:space-x-6 animate-fade-in-delay-3 px-4 md:px-0'>
                       <Button
-                        onClick={() => router.push("/collections")}
+                        onClick={navigateToCollections}
                         className={`${slide.buttonClass} text-white font-semibold px-6 py-3 md:px-8 md:py-4 rounded-full shadow-xl hover:shadow-2xl transition-all duration-200 transform hover:scale-105 hover:-translate-y-1 border-0 w-full sm:w-auto`}
                       >
                         🎁 Explore Collections
                       </Button>
                       <Button
-                        onClick={() => router.push("/contact")}
+                        onClick={navigateToContact}
                         className='bg-white/90 backdrop-blur-sm text-brand-brown border-2 border-brand-gold font-semibold px-6 py-3 md:px-8 md:py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-105 hover:-translate-y-1 w-full sm:w-auto'
                       >
                         💬 Start Conversation
@@ -262,24 +300,18 @@ export default function HeroSlider() {
                   </div>
                 </div>
 
-                {/* Corporate Stats - Only show on first slide, hidden on small mobile */}
-                {index === 0 && (
-                  <div className='hidden sm:block'>
-                    <CorporateStats />
-                  </div>
-                )}
-
                 {/* Slide Indicator */}
                 <div className='absolute bottom-4 right-4 md:bottom-8 md:right-8 flex space-x-2'>
-                  {slides.map((_, idx) => (
-                    <div
-                      key={`indication-${idx + 1}`}
+                  {slides.map((slideItem, idx) => (
+                    <button
+                      key={`slide-indicator-${slideItem.id}`}
                       className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition-all duration-200 cursor-pointer ${
                         idx === currentSlide
                           ? "bg-brand-gold shadow-lg"
                           : "bg-white/50 hover:bg-white/80"
                       }`}
-                      onClick={() => api?.scrollTo(idx)}
+                      onClick={() => scrollToSlide(idx)}
+                      aria-label={`Go to slide ${idx + 1}`}
                     />
                   ))}
                 </div>
@@ -293,23 +325,12 @@ export default function HeroSlider() {
         <CarouselNext className='absolute right-4 md:right-8 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white border-0 text-brand-dark hover:text-brand-amber shadow-lg hover:shadow-xl transition-all duration-300 w-10 h-10 md:w-12 md:h-12 rounded-full' />
       </Carousel>
 
-      {/* Scroll to Explore Indicator */}
-      <div className='absolute bottom-4 md:bottom-8 left-1/2 transform -translate-x-1/2 z-20'>
-        <button
-          onClick={handleScrollToNext}
-          className='group flex flex-col items-center space-y-1 md:space-y-2 text-brand-brown hover:text-brand-amber transition-all duration-200 cursor-pointer'
-        >
-          <span className='text-xs md:text-sm font-medium tracking-wider uppercase drop-shadow-sm animate-subtle-blink'>
-            Explore Solutions
-          </span>
-          <div className='w-5 h-8 md:w-6 md:h-10 border-2 border-brand-brown/50 rounded-full flex justify-center group-hover:border-brand-amber/50 transition-colors duration-200'>
-            <div className='w-1 h-2 md:h-3 bg-brand-brown/70 rounded-full mt-1 md:mt-2 animate-pulse group-hover:bg-brand-amber/70 transition-colors duration-200' />
-          </div>
-        </button>
-      </div>
-
-      {/* Bottom Gradient Overlay */}
-      <div className='absolute inset-0 bg-gradient-to-t from-brand-light/30 via-transparent to-transparent pointer-events-none' />
+      {/* Autoplay Status Indicator */}
+      {isPaused && (
+        <div className='absolute bottom-4 left-4 bg-white/90 text-brand-dark px-3 py-1 rounded-full text-sm font-medium shadow-lg'>
+          ⏸️ Paused
+        </div>
+      )}
     </section>
   );
 }

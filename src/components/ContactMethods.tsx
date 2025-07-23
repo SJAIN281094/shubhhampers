@@ -7,8 +7,8 @@ export default function ContactMethods() {
             Get in Touch
           </h2>
           <p className='text-xl text-gray-700 max-w-3xl mx-auto'>
-            Choose the way that works best for you. We're here to help you create meaningful hamper
-            experiences.
+            Choose the way that works best for you. We&apos;re here to help you create meaningful
+            hamper experiences.
           </p>
         </div>
 

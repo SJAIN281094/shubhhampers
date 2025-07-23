@@ -1,8 +1,16 @@
 import Link from "next/link";
 import { Button } from "@ui-kit/button";
 
+// Type definitions
+interface BusinessUseCase {
+  title: string;
+  description: string;
+  icon: string;
+  examples: string[];
+}
+
 // Move business use cases data outside component for better performance
-const BUSINESS_USE_CASES = [
+const BUSINESS_USE_CASES: BusinessUseCase[] = [
   {
     title: "Employee Appreciation",
     description:
@@ -58,9 +66,9 @@ export default function BusinessUseCases() {
         </div>
 
         <div className='grid grid-cols-1 md:grid-cols-2 gap-12'>
-          {BUSINESS_USE_CASES.map((useCase: any, index: number) => (
+          {BUSINESS_USE_CASES.map((useCase: BusinessUseCase) => (
             <div
-              key={index}
+              key={useCase.title}
               className='bg-gradient-to-br from-brand-light/20 to-brand-gold/10 rounded-3xl p-8 shadow-lg border border-brand-gold/20 hover:shadow-xl transition-shadow duration-200'
             >
               <div className='flex items-start gap-6 mb-6'>
@@ -77,8 +85,11 @@ export default function BusinessUseCases() {
                   Perfect For:
                 </h4>
                 <div className='grid grid-cols-2 gap-2'>
-                  {useCase.examples.map((example: any, idx: number) => (
-                    <div key={idx} className='flex items-center gap-2 p-2 bg-white/60 rounded-lg'>
+                  {useCase.examples.map((example: string) => (
+                    <div
+                      key={example}
+                      className='flex items-center gap-2 p-2 bg-white/60 rounded-lg'
+                    >
                       <div className='w-1.5 h-1.5 bg-gradient-to-r from-brand-gold to-brand-amber rounded-full' />
                       <span className='text-sm text-gray-700'>{example}</span>
                     </div>

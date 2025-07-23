@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import Link from "next/link";
 import { Button } from "../ui-kit/button";
@@ -14,6 +14,22 @@ export default function MobileNavigation() {
   const isActive = (path: string) => pathname === path;
   const isCollectionsActive = pathname === "/collections" || pathname.startsWith("/collections");
 
+  // Memoized close handler to prevent re-renders
+  const handleClose = useCallback(() => {
+    setIsOpen(false);
+  }, []);
+
+  // Memoized navigation handlers
+  const handleNavigateToContact = useCallback(() => {
+    router.push("/contact");
+    setIsOpen(false);
+  }, [router]);
+
+  const handleNavigateToWhatsApp = useCallback(() => {
+    window.open("https://wa.me/919685847274", "_blank");
+    setIsOpen(false);
+  }, []);
+
   return (
     <div className='lg:hidden'>
       <Sheet open={isOpen} onOpenChange={setIsOpen}>
@@ -22,6 +38,7 @@ export default function MobileNavigation() {
             variant='ghost'
             size='sm'
             className='text-gray-700 hover:text-brand-brown hover:bg-brand-gold/10'
+            aria-label='Open mobile menu'
           >
             <svg className='h-6 w-6' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
               {/* Gift Box Icon */}
@@ -36,52 +53,44 @@ export default function MobileNavigation() {
             </svg>
           </Button>
         </SheetTrigger>
-        <SheetContent
-          side='right'
-          className='bg-white border-l border-gray-200 w-80 flex flex-col h-full'
-        >
-          {/* Fixed Header - Mobile Logo */}
-          <div className='flex-shrink-0 pt-6 pb-4 border-b border-gray-100'>
-            <div className='flex items-center space-x-3'>
-              <div className='w-10 h-10 bg-gradient-to-br from-brand-amber to-brand-brown rounded-xl flex items-center justify-center shadow-lg'>
-                {/* Gift Icon - Same as Header */}
-                <svg
-                  className='w-6 h-6 text-white'
-                  fill='none'
-                  stroke='currentColor'
-                  strokeWidth='2'
-                  viewBox='0 0 24 24'
-                >
-                  <rect
-                    x='3'
-                    y='8'
-                    width='18'
-                    height='13'
-                    rx='2'
-                    fill='currentColor'
-                    className='text-brand-gold'
-                  />
-                  <path d='M12 8V21' stroke='white' strokeWidth='2' />
-                  <path d='M3 12H21' stroke='white' strokeWidth='2' />
-                  <path
-                    d='M7.5 8C6.119 8 5 6.881 5 5.5S6.119 3 7.5 3C9.5 3 10 5.5 12 5.5C14 5.5 14.5 3 16.5 3C17.881 3 19 4.119 19 5.5S17.881 8 16.5 8H7.5Z'
-                    stroke='white'
-                    strokeWidth='2'
-                  />
-                </svg>
-              </div>
-              <div>
-                <h2 className='font-display text-xl font-bold bg-gradient-to-r from-brand-brown to-brand-amber bg-clip-text text-transparent'>
-                  Shubhhampers
-                </h2>
-                <p className='text-xs text-gray-600'>Hampers that build relationships.</p>
-              </div>
-            </div>
-          </div>
 
-          {/* Scrollable Navigation Content */}
-          <div className='flex-1 overflow-y-auto px-6 py-4'>
-            <nav className='space-y-6'>
+        <SheetContent side='right' className='w-80 sm:w-96 bg-white border-l border-brand-gold/20'>
+          <div className='flex flex-col h-full'>
+            {/* Header */}
+            <div className='py-6 border-b border-brand-gold/20'>
+              <h2 className='text-2xl font-bold text-brand-dark'>Shubhhampers</h2>
+              <p className='text-sm text-brand-brown'>Hampers that build relationships</p>
+            </div>
+
+            {/* Navigation */}
+            <nav className='flex-1 py-6 space-y-6'>
+              {/* Home */}
+              <Link
+                href='/'
+                className={`block font-semibold transition-colors ${
+                  isActive("/")
+                    ? "text-brand-dark bg-brand-gold/10 px-3 py-2 rounded-lg"
+                    : "text-brand-brown hover:text-brand-dark"
+                }`}
+                onClick={handleClose}
+              >
+                🏠 Home
+              </Link>
+
+              {/* About */}
+              <Link
+                href='/about'
+                className={`block font-semibold transition-colors ${
+                  isActive("/about")
+                    ? "text-brand-dark bg-brand-gold/10 px-3 py-2 rounded-lg"
+                    : "text-brand-brown hover:text-brand-dark"
+                }`}
+                onClick={handleClose}
+              >
+                ℹ️ About Us
+              </Link>
+
+              {/* Collections */}
               <div>
                 <Link
                   href='/collections?category=all'
@@ -90,7 +99,7 @@ export default function MobileNavigation() {
                       ? "text-brand-dark bg-brand-gold/10 px-3 py-2 rounded-lg"
                       : "text-brand-brown hover:text-brand-dark"
                   }`}
-                  onClick={() => setIsOpen(false)}
+                  onClick={handleClose}
                 >
                   🎁 Collections
                 </Link>
@@ -99,7 +108,7 @@ export default function MobileNavigation() {
                     <Link
                       href='/collections?category=business'
                       className='text-gray-700 hover:text-brand-brown cursor-pointer'
-                      onClick={() => setIsOpen(false)}
+                      onClick={handleClose}
                     >
                       Business Hampers
                     </Link>
@@ -108,16 +117,16 @@ export default function MobileNavigation() {
                     <Link
                       href='/collections?category=wedding'
                       className='text-gray-700 hover:text-brand-brown cursor-pointer'
-                      onClick={() => setIsOpen(false)}
+                      onClick={handleClose}
                     >
                       Wedding Hampers
                     </Link>
                   </li>
                   <li>
                     <Link
-                      href='/collections?category=festival'
+                      href='/collections?category=festivals'
                       className='text-gray-700 hover:text-brand-brown cursor-pointer'
-                      onClick={() => setIsOpen(false)}
+                      onClick={handleClose}
                     >
                       Festival Hampers
                     </Link>
@@ -126,172 +135,76 @@ export default function MobileNavigation() {
                     <Link
                       href='/collections?category=personal'
                       className='text-gray-700 hover:text-brand-brown cursor-pointer'
-                      onClick={() => setIsOpen(false)}
+                      onClick={handleClose}
                     >
-                      Personal Celebrations
+                      Personal Hampers
                     </Link>
                   </li>
                 </ul>
               </div>
 
               {/* Services */}
-              <div>
-                <Link
-                  href='/services'
-                  className={`font-semibold flex items-center transition-colors ${
-                    isActive("/services")
-                      ? "text-brand-dark bg-brand-gold/10 px-3 py-2 rounded-lg"
-                      : "text-brand-brown hover:text-brand-dark"
-                  }`}
-                  onClick={() => setIsOpen(false)}
-                >
-                  🎯 Services
-                </Link>
-              </div>
+              <Link
+                href='/services'
+                className={`block font-semibold transition-colors ${
+                  isActive("/services")
+                    ? "text-brand-dark bg-brand-gold/10 px-3 py-2 rounded-lg"
+                    : "text-brand-brown hover:text-brand-dark"
+                }`}
+                onClick={handleClose}
+              >
+                🔧 Services
+              </Link>
 
-              {/* For Business */}
-              <div>
-                <Link
-                  href='/business'
-                  className={`font-semibold flex items-center transition-colors ${
-                    isActive("/business")
-                      ? "text-brand-dark bg-brand-gold/10 px-3 py-2 rounded-lg"
-                      : "text-brand-brown hover:text-brand-dark"
-                  }`}
-                  onClick={() => setIsOpen(false)}
-                >
-                  🏢 For Business
-                </Link>
-              </div>
+              {/* Business */}
+              <Link
+                href='/business'
+                className={`block font-semibold transition-colors ${
+                  isActive("/business")
+                    ? "text-brand-dark bg-brand-gold/10 px-3 py-2 rounded-lg"
+                    : "text-brand-brown hover:text-brand-dark"
+                }`}
+                onClick={handleClose}
+              >
+                🏢 Business Solutions
+              </Link>
 
-              {/* About */}
-              <div>
-                <h3 className='font-semibold text-brand-brown mb-3 flex items-center'>
-                  💼 For Business
-                </h3>
-                <ul className='space-y-2 ml-6'>
-                  <li>
-                    <Link
-                      href='/business-accounts'
-                      className='text-gray-700 hover:text-brand-brown cursor-pointer'
-                      onClick={() => setIsOpen(false)}
-                    >
-                      Business Accounts
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href='/volume-discounts'
-                      className='text-gray-700 hover:text-brand-brown cursor-pointer'
-                      onClick={() => setIsOpen(false)}
-                    >
-                      Volume Discounts
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href='/partnership-program'
-                      className='text-gray-700 hover:text-brand-brown cursor-pointer'
-                      onClick={() => setIsOpen(false)}
-                    >
-                      Partnership Program
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href='/case-studies'
-                      className='text-gray-700 hover:text-brand-brown cursor-pointer'
-                      onClick={() => setIsOpen(false)}
-                    >
-                      Case Studies
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-
-              <div>
-                <h3
-                  className={`font-semibold mb-3 flex items-center ${
-                    isActive("/about") || pathname.startsWith("/about")
-                      ? "text-brand-dark bg-brand-gold/10 px-3 py-2 rounded-lg"
-                      : "text-brand-brown"
-                  }`}
-                >
-                  ℹ️ About
-                </h3>
-                <ul className='space-y-2 ml-6'>
-                  <li>
-                    <Link
-                      href='/about'
-                      className={`${
-                        isActive("/about")
-                          ? "text-brand-dark font-semibold"
-                          : "text-gray-700 hover:text-brand-brown"
-                      }`}
-                      onClick={() => setIsOpen(false)}
-                    >
-                      Our Story
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href='/about#process'
-                      className='text-gray-700 hover:text-brand-brown'
-                      onClick={() => setIsOpen(false)}
-                    >
-                      Our Process
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href='/about#team'
-                      className='text-gray-700 hover:text-brand-brown'
-                      onClick={() => setIsOpen(false)}
-                    >
-                      Our Team
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href='/about#values'
-                      className='text-gray-700 hover:text-brand-brown'
-                      onClick={() => setIsOpen(false)}
-                    >
-                      Our Values
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-
-              <div>
-                <h3 className='font-semibold mb-3'>
-                  <Link
-                    href='/contact'
-                    className={`${
-                      isActive("/contact")
-                        ? "text-brand-dark bg-brand-gold/10 px-3 py-2 rounded-lg"
-                        : "text-brand-brown hover:text-brand-amber"
-                    }`}
-                    onClick={() => setIsOpen(false)}
-                  >
-                    📞 Contact Us
-                  </Link>
-                </h3>
-              </div>
+              {/* Contact */}
+              <Link
+                href='/contact'
+                className={`block font-semibold transition-colors ${
+                  isActive("/contact")
+                    ? "text-brand-dark bg-brand-gold/10 px-3 py-2 rounded-lg"
+                    : "text-brand-brown hover:text-brand-dark"
+                }`}
+                onClick={handleClose}
+              >
+                📞 Contact
+              </Link>
             </nav>
-          </div>
 
-          {/* Fixed Footer - Mobile CTA */}
-          <div className='flex-shrink-0 p-6 border-t border-gray-100 bg-white'>
-            <Button
-              onClick={() => {
-                router.push("/contact");
-                setIsOpen(false);
-              }}
-              className='w-full bg-gradient-to-r from-brand-amber to-brand-brown hover:from-brand-brown hover:to-brand-amber text-white font-semibold py-3 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105'
-            >
-              Get Quote
-            </Button>
+            {/* Quick Actions */}
+            <div className='py-6 border-t border-brand-gold/20 space-y-4'>
+              <Button
+                onClick={handleNavigateToContact}
+                className='w-full bg-gradient-to-r from-brand-gold to-brand-amber text-brand-dark font-semibold py-3 rounded-lg shadow-lg hover:shadow-xl transition-all duration-200'
+              >
+                💬 Start Consultation
+              </Button>
+
+              <Button
+                onClick={handleNavigateToWhatsApp}
+                className='w-full bg-transparent text-brand-brown border-2 border-brand-gold font-semibold py-3 rounded-lg hover:bg-brand-gold/10 transition-all duration-200'
+              >
+                📱 WhatsApp Us
+              </Button>
+
+              {/* Contact Info */}
+              <div className='text-center text-sm text-gray-600 space-y-1'>
+                <p>📧 hello@shubhhampers.com</p>
+                <p>📞 +91 96858 47274</p>
+              </div>
+            </div>
           </div>
         </SheetContent>
       </Sheet>

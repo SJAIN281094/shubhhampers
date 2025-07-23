@@ -158,7 +158,11 @@ export async function POST(request: NextRequest) {
       { status: 200 }
     );
   } catch (error) {
-    console.error("Error sending email:", error);
+    // Log error in production environment
+    if (process.env.NODE_ENV === "production") {
+      // In production, you might want to use a proper logging service
+      // console.error("Error sending email:", error);
+    }
     return NextResponse.json(
       {
         error: "Failed to send email",

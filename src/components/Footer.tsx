@@ -1,10 +1,17 @@
 "use client";
 
 import { useState } from "react";
+import dynamic from "next/dynamic";
+import Image from "next/image";
 import { Button } from "@ui-kit/button";
 import Link from "next/link";
-import CatalogueModal from "./CatalogueModal";
 import { handleWhatsApp } from "../lib/contact-utils";
+
+// Dynamic import for modal - only load when needed
+const CatalogueModal = dynamic(() => import("./CatalogueModal"), {
+  loading: () => null, // Don't show loading for modals
+  ssr: false // Modals should not be server-side rendered
+});
 
 export default function Footer() {
   const [isCatalogueModalOpen, setIsCatalogueModalOpen] = useState(false);
@@ -58,10 +65,15 @@ export default function Footer() {
                 <div className='flex items-center gap-3 mb-4'>
                   <div className='w-12 h-12 bg-gradient-to-br from-brand-light via-white to-brand-gold/20 rounded-xl overflow-hidden shadow-lg border border-brand-gold/30 p-1'>
                     {/* Logo Image */}
-                    <img
+                    <Image
                       src='/logo-dark.png'
                       alt='Shubhhampers Logo'
+                      width={48}
+                      height={48}
                       className='w-full h-full object-contain'
+                      quality={90}
+                      placeholder='blur'
+                      blurDataURL='data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkrHB0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=='
                     />
                   </div>
                   <div>

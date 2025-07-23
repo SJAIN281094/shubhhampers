@@ -1,12 +1,8 @@
-"use client";
-
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { Button } from "../ui-kit/button";
-import { handleWhatsApp } from "../lib/contact-utils";
+import WhatsAppButton from "./WhatsAppButton";
 
 export default function HowWeWorkSection() {
-  const router = useRouter();
-
   const processSteps = [
     {
       id: 1,
@@ -62,7 +58,7 @@ export default function HowWeWorkSection() {
           </h2>
           <p className='text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-gray-700 max-w-4xl mx-auto leading-relaxed px-4 md:px-0'>
             Our consultation-first approach ensures every hamper is perfectly tailored to your
-            needs. Here's how we turn your vision into meaningful experiences.
+            needs. Here&apos;s how we turn your vision into meaningful experiences.
           </p>
         </div>
 
@@ -115,8 +111,8 @@ export default function HowWeWorkSection() {
                 <div className='bg-white/60 backdrop-blur-sm rounded-xl p-4 border border-brand-gold/20'>
                   <h4 className='font-semibold text-brand-brown mb-3'>What We Focus On:</h4>
                   <div className='grid grid-cols-2 gap-2'>
-                    {step.details.map((detail, idx) => (
-                      <div key={idx} className='flex items-center gap-2'>
+                    {step.details.map(detail => (
+                      <div key={detail} className='flex items-center gap-2'>
                         <div className='w-2 h-2 bg-brand-gold rounded-full' />
                         <span className='text-sm text-gray-600'>{detail}</span>
                       </div>
@@ -164,22 +160,17 @@ export default function HowWeWorkSection() {
             </p>
 
             <div className='flex flex-col sm:flex-row gap-4 justify-center'>
-              <Button
-                onClick={() => router.push("/contact")}
-                className='bg-brand-gold text-brand-dark font-semibold px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105'
-              >
-                💬 Start Consultation
-              </Button>
-              <Button
-                onClick={() =>
-                  handleWhatsApp(
-                    "Hi! I'd like to understand your hamper process and how you can help us create meaningful connections."
-                  )
-                }
+              <Link href='/contact'>
+                <Button className='bg-brand-gold text-brand-dark font-semibold px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105'>
+                  💬 Start Consultation
+                </Button>
+              </Link>
+              <WhatsAppButton
+                message="Hi! I'd like to understand your hamper process and how you can help us create meaningful connections."
                 className='bg-transparent text-white font-semibold px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-brand-gold hover:bg-brand-gold hover:text-brand-dark hover:scale-105'
               >
                 💬 WhatsApp Us Now
-              </Button>
+              </WhatsAppButton>
             </div>
           </div>
         </div>

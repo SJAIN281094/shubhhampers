@@ -1,12 +1,8 @@
-"use client";
-
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { Button } from "../ui-kit/button";
-import { handleWhatsApp } from "../lib/contact-utils";
+import WhatsAppButton from "./WhatsAppButton";
 
 export default function CTASection() {
-  const router = useRouter();
-
   return (
     <section className='py-20 bg-gradient-to-br from-brand-brown via-brand-dark to-brand-brown relative overflow-hidden'>
       {/* Enhanced Decorative Background Elements */}
@@ -70,27 +66,30 @@ export default function CTASection() {
 
           {/* Authentic CTA Buttons */}
           <div className='flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-center mb-8 md:mb-12 px-4 md:px-0'>
-            <Button
-              size='lg'
-              onClick={() => router.push("/collections")}
-              className='bg-gradient-to-r from-brand-amber to-brand-gold hover:from-brand-gold hover:to-brand-amber text-brand-dark font-bold px-6 py-3 sm:px-8 sm:py-4 md:px-10 md:py-4 text-sm sm:text-base md:text-lg rounded-full shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer hover:scale-105 w-full sm:w-auto'
-            >
-              🎁 Explore Our Collections
-            </Button>
-            <Button
-              size='lg'
-              onClick={() => router.push("/contact")}
-              className='bg-brand-dark hover:bg-brand-brown text-brand-light font-semibold px-6 py-3 sm:px-8 sm:py-4 md:px-10 md:py-4 text-sm sm:text-base md:text-lg rounded-full shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer border-2 border-brand-gold/50 hover:scale-105 w-full sm:w-auto'
-            >
-              💬 {"Let's Chat"}
-            </Button>
-            <Button
-              size='lg'
-              onClick={() => router.push("/collections")}
-              className='bg-white/10 backdrop-blur-sm text-brand-light font-semibold px-6 py-3 sm:px-8 sm:py-4 md:px-10 md:py-4 text-sm sm:text-base md:text-lg rounded-full shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer border-2 border-brand-gold/30 hover:bg-white/20 hover:scale-105 w-full sm:w-auto'
-            >
-              🛒 Start Shopping
-            </Button>
+            <Link href='/collections'>
+              <Button
+                size='lg'
+                className='bg-gradient-to-r from-brand-amber to-brand-gold hover:from-brand-gold hover:to-brand-amber text-brand-dark font-bold px-6 py-3 sm:px-8 sm:py-4 md:px-10 md:py-4 text-sm sm:text-base md:text-lg rounded-full shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer hover:scale-105 w-full sm:w-auto'
+              >
+                🎁 Explore Our Collections
+              </Button>
+            </Link>
+            <Link href='/contact'>
+              <Button
+                size='lg'
+                className='bg-brand-dark hover:bg-brand-brown text-brand-light font-semibold px-6 py-3 sm:px-8 sm:py-4 md:px-10 md:py-4 text-sm sm:text-base md:text-lg rounded-full shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer border-2 border-brand-gold/50 hover:scale-105 w-full sm:w-auto'
+              >
+                💬 {"Let's Chat"}
+              </Button>
+            </Link>
+            <Link href='/collections'>
+              <Button
+                size='lg'
+                className='bg-white/10 backdrop-blur-sm text-brand-light font-semibold px-6 py-3 sm:px-8 sm:py-4 md:px-10 md:py-4 text-sm sm:text-base md:text-lg rounded-full shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer border-2 border-brand-gold/30 hover:bg-white/20 hover:scale-105 w-full sm:w-auto'
+              >
+                🛒 Start Shopping
+              </Button>
+            </Link>
           </div>
 
           {/* Genuine Value Propositions */}
@@ -173,22 +172,17 @@ export default function CTASection() {
               and help create something special together.`}
             </p>
             <div className='flex flex-wrap justify-center gap-4'>
-              <Button
-                onClick={() => router.push("/contact")}
-                className='bg-brand-gold text-brand-dark font-bold px-8 py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105'
-              >
-                📧 Get in Touch
-              </Button>
-              <Button
-                onClick={() =>
-                  handleWhatsApp(
-                    "Hi! I'm interested in your hamper services and would like to discuss my requirements."
-                  )
-                }
+              <Link href='/contact'>
+                <Button className='bg-brand-gold text-brand-dark font-bold px-8 py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105'>
+                  📧 Get in Touch
+                </Button>
+              </Link>
+              <WhatsAppButton
+                message="Hi! I'm interested in your hamper services and would like to discuss my requirements."
                 className='bg-transparent text-brand-light font-semibold px-8 py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-brand-gold hover:bg-brand-gold hover:text-brand-dark hover:scale-105'
               >
                 💬 WhatsApp Us
-              </Button>
+              </WhatsAppButton>
             </div>
           </div>
         </div>
