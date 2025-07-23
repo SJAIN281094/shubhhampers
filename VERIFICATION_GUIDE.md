@@ -9,17 +9,22 @@ This guide explains the comprehensive verification system implemented for the pr
 ```bash
 # Full verification (recommended before major commits/releases)
 npm run verify
-# Runs: type-check → lint:strict → format:check → build
+# Runs: type-check → lint → format:check → build
 
 # Quick verification (faster, good for development)
 npm run verify:quick
 # Runs: type-check → lint:check → format:check
 
+# Strict verification (zero warnings, for releases)
+npm run verify:strict
+# Runs: type-check → lint:strict → format:check → build
+
 # Individual verification steps
 npm run type-check      # TypeScript type checking
-npm run lint:strict     # ESLint with max-warnings 0
-npm run lint:check      # ESLint without fixes (quieter)
-npm run format:check    # Prettier format validation
+npm run lint           # ESLint with warnings allowed
+npm run lint:strict    # ESLint with max-warnings 0
+npm run lint:check     # ESLint without fixes (quieter)
+npm run format:check   # Prettier format validation
 npm run build          # Next.js production build
 ```
 

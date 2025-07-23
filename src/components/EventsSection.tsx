@@ -34,7 +34,7 @@ const EVENTS_DATA = [
       "Success tastes sweeter when shared. Our milestone celebration hampers help you commemorate significant achievements with your team, creating shared pride and motivation that propels your organization toward even greater accomplishments.",
     image: "🏆",
     features: ["Achievement Honor", "Team Unity", "Success Sharing", "Future Motivation"],
-    backgroundImage: "milestone.png", // Now using optimized WebP (96% smaller!)
+    backgroundImage: IMAGES.MILESTONE, // Now using optimized WebP (96% smaller!)
     textColor: "text-white",
     bgGradient: "from-brand-brown/90 via-brand-gold/80 to-brand-amber/90"
   },
@@ -47,7 +47,7 @@ const EVENTS_DATA = [
       "Transform corporate gatherings into memorable experiences. Our event hampers ensure every attendee leaves with something special, strengthening business relationships and creating positive associations with your brand that last long after the event ends.",
     image: "🏢",
     features: ["Event Enhancement", "Brand Building", "Guest Delight", "Lasting Impression"],
-    backgroundImage: "business-celebration.png", // Now using optimized WebP (94% smaller!)
+    backgroundImage: IMAGES.BUSINESS_CELEBRATION, // Now using optimized WebP (94% smaller!)
     textColor: "text-white",
     bgGradient: "from-brand-gold/90 via-brand-amber/80 to-brand-brown/90"
   },
