@@ -44,7 +44,7 @@ const eslintConfig = [
       "react/jsx-uses-react": "off",
       "react/jsx-uses-vars": "error",
       "react/no-array-index-key": "warn",
-      "react/no-danger": "warn",
+      "react/no-danger": "off",
       "react/no-deprecated": "error",
       "react/no-direct-mutation-state": "error",
       "react/no-find-dom-node": "error",

@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 declare global {
   var __BUILD_TIME__: string;
@@ -51,13 +51,13 @@ export default function CacheInvalidator({ checkInterval = 5 * 60 * 1000 }: Cach
     }
   };
 
-  const setupUpdateChecker = () => {
+  const setupUpdateChecker = useCallback(() => {
     // Check immediately
     checkForUpdates();
 
     // Set up periodic checks
     intervalRef.current = setInterval(checkForUpdates, checkInterval);
-  };
+  }, [checkInterval]);
 
   // Prevent hydration mismatch by only running after mount
   useEffect(() => {
@@ -101,7 +101,7 @@ export default function CacheInvalidator({ checkInterval = 5 * 60 * 1000 }: Cach
       window.removeEventListener("online", handleOnline);
       window.removeEventListener("focus", handleFocus);
     };
-  }, [checkInterval, isMounted]);
+  }, [checkInterval, isMounted, setupUpdateChecker]);
 
   // This component doesn't render anything
   return null;

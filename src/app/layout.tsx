@@ -1,12 +1,16 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import dynamic from "next/dynamic";
-import { Inter, Playfair_Display } from "next/font/google";
+import { Poppins } from "next/font/google";
 import "./globals.css";
 
-// Font configurations
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
-const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-display" });
+// Font configurations using Next.js optimized font loading
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  variable: "--font-sans",
+  display: "swap"
+});
 
 // Dynamic imports for client-side only components to prevent hydration issues
 const PerformanceOptimizer = dynamic(() => import("@components/PerformanceOptimizer"));
@@ -135,13 +139,9 @@ export default function RootLayout({
         <link rel='preconnect' href='https://fonts.googleapis.com' />
         <link rel='preconnect' href='https://fonts.gstatic.com' crossOrigin='anonymous' />
 
-        {/* Load fonts with font-display swap for better performance */}
+        {/* Load Bonheur Royale font (not available in Next.js fonts) */}
         <link
           href='https://fonts.googleapis.com/css2?family=Bonheur+Royale&display=swap'
-          rel='stylesheet'
-        />
-        <link
-          href='https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap'
           rel='stylesheet'
         />
 
@@ -182,7 +182,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${inter.variable} ${playfair.variable} antialiased`}>
+      <body className={`${poppins.variable} antialiased`}>
         {/* Performance Optimizer - Preloads critical resources and optimizes rendering */}
         <PerformanceOptimizer />
 
