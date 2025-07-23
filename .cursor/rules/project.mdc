@@ -1,10 +1,46 @@
----
-alwaysApply: true
----
-
 **_IMPORTANT INFO_**
 we are starting this business, we dont have any client or pricess decided, but we want this site in such way that people look at thios site like professionls ared doing this, although we are new but we dont people to consider us as new
 
 use Hamper or Hampers or hamper, wherever required instead of Gift, Gifting, etc...
 
 so when you write or design something. CURRENT THEME SHOULD NOT IMPACT and also TONE SHOULD NOT AFFECT by your actions.
+
+## 🏗️ TECHNICAL STANDARDS
+
+**Company**: Shubhhampers (The Little Basket)
+**Contact**: +91 96858 47274, connect@shubhhampers.com
+**Framework**: Next.js 15 + App Router + TypeScript
+**Performance Issue**: 15 client components - REDUCE to max 8
+**Verification**: ALWAYS run `npm run verify` before commits
+
+**Brand Colors (STRICT)**:
+--brand-light: #f1dea8; --brand-gold: #e9c579; --brand-amber: #daa755;
+--brand-brown: #9f6920; --brand-dark: #462506;
+
+## 🔒 SECURITY GAPS (HIGH PRIORITY)
+
+- No CSP headers
+- No input validation on contact forms
+- No rate limiting on APIs
+- Missing security headers
+
+## ♿ ACCESSIBILITY (REQUIRED)
+
+- Target: WCAG 2.1 AA compliance
+- Add ARIA labels to all interactive elements
+- Proper focus indicators and keyboard navigation
+
+## 🚀 WORKFLOW
+
+**Before ANY work**: Read these rules + run `npm run verify:quick`
+**During development**: Server Components first, minimal "use client"
+**Before commit**: `npm run verify` must pass
+
+## 📊 CURRENT PRIORITIES
+
+1. Reduce 15 client components to ~8
+2. Add accessibility features (WCAG 2.1 AA)
+3. Implement security headers and input validation
+4. Add Atomic Design structure for maintainability
+
+**GOLDEN RULE**: Professional image + "hamper" terminology + accessibility + performance first
