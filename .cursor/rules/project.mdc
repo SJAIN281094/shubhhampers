@@ -17,6 +17,240 @@ so when you write or design something. CURRENT THEME SHOULD NOT IMPACT and also 
 --brand-light: #f1dea8; --brand-gold: #e9c579; --brand-amber: #daa755;
 --brand-brown: #9f6920; --brand-dark: #462506;
 
+## 🎨 TAILWIND CSS CONFIGURATION (MANDATORY v4.1)
+
+**ALWAYS use CSS-First Configuration (v4 Way) - MAIN APPROACH:**
+
+### Tailwind CSS v4.1.11 Configuration Rules:
+
+1. **PRIMARY**: Configure Tailwind in `src/app/globals.css` using CSS-first approach
+2. **NEVER**: Add new configuration to `tailwind.config.ts` (only for backward compatibility)
+3. **ALWAYS**: Use `@theme inline {}` for custom theme variables
+4. **STRUCTURE**: Follow established pattern in globals.css
+
+### MANDATORY COLOR SYSTEM (ALWAYS IMPLEMENT):
+
+**ALWAYS create complete primary and secondary color palettes with ALL variations (50-950):**
+
+```css
+/* src/app/globals.css - MANDATORY color system */
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/* Brand variables first */
+:root {
+  --brand-light: #f1dea8;
+  --brand-gold: #e9c579;
+  --brand-amber: #daa755;
+  --brand-brown: #9f6920;
+  --brand-dark: #462506;
+}
+
+/* MANDATORY: Complete color variations */
+@theme inline {
+  /* PRIMARY COLOR SYSTEM - Brand Amber (MANDATORY) */
+  --color-primary-50: #fffbeb;
+  --color-primary-100: #fef3c7;
+  --color-primary-200: #fde68a;
+  --color-primary-300: #fcd34d;
+  --color-primary-400: #fbbf24;
+  --color-primary-500: #daa755; /* Base brand-amber */
+  --color-primary-600: #d97706;
+  --color-primary-700: #b45309;
+  --color-primary-800: #92400e;
+  --color-primary-900: #78350f;
+  --color-primary-950: #451a03;
+
+  /* SECONDARY COLOR SYSTEM - Brand Gold (MANDATORY) */
+  --color-secondary-50: #fffbf0;
+  --color-secondary-100: #fef7e0;
+  --color-secondary-200: #fdecc8;
+  --color-secondary-300: #fbd8a5;
+  --color-secondary-400: #f9c74f;
+  --color-secondary-500: #e9c579; /* Base brand-gold */
+  --color-secondary-600: #e4a853;
+  --color-secondary-700: #d4883a;
+  --color-secondary-800: #b86f32;
+  --color-secondary-900: #975a2c;
+  --color-secondary-950: #523016;
+
+  /* ACCENT COLORS - For highlights and subtle variations (MANDATORY) */
+  --color-accent-50: #faf8f3;
+  --color-accent-100: #f1dea8; /* Brand light */
+  --color-accent-200: #e8d089;
+  --color-accent-300: #dfc26a;
+  --color-accent-400: #d6b44b;
+  --color-accent-500: #9f6920; /* Brand brown */
+  --color-accent-600: #8f5e1d;
+  --color-accent-700: #7f531a;
+  --color-accent-800: #6f4817;
+  --color-accent-900: #462506; /* Brand dark */
+  --color-accent-950: #2d1704;
+
+  /* MANDATORY: Shadow system - NEVER declare shadows in components */
+  --shadow-hamper-sm: 0 1px 2px 0 rgba(159, 105, 32, 0.05);
+  --shadow-hamper-md:
+    0 4px 6px -1px rgba(159, 105, 32, 0.1), 0 2px 4px -1px rgba(159, 105, 32, 0.06);
+  --shadow-hamper-lg:
+    0 10px 15px -3px rgba(159, 105, 32, 0.1), 0 4px 6px -2px rgba(159, 105, 32, 0.05);
+  --shadow-hamper-xl:
+    0 20px 25px -5px rgba(159, 105, 32, 0.1), 0 10px 10px -5px rgba(159, 105, 32, 0.04);
+  --shadow-hamper-2xl: 0 25px 50px -12px rgba(159, 105, 32, 0.25);
+  --shadow-hamper-inner: inset 0 2px 4px 0 rgba(159, 105, 32, 0.06);
+  --shadow-brand-glow: 0 0 20px rgba(233, 197, 121, 0.3);
+  --shadow-premium: 0 8px 32px rgba(70, 37, 6, 0.12), 0 2px 8px rgba(70, 37, 6, 0.08);
+
+  /* Custom fonts */
+  --font-family-bonheur: "Bonheur Royale", "cursive";
+  --font-family-poppins: "Poppins", "sans-serif";
+
+  /* Custom breakpoints */
+  --breakpoint-3xl: 1920px;
+}
+```
+
+### CONSISTENT COLOR USAGE RULES (MANDATORY):
+
+1. **PRIMARY COLORS**: Use for main CTAs, buttons, active states
+2. **SECONDARY COLORS**: Use for backgrounds, cards, secondary actions
+3. **ACCENT COLORS**: Use for highlights, hover states, subtle elements
+4. **NEVER**: Mix random colors - stick to the defined palette
+
+### Component Color Usage Examples:
+
+```typescript
+// ✅ CORRECT - Using defined color system
+<button className="bg-primary-500 hover:bg-primary-600 text-white">
+  Contact Us
+</button>
+
+<div className="bg-secondary-100 border border-secondary-200">
+  <h3 className="text-primary-700">Premium Hamper</h3>
+  <p className="text-accent-600">Curated selection</p>
+</div>
+
+// ❌ WRONG - Custom colors or properties
+<button style={{ backgroundColor: '#daa755' }}>Contact Us</button>
+<div className="bg-yellow-100">Content</div>
+```
+
+### MANDATORY SHADOW SYSTEM (NEVER DECLARE IN COMPONENTS):
+
+```typescript
+// ✅ CORRECT - Using defined shadow utilities
+<div className="shadow-hamper-md hover:shadow-hamper-lg">
+  <img className="shadow-premium" src="/hamper.jpg" alt="Premium hamper" />
+</div>
+
+<button className="shadow-hamper-sm hover:shadow-brand-glow">
+  Get Quote
+</button>
+
+// ❌ WRONG - Custom shadow properties
+<div style={{ boxShadow: '0 4px 6px rgba(0,0,0,0.1)' }}>Content</div>
+<div className="shadow-[0_4px_6px_rgba(0,0,0,0.1)]">Content</div>
+```
+
+### Adding New Colors/Shadows (MANDATORY PROCESS):
+
+```css
+/* ✅ DO THIS - Add to globals.css @theme inline */
+@theme inline {
+  /* New color variation */
+  --color-tertiary-50: #f8f9fa;
+  --color-tertiary-100: #e9ecef;
+  /* ... complete 50-950 range */
+
+  /* New shadow */
+  --shadow-card-elegant: 0 12px 28px rgba(70, 37, 6, 0.15), 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+/* ❌ DON'T DO THIS - Random custom properties */
+// style={{ color: '#random' }}
+// className="shadow-[custom-value]"
+```
+
+### Color Consistency Enforcement:
+
+1. **ALL COMPONENTS** must use primary-_, secondary-_, accent-\* color utilities
+2. **NEVER** use default Tailwind colors (blue-500, red-300, etc.) except for alerts/validation
+3. **NEVER** declare custom CSS properties in components
+4. **ALWAYS** add new colors to the theme configuration first
+5. **SHADOWS** must be defined in theme configuration, never inline
+
+### CSS-First Configuration Pattern:
+
+```css
+/* src/app/globals.css - MAIN configuration location */
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/* Brand variables first */
+:root {
+  --brand-light: #f1dea8;
+  --brand-gold: #e9c579;
+  --brand-amber: #daa755;
+  --brand-brown: #9f6920;
+  --brand-dark: #462506;
+}
+
+/* Theme configuration using v4 syntax */
+@theme inline {
+  --color-brand-light: var(--brand-light);
+  --color-brand-gold: var(--brand-gold);
+  --color-brand-amber: var(--brand-amber);
+  --color-brand-brown: var(--brand-brown);
+  --color-brand-dark: var(--brand-dark);
+
+  /* Custom fonts */
+  --font-family-bonheur: "Bonheur Royale", "cursive";
+  --font-family-poppins: "Poppins", "sans-serif";
+
+  /* Custom breakpoints */
+  --breakpoint-3xl: 1920px;
+
+  /* Custom spacing, colors, etc. */
+}
+```
+
+### Adding New Customizations:
+
+```css
+/* ✅ DO THIS - Add to globals.css */
+@theme inline {
+  --color-hamper-primary: #e9c579;
+  --color-hamper-secondary: #daa755;
+  --font-family-display: "Satoshi", "sans-serif";
+  --spacing-hamper: 1.5rem;
+}
+
+/* ❌ DON'T DO THIS - Don't add to tailwind.config.ts */
+// theme:
+{
+  extend: {
+    colors: {
+      hamperprimary: "#e9c579";
+    }
+  }
+}
+```
+
+### Configuration Location Priority:
+
+1. **FIRST**: `src/app/globals.css` with `@theme inline {}` (v4 CSS-first)
+2. **FALLBACK**: `tailwind.config.ts` (only for legacy compatibility)
+3. **NEVER**: Create new config files or approaches
+
+### Benefits of CSS-First Approach:
+
+- ✅ **Native CSS variables** - accessible everywhere
+- ✅ **Co-located with styles** - easier maintenance
+- ✅ **Modern v4 features** - text shadows, masking, etc.
+- ✅ **Performance optimized** - faster builds
+- ✅ **Framework agnostic** - works with any tool
+
+**RULE**: All Tailwind customization MUST use CSS-first configuration in `src/app/globals.css`. Never extend `tailwind.config.ts` for new features.
+
 ## 📚 STORYBOOK-FIRST DEVELOPMENT (MANDATORY)
 
 **ALWAYS create in Storybook FIRST, then implement in actual place:**
