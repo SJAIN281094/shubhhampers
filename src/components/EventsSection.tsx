@@ -18,7 +18,8 @@ const EVENTS_DATA = [
       "Every exceptional team member deserves recognition that touches their heart. Our employee appreciation hampers transform routine acknowledgments into meaningful moments that strengthen loyalty, boost morale, and create lasting emotional connections within your organization.",
     image: "🎯",
     features: ["Personal Recognition", "Milestone Celebration", "Team Building", "Loyalty Boost"],
-    backgroundImage: "welcome-gift.png", // Now using optimized WebP (98% smaller!)
+    backgroundImage:
+      "https://the-little-basket.s3.us-east-1.amazonaws.com/images/hampers/corporate-hampers/hampers-corporate_1.jpg",
     textColor: "text-white",
     bgGradient: "from-brand-amber/90 via-brand-gold/80 to-brand-brown/90"
   },
@@ -62,6 +63,48 @@ const EVENTS_DATA = [
     bgGradient: "from-brand-light/90 via-brand-gold/80 to-brand-amber/90"
   },
   {
+    id: "baby-shower",
+    title: "Baby Shower",
+    subtitle: "Celebrating new beginnings with love",
+    category: "festivals",
+    description:
+      "Welcome the little miracle with hampers that celebrate new life and motherhood. Our baby shower collections create precious moments of joy, offering thoughtful gifts that honor this beautiful journey and show your love for the growing family.",
+    image: "👶",
+    features: ["New Life Celebration", "Motherhood Honor", "Family Joy", "Precious Moments"],
+    backgroundImage:
+      "https://the-little-basket.s3.us-east-1.amazonaws.com/images/hampers/baby-shower/hampers_baby-shower_1.jpeg",
+    textColor: "text-white",
+    bgGradient: "from-pink-400/90 via-blue-300/80 to-yellow-200/90"
+  },
+  {
+    id: "rakshabandhan",
+    title: "Rakshabandhan",
+    subtitle: "Celebrating the sacred bond of siblings",
+    category: "festivals",
+    description:
+      "Honor the unbreakable bond between siblings with hampers that speak of love, protection, and lifelong connection. Our Rakshabandhan collections strengthen family ties and create memories that last beyond the festival celebrations.",
+    image: "🪔",
+    features: ["Sibling Bond", "Family Tradition", "Love Expression", "Cultural Heritage"],
+    backgroundImage:
+      "https://the-little-basket.s3.us-east-1.amazonaws.com/images/hampers/rakshabandhan/hampers-rakshabandhan_2.jpeg",
+    textColor: "text-white",
+    bgGradient: "from-orange-400/90 via-red-300/80 to-yellow-300/90"
+  },
+  {
+    id: "diwali",
+    title: "Diwali",
+    subtitle: "Illuminating hearts with joy and prosperity",
+    category: "festivals",
+    description:
+      "Celebrate the festival of lights with hampers that spread joy, prosperity, and togetherness. Our Diwali collections bring the warmth of tradition and the spirit of celebration to your loved ones, creating bright memories that last throughout the year.",
+    image: "🪔",
+    features: ["Festival of Lights", "Prosperity Wishes", "Traditional Joy", "Family Togetherness"],
+    backgroundImage:
+      "https://the-little-basket.s3.us-east-1.amazonaws.com/images/hampers/diwali/hampers-diwali_6.jpeg",
+    textColor: "text-white",
+    bgGradient: "from-yellow-400/90 via-orange-300/80 to-red-300/90"
+  },
+  {
     id: "family-occasions",
     title: "Family Celebrations",
     subtitle: "Honoring bonds that define us",
@@ -88,19 +131,32 @@ const EVENTS_DATA = [
       "Relationship Honor",
       "Lasting Impact"
     ],
-    backgroundImage: "return-hamper.png", // Now using optimized WebP (96% smaller!)
+    backgroundImage:
+      "https://the-little-basket.s3.us-east-1.amazonaws.com/images/gifts/gift_5.jpeg", // Now using optimized WebP (96% smaller!)
     textColor: "text-white",
     bgGradient: "from-brand-brown/90 via-brand-amber/80 to-brand-gold/90"
+  },
+  {
+    id: "birthday-celebration",
+    title: "Birthday Celebrations",
+    subtitle: "Making every year special and memorable",
+    category: "personal",
+    description:
+      "Transform birthdays into extraordinary celebrations that create lasting memories. Our birthday hampers add magic to special days, showing your loved ones how much they mean to you with thoughtfully curated gifts that bring joy and smiles.",
+    image: "🎂",
+    features: ["Birthday Magic", "Personal Joy", "Memory Creation", "Love Expression"],
+    backgroundImage:
+      "https://the-little-basket.s3.us-east-1.amazonaws.com/images/hampers/birthday/hampers-birthday_1.jpeg",
+    textColor: "text-white",
+    bgGradient: "from-purple-400/90 via-pink-300/80 to-blue-200/90"
   }
-  // Note: Festival events removed to focus on optimized images available
 ];
-
 export default function EventsSection() {
   const router = useRouter();
   const [activeCategory, setActiveCategory] = useState("business");
 
   // Define categories for navigation
-  const categories = ["business", "wedding", "festivals", "personal"];
+  const categories = ["business", "festivals", "wedding", "personal"];
 
   // Navigation functions with infinite looping
   const handlePrevious = () => {
@@ -178,10 +234,10 @@ export default function EventsSection() {
         </div>
 
         {/* Updated Category Filter Buttons - 5 Categories */}
-        <div className='flex flex-wrap justify-center gap-3 md:gap-4 mb-16'>
+        <div className='flex flex-wrap justify-center gap-3 md:gap-4 mb-16 '>
           <button
             onClick={() => setActiveCategory("business")}
-            className={`px-4 md:px-6 py-2 md:py-3 text-sm md:text-base font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-200 ${
+            className={`px-4 md:px-6 py-2 md:py-3 text-sm md:text-base font-semibold rounded-full shadow-lg hover:shadow-xl transition-all cursor-pointer duration-200 ${
               activeCategory === "business"
                 ? "bg-brand-gold text-brand-brown"
                 : "bg-white/80 text-brand-dark hover:bg-white"
@@ -190,18 +246,8 @@ export default function EventsSection() {
             🧑‍💼 Business
           </button>
           <button
-            onClick={() => setActiveCategory("wedding")}
-            className={`px-4 md:px-6 py-2 md:py-3 text-sm md:text-base font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-200 ${
-              activeCategory === "wedding"
-                ? "bg-brand-gold text-brand-brown"
-                : "bg-white/80 text-brand-dark hover:bg-white"
-            }`}
-          >
-            💒 Wedding
-          </button>
-          <button
             onClick={() => setActiveCategory("festivals")}
-            className={`px-4 md:px-6 py-2 md:py-3 text-sm md:text-base font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-200 ${
+            className={`px-4 md:px-6 py-2 md:py-3 text-sm md:text-base font-semibold rounded-full shadow-lg hover:shadow-xl transition-all cursor-pointer duration-200 ${
               activeCategory === "festivals"
                 ? "bg-brand-gold text-brand-brown"
                 : "bg-white/80 text-brand-dark hover:bg-white"
@@ -210,8 +256,18 @@ export default function EventsSection() {
             🪔 Festivals
           </button>
           <button
+            onClick={() => setActiveCategory("wedding")}
+            className={`px-4 md:px-6 py-2 md:py-3 text-sm md:text-base font-semibold rounded-full shadow-lg hover:shadow-xl transition-all cursor-pointer duration-200 ${
+              activeCategory === "wedding"
+                ? "bg-brand-gold text-brand-brown"
+                : "bg-white/80 text-brand-dark hover:bg-white"
+            }`}
+          >
+            💒 Wedding
+          </button>
+          <button
             onClick={() => setActiveCategory("personal")}
-            className={`px-4 md:px-6 py-2 md:py-3 text-sm md:text-base font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-200 ${
+            className={`px-4 md:px-6 py-2 md:py-3 text-sm md:text-base font-semibold rounded-full shadow-lg hover:shadow-xl transition-all cursor-pointer duration-200 ${
               activeCategory === "personal"
                 ? "bg-brand-gold text-brand-brown"
                 : "bg-white/80 text-brand-dark hover:bg-white"
@@ -251,7 +307,7 @@ export default function EventsSection() {
             {filteredEvents.map((event, index) => (
               <div
                 key={event.id}
-                className='group relative overflow-hidden rounded-2xl bg-white shadow-xl hover:shadow-2xl transition-shadow duration-200 transform hover:scale-[1.02] cursor-pointer z-10'
+                className='group relative overflow-hidden rounded-2xl bg-white shadow-xl hover:shadow-2xl transition-shadow duration-200 transform hover:scale-[1.02] z-10'
                 style={{
                   animationDelay: `${index * 50}ms`
                 }}
@@ -336,58 +392,63 @@ export default function EventsSection() {
                       </div>
                     </div>
 
-                    {/* Benefits Section - Condensed for Space */}
+                    {/* Benefits Section - Updated for all categories including festivals */}
                     <div className='mt-auto'>
-                      {(event.category === "business" ||
-                        event.category === "wedding" ||
-                        event.category === "festivals" ||
-                        event.category === "personal") && (
-                        <div className='mb-4 p-3 sm:p-4 bg-white/80 rounded-lg border border-brand-gold/30 shadow-lg'>
-                          <h5 className='flex items-center justify-center gap-2 font-bold text-brand-brown mb-3 text-sm sm:text-base text-center'>
-                            {event.category === "business" && "💼 Business Impact"}
-                            {event.category === "wedding" && "💒 Wedding Value"}
-                            {event.category === "festivals" && "🎊 Cultural Significance"}
-                            {event.category === "personal" && "🎂 Personal Value"}
-                          </h5>
+                      <div className='mb-4 p-3 sm:p-4 bg-white/80 rounded-lg border border-brand-gold/30 shadow-lg'>
+                        <h5 className='flex items-center justify-center gap-2 font-bold text-brand-brown mb-3 text-sm sm:text-base text-center'>
+                          {event.category === "business" && "💼 Business Impact"}
+                          {event.category === "wedding" && "💒 Wedding Value"}
+                          {event.category === "festivals" && "🎊 Festival Significance"}
+                          {event.category === "personal" && "🎂 Personal Value"}
+                        </h5>
 
-                          {/* Simplified Benefits List */}
-                          <div className='text-center'>
-                            <div className='flex items-center justify-center gap-2 mb-2'>
-                              <span className='text-brand-gold text-base'>✨</span>
-                              <span className='text-xs sm:text-sm font-medium text-gray-700'>
-                                {event.id === "employee-appreciation" && "Personal Recognition"}
-                                {event.id === "milestone-celebration" && "Achievement Honor"}
-                                {event.id === "corporate-events" && "Event Enhancement"}
-                                {event.id === "wedding-celebration" && "Guest Appreciation"}
-                                {event.id === "family-occasions" && "Family Bonding"}
-                                {event.id === "farewell-appreciation" && "Heartfelt Gratitude"}
-                              </span>
-                            </div>
-                            <div className='flex items-center justify-center gap-2'>
-                              <span className='text-brand-gold text-base'>✨</span>
-                              <span className='text-xs sm:text-sm font-medium text-gray-700'>
-                                {event.id === "employee-appreciation" &&
-                                  "Strengthen loyalty & morale"}
-                                {event.id === "milestone-celebration" &&
-                                  "Create shared pride & motivation"}
-                                {event.id === "corporate-events" && "Enhance corporate gatherings"}
-                                {event.id === "wedding-celebration" &&
-                                  "Express gratitude & create memories"}
-                                {event.id === "family-occasions" &&
-                                  "Honor family bonds & create warm memories"}
-                                {event.id === "farewell-appreciation" &&
-                                  "Express heartfelt gratitude"}
-                              </span>
-                            </div>
+                        {/* Simplified Benefits List - Updated for festivals */}
+                        <div className='text-center'>
+                          <div className='flex items-center justify-center gap-2 mb-2'>
+                            <span className='text-brand-gold text-base'>✨</span>
+                            <span className='text-xs sm:text-sm font-medium text-gray-700'>
+                              {event.id === "employee-appreciation" && "Personal Recognition"}
+                              {event.id === "milestone-celebration" && "Achievement Honor"}
+                              {event.id === "corporate-events" && "Event Enhancement"}
+                              {event.id === "wedding-celebration" && "Guest Appreciation"}
+                              {event.id === "family-occasions" && "Family Bonding"}
+                              {event.id === "farewell-appreciation" && "Heartfelt Gratitude"}
+                              {event.id === "baby-shower" && "New Life Celebration"}
+                              {event.id === "rakshabandhan" && "Sibling Bond"}
+                              {event.id === "birthday-celebration" && "Birthday Magic"}
+                              {event.id === "diwali" && "Festival of Lights"}
+                            </span>
+                          </div>
+                          <div className='flex items-center justify-center gap-2'>
+                            <span className='text-brand-gold text-base'>✨</span>
+                            <span className='text-xs sm:text-sm font-medium text-gray-700'>
+                              {event.id === "employee-appreciation" &&
+                                "Strengthen loyalty & morale"}
+                              {event.id === "milestone-celebration" &&
+                                "Create shared pride & motivation"}
+                              {event.id === "corporate-events" && "Enhance corporate gatherings"}
+                              {event.id === "wedding-celebration" &&
+                                "Express gratitude & create memories"}
+                              {event.id === "family-occasions" &&
+                                "Honor family bonds & create warm memories"}
+                              {event.id === "farewell-appreciation" &&
+                                "Express heartfelt gratitude"}
+                              {event.id === "baby-shower" && "Honor motherhood & new beginnings"}
+                              {event.id === "rakshabandhan" &&
+                                "Celebrate sacred sibling traditions"}
+                              {event.id === "birthday-celebration" &&
+                                "Create extraordinary celebrations"}
+                              {event.id === "diwali" && "Spread joy, prosperity & togetherness"}
+                            </span>
                           </div>
                         </div>
-                      )}
+                      </div>
 
                       {/* Action Buttons */}
                       <div className='flex gap-2 sm:gap-3'>
                         <button
                           onClick={() => router.push("/collections")}
-                          className={`${event.bgGradient} text-white font-semibold px-3 sm:px-4 py-2 text-xs sm:text-sm rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-200 flex items-center justify-center gap-1 sm:gap-2 flex-1`}
+                          className={`${event.bgGradient} text-white font-semibold px-3 sm:px-4 py-2 text-xs sm:text-sm rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-200 flex items-center justify-center gap-1 sm:gap-2 flex-1 cursor-pointer`}
                         >
                           <span>Explore</span>
                           <svg
@@ -406,7 +467,7 @@ export default function EventsSection() {
                         </button>
                         <button
                           onClick={() => router.push("/contact")}
-                          className='bg-white/90 border-brand-gold text-brand-brown hover:bg-brand-gold hover:text-white font-semibold px-3 sm:px-4 py-2 text-xs sm:text-sm rounded-lg shadow-lg hover:shadow-xl transition-colors duration-200 border flex items-center justify-center gap-1 sm:gap-2'
+                          className='bg-white/90 border-brand-gold text-brand-brown hover:bg-brand-gold hover:text-white font-semibold px-3 sm:px-4 py-2 text-xs sm:text-sm rounded-lg shadow-lg hover:shadow-xl transition-colors duration-200 border flex items-center justify-center gap-1 sm:gap-2 cursor-pointer'
                         >
                           <span>Quote</span>
                           <span>💬</span>

@@ -21,7 +21,7 @@ const CorporateBackground = () => {
         className='absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30'
         style={{
           backgroundImage:
-            "url('https://the-little-basket.s3.us-east-1.amazonaws.com/images/17.jpeg')"
+            "url('https://the-little-basket.s3.us-east-1.amazonaws.com/images/gifts/gift_9.jpeg')"
         }}
       />
 
