@@ -17,6 +17,189 @@ so when you write or design something. CURRENT THEME SHOULD NOT IMPACT and also 
 --brand-light: #f1dea8; --brand-gold: #e9c579; --brand-amber: #daa755;
 --brand-brown: #9f6920; --brand-dark: #462506;
 
+## 📁 ABSOLUTE PATH RULES (MANDATORY)
+
+**ALWAYS use absolute paths - NO relative paths:**
+
+### Required Path Aliases:
+
+```typescript
+// ALWAYS use these absolute imports:
+import { Button } from "@atoms/Button";
+import { ContactCard } from "@molecules/ContactCard";
+import { Header } from "@organisms/Header";
+import { PageLayout } from "@templates/PageLayout";
+import { HomePage } from "@pages/HomePage";
+import { formatPrice } from "@utils/formatters";
+import { BRAND_COLORS } from "@constants/theme";
+import { useContactForm } from "@hooks/useContactForm";
+import { hamperService } from "@services/hamperService";
+
+// NEVER use relative imports like:
+// import { Button } from '../../../ui-kit/Button';
+// import { formatPrice } from '../../lib/utils';
+```
+
+### Path Mapping Structure:
+
+```
+@atoms/*       → src/ui-kit/atoms/*       (Basic elements)
+@molecules/*   → src/ui-kit/molecules/*   (Simple combinations)
+@organisms/*   → src/components/*         (Complex sections)
+@templates/*   → src/templates/*          (Page layouts)
+@pages/*       → src/app/*                (Page components)
+@utils/*       → src/lib/utils/*          (Helper functions)
+@constants/*   → src/lib/constants/*      (Static values)
+@hooks/*       → src/hooks/*              (Custom React hooks)
+@services/*    → src/services/*           (API/business logic)
+```
+
+### Adding New Categories:
+
+If you need a new functional category that doesn't fit above:
+
+1. **CREATE** new alias in format `@categoryName/*`
+2. **DOCUMENT** it in this file
+3. **UPDATE** path mapping configuration
+4. **USE** consistently across app
+
+### Example Implementation:
+
+```typescript
+// Component imports
+import { PrimaryButton, SecondaryButton } from "@atoms/Button";
+import { FormField } from "@molecules/FormField";
+import { ContactForm } from "@organisms/ContactForm";
+import { MainLayout } from "@templates/MainLayout";
+
+// Utility imports
+import { validateEmail, sanitizeInput } from "@utils/validation";
+import { API_ENDPOINTS, BRAND_COLORS } from "@constants/app";
+import { useLocalStorage, useDebounce } from "@hooks/storage";
+import { contactService, hamperService } from "@services/api";
+
+// Type imports
+import type { HamperCategory, ContactFormData } from "@types/hamper";
+```
+
+**RULE**: Never use relative imports like `../` or `./` - always use absolute paths with aliases.
+
+## 🌐 CLIENT-FACING APP REQUIREMENTS (MANDATORY)
+
+**This is a CLIENT-FACING application - ALWAYS implement:**
+
+### 🔍 SEO COMPLIANCE (MANDATORY):
+
+1. **Meta Tags**: Every page MUST have unique title, description, keywords
+2. **Structured Data**: Add Schema.org markup for products, organization, breadcrumbs
+3. **Open Graph**: Facebook/social media preview optimization
+4. **Core Web Vitals**: LCP <2.5s, FID <100ms, CLS <0.1
+5. **Sitemap**: Auto-generate and keep updated
+6. **Robots.txt**: Proper crawling instructions
+7. **Internal Linking**: Strategic linking between related pages
+8. **Image SEO**: Alt texts, proper file names, optimized sizes
+
+### 🔒 SECURITY COMPLIANCE (MANDATORY):
+
+1. **HTTPS**: SSL certificates and secure connections
+2. **Content Security Policy (CSP)**: Prevent XSS attacks
+3. **Input Validation**: All user inputs validated and sanitized
+4. **Rate Limiting**: Protect APIs from abuse
+5. **Security Headers**: X-Frame-Options, X-Content-Type-Options, etc.
+6. **Data Protection**: GDPR compliance for user data
+7. **Error Handling**: No sensitive information exposed in errors
+8. **Authentication**: Secure session management (when implemented)
+
+### SEO Implementation Patterns:
+
+```typescript
+// Page-level SEO
+export const metadata: Metadata = {
+  title: "Premium Business Hampers | Shubhhampers",
+  description: "Custom curated business hampers for corporate clients. Professional hamper delivery service across India.",
+  keywords: ["business hampers", "corporate hampers", "premium hampers"],
+  openGraph: {
+    title: "Premium Business Hampers | Shubhhampers",
+    description: "Custom curated business hampers for corporate clients",
+    images: ["/og-business-hampers.jpg"],
+    type: "website"
+  },
+  alternates: {
+    canonical: "https://www.shubhhampers.com/business"
+  }
+};
+
+// Structured Data
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Business Celebration Hamper",
+  "description": "Premium hamper for corporate celebrations",
+  "offers": {
+    "@type": "Offer",
+    "availability": "InStock",
+    "priceRange": "₹2,500 - ₹15,000"
+  }
+};
+
+// Image SEO
+<Image
+  src="/business-hampers.jpg"
+  alt="Premium business celebration hampers with branded packaging"
+  width={800}
+  height={600}
+  priority={isAboveFold}
+/>
+```
+
+### Security Implementation Patterns:
+
+```typescript
+// API Route Security
+export async function POST(request: NextRequest) {
+  // Rate limiting
+  const ip = request.headers.get("x-forwarded-for") || "unknown";
+  await rateLimit(ip);
+
+  // Input validation
+  const schema = z.object({
+    email: z.string().email(),
+    message: z.string().min(10).max(1000)
+  });
+
+  try {
+    const body = await request.json();
+    const validatedData = schema.parse(body);
+
+    // Sanitization
+    const sanitizedData = {
+      email: DOMPurify.sanitize(validatedData.email),
+      message: DOMPurify.sanitize(validatedData.message)
+    };
+
+    // Process safely...
+  } catch (error) {
+    return NextResponse.json({ error: "Invalid input" }, { status: 400 });
+  }
+}
+
+// Security Headers in next.config.ts
+const securityHeaders = [
+  {
+    key: "Content-Security-Policy",
+    value: "default-src 'self'; script-src 'self' 'unsafe-inline' *.googleapis.com;"
+  },
+  {
+    key: "X-Frame-Options",
+    value: "DENY"
+  },
+  {
+    key: "X-Content-Type-Options",
+    value: "nosniff"
+  }
+];
+```
+
 ## 🧬 ATOMIC DESIGN COMPONENT RULES (MANDATORY)
 
 **ALWAYS follow Atomic Design structure when creating ANY component:**
@@ -31,19 +214,19 @@ so when you write or design something. CURRENT THEME SHOULD NOT IMPACT and also 
 
 ### Component Hierarchy:
 
-- **🔬 Atoms**: Basic elements (Button, Input, Typography, Icon) → Location: `src/ui-kit/`
-- **🧪 Molecules**: Simple combinations (SearchBox, ContactCard, FormField) → Location: `src/components/molecules/`
-- **🦠 Organisms**: Complex sections (Header, Footer, ProductGrid) → Location: `src/components/organisms/`
-- **📋 Templates**: Page layouts → Location: `src/components/templates/`
-- **📄 Pages**: Actual content → Location: `src/app/`
+- **🔬 Atoms**: Basic elements (Button, Input, Typography, Icon) → Location: `@atoms/*`
+- **🧪 Molecules**: Simple combinations (SearchBox, ContactCard, FormField) → Location: `@molecules/*`
+- **🦠 Organisms**: Complex sections (Header, Footer, ProductGrid) → Location: `@organisms/*`
+- **📋 Templates**: Page layouts → Location: `@templates/*`
+- **📄 Pages**: Actual content → Location: `@pages/*`
 
 ### Example Process:
 
 ```
 Creating ContactForm component:
 1. Break down: Form + Label + Input + Button + ErrorMessage
-2. Check atoms: Button exists in ui-kit/ → USE IT
-3. Check atoms: Input exists in ui-kit/ → USE IT
+2. Check atoms: Button exists in @atoms/Button → USE IT
+3. Check atoms: Input exists in @atoms/Input → USE IT
 4. Check molecules: FormField (Label+Input+Error) doesn't exist → CREATE as molecule
 5. Result: ContactForm organism uses FormField molecule + Button atom
 ```
@@ -76,6 +259,9 @@ Creating ContactForm component:
 
 ```typescript
 // DO THIS - Same elements, different styling
+import { PrimaryButton, SecondaryButton, PrimaryLargeButton } from '@atoms/Button';
+import { ProductCard, ServiceCard, TestimonialCard } from '@molecules/Cards';
+
 <PrimaryButton>Contact Us</PrimaryButton>
 <SecondaryButton>Learn More</SecondaryButton>
 <PrimaryLargeButton icon="arrow">Get Started</PrimaryLargeButton>
@@ -99,18 +285,16 @@ Need a variation?
 ### File Organization for Variations:
 
 ```
-src/ui-kit/
-├── Button/
-│   ├── Button.tsx           // Base button atom
-│   ├── PrimaryButton.tsx    // Variation
-│   ├── SecondaryButton.tsx  // Variation
-│   └── IconButton.tsx       // Different elements = separate component
+@atoms/Button/
+├── Button.tsx           // Base button atom
+├── PrimaryButton.tsx    // Variation
+├── SecondaryButton.tsx  // Variation
+└── IconButton.tsx       // Different elements = separate component
 
-src/components/molecules/
-├── Cards/
-│   ├── ProductCard.tsx      // Different elements
-│   ├── ServiceCard.tsx      // Different elements
-│   └── TestimonialCard.tsx  // Different elements
+@molecules/Cards/
+├── ProductCard.tsx      // Different elements
+├── ServiceCard.tsx      // Different elements
+└── TestimonialCard.tsx  // Different elements
 ```
 
 **RULE**: Prefer multiple simple components over one complex configurable component.
@@ -272,4 +456,4 @@ const ContactForm = () => {
 3. Implement security headers and input validation
 4. Add Atomic Design structure for maintainability
 
-**GOLDEN RULE**: Professional image + "hamper" terminology + accessibility + performance first
+**GOLDEN RULE**: Professional image + "hamper" terminology + accessibility + performance + SEO + security first
