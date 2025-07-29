@@ -253,21 +253,20 @@ const COLLECTIONS_DATA: Collection[] = [
 export default function CollectionsClient() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const [activeCategory, setActiveCategory] = useState("all");
+  const [activeCategory, setActiveCategory] = useState("festival");
 
   // Handle URL parameters for category filtering
   useEffect(() => {
     const category = searchParams.get("category");
-    if (category) {
+    if (category && category !== "all") {
       setActiveCategory(category);
     }
   }, [searchParams]);
 
   const categories = [
-    { id: "all", label: "All Collections", icon: "🎁" },
-    { id: "business", label: "Business", icon: "🏢" },
-    { id: "wedding", label: "Wedding", icon: "💒" },
     { id: "festival", label: "Festival", icon: "🎉" },
+    { id: "wedding", label: "Wedding", icon: "💒" },
+    { id: "business", label: "Business", icon: "🏢" },
     { id: "personal", label: "Personal", icon: "💝" }
   ];
 
@@ -275,9 +274,9 @@ export default function CollectionsClient() {
 
   // Memoize filtered collections to prevent recalculation on every render
   const filteredCollections = useMemo(() => {
-    return activeCategory === "all"
-      ? COLLECTIONS_DATA
-      : COLLECTIONS_DATA.filter((collection: Collection) => collection.category === activeCategory);
+    return COLLECTIONS_DATA.filter(
+      (collection: Collection) => collection.category === activeCategory
+    );
   }, [activeCategory]);
 
   // Memoize category change handler

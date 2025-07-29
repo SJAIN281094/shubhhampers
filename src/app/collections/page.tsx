@@ -29,12 +29,6 @@ export async function generateMetadata({
   // Dynamic titles and descriptions based on category
   const getMetadataByCategory = () => {
     switch (category) {
-      case "business":
-        return {
-          title: "Corporate Gift Hamper Collections | Shubhhampers",
-          description:
-            "Premium corporate gift hamper collections for employee appreciation, client relationships, and business celebrations. Professional curation available."
-        };
       case "wedding":
         return {
           title: "Wedding Gift Hamper Collections | Shubhhampers",
@@ -47,7 +41,28 @@ export async function generateMetadata({
           description:
             "Traditional festival hamper collections for Diwali, Holi, Christmas and special celebrations. Authentic and meaningful gifts."
         };
+      case "corporate":
+        return {
+          title: "Corporate Gift Hamper Collections | Shubhhampers",
+          description:
+            "Premium corporate gift hamper collections for employee appreciation, client relationships, and business celebrations. Professional curation available."
+        };
+      // Legacy support for old category names
+      case "business":
+        return {
+          title: "Corporate Gift Hamper Collections | Shubhhampers",
+          description:
+            "Premium corporate gift hamper collections for employee appreciation, client relationships, and business celebrations. Professional curation available."
+        };
       case "personal":
+        return {
+          title: "Personal Gift Hamper Collections | Shubhhampers",
+          description:
+            "Personal celebration hamper collections for birthdays, anniversaries, and special moments. Customizable and heartfelt gifts."
+        };
+      // Legacy support for anniversary and birthday - redirect to personal
+      case "anniversary":
+      case "birthday":
         return {
           title: "Personal Gift Hamper Collections | Shubhhampers",
           description:
@@ -55,9 +70,9 @@ export async function generateMetadata({
         };
       default:
         return {
-          title: "Gift Hamper Collections | Corporate & Wedding | Shubhhampers",
+          title: "Gift Hamper Collections | Wedding & Festival | Shubhhampers",
           description:
-            "Browse premium hamper collections: corporate gifts, wedding baskets, festival hampers & personal celebrations. Quality curated, delivered fresh!"
+            "Browse premium hamper collections: wedding celebrations, festival hampers, anniversary gifts, birthday surprises & corporate solutions. Quality curated, delivered fresh!"
         };
     }
   };
@@ -72,17 +87,19 @@ export async function generateMetadata({
     },
     keywords: [
       "hamper collections",
-      "corporate hamper collections",
       "wedding hamper collections",
       "festival hamper collections",
-      "personal hamper collections",
-      "business hampers catalog",
-      "employee appreciation hampers",
+      "anniversary hamper collections",
+      "birthday hamper collections",
+      "corporate hamper collections",
       "wedding guest hampers",
+      "anniversary gift hampers",
+      "birthday celebration hampers",
       "Diwali hampers collection",
-      "custom hamper options",
+      "festival celebration hampers",
       "premium hamper catalog",
-      "luxury hamper collections"
+      "luxury hamper collections",
+      "custom hamper options"
     ],
     openGraph: {
       type: "website",

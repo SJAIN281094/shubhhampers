@@ -15,8 +15,6 @@ const poppins = Poppins({
 // Dynamic imports for client-side only components to prevent hydration issues
 const PerformanceOptimizer = dynamic(() => import("@components/PerformanceOptimizer"));
 
-const CacheInvalidator = dynamic(() => import("@components/CacheInvalidator"));
-
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.shubhhampers.com"),
   // Global fallback metadata - will be overridden by page-specific metadata
@@ -185,9 +183,6 @@ export default function RootLayout({
       <body className={`${poppins.variable} antialiased`}>
         {/* Performance Optimizer - Preloads critical resources and optimizes rendering */}
         <PerformanceOptimizer />
-
-        {/* Cache Invalidator - Automatically detects new deployments */}
-        <CacheInvalidator checkInterval={3 * 60 * 1000} />
 
         {/* Google Tag Manager (noscript) */}
         <noscript>

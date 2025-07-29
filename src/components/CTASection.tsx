@@ -1,6 +1,11 @@
+"use client";
+
 import Link from "next/link";
-import { Button } from "../ui-kit/button";
-import WhatsAppButton from "./WhatsAppButton";
+import { FaWhatsapp } from "react-icons/fa";
+import FeatureTag from "./FeatureTag";
+import PrimaryButton from "./PrimaryButton";
+import SecondaryButton from "./SecondaryButton";
+import { handleWhatsApp } from "../lib/contact-utils";
 
 export default function CTASection() {
   return (
@@ -44,145 +49,137 @@ export default function CTASection() {
 
       <div className='container mx-auto px-4 sm:px-6 lg:px-8 relative z-10'>
         <div className='text-center max-w-5xl mx-auto'>
-          {/* Fresh Business Badge */}
-          <div className='inline-flex items-center gap-2 bg-brand-gold/20 px-4 py-2 md:px-6 md:py-2 rounded-full mb-4 md:mb-6'>
-            <span className='text-brand-light font-semibold text-sm md:text-base'>
-              ✨ Fresh Perspective on Hampers
-            </span>
-          </div>
+          {/* Brand Badge */}
+          <FeatureTag className='mb-6 md:mb-8 bg-brand-light/90 text-brand-dark border-brand-gold'>
+            🎯 Why Choose Shubhhampers?
+          </FeatureTag>
 
-          {/* Authentic Main Heading */}
-          <h2 className='font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-brand-light mb-4 md:mb-6 tracking-wide'>
-            Ready to Create Meaningful Connections?
+          {/* Main Heading */}
+          <h2 className='font-display text-2xl xs:text-3xl sm:text-4xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-brand-light mb-2 xs:mb-3 md:mb-4 leading-tight tracking-wide'>
+            India's Most Trusted Hamper Partner
           </h2>
 
-          {/* Honest Description */}
-          <p className='text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-brand-gold mb-6 md:mb-8 leading-relaxed max-w-4xl mx-auto px-4 md:px-0'>
-            {`We're passionate about helping you strengthen relationships through
-            thoughtful hampers. Whether it's appreciating your team, celebrating
-            with clients, or honoring traditions, we're here to make every hamper
-            moment special and meaningful.`}
+          {/* Description */}
+          <p className='text-xs xs:text-sm sm:text-base md:text-lg text-brand-gold mb-6 md:mb-8 leading-relaxed max-w-4xl mx-auto px-4 md:px-0'>
+            {`From corporate celebrations to personal milestones, we've been creating 
+            memorable hamper experiences that strengthen relationships and spread joy. 
+            Discover why thousands of clients trust Shubhhampers for their gifting needs.`}
           </p>
 
-          {/* Authentic CTA Buttons */}
-          <div className='flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-center mb-8 md:mb-12 px-4 md:px-0'>
+          {/* CTA Buttons */}
+          <div className='flex flex-col sm:flex-row gap-3 justify-center items-center mb-8 md:mb-12 px-4 md:px-0'>
             <Link href='/collections'>
-              <Button
-                size='lg'
-                className='bg-gradient-to-r from-brand-amber to-brand-gold hover:from-brand-gold hover:to-brand-amber text-brand-dark font-bold px-6 py-3 sm:px-8 sm:py-4 md:px-10 md:py-4 text-sm sm:text-base md:text-lg rounded-full shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer hover:scale-105 w-full sm:w-auto'
-              >
-                🎁 Explore Our Collections
-              </Button>
+              <PrimaryButton size='md'>🎁 Explore Our Collections</PrimaryButton>
             </Link>
-            <Link href='/contact'>
-              <Button
-                size='lg'
-                className='bg-brand-dark hover:bg-brand-brown text-brand-light font-semibold px-6 py-3 sm:px-8 sm:py-4 md:px-10 md:py-4 text-sm sm:text-base md:text-lg rounded-full shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer border-2 border-brand-gold/50 hover:scale-105 w-full sm:w-auto'
-              >
-                💬 {"Let's Chat"}
-              </Button>
-            </Link>
-            <Link href='/collections'>
-              <Button
-                size='lg'
-                className='bg-white/10 backdrop-blur-sm text-brand-light font-semibold px-6 py-3 sm:px-8 sm:py-4 md:px-10 md:py-4 text-sm sm:text-base md:text-lg rounded-full shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer border-2 border-brand-gold/30 hover:bg-white/20 hover:scale-105 w-full sm:w-auto'
-              >
-                🛒 Start Shopping
-              </Button>
-            </Link>
+            <SecondaryButton
+              size='md'
+              onClick={() =>
+                handleWhatsApp(
+                  "Hi! I'm interested in Shubhhampers services and would like to discuss my requirements."
+                )
+              }
+            >
+              <FaWhatsapp className='w-4 h-4' />
+              Let's Chat
+            </SecondaryButton>
           </div>
 
-          {/* Genuine Value Propositions */}
+          {/* Key Differentiators */}
           <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16'>
             <div className='bg-white/10 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-brand-gold/20 hover:bg-white/15 transition-all duration-300'>
-              <div className='text-4xl mb-4'>💝</div>
+              <div className='text-4xl mb-4'>🏆</div>
               <h3 className='text-lg md:text-xl font-bold text-brand-light mb-2'>
-                Thoughtful Curation
+                Proven Excellence
               </h3>
               <p className='text-brand-gold text-xs sm:text-sm'>
-                Every item is carefully selected to create meaningful, memorable experiences
+                Hundreds of successful corporate and personal hamper deliveries across India
               </p>
             </div>
             <div className='bg-white/10 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-brand-gold/20 hover:bg-white/15 transition-all duration-300'>
-              <div className='text-4xl mb-4'>🤝</div>
-              <h3 className='text-lg md:text-xl font-bold text-brand-light mb-2'>Personal Touch</h3>
+              <div className='text-4xl mb-4'>⚡</div>
+              <h3 className='text-lg md:text-xl font-bold text-brand-light mb-2'>Fast Delivery</h3>
               <p className='text-brand-gold text-xs sm:text-sm'>
-                We work closely with you to understand your needs and create perfect solutions
+                Quick turnaround times without compromising on quality and presentation
               </p>
             </div>
             <div className='bg-white/10 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-brand-gold/20 hover:bg-white/15 transition-all duration-300'>
-              <div className='text-4xl mb-4'>✨</div>
-              <h3 className='text-lg md:text-xl font-bold text-brand-light mb-2'>Quality Focus</h3>
-              <p className='text-brand-gold text-xs sm:text-sm'>
-                Premium products that reflect your values and strengthen your relationships
-              </p>
-            </div>
-            <div className='bg-white/10 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-brand-gold/20 hover:bg-white/15 transition-all duration-300'>
-              <div className='text-4xl mb-4'>🚀</div>
+              <div className='text-4xl mb-4'>💎</div>
               <h3 className='text-lg md:text-xl font-bold text-brand-light mb-2'>
-                Flexible Solutions
+                Premium Quality
               </h3>
               <p className='text-brand-gold text-xs sm:text-sm'>
-                From small gestures to large celebrations, we adapt to your needs
+                Only the finest products make it into our hampers - guaranteed satisfaction
+              </p>
+            </div>
+            <div className='bg-white/10 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-brand-gold/20 hover:bg-white/15 transition-all duration-300'>
+              <div className='text-4xl mb-4'>🎨</div>
+              <h3 className='text-lg md:text-xl font-bold text-brand-light mb-2'>
+                Custom Solutions
+              </h3>
+              <p className='text-brand-gold text-xs sm:text-sm'>
+                Personalized hampers designed specifically for your brand and occasion
               </p>
             </div>
           </div>
 
-          {/* What Makes Us Different */}
+          {/* What Sets Us Apart */}
           <div className='bg-white/5 backdrop-blur-sm rounded-3xl p-8 border border-brand-gold/20'>
-            <h3 className='font-display text-4xl lg:text-5xl font-bold text-brand-light mb-6'>
-              Why Choose Shubhhampers?
+            <h3 className='font-display text-3xl lg:text-4xl font-bold text-brand-light mb-6'>
+              The Shubhhampers Difference
             </h3>
             <div className='grid grid-cols-1 md:grid-cols-3 gap-8'>
               <div className='text-center'>
-                <div className='text-5xl mb-4'>🎯</div>
+                <div className='text-5xl mb-4'>🤝</div>
                 <h4 className='text-base md:text-lg font-semibold text-brand-light mb-2'>
-                  Fresh Approach
+                  Personal Consultation
                 </h4>
                 <p className='text-brand-gold text-xs sm:text-sm'>
-                  We bring new perspectives to traditional hampers, making every moment special
+                  One-on-one guidance to create hampers that perfectly match your vision and budget
                 </p>
               </div>
               <div className='text-center'>
-                <div className='text-5xl mb-4'>💫</div>
+                <div className='text-5xl mb-4'>🔒</div>
                 <h4 className='text-base md:text-lg font-semibold text-brand-light mb-2'>
-                  Personal Attention
+                  Reliable Service
                 </h4>
                 <p className='text-brand-gold text-xs sm:text-sm'>
-                  Direct communication and dedicated support for every client
+                  Consistent quality, on-time delivery, and responsive customer support you can
+                  count on
                 </p>
               </div>
               <div className='text-center'>
-                <div className='text-5xl mb-4'>🌟</div>
+                <div className='text-5xl mb-4'>💰</div>
                 <h4 className='text-base md:text-lg font-semibold text-brand-light mb-2'>
-                  Growing Together
+                  Best Value
                 </h4>
                 <p className='text-brand-gold text-xs sm:text-sm'>
-                  {`We're building lasting partnerships and learning from every
-                  interaction`}
+                  Competitive pricing with transparent costs - no hidden fees, maximum value
                 </p>
               </div>
             </div>
           </div>
 
-          {/* Final Authentic CTA */}
+          {/* Final CTA */}
           <div className='mt-12'>
-            <p className='text-lg text-brand-gold mb-6'>
-              {`Ready to start your hamper journey? We'd love to hear from you
-              and help create something special together.`}
+            <p className='text-xs xs:text-sm sm:text-base md:text-lg text-brand-gold mb-6'>
+              {`Join thousands of satisfied customers who trust Shubhhampers 
+              for their most important celebrations and business relationships.`}
             </p>
-            <div className='flex flex-wrap justify-center gap-4'>
+            <div className='flex flex-wrap justify-center gap-3'>
               <Link href='/contact'>
-                <Button className='bg-brand-gold text-brand-dark font-bold px-8 py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105'>
-                  📧 Get in Touch
-                </Button>
+                <PrimaryButton size='md'>📧 Get Started Today</PrimaryButton>
               </Link>
-              <WhatsAppButton
-                message="Hi! I'm interested in your hamper services and would like to discuss my requirements."
-                className='bg-transparent text-brand-light font-semibold px-8 py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-brand-gold hover:bg-brand-gold hover:text-brand-dark hover:scale-105'
+              <SecondaryButton
+                onClick={() =>
+                  handleWhatsApp(
+                    "Hi! I'm interested in Shubhhampers services and would like to discuss my hamper requirements."
+                  )
+                }
+                size='md'
               >
-                💬 WhatsApp Us
-              </WhatsAppButton>
+                <FaWhatsapp className='w-4 h-4' />
+                WhatsApp Us
+              </SecondaryButton>
             </div>
           </div>
         </div>

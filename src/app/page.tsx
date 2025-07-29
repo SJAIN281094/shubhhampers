@@ -7,10 +7,6 @@ import Footer from "@components/Footer";
 import HeroSlider from "@components/HeroSlider";
 
 // Aggressively lazy load below-the-fold components with minimal loading states
-const OurApproachSection = dynamic(() => import("@components/OurApproachSection"), {
-  loading: () => <div className='h-20 bg-gradient-to-br from-brand-light/30 to-brand-gold/10' />
-});
-
 const EventsSection = dynamic(() => import("@components/EventsSection"), {
   loading: () => <div className='h-20 bg-white' />
 });
@@ -94,7 +90,6 @@ export default function Home() {
     <main className='min-h-screen'>
       <Header />
       <HeroSlider />
-      <OurApproachSection />
       <EventsSection />
       <HowWeWorkSection />
       <CTASection />

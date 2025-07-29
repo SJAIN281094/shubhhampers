@@ -29,7 +29,7 @@ export const IMAGES = {
 
   // Personal Collections (map to existing images)
   BIRTHDAY_CELEBRATION:
-    "https://shubhhampers.s3.ap-south-1.amazonaws.com/website/images/gifts/gift_5.jpeg",
+    "https://shubhhampers.s3.ap-south-1.amazonaws.com/website/images/gift_5.jpeg",
   ANNIVERSARY_LOVE_STORY:
     "https://shubhhampers.s3.ap-south-1.amazonaws.com/website/images/hampers-birthday_1.jpeg",
   FAMILY_HAMPER:

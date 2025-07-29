@@ -35,25 +35,31 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8
     },
     {
-      url: `${baseUrl}/collections?category=business`,
+      url: `${baseUrl}/collections?category=wedding`,
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.9
     },
     {
-      url: `${baseUrl}/collections?category=wedding`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.8
-    },
-    {
       url: `${baseUrl}/collections?category=festival`,
       lastModified: new Date(),
       changeFrequency: "weekly",
+      priority: 0.9
+    },
+    {
+      url: `${baseUrl}/collections?category=anniversary`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
       priority: 0.8
     },
     {
-      url: `${baseUrl}/collections?category=personal`,
+      url: `${baseUrl}/collections?category=birthday`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.8
+    },
+    {
+      url: `${baseUrl}/collections?category=corporate`,
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.7

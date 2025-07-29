@@ -3,17 +3,22 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import { Button } from "@ui-kit/button";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
+import { IoArrowForward } from "react-icons/io5";
 import { handleWhatsApp } from "../lib/contact-utils";
 import { IMAGES } from "../lib/image-constants";
+import HamperTag from "./HamperTag";
+import FeatureTag from "./FeatureTag";
+import PrimaryButton from "./PrimaryButton";
+import SecondaryButton from "./SecondaryButton";
 
 const EVENTS_DATA = [
   {
     id: "employee-onboarding",
     title: "Employee Onboarding Excellence",
     subtitle: "Welcome New Team Members with Heart",
-    category: "business",
+    category: "corporate",
     description:
       "Transform first days into lasting memories. Our thoughtfully curated onboarding hampers help new team members feel genuinely valued from day one, creating positive impressions that strengthen company culture and employee loyalty.",
     image: "🎯",
@@ -26,7 +31,7 @@ const EVENTS_DATA = [
     id: "milestone-celebration",
     title: "Business Milestones",
     subtitle: "Celebrating achievements that matter most",
-    category: "business",
+    category: "corporate",
     description:
       "Success tastes sweeter when shared. Our milestone celebration hampers help you commemorate significant achievements with your team, creating shared pride and motivation that propels your organization toward even greater accomplishments.",
     image: "🏆",
@@ -39,12 +44,12 @@ const EVENTS_DATA = [
     id: "corporate-events",
     title: "Corporate Events",
     subtitle: "Making business occasions memorable",
-    category: "business",
+    category: "corporate",
     description:
       "Transform corporate gatherings into memorable experiences. Our event hampers ensure every attendee leaves with something special, strengthening business relationships and creating positive associations with your brand that last long after the event ends.",
     image: "🏢",
     features: ["Event Enhancement", "Brand Building", "Guest Delight", "Lasting Impression"],
-    backgroundImage: IMAGES.CORPORATE_EVENT, // Now using optimized WebP (94% smaller!)
+    backgroundImage: IMAGES.CORPORATE_EVENT,
     textColor: "text-white",
     bgGradient: "from-brand-gold/90 via-brand-amber/80 to-brand-brown/90"
   },
@@ -164,149 +169,140 @@ const EVENTS_DATA = [
     bgGradient: "from-purple-400/90 via-pink-300/80 to-blue-200/90"
   },
   {
-    id: "family-hamper",
-    title: "Family Hampers",
-    subtitle: "Strengthening bonds with thoughtful gifts",
+    id: "anniversary-celebration",
+    title: "Anniversary Love Story",
+    subtitle: "Celebrating love that grows stronger with time",
     category: "personal",
     description:
-      "Celebrate the love that binds families together. Our family hampers are designed to create shared moments of joy, bringing loved ones closer with thoughtful gifts that express appreciation and strengthen family ties.",
-    image: "👪",
-    features: ["Family Togetherness", "Shared Joy", "Thoughtful Gifts", "Bond Strengthening"],
-    backgroundImage: IMAGES.FAMILY_HAMPER,
+      "Honor the beautiful journey of love that grows stronger with each passing year. Our anniversary hampers celebrate milestones that matter, creating new chapters in your love story that will be remembered forever.",
+    image: "💕",
+    features: ["Love Celebration", "Milestone Honors", "Romantic Touch", "Lasting Memories"],
+    backgroundImage: IMAGES.ANNIVERSARY_LOVE_STORY,
     textColor: "text-white",
-    bgGradient: "from-brand-brown/90 via-brand-amber/80 to-brand-gold/90"
+    bgGradient: "from-pink-400/90 via-red-300/80 to-purple-200/90"
   }
 ];
 
 export default function EventsSection() {
   const router = useRouter();
-  const [activeCategory, setActiveCategory] = useState("business");
+  const [activeCategory, setActiveCategory] = useState("festival");
 
   // Define categories for navigation
-  const categories = ["business", "festival", "wedding", "personal"];
+  const categories = [
+    {
+      id: "festival",
+      label: "Festival",
+      icon: "🪔",
+      route: "festival",
+      title: "Festival Gift Hampers for Sacred Celebrations",
+      description:
+        "Honor traditions and strengthen family bonds with our curated festival gift hampers. From Diwali sweets to Rakhi gift hampers, each one celebrates the joy of togetherness and cultural heritage."
+    },
+    {
+      id: "wedding",
+      label: "Wedding",
+      icon: "💒",
+      route: "wedding",
+      title: "Wedding Gift Hampers for Unforgettable Moments",
+      description:
+        "Welcome guests with warmth and thank them with love. Our wedding gift hampers create lasting memories for your special day, from room welcome gift hampers to elegant return gift hampers."
+    },
+    {
+      id: "corporate",
+      label: "Corporate",
+      icon: "🧑‍💼",
+      route: "corporate",
+      title: "Corporate Gift Hampers for Professional Excellence",
+      description:
+        "Build meaningful business relationships and show appreciation that resonates. Our corporate gift hampers strengthen team bonds and create lasting impressions with clients and employees."
+    },
+    {
+      id: "personal",
+      label: "Personal",
+      icon: "💝",
+      route: "personal",
+      title: "Personal Gift Hampers for Life's Special Moments",
+      description:
+        "Celebrate birthdays, anniversaries, and milestones with gift hampers that speak from the heart. Each gift hamper is thoughtfully curated to express love and create cherished memories."
+    }
+  ];
 
   // Navigation functions with infinite looping
   const handlePrevious = () => {
-    const currentIndex = categories.indexOf(activeCategory);
+    const currentIndex = categories.findIndex(cat => cat.id === activeCategory);
     const previousIndex = currentIndex === 0 ? categories.length - 1 : currentIndex - 1;
-    setActiveCategory(categories[previousIndex]);
+    setActiveCategory(categories[previousIndex].id);
   };
 
   const handleNext = () => {
-    const currentIndex = categories.indexOf(activeCategory);
+    const currentIndex = categories.findIndex(cat => cat.id === activeCategory);
     const nextIndex = currentIndex === categories.length - 1 ? 0 : currentIndex + 1;
-    setActiveCategory(categories[nextIndex]);
+    setActiveCategory(categories[nextIndex].id);
   };
 
-  // Filter events based on active category
-  const filteredEvents = EVENTS_DATA.filter(event => event.category === activeCategory);
+  // Filter events based on active category and limit to 3 items
+  const filteredEvents = EVENTS_DATA.filter(event => event.category === activeCategory).slice(0, 3);
+
+  // Get the current category details
+  const currentCategory = categories.find(cat => cat.id === activeCategory);
+
+  // Handle View All button click
+  const handleViewAll = () => {
+    router.push(`/collections?category=${currentCategory?.route || activeCategory}`);
+  };
 
   return (
     <section
       id='events-section'
       className='py-20 bg-gradient-to-br from-brand-gold/20 via-brand-light to-brand-amber/10 relative overflow-hidden'
     >
-      {/* Hero-Style Background Elements */}
+      {/* Background Elements */}
       <div className='absolute inset-0 bg-gradient-to-br from-brand-gold/5 via-transparent to-brand-amber/3' />
       <div className='absolute top-20 right-10 w-48 h-48 bg-brand-gold/10 rounded-full blur-3xl animate-pulse delay-1000' />
       <div className='absolute bottom-40 left-10 w-36 h-36 bg-brand-amber/15 rounded-full blur-2xl animate-bounce delay-2000' />
       <div className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-brand-light/20 rounded-full blur-3xl animate-pulse delay-500' />
 
       <div className='container mx-auto px-4 sm:px-6 lg:px-8 relative z-10'>
-        {/* Hero-Style Section Header */}
+        {/* Section Header */}
         <div className='text-center mb-20 relative'>
-          {/* Hero-style floating elements for header */}
+          {/* Floating elements for header */}
           <div className='absolute top-0 left-1/4 w-16 h-16 bg-brand-gold/20 rounded-full blur-lg animate-pulse' />
           <div className='absolute top-10 right-1/4 w-12 h-12 bg-brand-amber/30 rounded-full blur-md animate-bounce delay-300' />
 
-          <div className='inline-flex items-center gap-2 bg-brand-gold/20 px-6 py-3 md:px-8 md:py-4 rounded-full mb-6 md:mb-8 relative z-10'>
-            <span className='text-brand-brown font-bold text-base md:text-lg drop-shadow-sm'>
-              🎯 Complete Hamper Solutions
-            </span>
-          </div>
-          <h2 className='font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-brand-dark mb-4 md:mb-6 tracking-wide drop-shadow-sm relative z-10'>
-            Hampers for Every Occasion
+          <FeatureTag>🎯 Complete Hamper Solutions</FeatureTag>
+
+          <h2 className='font-display text-2xl xs:text-3xl sm:text-4xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-brand-brown mb-2 xs:mb-3 md:mb-4 leading-tight tracking-wide drop-shadow-sm relative z-10'>
+            Hampers for Every Celebration & Relationship
           </h2>
-          <p className='text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-gray-700 max-w-4xl mx-auto leading-relaxed mb-6 md:mb-8 px-4 md:px-0 font-normal drop-shadow-sm relative z-10'>
-            From business relationships to personal celebrations, festive traditions to meaningful
-            experiences—we curate thoughtful hampers that strengthen bonds and create lasting
-            memories for every important occasion in life.
+
+          <p className='text-xs xs:text-sm sm:text-base md:text-lg text-brand-dark max-w-4xl mx-auto leading-relaxed mb-6 md:mb-8 px-4 md:px-0 font-normal drop-shadow-sm relative z-10'>
+            {`Whether it's honoring family ties, celebrating milestones, or expressing heartfelt
+            gratitude — our thoughtfully crafted hampers are made for every occasion that matters.
+            From wedding and festive hampers to birthday, rakhi, and corporate gifts, each one is a
+            beautiful way to cherish bonds and create meaningful memories.`}
           </p>
-
-          {/* Enhanced Benefits Grid */}
-          <div className='mb-6 p-4 bg-white/20 backdrop-blur-sm rounded-xl border border-brand-gold/30'>
-            <div className='grid grid-cols-2 md:grid-cols-4 gap-4 text-center'>
-              <div className='p-3'>
-                <div className='text-xl md:text-2xl mb-2'>🧑‍💼</div>
-                <p className='text-xs md:text-sm font-semibold text-brand-brown'>Business</p>
-                <p className='text-xs text-brand-dark'>Professional relationships</p>
-              </div>
-              <div className='p-3'>
-                <div className='text-xl md:text-2xl mb-2'>💒</div>
-                <p className='text-xs md:text-sm font-semibold text-brand-brown'>Wedding</p>
-                <p className='text-xs text-brand-dark'>Celebration moments</p>
-              </div>
-              <div className='p-3'>
-                <div className='text-xl md:text-2xl mb-2'>🪔</div>
-                <p className='text-xs md:text-sm font-semibold text-brand-brown'>Festival</p>
-                <p className='text-xs text-brand-dark'>Cultural traditions</p>
-              </div>
-              <div className='p-3'>
-                <div className='text-xl md:text-2xl mb-2'>🎂</div>
-                <p className='text-xs md:text-sm font-semibold text-brand-brown'>Personal</p>
-                <p className='text-xs text-brand-dark'>Life milestones</p>
-              </div>
-            </div>
-          </div>
         </div>
 
-        {/* Updated Category Filter Buttons - 5 Categories */}
-        <div className='flex flex-wrap justify-center gap-3 md:gap-4 mb-16 '>
-          <button
-            onClick={() => setActiveCategory("business")}
-            className={`px-4 md:px-6 py-2 md:py-3 text-sm md:text-base font-semibold rounded-full shadow-lg hover:shadow-xl transition-all cursor-pointer duration-200 ${
-              activeCategory === "business"
-                ? "bg-brand-gold text-brand-brown"
-                : "bg-white/80 text-brand-dark hover:bg-white"
-            }`}
-          >
-            🧑‍💼 Business
-          </button>
-          <button
-            onClick={() => setActiveCategory("festival")}
-            className={`px-4 md:px-6 py-2 md:py-3 text-sm md:text-base font-semibold rounded-full shadow-lg hover:shadow-xl transition-all cursor-pointer duration-200 ${
-              activeCategory === "festival"
-                ? "bg-brand-gold text-brand-brown"
-                : "bg-white/80 text-brand-dark hover:bg-white"
-            }`}
-          >
-            🪔 Festival
-          </button>
-          <button
-            onClick={() => setActiveCategory("wedding")}
-            className={`px-4 md:px-6 py-2 md:py-3 text-sm md:text-base font-semibold rounded-full shadow-lg hover:shadow-xl transition-all cursor-pointer duration-200 ${
-              activeCategory === "wedding"
-                ? "bg-brand-gold text-brand-brown"
-                : "bg-white/80 text-brand-dark hover:bg-white"
-            }`}
-          >
-            💒 Wedding
-          </button>
-          <button
-            onClick={() => setActiveCategory("personal")}
-            className={`px-4 md:px-6 py-2 md:py-3 text-sm md:text-base font-semibold rounded-full shadow-lg hover:shadow-xl transition-all cursor-pointer duration-200 ${
-              activeCategory === "personal"
-                ? "bg-brand-gold text-brand-brown"
-                : "bg-white/80 text-brand-dark hover:bg-white"
-            }`}
-          >
-            🎂 Personal
-          </button>
+        {/* Category Filter Buttons */}
+        <div className='flex flex-wrap justify-center gap-3 md:gap-4 mb-16'>
+          {categories.map(category => (
+            <button
+              key={category.id}
+              onClick={() => setActiveCategory(category.id)}
+              className={`px-4 md:px-6 py-2 md:py-3 text-sm md:text-base font-semibold rounded-full shadow-lg hover:shadow-xl transition-all cursor-pointer duration-200 ${
+                activeCategory === category.id
+                  ? "bg-brand-gold text-brand-brown shadow-xl"
+                  : "bg-white/80 text-brand-dark hover:bg-white"
+              }`}
+            >
+              {category.icon} {category.label}
+            </button>
+          ))}
         </div>
 
-        {/* Navigation Container - Positioned outside the images */}
+        {/* Navigation Container */}
         <div className='relative flex items-center justify-center'>
-          {/* Left Navigation Arrow - Hidden on mobile */}
+          {/* Navigation Arrows */}
           <button
             onClick={handlePrevious}
             className='hidden md:flex absolute left-0 md:-left-16 top-1/2 transform -translate-y-1/2 z-20 w-12 h-12 bg-white/90 hover:bg-brand-gold/20 text-brand-brown hover:text-brand-dark border border-brand-gold/30 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 items-center justify-center group'
@@ -315,7 +311,6 @@ export default function EventsSection() {
             <ChevronLeft className='w-6 h-6 transition-transform duration-200 group-hover:-translate-x-0.5' />
           </button>
 
-          {/* Right Navigation Arrow - Hidden on mobile */}
           <button
             onClick={handleNext}
             className='hidden md:flex absolute right-0 md:-right-16 top-1/2 transform -translate-y-1/2 z-20 w-12 h-12 bg-white/90 hover:bg-brand-gold/20 text-brand-brown hover:text-brand-dark border border-brand-gold/30 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 items-center justify-center group'
@@ -324,303 +319,144 @@ export default function EventsSection() {
             <ChevronRight className='w-6 h-6 transition-transform duration-200 group-hover:translate-x-0.5' />
           </button>
 
-          {/* Hero-Style Event Cards - Always Visible Content */}
-          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 relative w-full'>
-            {/* Hero-Style Floating Background Elements */}
-            <div className='absolute top-10 left-10 w-32 h-32 bg-brand-gold/20 rounded-full blur-2xl animate-pulse' />
-            <div className='absolute bottom-20 right-20 w-24 h-24 bg-brand-amber/30 rounded-full blur-xl animate-bounce' />
-            <div className='absolute top-1/3 right-1/4 w-20 h-20 bg-brand-light/30 rounded-full blur-lg animate-pulse delay-300' />
+          <div className='w-full'>
+            {/* Category Title */}
+            <div className='text-center mb-8'>
+              <h3 className='text-2xl md:text-3xl font-bold text-brand-dark mb-2'>
+                {currentCategory?.icon}{" "}
+                {currentCategory?.title || `${currentCategory?.label} Hampers`}
+              </h3>
+              <p className='text-gray-600 max-w-2xl mx-auto'>
+                {currentCategory?.description ||
+                  `Discover our curated collection of ${currentCategory?.label.toLowerCase()} hampers designed to create meaningful connections`}
+              </p>
+            </div>
 
-            {filteredEvents.map((event, index) => (
-              <div
-                key={event.id}
-                className='group relative overflow-hidden rounded-2xl bg-white shadow-xl hover:shadow-2xl transition-shadow duration-200 transform hover:scale-[1.02] z-10'
-                style={{
-                  animationDelay: `${index * 50}ms`,
-                  willChange: "transform, box-shadow",
-                  backfaceVisibility: "hidden",
-                  transform: "translateZ(0)"
-                }}
-              >
-                {/* Card Background - Clean Initial State, Hover Effects */}
+            {/* Event Cards */}
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 relative w-full mb-10'>
+              {filteredEvents.map((event, index) => (
                 <div
-                  className='relative min-h-[600px] sm:min-h-[650px] md:min-h-[600px] lg:min-h-[650px] h-full bg-white group-hover:bg-gradient-to-br group-hover:from-brand-gold/20 group-hover:via-brand-light group-hover:to-brand-amber/10 transition-all duration-300 ease-out'
+                  key={`${activeCategory}-${event.id}`}
+                  className='group relative overflow-hidden rounded-2xl bg-white shadow-xl hover:shadow-2xl transition-shadow duration-200 transform hover:scale-[1.02] z-10'
                   style={{
-                    willChange: "background-color",
-                    backfaceVisibility: "hidden"
+                    animationDelay: `${index * 50}ms`,
+                    willChange: "transform, box-shadow",
+                    backfaceVisibility: "hidden",
+                    transform: "translateZ(0)"
                   }}
                 >
-                  {/* Simple Background Image */}
-                  {event.backgroundImage && (
-                    <div
-                      className='absolute inset-0 opacity-100 group-hover:opacity-30 transition-opacity duration-300 ease-out'
-                      style={{
-                        willChange: "opacity",
-                        backfaceVisibility: "hidden",
-                        transform: "translateZ(0)"
-                      }}
-                    >
-                      <Image
-                        src={event.backgroundImage}
-                        alt={event.title}
-                        fill
-                        className='object-cover'
-                        sizes='(max-width: 768px) 100vw, 50vw'
-                        loading='lazy'
-                        priority={false}
-                        quality={85}
-                      />
-                    </div>
-                  )}
-
-                  {/* Subtle Golden Gradient Overlay for Premium Feel */}
-                  <div
-                    className='absolute inset-0 bg-gradient-to-br from-brand-gold/5 via-transparent to-brand-amber/8 group-hover:opacity-60 transition-opacity duration-300 ease-out'
-                    style={{
-                      willChange: "opacity",
-                      backfaceVisibility: "hidden"
-                    }}
-                  />
-
-                  {/* Overlay for better text readability in initial state */}
-                  <div
-                    className='absolute inset-0 bg-gradient-to-t from-black/50 via-black/15 to-transparent group-hover:from-brand-gold/15 group-hover:via-transparent group-hover:to-brand-amber/10 transition-all duration-300 ease-out'
-                    style={{
-                      willChange: "background-image",
-                      backfaceVisibility: "hidden"
-                    }}
-                  />
-
-                  {/* Hover Decorative Elements */}
-                  <div
-                    className='absolute top-4 right-4 w-8 h-8 bg-brand-gold/30 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 ease-out animate-pulse'
-                    style={{
-                      willChange: "opacity, transform",
-                      backfaceVisibility: "hidden",
-                      transform: "translateZ(0)"
-                    }}
-                  />
-                  <div
-                    className='absolute bottom-20 right-4 w-6 h-6 bg-brand-amber/40 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 ease-out animate-bounce'
-                    style={{
-                      willChange: "opacity, transform",
-                      backfaceVisibility: "hidden",
-                      transform: "translateZ(0)"
-                    }}
-                  />
-
-                  {/* INITIAL STATE - Background Image with Enhanced Title Tag */}
-                  <div
-                    className='absolute inset-0 flex flex-col opacity-100 group-hover:opacity-0 transition-all duration-300 ease-out'
-                    style={{
-                      willChange: "opacity, transform",
-                      backfaceVisibility: "hidden",
-                      transform: "translateZ(0)"
-                    }}
-                  >
-                    {/* Enhanced Title Tag at Bottom */}
-                    <div className='absolute bottom-6 left-1/2 transform -translate-x-1/2'>
-                      <div className='relative group'>
-                        {/* Tag Shadow/Glow Effect */}
-                        <div
-                          className='absolute inset-0 bg-gradient-to-r from-brand-gold to-brand-amber rounded-full blur-sm opacity-30 group-hover:opacity-50 transition-opacity duration-300 ease-out'
-                          style={{
-                            willChange: "opacity",
-                            backfaceVisibility: "hidden"
-                          }}
+                  {/* Card Background */}
+                  <div className='relative min-h-[400px] sm:min-h-[450px] md:min-h-[400px] lg:min-h-[450px] h-full bg-white group-hover:bg-gradient-to-br group-hover:from-brand-gold/20 group-hover:via-brand-light group-hover:to-brand-amber/10 transition-all duration-300 ease-out'>
+                    {/* Background Image */}
+                    {event.backgroundImage && (
+                      <div className='absolute inset-0 opacity-100 group-hover:opacity-30 transition-opacity duration-300 ease-out'>
+                        <Image
+                          src={event.backgroundImage}
+                          alt={event.title}
+                          fill
+                          className='object-cover'
+                          sizes='(max-width: 768px) 100vw, 33vw'
+                          loading='lazy'
+                          priority={false}
+                          quality={85}
                         />
+                      </div>
+                    )}
 
-                        {/* Main Tag */}
-                        <div className='relative bg-gradient-to-r from-white via-brand-light/95 to-white backdrop-blur-sm px-6 py-3 rounded-full border border-brand-gold/30 shadow-xl'>
-                          {/* Golden accent line */}
-                          <div className='absolute top-0 left-1/2 transform -translate-x-1/2 w-12 h-0.5 bg-gradient-to-r from-transparent via-brand-gold to-transparent rounded-full' />
+                    {/* Overlay */}
+                    <div className='absolute inset-0 bg-gradient-to-t from-black/50 via-black/15 to-transparent group-hover:from-brand-brown/80 group-hover:via-brand-amber/60 group-hover:to-brand-gold/40 transition-all duration-300 ease-out' />
 
-                          {/* Single Line Title */}
-                          <span className='text-brand-dark font-bold text-sm md:text-base text-center tracking-wide whitespace-nowrap'>
-                            {event.title}
+                    {/* Background Blur on Hover */}
+                    <div className='absolute inset-0 opacity-0 group-hover:opacity-100 backdrop-blur-sm bg-brand-light/20 transition-all duration-300 ease-out' />
+
+                    {/* INITIAL STATE */}
+                    <div className='absolute inset-0 flex flex-col opacity-100 group-hover:opacity-0 transition-all duration-300 ease-out'>
+                      <div className='absolute bottom-6 left-1/2 transform -translate-x-1/2'>
+                        <HamperTag title={event.title} />
+                      </div>
+                    </div>
+
+                    {/* HOVER STATE */}
+                    <div className='absolute inset-0 p-6 sm:p-8 flex flex-col opacity-0 group-hover:opacity-100 transition-all duration-300 ease-out z-10'>
+                      {/* Header */}
+                      <div className='text-center mb-4'>
+                        <div className='w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-brand-amber via-brand-gold to-brand-brown rounded-xl flex items-center justify-center shadow-lg mx-auto mb-3'>
+                          <span className='text-xl sm:text-2xl filter drop-shadow-lg'>
+                            {event.image}
                           </span>
-
-                          {/* Bottom golden accent line */}
-                          <div className='absolute bottom-0 left-1/2 transform -translate-x-1/2 w-8 h-0.5 bg-gradient-to-r from-transparent via-brand-amber to-transparent rounded-full' />
                         </div>
-                      </div>
-                    </div>
-                  </div>
 
-                  {/* HOVER STATE - Full Content Reveal */}
-                  <div
-                    className='absolute inset-0 p-6 sm:p-8 flex flex-col opacity-0 group-hover:opacity-100 transition-all duration-300 ease-out'
-                    style={{
-                      willChange: "opacity, transform",
-                      backfaceVisibility: "hidden",
-                      transform: "translateZ(0)"
-                    }}
-                  >
-                    {/* Header with Enhanced Icon */}
-                    <div className='text-center mb-6'>
-                      <div
-                        className='w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-brand-amber via-brand-gold to-brand-brown rounded-xl flex items-center justify-center shadow-lg mx-auto mb-4 animate-bounce'
-                        style={{
-                          willChange: "transform",
-                          backfaceVisibility: "hidden",
-                          transform: "translateZ(0)"
-                        }}
-                      >
-                        <span className='text-2xl sm:text-3xl filter drop-shadow-lg'>
-                          {event.image}
-                        </span>
-                      </div>
-
-                      <h3 className='font-display text-2xl sm:text-3xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-brand-dark leading-tight tracking-wide drop-shadow-sm mb-2'>
-                        {event.title}
-                      </h3>
-                      <h4 className='text-sm sm:text-base md:text-sm lg:text-base font-medium text-brand-brown tracking-wider uppercase drop-shadow-sm opacity-90'>
-                        {event.subtitle}
-                      </h4>
-                    </div>
-
-                    {/* Description - Scrollable on smaller cards */}
-                    <div className='flex-1 flex flex-col overflow-hidden'>
-                      <div className='overflow-y-auto flex-1 mb-4'>
-                        <p className='text-sm sm:text-base md:text-sm lg:text-sm text-gray-700 leading-relaxed text-center'>
-                          {event.description}
-                        </p>
-                      </div>
-                    </div>
-
-                    {/* Benefits Section - Updated for all categories */}
-                    <div className='mt-auto'>
-                      <div className='mb-4 p-3 sm:p-4 bg-white/80 rounded-lg border border-brand-gold/30 shadow-lg'>
-                        <h5 className='flex items-center justify-center gap-2 font-bold text-brand-brown mb-3 text-sm sm:text-base text-center'>
-                          {event.category === "business" && "💼 Business Impact"}
-                          {event.category === "wedding" && "💒 Wedding Value"}
-                          {event.category === "festival" && "🎊 Festival Significance"}
-                          {event.category === "personal" && "🎂 Personal Value"}
+                        <h4 className='font-display text-2xl sm:text-3xl md:text-2xl lg:text-3xl font-bold text-brand-dark leading-tight tracking-wide drop-shadow-sm mb-1'>
+                          {event.title}
+                        </h4>
+                        <h5 className='text-sm sm:text-base md:text-sm lg:text-base font-medium text-brand-brown tracking-wider uppercase drop-shadow-sm opacity-90'>
+                          {event.subtitle}
                         </h5>
+                      </div>
 
-                        {/* Simplified Benefits List - Updated for all events */}
-                        <div className='text-center'>
-                          <div className='flex items-center justify-center gap-2 mb-2'>
-                            <span className='text-brand-gold text-base'>✨</span>
-                            <span className='text-xs sm:text-sm font-medium text-gray-700'>
-                              {/* Business Events */}
-                              {event.id === "employee-onboarding" && "Personal Recognition"}
-                              {event.id === "milestone-celebration" && "Achievement Honor"}
-                              {event.id === "corporate-events" && "Event Enhancement"}
-
-                              {/* Wedding Events */}
-                              {event.id === "wedding-welcome-hampers" && "Warm Welcomes"}
-                              {event.id === "bridal-party-hampers" && "Friendship Celebration"}
-                              {event.id === "wedding-return-hamper" && "Heartfelt Gratitude"}
-
-                              {/* Festival Events */}
-                              {event.id === "raksha-bandhan" && "Sacred Rakhis"}
-                              {event.id === "diwali-magic" && "Traditional Sweets"}
-                              {event.id === "christmas-new-year" && "Holiday Magic"}
-
-                              {/* Personal Events */}
-                              {event.id === "baby-shower" && "New Life Celebration"}
-                              {event.id === "birthday-celebration" && "Birthday Magic"}
-                              {event.id === "family-hamper" && "Family Togetherness"}
-                            </span>
-                          </div>
-                          <div className='flex items-center justify-center gap-2'>
-                            <span className='text-brand-gold text-base'>✨</span>
-                            <span className='text-xs sm:text-sm font-medium text-gray-700'>
-                              {/* Business Events */}
-                              {event.id === "employee-onboarding" &&
-                                "Strengthen company culture & loyalty"}
-                              {event.id === "milestone-celebration" &&
-                                "Create shared pride & motivation"}
-                              {event.id === "corporate-events" &&
-                                "Strengthen business relationships"}
-
-                              {/* Wedding Events */}
-                              {event.id === "wedding-welcome-hampers" &&
-                                "Express joy & gratitude to guests"}
-                              {event.id === "bridal-party-hampers" && "Honor special supporters"}
-                              {event.id === "wedding-return-hamper" && "Leave lasting impressions"}
-
-                              {/* Festival Events */}
-                              {event.id === "raksha-bandhan" && "Celebrate sacred sibling bonds"}
-                              {event.id === "diwali-magic" && "Illuminate hearts & relationships"}
-                              {event.id === "christmas-new-year" && "Spread joy & fresh beginnings"}
-
-                              {/* Personal Events */}
-                              {event.id === "baby-shower" && "Honor motherhood & new beginnings"}
-                              {event.id === "birthday-celebration" &&
-                                "Create extraordinary celebrations"}
-                              {event.id === "family-hamper" && "Strengthen family bonds"}
-                            </span>
-                          </div>
+                      {/* Description */}
+                      <div className='flex-1 flex flex-col overflow-hidden'>
+                        <div className='overflow-y-auto flex-1 mb-3'>
+                          <p className='text-sm sm:text-base md:text-sm lg:text-base text-gray-700 leading-relaxed text-center line-clamp-4'>
+                            {event.description}
+                          </p>
                         </div>
                       </div>
 
                       {/* Action Buttons */}
-                      <div className='flex gap-2 sm:gap-3'>
-                        <button
+                      <div className='flex gap-2 sm:gap-3 mt-auto'>
+                        <PrimaryButton
                           onClick={() => router.push("/collections")}
-                          className={`${event.bgGradient} text-white font-semibold px-3 sm:px-4 py-2 text-xs sm:text-sm rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-200 flex items-center justify-center gap-1 sm:gap-2 flex-1 cursor-pointer`}
+                          size='sm'
+                          className='flex-1'
                         >
-                          <svg
-                            className='w-4 h-4 transition-transform duration-300 ease-out group-hover:translate-x-1'
-                            fill='none'
-                            stroke='currentColor'
-                            viewBox='0 0 24 24'
-                          >
-                            <path
-                              strokeLinecap='round'
-                              strokeLinejoin='round'
-                              strokeWidth={2}
-                              d='M9 5l7 7-7 7'
-                            />
-                          </svg>
-                          <span>Explore</span>
-                        </button>
-                        <button
-                          onClick={() => router.push("/contact")}
-                          className='bg-white/90 border-brand-gold text-brand-brown hover:bg-brand-gold hover:text-white font-semibold px-3 sm:px-4 py-2 text-xs sm:text-sm rounded-lg shadow-lg hover:shadow-xl transition-colors duration-200 border flex items-center justify-center gap-1 sm:gap-2 cursor-pointer'
+                          <span>Browse</span>
+                          <IoArrowForward className='w-4 h-4 transition-transform duration-300 ease-out group-hover:translate-x-1' />
+                        </PrimaryButton>
+
+                        <SecondaryButton
+                          onClick={() =>
+                            handleWhatsApp(
+                              `Hello! I'm interested in ${event.title} gift hampers. Could you help me with more details?`
+                            )
+                          }
+                          size='sm'
+                          className='flex-1'
                         >
-                          <span>Quote</span>
-                          <span>💬</span>
-                        </button>
+                          <FaWhatsapp className='w-4 h-4' />
+                          <span>Let's Connect</span>
+                        </SecondaryButton>
                       </div>
                     </div>
                   </div>
-
-                  {/* Status Indicator - Always Visible */}
-                  <div
-                    className='absolute bottom-4 right-4 transition-transform duration-300 ease-out'
-                    style={{
-                      willChange: "transform",
-                      backfaceVisibility: "hidden",
-                      transform: "translateZ(0)"
-                    }}
-                  >
-                    <div
-                      className='w-3 h-3 bg-brand-gold/70 rounded-full animate-pulse group-hover:bg-brand-gold group-hover:scale-110 transition-all duration-300 ease-out'
-                      style={{
-                        willChange: "transform, background-color",
-                        backfaceVisibility: "hidden"
-                      }}
-                    />
-                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
 
-            {/* Category Indicator Dots - Below the images */}
-            <div className='absolute -bottom-8 left-1/2 transform -translate-x-1/2 flex gap-2 z-20'>
+            {/* View All Button */}
+            <div className='text-center'>
+              <PrimaryButton
+                onClick={handleViewAll}
+                size='md'
+                className='px-6 py-2 rounded-full flex items-center gap-2 mx-auto'
+              >
+                <span>View All {currentCategory?.label} Hampers</span>
+                <ArrowRight className='w-4 h-4 transition-transform duration-300 group-hover:translate-x-1' />
+              </PrimaryButton>
+            </div>
+
+            {/* Category Indicator Dots */}
+            <div className='flex justify-center gap-2 mt-8'>
               {categories.map(category => (
                 <button
-                  key={category}
-                  onClick={() => setActiveCategory(category)}
+                  key={category.id}
+                  onClick={() => setActiveCategory(category.id)}
                   className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition-all duration-300 ${
-                    activeCategory === category
+                    activeCategory === category.id
                       ? "bg-brand-gold shadow-lg scale-125"
                       : "bg-white/60 hover:bg-brand-gold/50 hover:scale-110"
                   }`}
-                  aria-label={`Switch to ${category} category`}
+                  aria-label={`Switch to ${category.label} category`}
                 />
               ))}
             </div>
@@ -639,37 +475,6 @@ export default function EventsSection() {
             </p>
           </div>
         )}
-
-        {/* Call-to-Action Section */}
-        <div className='text-center mt-20 bg-gradient-to-r from-brand-gold to-brand-amber rounded-3xl p-8 md:p-12 shadow-2xl'>
-          <h3 className='text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-brand-brown mb-4 md:mb-6'>
-            Ready to Build Meaningful Connections?
-          </h3>
-          <p className='text-sm sm:text-base md:text-lg lg:text-xl text-brand-dark mb-6 md:mb-8 max-w-2xl mx-auto px-4 md:px-0'>
-            {`Let's work together to create hamper experiences that strengthen
-            your relationships and drive real business value. We're committed to
-            understanding your needs and delivering solutions that make a
-            difference.`}
-          </p>
-          <div className='flex flex-wrap justify-center gap-4'>
-            <Button
-              onClick={() => router.push("/collections?category=all")}
-              className='bg-brand-brown text-brand-light font-semibold px-6 py-3 sm:px-8 sm:py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 text-sm sm:text-base md:text-lg'
-            >
-              🏢 Start Your Journey
-            </Button>
-            <Button
-              onClick={() =>
-                handleWhatsApp(
-                  "Hi! I'm interested in your hamper services and would like to learn more about how you can help strengthen our relationships."
-                )
-              }
-              className='bg-white/90 text-brand-brown font-semibold px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 text-lg border border-brand-gold/30'
-            >
-              💬 {"Let's Connect"}
-            </Button>
-          </div>
-        </div>
       </div>
     </section>
   );

@@ -59,7 +59,7 @@ export default function Footer() {
         <div className='container mx-auto px-4 sm:px-6 lg:px-8 relative z-10'>
           {/* Main Footer Content */}
           <div className='py-20'>
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8'>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8'>
               {/* Company Info - Enhanced */}
               <div className='lg:col-span-2'>
                 <div className='flex items-center gap-3 mb-4'>
@@ -136,11 +136,121 @@ export default function Footer() {
                 </Button>
               </div>
 
-              {/* Business Hampers */}
+              {/* Quick Links - New Section */}
               <div>
                 <h4 className='text-lg md:text-xl font-bold text-brand-light mb-4 md:mb-6 flex items-center gap-2'>
-                  <span>🧑‍💼</span>
-                  Business Hampers
+                  <span>🔗</span>
+                  Quick Links
+                </h4>
+                <ul className='space-y-3'>
+                  <li>
+                    <Link
+                      href='/services'
+                      className='text-brand-gold hover:text-brand-light transition-colors cursor-pointer flex items-center gap-2 hover:translate-x-1 transition-transform'
+                    >
+                      <span>🔧</span>
+                      Our Services
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href='/about'
+                      className='text-brand-gold hover:text-brand-light transition-colors cursor-pointer flex items-center gap-2 hover:translate-x-1 transition-transform'
+                    >
+                      <span>ℹ️</span>
+                      About Shubhhampers
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href='/contact'
+                      className='text-brand-gold hover:text-brand-light transition-colors cursor-pointer flex items-center gap-2 hover:translate-x-1 transition-transform'
+                    >
+                      <span>📞</span>
+                      Contact Us
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href='/business'
+                      className='text-brand-gold hover:text-brand-light transition-colors cursor-pointer flex items-center gap-2 hover:translate-x-1 transition-transform'
+                    >
+                      <span>🏢</span>
+                      Business Solutions
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href='/collections?category=festival'
+                      className='text-brand-gold hover:text-brand-light transition-colors cursor-pointer flex items-center gap-2 hover:translate-x-1 transition-transform'
+                    >
+                      <span>🎆</span>
+                      Browse All Gift Hampers
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+
+              {/* Festival & Personal Gift Hampers - New Section */}
+              <div>
+                <h4 className='text-lg md:text-xl font-bold text-brand-light mb-4 md:mb-6 flex items-center gap-2'>
+                  <span>🎆</span>
+                  Festival & Personal
+                </h4>
+                <ul className='space-y-3'>
+                  <li>
+                    <Link
+                      href='/collections?category=festival'
+                      className='text-brand-gold hover:text-brand-light transition-colors cursor-pointer flex items-center gap-2 hover:translate-x-1 transition-transform'
+                    >
+                      <span>✨</span>
+                      Diwali Gift Hampers
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href='/collections?category=festival'
+                      className='text-brand-gold hover:text-brand-light transition-colors cursor-pointer flex items-center gap-2 hover:translate-x-1 transition-transform'
+                    >
+                      <span>🪢</span>
+                      Rakhi Gift Hampers
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href='/collections?category=festival'
+                      className='text-brand-gold hover:text-brand-light transition-colors cursor-pointer flex items-center gap-2 hover:translate-x-1 transition-transform'
+                    >
+                      <span>🎄</span>
+                      Christmas / New Year Gift Hampers
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href='/collections?category=anniversary'
+                      className='text-brand-gold hover:text-brand-light transition-colors cursor-pointer flex items-center gap-2 hover:translate-x-1 transition-transform'
+                    >
+                      <span>💕</span>
+                      Anniversary Gift Hampers
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href='/collections?category=birthday'
+                      className='text-brand-gold hover:text-brand-light transition-colors cursor-pointer flex items-center gap-2 hover:translate-x-1 transition-transform'
+                    >
+                      <span>🎂</span>
+                      Birthday Gift Hampers
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+
+              {/* Business & Wedding Gift Hampers */}
+              <div>
+                <h4 className='text-lg md:text-xl font-bold text-brand-light mb-4 md:mb-6 flex items-center gap-2'>
+                  <span>🏢</span>
+                  Business & Wedding
                 </h4>
                 <ul className='space-y-3'>
                   <li>
@@ -149,7 +259,7 @@ export default function Footer() {
                       className='text-brand-gold hover:text-brand-light transition-colors cursor-pointer flex items-center gap-2 hover:translate-x-1 transition-transform'
                     >
                       <span>🎯</span>
-                      Employee Onboarding Kits
+                      Employee Onboarding Gift Hampers
                     </Link>
                   </li>
                   <li>
@@ -158,7 +268,7 @@ export default function Footer() {
                       className='text-brand-gold hover:text-brand-light transition-colors cursor-pointer flex items-center gap-2 hover:translate-x-1 transition-transform'
                     >
                       <span>🏆</span>
-                      Company Milestone Celebrations
+                      Company Milestone Gift Hampers
                     </Link>
                   </li>
                   <li>
@@ -167,7 +277,7 @@ export default function Footer() {
                       className='text-brand-gold hover:text-brand-light transition-colors cursor-pointer flex items-center gap-2 hover:translate-x-1 transition-transform'
                     >
                       <span>🏢</span>
-                      Business Festival Packs
+                      Business Festival Gift Hampers
                     </Link>
                   </li>
                   <li>
@@ -181,30 +291,11 @@ export default function Footer() {
                   </li>
                   <li>
                     <Link
-                      href='/contact'
-                      className='text-brand-gold hover:text-brand-light transition-colors cursor-pointer flex items-center gap-2 hover:translate-x-1 transition-transform'
-                    >
-                      <span>🎨</span>
-                      Custom Consultation
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-
-              {/* Wedding & Festive */}
-              <div>
-                <h4 className='text-lg md:text-xl font-bold text-brand-light mb-4 md:mb-6 flex items-center gap-2'>
-                  <span>💒</span>
-                  Wedding & Festive
-                </h4>
-                <ul className='space-y-3'>
-                  <li>
-                    <Link
                       href='/collections?category=wedding'
                       className='text-brand-gold hover:text-brand-light transition-colors cursor-pointer flex items-center gap-2 hover:translate-x-1 transition-transform'
                     >
                       <span>💒</span>
-                      Wedding Room Hampers
+                      Wedding Room Gift Hampers
                     </Link>
                   </li>
                   <li>
@@ -213,34 +304,16 @@ export default function Footer() {
                       className='text-brand-gold hover:text-brand-light transition-colors cursor-pointer flex items-center gap-2 hover:translate-x-1 transition-transform'
                     >
                       <span>💝</span>
-                      Family Hampers
+                      Family Gift Hampers
                     </Link>
                   </li>
                   <li>
                     <Link
-                      href='/collections?category=festival'
+                      href='/contact'
                       className='text-brand-gold hover:text-brand-light transition-colors cursor-pointer flex items-center gap-2 hover:translate-x-1 transition-transform'
                     >
-                      <span>✨</span>
-                      Diwali Hampers
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href='/collections?category=festival'
-                      className='text-brand-gold hover:text-brand-light transition-colors cursor-pointer flex items-center gap-2 hover:translate-x-1 transition-transform'
-                    >
-                      <span>🪢</span>
-                      Rakhi Hampers
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href='/collections?category=festival'
-                      className='text-brand-gold hover:text-brand-light transition-colors cursor-pointer flex items-center gap-2 hover:translate-x-1 transition-transform'
-                    >
-                      <span>🎄</span>
-                      Christmas / New Year
+                      <span>🎨</span>
+                      Custom Consultation
                     </Link>
                   </li>
                 </ul>
@@ -340,10 +413,10 @@ export default function Footer() {
                   Contact Us
                 </a>
                 <a
-                  href='/collections?category=all'
+                  href='/collections?category=festival'
                   className='text-brand-gold hover:text-brand-light text-sm transition-colors cursor-pointer hover:underline'
                 >
-                  Collections
+                  Gift Hampers
                 </a>
                 <button
                   onClick={() => setIsCatalogueModalOpen(true)}
