@@ -68,8 +68,8 @@ export default function CTASection() {
 
           {/* CTA Buttons */}
           <div className='flex flex-col sm:flex-row gap-3 justify-center items-center mb-8 md:mb-12 px-4 md:px-0'>
-            <Link href='/collections'>
-              <PrimaryButton size='md'>🎁 Explore Our Collections</PrimaryButton>
+            <Link href='/hampers'>
+              <PrimaryButton size='md'>🎁 Explore Our Hampers</PrimaryButton>
             </Link>
             <SecondaryButton
               size='md'

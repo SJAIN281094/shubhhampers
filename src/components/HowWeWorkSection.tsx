@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import FeatureTag from "./FeatureTag";
+import SectionHeader from "./ui/SectionHeader";
+// import ProcessStep from "./ui/ProcessStep"; // Using direct implementation
 import PrimaryButton from "./PrimaryButton";
 import SecondaryButton from "./SecondaryButton";
 import { handleWhatsApp } from "../lib/contact-utils";
@@ -52,16 +53,13 @@ export default function HowWeWorkSection() {
     <section className='py-20 bg-white'>
       <div className='container mx-auto px-4 sm:px-6 lg:px-8'>
         {/* Section Header */}
-        <div className='text-center mb-12 md:mb-16'>
-          <FeatureTag className='mb-6 md:mb-8'>🛠️ Our Process</FeatureTag>
-          <h2 className='font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-brand-brown mb-4 md:mb-6 tracking-wide'>
-            How We Work Together
-          </h2>
-          <p className='text-sm sm:text-base md:text-lg lg:text-xl text-gray-700 max-w-4xl mx-auto leading-relaxed px-4 md:px-0'>
-            Our consultation-first approach ensures every hamper is perfectly tailored to your
-            needs. Here&apos;s how we turn your vision into meaningful experiences.
-          </p>
-        </div>
+        <SectionHeader
+          tag={{ emoji: "🛠️", text: "Our Process" }}
+          title='How We Work Together'
+          description="Our consultation-first approach ensures every hamper is perfectly tailored to your needs. Here's how we turn your vision into meaningful experiences."
+          variant='center'
+          size='md'
+        />
 
         {/* Process Steps */}
         <div className='relative'>

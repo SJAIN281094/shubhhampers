@@ -9,29 +9,31 @@ import WhyChooseUs from "@components/WhyChooseUs";
 import AboutCTA from "@components/AboutCTA";
 
 export const metadata: Metadata = {
-  title: "About Us - Premium Gift Hamper Company | Shubhhampers",
+  title: "About Us - Premium Wedding & Festival Hamper Company | Shubhhampers",
   description:
-    "Meet Shubhhampers - premium gift hamper company building meaningful relationships through thoughtful curation. Our story, mission & values.",
+    "Meet Shubhhampers - premium wedding hampers and festival gift baskets company creating magical moments through thoughtful curation. Our story, mission & values.",
   alternates: {
     canonical: "https://www.shubhhampers.com/about"
   },
   keywords: [
     "about Shubhhampers",
-    "hamper company story",
-    "relationship building mission",
-    "premium hamper curation",
-    "corporate hamper specialists",
+    "wedding hamper company",
+    "festival gift baskets",
+    "premium wedding hampers",
+    "festival hamper specialists",
+    "wedding gift curation",
     "authentic hamper service",
-    "business values",
-    "hamper company philosophy",
-    "professional hamper team",
-    "trusted hamper partner"
+    "business hampers",
+    "corporate gift hampers",
+    "trusted hamper partner",
+    "wedding celebration hampers",
+    "festival celebration gifts"
   ],
   openGraph: {
     type: "website",
-    title: "About Shubhhampers - Premium Gift Hamper Company",
+    title: "About Shubhhampers - Premium Wedding & Festival Hamper Company",
     description:
-      "Learn about our mission to build meaningful relationships through thoughtful hamper curation. Authentic approach, premium quality.",
+      "Learn about our mission to create magical moments through thoughtful wedding and festival hamper curation. Authentic approach, premium quality.",
     url: "https://www.shubhhampers.com/about",
     siteName: "Shubhhampers",
     locale: "en_US",
@@ -46,15 +48,15 @@ export const metadata: Metadata = {
         url: "https://shubhhampers.s3.ap-south-1.amazonaws.com/website/images/social-media/social_media_meta_image_300x200.png",
         width: 300,
         height: 200,
-        alt: "Shubhhampers Team - Premium Gift Hampers"
+        alt: "Shubhhampers Team - Premium Wedding & Festival Hampers"
       }
     ]
   },
   twitter: {
     card: "summary_large_image",
-    title: "About Shubhhampers - Premium Gift Hamper Company",
+    title: "About Shubhhampers - Premium Wedding & Festival Hamper Company",
     description:
-      "Learn about our mission to build meaningful relationships through thoughtful hamper curation. Authentic approach, premium quality.",
+      "Learn about our mission to create magical moments through thoughtful wedding and festival hamper curation. Authentic approach, premium quality.",
     images: [
       {
         url: "https://shubhhampers.s3.ap-south-1.amazonaws.com/website/images/social-media/social_media_meta_image.png",

@@ -27,9 +27,9 @@ export default function OurValues() {
             <div className='text-4xl mb-4'>🎯</div>
             <h3 className='text-xl font-bold text-brand-dark mb-3'>Purpose</h3>
             <p className='text-gray-600'>
-              {`Every hamper we curate has a purpose – to strengthen
-              relationships, show appreciation, and create meaningful
-              connections.`}
+              {`Every hamper we curate has a purpose – to celebrate
+              special moments, show love and appreciation, and create
+              meaningful connections.`}
             </p>
           </div>
 
@@ -46,8 +46,8 @@ export default function OurValues() {
             <div className='text-4xl mb-4'>🤝</div>
             <h3 className='text-xl font-bold text-brand-dark mb-3'>Partnership</h3>
             <p className='text-gray-600'>
-              {`We see our clients as partners in creating meaningful
-              experiences. Your success is our success.`}
+              {`We see our clients as partners in creating magical
+              moments. Your celebrations are our celebrations.`}
             </p>
           </div>
         </div>

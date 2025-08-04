@@ -6,6 +6,11 @@ import Footer from "@components/Footer";
 // Eager load above-the-fold content only
 import HeroSlider from "@components/HeroSlider";
 
+// Server-side API imports
+import { getHeroSlides } from "@lib/home-api";
+import { fetchHampers } from "@lib/hamper-api";
+import type { HamperProduct } from "@lib/hamper-api-types";
+
 // Aggressively lazy load below-the-fold components with minimal loading states
 const EventsSection = dynamic(() => import("@components/EventsSection"), {
   loading: () => <div className='h-20 bg-white' />
@@ -85,12 +90,122 @@ export const metadata: Metadata = {
   }
 };
 
-export default function Home() {
+// Category-to-API mapping for fetching hampers
+const CATEGORY_API_MAPPING = {
+  festival: "Festival",
+  wedding: "Wedding",
+  business: "Business",
+  personal: "Personal"
+};
+
+// Server-side data fetching function
+async function getHomePageData() {
+  try {
+    // Fetch hero slides data
+    const heroSlides = await getHeroSlides();
+
+    // Fetch hampers for all categories in parallel
+    const hampersByCategory: Record<string, HamperProduct[]> = {};
+
+    const categoryPromises = Object.entries(CATEGORY_API_MAPPING).map(
+      async ([categoryKey, apiCategory]) => {
+        try {
+          const response = await fetchHampers({
+            category: apiCategory,
+            pageSize: 3, // Only fetch 3 items per category
+            page: 1,
+            isActive: true
+          });
+
+          // Transform API data to UI format using the correct structure
+          const transformedHampers: HamperProduct[] = response.data.map(apiHamper => {
+            const mainImage = apiHamper.image?.[0]?.url || "/images/hamper-placeholder.jpg";
+            const categoryName = apiHamper.category.name;
+            const subCategoryName = apiHamper.subCategory?.name;
+
+            // Generate features from hamper items (first 4 items)
+            const features = apiHamper.hamperItems
+              .slice(0, 4)
+              .map(item => `${item.quantity}x ${item.item.name}`);
+            if (features.length === 0) {
+              features.push(
+                "Premium Quality",
+                "Thoughtful Curation",
+                "Express Delivery",
+                "Perfect Gifting"
+              );
+            }
+
+            // Calculate price display
+            const startingPrice = `₹${apiHamper.discountedPrice.toLocaleString()}`;
+            const originalPrice =
+              apiHamper.discount > 0 ? `₹${apiHamper.basePrice.toLocaleString()}` : "";
+            const priceRange =
+              apiHamper.discount > 0
+                ? `₹${apiHamper.discountedPrice.toLocaleString()} - ₹${apiHamper.basePrice.toLocaleString()}`
+                : startingPrice;
+
+            return {
+              id: apiHamper.id.toString(),
+              documentId: apiHamper.documentId,
+              slug: apiHamper.slug,
+              title: apiHamper.title,
+              subtitle: apiHamper.subTitle || `${categoryName} Hamper`,
+              priceRange,
+              startingPrice,
+              discountedPrice: apiHamper.discount > 0 ? startingPrice : undefined,
+              originalPrice: originalPrice || undefined,
+              discount: apiHamper.discount > 0 ? `₹${apiHamper.discount} OFF` : undefined,
+              image: mainImage,
+              images: apiHamper.image,
+              description: apiHamper.description,
+              features,
+              deliveryTime: apiHamper.delivery.description,
+              minimumOrder: apiHamper.minimumOrder.description,
+              bulkBenefit: apiHamper.bulkBenefit.description,
+              bgColor: "#FFF7ED",
+              accentColor: "#F97316",
+              textColor: "#9A3412",
+              category: categoryName, // Use string for HamperProduct type
+              subCategory: subCategoryName, // Use string for HamperProduct type
+              backgroundImage: mainImage,
+              hamperItems: apiHamper.hamperItems,
+              isActive: apiHamper.isActive
+            };
+          });
+
+          hampersByCategory[categoryKey] = transformedHampers;
+        } catch {
+          // Silent error handling - set empty array for failed category
+          hampersByCategory[categoryKey] = []; // Empty array on error
+        }
+      }
+    );
+
+    await Promise.all(categoryPromises);
+
+    return {
+      heroSlides: heroSlides || [],
+      categoryHampers: hampersByCategory
+    };
+  } catch {
+    // Silent error handling - return empty data on failure
+    return {
+      heroSlides: [],
+      categoryHampers: {}
+    };
+  }
+}
+
+export default async function Home() {
+  // Fetch all data server-side
+  const { heroSlides, categoryHampers } = await getHomePageData();
+
   return (
     <main className='min-h-screen'>
       <Header />
-      <HeroSlider />
-      <EventsSection />
+      <HeroSlider slides={heroSlides} />
+      <EventsSection categoryHampers={categoryHampers} />
       <HowWeWorkSection />
       <CTASection />
       <Footer />

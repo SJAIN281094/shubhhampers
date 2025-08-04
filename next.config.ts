@@ -23,6 +23,12 @@ const nextConfig: NextConfig = {
         hostname: "shubhhampers.s3.ap-south-1.amazonaws.com",
         port: "",
         pathname: "/website/images/**"
+      },
+      {
+        protocol: "https",
+        hostname: "shubhhampers-admin.s3.ap-south-1.amazonaws.com",
+        port: "",
+        pathname: "/**"
       }
     ]
   },

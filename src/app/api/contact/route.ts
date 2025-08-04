@@ -105,15 +105,15 @@ export async function POST(request: NextRequest) {
 
         <div style="background: linear-gradient(135deg, #e9c579 0%, #daa755 100%); padding: 20px; border-radius: 8px; margin: 25px 0; text-align: center;">
           <h3 style="color: #462506; margin: 0 0 15px 0;">🚀 While You Wait</h3>
-          <p style="color: #462506; margin: 0 0 15px 0;">Explore our collections or connect with us directly:</p>
+                      <p style="color: #462506; margin: 0 0 15px 0;">Explore our hampers or connect with us directly:</p>
           <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
-            <a href="https://shubhhampers.com/collections" style="background: #462506; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block; margin: 5px;">🎁 View Collections</a>
+            <a href="https://shubhhampers.com/hampers" style="background: #462506; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block; margin: 5px;">🎁 View Hampers</a>
             <a href="https://wa.me/919685847274?text=Hi!%20I%20just%20submitted%20a%20contact%20form%20and%20wanted%20to%20connect%20directly." style="background: #25D366; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block; margin: 5px;">💬 WhatsApp Us</a>
           </div>
         </div>
 
         <p style="color: #462506; font-size: 16px; line-height: 1.6;">
-          We're passionate about creating hamper experiences that strengthen relationships and create lasting memories. Whether you're looking for business solutions, wedding collections, or personal celebrations, we're here to make it special.
+          We're passionate about creating hamper experiences that strengthen relationships and create lasting memories. Whether you're looking for business solutions, wedding hampers, or personal celebrations, we're here to make it special.
         </p>
 
         <div style="margin-top: 30px; padding: 20px; background: #f8f8f8; border-radius: 8px; border-left: 4px solid #e9c579;">

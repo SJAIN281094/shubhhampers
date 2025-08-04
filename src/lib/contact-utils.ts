@@ -1,7 +1,30 @@
+// Centralized contact information - single source of truth
 export const CONTACT_INFO = {
-  phone: "+919685847274",
+  phone: "+91 96858 47274",
+  phoneFormatted: "+919685847274", // For tel: links
   email: "connect@shubhhampers.com",
-  whatsappNumber: "919685847274"
+  whatsappNumber: "919685847274",
+  whatsappUrl: "https://wa.me/919685847274",
+
+  // Display versions with emojis for UI
+  displayPhone: "📞 +91 96858 47274",
+  displayEmail: "✉️ connect@shubhhampers.com",
+
+  // Social media links
+  social: {
+    instagram: "https://www.instagram.com/shubhhampers_",
+    linkedin: "https://www.linkedin.com/company/shubhhampers",
+    facebook: "https://www.facebook.com/shubhhampers" // Placeholder
+  },
+
+  // Business information
+  company: {
+    name: "Shubhhampers",
+    tagline: "Hampers that build relationships",
+    fullTagline: "✨ Hampers that build relationships",
+    description:
+      "Premium hamper curation service specializing in corporate hampers, wedding hampers, and festival celebrations"
+  }
 };
 
 export const handleWhatsApp = (

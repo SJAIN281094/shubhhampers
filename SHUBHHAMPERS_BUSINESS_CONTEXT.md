@@ -275,7 +275,7 @@ When using stock photos, ensure:
 **Use Cases:** Onboarding, milestones, appreciation, client gifts  
 **Key Message:** "Invest in relationships that drive business success"
 
-### **2. Wedding Collections**
+### **2. Wedding Hampers**
 
 **Emotional Hook:** "Honor your celebration with meaningful gestures"  
 **Practical Benefit:** Guest appreciation, family honor, memorable experiences  
@@ -286,7 +286,7 @@ When using stock photos, ensure:
 
 **Emotional Hook:** "Celebrate traditions with heart"  
 **Practical Benefit:** Cultural appreciation, personal milestones, relationship building  
-**Use Cases:** Diwali, Rakhi, birthdays, achievements  
+**Use Cases:** Diwali, Raksha Bandhan, birthdays, achievements  
 **Key Message:** "Honor traditions while building connections"
 
 ---
@@ -421,7 +421,7 @@ When using stock photos, ensure:
 
 ### **Secondary CTAs**
 
-- "View Business Collections" (product browsing)
+- "View Business Hampers" (product browsing)
 - "Discuss Your Needs" (conversation starter)
 - "Get Expert Guidance" (consultation value)
 
@@ -450,7 +450,7 @@ Organized by website usage with exact dimensions:
 - Mobile Hero: 1080x1920px (9:16)
 - Hero Slider: 1920x1200px (8:5)
 
-**Product & Collections:**
+**Product & Hampers:**
 
 - Collection Cards: 600x400px (3:2)
 - Product Showcase: 800x800px (1:1)

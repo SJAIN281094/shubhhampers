@@ -35,9 +35,9 @@ export default function BusinessHero() {
                   🏢 Start Your Business Journey
                 </Button>
               </Link>
-              <Link href='/collections?category=business'>
+              <Link href='/hampers/business-gift-hampers'>
                 <Button className='bg-white/90 text-brand-brown font-semibold px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-200 border border-brand-gold/30 hover:bg-brand-gold/10'>
-                  💼 View Business Collections
+                  💼 View Business Hampers
                 </Button>
               </Link>
             </div>

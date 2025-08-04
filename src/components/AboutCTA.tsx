@@ -10,8 +10,8 @@ export default function AboutCTA() {
             Ready to Create Something Special?
           </h2>
           <p className='text-xl mb-8 leading-relaxed'>
-            {`Let's work together to create hamper experiences that
-            strengthen your relationships and make every moment meaningful.`}
+            {`Let's work together to create magical hamper experiences that
+            celebrate your special moments and make every occasion unforgettable.`}
           </p>
           <div className='flex flex-col sm:flex-row gap-4 justify-center'>
             <Link href='/contact'>
@@ -19,9 +19,9 @@ export default function AboutCTA() {
                 💬 Get in Touch
               </Button>
             </Link>
-            <Link href='/collections'>
+            <Link href='/hampers'>
               <Button className='bg-transparent text-white font-semibold px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-200 border-2 border-brand-gold hover:bg-brand-gold/20'>
-                🎁 Explore Collections
+                🎁 Explore Hampers
               </Button>
             </Link>
           </div>

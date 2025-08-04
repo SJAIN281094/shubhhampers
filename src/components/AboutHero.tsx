@@ -13,13 +13,13 @@ export default function AboutHero() {
           </div>
 
           <h1 className='font-display text-5xl sm:text-6xl lg:text-7xl font-bold text-brand-dark mb-6 tracking-wide'>
-            About Shubhhampers - Premium Gift Basket Company
+            About Shubhhampers - Premium Wedding & Festival Hamper Company
           </h1>
 
           <p className='text-xl lg:text-2xl text-gray-700 mb-8 leading-relaxed'>
-            {`We're passionate about creating meaningful connections through
-            thoughtful hampers. Every hamper we curate tells a story of care,
-            appreciation, and genuine human connection.`}
+            {`We're passionate about creating magical moments through thoughtful
+            wedding hampers and festival gift baskets. Every hamper we curate
+            tells a story of celebration, love, and genuine human connection.`}
           </p>
         </div>
       </div>

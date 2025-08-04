@@ -3,9 +3,13 @@
 import { useState, useCallback } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { Button } from "../ui-kit/button";
 import { Sheet, SheetContent, SheetTrigger } from "../ui-kit/sheet";
 import { ChevronDown, ChevronRight } from "lucide-react";
+import { IMAGES, IMAGE_ALT } from "../lib/image-constants";
+import { NAVIGATION_ITEMS, ADDITIONAL_NAVIGATION_ITEMS } from "@lib/navigation-constants";
+import { CONTACT_INFO } from "../lib/contact-utils";
 
 export default function MobileNavigation() {
   const router = useRouter();
@@ -38,7 +42,7 @@ export default function MobileNavigation() {
   }, [router]);
 
   const handleNavigateToWhatsApp = useCallback(() => {
-    window.open("https://wa.me/919685847274", "_blank");
+    window.open(CONTACT_INFO.whatsappUrl, "_blank");
     setIsOpen(false);
   }, []);
 
@@ -71,287 +75,121 @@ export default function MobileNavigation() {
           className='w-[280px] xs:w-80 sm:w-96 bg-white border-l border-brand-gold/20 overflow-y-auto'
         >
           <div className='flex flex-col h-full'>
-            {/* Header */}
+            {/* Header - Match HeaderLogo styling */}
             <div className='py-6 border-b border-brand-gold/20'>
-              <h2 className='text-2xl font-bold text-brand-dark'>Shubhhampers</h2>
-              <p className='text-sm text-brand-brown'>Hampers that build relationships</p>
+              <div className='flex items-center gap-3'>
+                <div className='w-10 h-10 bg-gradient-to-br from-brand-light via-white to-brand-gold/20 rounded-lg overflow-hidden shadow-md border border-brand-gold/20 p-1'>
+                  <Image
+                    src={IMAGES.LOGO_DARK}
+                    alt={IMAGE_ALT.LOGO}
+                    width={40}
+                    height={40}
+                    className='w-full h-full object-contain'
+                    priority={true}
+                    quality={90}
+                  />
+                </div>
+                <div className='flex flex-col justify-center'>
+                  <div className='font-display text-2xl font-extrabold bg-gradient-to-r from-brand-brown to-brand-amber bg-clip-text text-transparent tracking-tight drop-shadow-sm leading-none'>
+                    {CONTACT_INFO.company.name}
+                  </div>
+                  <p className='text-xs text-brand-brown font-medium mt-1'>
+                    {CONTACT_INFO.company.tagline}
+                  </p>
+                </div>
+              </div>
             </div>
 
             {/* Navigation - Expandable Category Links */}
-            <nav className='flex-1 py-6 space-y-6'>
+            <nav className='flex-1 py-4 space-y-4'>
               {/* Home */}
               <Link
                 href='/'
-                className={`block font-semibold transition-colors ${
+                className={`block font-semibold transition-colors px-3 py-3 rounded-lg ${
                   isActive("/")
-                    ? "text-brand-dark bg-brand-gold/10 px-3 py-2 rounded-lg"
-                    : "text-brand-brown hover:text-brand-dark"
+                    ? "text-brand-dark bg-brand-gold/10"
+                    : "text-brand-brown hover:text-brand-dark hover:bg-brand-gold/5"
                 }`}
                 onClick={handleClose}
               >
                 🏠 Home
               </Link>
 
-              {/* Festival Section */}
-              <div className='space-y-2'>
-                <button
-                  onClick={() => toggleSection("festival")}
-                  className='flex items-center justify-between w-full font-bold text-brand-dark text-sm uppercase tracking-wide hover:text-brand-brown transition-colors py-3 px-2 rounded-lg hover:bg-brand-gold/10 min-h-[48px]'
-                >
-                  🎆 Festival Gift Hampers
-                  {expandedSections.has("festival") ? (
-                    <ChevronDown className='w-4 h-4' />
-                  ) : (
-                    <ChevronRight className='w-4 h-4' />
+              {/* Navigation Sections */}
+              {NAVIGATION_ITEMS.map(navItem => (
+                <div key={navItem.id} className='space-y-3'>
+                  <button
+                    onClick={() => toggleSection(navItem.id)}
+                    className='flex items-center justify-between w-full font-semibold text-brand-dark text-sm uppercase tracking-wide hover:text-brand-brown transition-colors py-3 px-3 rounded-lg hover:bg-brand-gold/10 min-h-[48px]'
+                  >
+                    {navItem.emoji} {navItem.label} Gift Hampers
+                    {expandedSections.has(navItem.id) ? (
+                      <ChevronDown className='w-4 h-4 text-brand-amber' />
+                    ) : (
+                      <ChevronRight className='w-4 h-4 text-brand-amber' />
+                    )}
+                  </button>
+                  {expandedSections.has(navItem.id) && navItem.children && (
+                    <div className='space-y-2 ml-6 pl-3 border-l-2 border-brand-gold/30'>
+                      {navItem.children.map(child => (
+                        <Link
+                          key={child.id}
+                          href={child.href}
+                          className={`block hover:text-brand-dark cursor-pointer text-sm py-2 px-2 rounded hover:bg-brand-gold/5 transition-colors ${
+                            child.description
+                              ? "text-brand-brown font-medium"
+                              : "text-gray-600 hover:text-brand-brown"
+                          }`}
+                          onClick={handleClose}
+                        >
+                          {child.emoji} {child.label}
+                        </Link>
+                      ))}
+                    </div>
                   )}
-                </button>
-                {expandedSections.has("festival") && (
-                  <div className='space-y-2 ml-4 pl-2 border-l-2 border-brand-gold/20'>
-                    <Link
-                      href='/collections?category=festival'
-                      className='block text-brand-brown hover:text-brand-dark cursor-pointer font-medium text-sm'
-                      onClick={handleClose}
-                    >
-                      🎆 All Festival Gift Hampers
-                    </Link>
-                    <Link
-                      href='/hampers/raksha-bandhan-gift-hamper'
-                      className='block text-gray-600 hover:text-brand-brown cursor-pointer text-sm'
-                      onClick={handleClose}
-                    >
-                      🪢 Raksha Bandhan Gift Hampers
-                    </Link>
-                    <Link
-                      href='/hampers/diwali-gift-hamper'
-                      className='block text-gray-600 hover:text-brand-brown cursor-pointer text-sm'
-                      onClick={handleClose}
-                    >
-                      ✨ Diwali Gift Hampers
-                    </Link>
-                    <Link
-                      href='/hampers/christmas-gift-hamper'
-                      className='block text-gray-600 hover:text-brand-brown cursor-pointer text-sm'
-                      onClick={handleClose}
-                    >
-                      🎄 Christmas Gift Hampers
-                    </Link>
-                    <Link
-                      href='/hampers/new-year-gift-hamper'
-                      className='block text-gray-600 hover:text-brand-brown cursor-pointer text-sm'
-                      onClick={handleClose}
-                    >
-                      🎊 New Year Gift Hampers
-                    </Link>
-                    <Link
-                      href='/hampers/holi-gift-hamper'
-                      className='block text-gray-600 hover:text-brand-brown cursor-pointer text-sm'
-                      onClick={handleClose}
-                    >
-                      🎨 Holi Gift Hampers
-                    </Link>
-                  </div>
-                )}
-              </div>
+                </div>
+              ))}
 
-              {/* Wedding Section */}
-              <div className='space-y-2'>
-                <button
-                  onClick={() => toggleSection("wedding")}
-                  className='flex items-center justify-between w-full font-bold text-brand-dark text-sm uppercase tracking-wide hover:text-brand-brown transition-colors py-3 px-2 rounded-lg hover:bg-brand-gold/10 min-h-[48px]'
-                >
-                  💒 Wedding Gift Hampers
-                  {expandedSections.has("wedding") ? (
-                    <ChevronDown className='w-4 h-4' />
-                  ) : (
-                    <ChevronRight className='w-4 h-4' />
-                  )}
-                </button>
-                {expandedSections.has("wedding") && (
-                  <div className='space-y-2 ml-4 pl-2 border-l-2 border-brand-gold/20'>
-                    <Link
-                      href='/collections?category=wedding'
-                      className='block text-brand-brown hover:text-brand-dark cursor-pointer font-medium text-sm'
-                      onClick={handleClose}
-                    >
-                      💒 All Wedding Gift Hampers
-                    </Link>
-                    <Link
-                      href='/hampers/wedding-room-gift-hamper'
-                      className='block text-gray-600 hover:text-brand-brown cursor-pointer text-sm'
-                      onClick={handleClose}
-                    >
-                      🏨 Room Gift Hampers
-                    </Link>
-                    <Link
-                      href='/hampers/wedding-return-gift-hamper'
-                      className='block text-gray-600 hover:text-brand-brown cursor-pointer text-sm'
-                      onClick={handleClose}
-                    >
-                      🎁 Return Gift Hampers
-                    </Link>
-                    <Link
-                      href='/hampers/bridesmaid-gift-hamper'
-                      className='block text-gray-600 hover:text-brand-brown cursor-pointer text-sm'
-                      onClick={handleClose}
-                    >
-                      👰 Bridesmaid Gift Hampers
-                    </Link>
-                  </div>
-                )}
-              </div>
-
-              {/* Corporate Section */}
-              <div className='space-y-2'>
-                <button
-                  onClick={() => toggleSection("corporate")}
-                  className='flex items-center justify-between w-full font-bold text-brand-dark text-sm uppercase tracking-wide hover:text-brand-brown transition-colors py-3 px-2 rounded-lg hover:bg-brand-gold/10 min-h-[48px]'
-                >
-                  🏢 Corporate Gift Hampers
-                  {expandedSections.has("corporate") ? (
-                    <ChevronDown className='w-4 h-4' />
-                  ) : (
-                    <ChevronRight className='w-4 h-4' />
-                  )}
-                </button>
-                {expandedSections.has("corporate") && (
-                  <div className='space-y-2 ml-4 pl-2 border-l-2 border-brand-gold/20'>
-                    <Link
-                      href='/collections?category=corporate'
-                      className='block text-brand-brown hover:text-brand-dark cursor-pointer font-medium text-sm'
-                      onClick={handleClose}
-                    >
-                      🏢 All Corporate Gift Hampers
-                    </Link>
-                    <Link
-                      href='/hampers/employee-appreciation-gift-hamper'
-                      className='block text-gray-600 hover:text-brand-brown cursor-pointer text-sm'
-                      onClick={handleClose}
-                    >
-                      👥 Employee Appreciation Gift Hampers
-                    </Link>
-                    <Link
-                      href='/hampers/client-gift-hamper'
-                      className='block text-gray-600 hover:text-brand-brown cursor-pointer text-sm'
-                      onClick={handleClose}
-                    >
-                      🤝 Client Gift Hampers
-                    </Link>
-                    <Link
-                      href='/hampers/corporate-festival-gift-hamper'
-                      className='block text-gray-600 hover:text-brand-brown cursor-pointer text-sm'
-                      onClick={handleClose}
-                    >
-                      🎊 Corporate Festival Gift Hampers
-                    </Link>
-                    <Link
-                      href='/hampers/business-milestone-gift-hamper'
-                      className='block text-gray-600 hover:text-brand-brown cursor-pointer text-sm'
-                      onClick={handleClose}
-                    >
-                      🏆 Business Milestone Gift Hampers
-                    </Link>
-                  </div>
-                )}
-              </div>
-
-              {/* Personal Section */}
-              <div className='space-y-2'>
-                <button
-                  onClick={() => toggleSection("personal")}
-                  className='flex items-center justify-between w-full font-bold text-brand-dark text-sm uppercase tracking-wide hover:text-brand-brown transition-colors py-3 px-2 rounded-lg hover:bg-brand-gold/10 min-h-[48px]'
-                >
-                  💝 Personal Gift Hampers
-                  {expandedSections.has("personal") ? (
-                    <ChevronDown className='w-4 h-4' />
-                  ) : (
-                    <ChevronRight className='w-4 h-4' />
-                  )}
-                </button>
-                {expandedSections.has("personal") && (
-                  <div className='space-y-2 ml-4 pl-2 border-l-2 border-brand-gold/20'>
-                    <Link
-                      href='/collections?category=personal'
-                      className='block text-brand-brown hover:text-brand-dark cursor-pointer font-medium text-sm'
-                      onClick={handleClose}
-                    >
-                      💝 All Personal Gift Hampers
-                    </Link>
-                    <Link
-                      href='/hampers/anniversary-gift-hamper'
-                      className='block text-gray-600 hover:text-brand-brown cursor-pointer text-sm'
-                      onClick={handleClose}
-                    >
-                      💕 Anniversary Gift Hampers
-                    </Link>
-                    <Link
-                      href='/hampers/birthday-gift-hamper'
-                      className='block text-gray-600 hover:text-brand-brown cursor-pointer text-sm'
-                      onClick={handleClose}
-                    >
-                      🎂 Birthday Gift Hampers
-                    </Link>
-                    <Link
-                      href='/hampers/valentine-gift-hamper'
-                      className='block text-gray-600 hover:text-brand-brown cursor-pointer text-sm'
-                      onClick={handleClose}
-                    >
-                      💝 Valentine Gift Hampers
-                    </Link>
-                  </div>
-                )}
-              </div>
-
-              {/* Moved to Footer - Links for reference */}
-              <div className='space-y-4 pt-4 border-t border-brand-gold/20'>
-                <h3 className='font-bold text-brand-dark text-sm uppercase tracking-wide'>
+              {/* More Info Section */}
+              <div className='space-y-4 pt-4 border-t border-brand-gold/30'>
+                <h3 className='font-semibold text-brand-dark text-sm uppercase tracking-wide px-3'>
                   More Info
                 </h3>
-                <div className='space-y-3 ml-2'>
-                  <Link
-                    href='/services'
-                    className='block text-gray-600 hover:text-brand-brown cursor-pointer text-sm'
-                    onClick={handleClose}
-                  >
-                    🔧 Services
-                  </Link>
-                  <Link
-                    href='/about'
-                    className='block text-gray-600 hover:text-brand-brown cursor-pointer text-sm'
-                    onClick={handleClose}
-                  >
-                    ℹ️ About Us
-                  </Link>
-                  <Link
-                    href='/contact'
-                    className='block text-gray-600 hover:text-brand-brown cursor-pointer text-sm'
-                    onClick={handleClose}
-                  >
-                    📞 Contact
-                  </Link>
+                <div className='space-y-2'>
+                  {ADDITIONAL_NAVIGATION_ITEMS.map(item => (
+                    <Link
+                      key={item.id}
+                      href={item.href}
+                      className='block text-gray-600 hover:text-brand-brown cursor-pointer text-sm py-2 px-3 rounded hover:bg-brand-gold/5 transition-colors'
+                      onClick={handleClose}
+                    >
+                      {item.emoji} {item.label}
+                    </Link>
+                  ))}
                 </div>
               </div>
             </nav>
 
             {/* Quick Actions */}
-            <div className='py-6 border-t border-brand-gold/20 space-y-4'>
+            <div className='py-6 border-t border-brand-gold/30 space-y-4'>
               <Button
                 onClick={handleNavigateToContact}
-                className='w-full bg-gradient-to-r from-brand-gold to-brand-amber text-brand-dark font-semibold py-3 rounded-lg shadow-lg hover:shadow-xl transition-all duration-200'
+                className='w-full bg-gradient-to-r from-brand-gold to-brand-amber text-brand-dark font-semibold py-3 rounded-lg shadow-md hover:shadow-lg transition-all duration-200 transform hover:scale-[1.02]'
               >
                 💬 Start Consultation
               </Button>
 
               <Button
                 onClick={handleNavigateToWhatsApp}
-                className='w-full bg-transparent text-brand-brown border-2 border-brand-gold font-semibold py-3 rounded-lg hover:bg-brand-gold/10 transition-all duration-200'
+                className='w-full bg-transparent text-brand-brown border-2 border-brand-gold font-semibold py-3 rounded-lg hover:bg-brand-gold/10 transition-all duration-200 transform hover:scale-[1.02]'
               >
                 📱 WhatsApp Us
               </Button>
 
               {/* Contact Info */}
-              <div className='text-center text-sm text-gray-600 space-y-1'>
-                <p>📧 connect@shubhhampers.com</p>
-                <p>📞 +91 96858 47274</p>
+              <div className='text-center text-sm text-brand-brown space-y-1 pt-2'>
+                <p className='font-medium'>{CONTACT_INFO.displayEmail}</p>
+                <p className='font-medium'>{CONTACT_INFO.displayPhone}</p>
               </div>
             </div>
           </div>

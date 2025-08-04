@@ -4,22 +4,22 @@ export const IMAGES = {
   LOGO_DARK: "https://shubhhampers.s3.ap-south-1.amazonaws.com/website/images/logo-dark.png",
   LOGO_LIGHT: "https://shubhhampers.s3.ap-south-1.amazonaws.com/website/images/logo-light.png",
 
-  // Map Collections to Existing Images
-  // Business Collections
+  // Map Hampers to Existing Images
+  // Business Hampers
   EMPLOYEE_ONBOARDING:
     "https://shubhhampers.s3.ap-south-1.amazonaws.com/website/images/hampers-corporate_1.jpg",
   MILESTONE: "https://shubhhampers.s3.ap-south-1.amazonaws.com/website/images/welcome-gift_1.png",
   CORPORATE_EVENT:
     "https://shubhhampers.s3.ap-south-1.amazonaws.com/website/images/milestone_1.png",
 
-  // Festival Collections (map to existing images)
+  // Festival Hampers (map to existing images)
   DIWALI: "https://shubhhampers.s3.ap-south-1.amazonaws.com/website/images/hampers-diwali_6.jpeg",
   RAKSHABANDHAN:
     "https://shubhhampers.s3.ap-south-1.amazonaws.com/website/images/hampers-rakshabandhan_2.jpeg",
   CHRISTMAS_NEW_YEAR:
     "https://shubhhampers.s3.ap-south-1.amazonaws.com/website/images/business-celebration.png",
 
-  // Wedding Collections
+  // Wedding Hampers
   WEDDING_WELCOME_HAMPERS:
     "https://shubhhampers.s3.ap-south-1.amazonaws.com/website/images/wedding-hampers_1.png",
   WEDDING_RETURN_HAMPERS:
@@ -27,7 +27,7 @@ export const IMAGES = {
   BRIDAL_PARTY_HAMPERS:
     "https://shubhhampers.s3.ap-south-1.amazonaws.com/website/images/wedding-hampers_1.png",
 
-  // Personal Collections (map to existing images)
+  // Personal Hampers (map to existing images)
   BIRTHDAY_CELEBRATION:
     "https://shubhhampers.s3.ap-south-1.amazonaws.com/website/images/gift_5.jpeg",
   ANNIVERSARY_LOVE_STORY:
@@ -51,23 +51,23 @@ export const IMAGE_ALT = {
   WEDDING_HAMPERS: "Wedding Celebration Hampers",
   WELCOME_GIFT: "Welcome Gift Hamper",
 
-  // Collections Alt Text (using descriptive names)
-  // Business Collections
+  // Hampers Alt Text (using descriptive names)
+  // Business Hampers
   EMPLOYEE_ONBOARDING: "Employee Onboarding Excellence Hamper",
   CLIENT_APPRECIATION: "Client Appreciation Excellence Hamper",
   CORPORATE_FESTIVALS: "Corporate Festival Celebrations Hamper",
 
-  // Wedding Collections
+  // Wedding Hampers
   WEDDING_WELCOME_HAMPERS: "Wedding Room Hampers",
   WEDDING_RETURN_HAMPERS: "Wedding Return Hampers",
   BRIDAL_PARTY_HAMPERS: "Bridesmaid Hampers",
 
-  // Festival Collections
+  // Festival Hampers
   DIWALI_MAGIC: "Diwali Magic Collection Hamper",
   RAKSHA_BANDHAN: "Raksha Bandhan Bonds Hamper",
   CHRISTMAS_NEW_YEAR: "Christmas & New Year Celebration Hamper",
 
-  // Personal Collections
+  // Personal Hampers
   BIRTHDAY_CELEBRATION_MAGIC: "Birthday Celebration Magic Hamper",
   ANNIVERSARY_LOVE_STORY: "Marriage & Anniversary Hamper",
   NEW_BABY_BLESSINGS: "Baby Announcement Hamper",

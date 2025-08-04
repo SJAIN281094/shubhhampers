@@ -190,7 +190,7 @@ export default function CatalogueModal({ isOpen, onClose }: CatalogueModalProps)
                   <p className='text-sm text-gray-600 mt-3'>
                     Please check your{" "}
                     {contactMethod === "email" ? "inbox (and spam folder)" : "WhatsApp messages"}{" "}
-                    for the catalogue with our latest collections and pricing.
+                    for the catalogue with our latest hampers and pricing.
                   </p>
                 </div>
 

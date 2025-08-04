@@ -9,14 +9,14 @@ export default function OurMission() {
             </h2>
             <p className='text-lg text-gray-700 mb-6 leading-relaxed'>
               {`At Shubhhampers, we believe that every hamper is an opportunity
-              to strengthen relationships and create lasting memories. We're
-              not just delivering packages – we're delivering joy,
-              appreciation, and genuine human connection.`}
+              to create magical moments and celebrate life's special occasions.
+              We're not just delivering packages – we're delivering joy,
+              celebration, and genuine human connection.`}
             </p>
             <p className='text-lg text-gray-700 mb-8 leading-relaxed'>
-              {`Whether it's celebrating a festival, appreciating your team,
-              or nurturing client relationships, we're here to help you make
-              every moment special and meaningful.`}
+              {`Whether it's celebrating weddings, festivals, or nurturing
+              business relationships, we're here to help you make every
+              moment special and meaningful.`}
             </p>
 
             <div className='grid grid-cols-1 sm:grid-cols-3 gap-6'>
@@ -49,8 +49,8 @@ export default function OurMission() {
                 generic. We wanted to change that by creating a platform
                 where every hamper feels personal, thoughtful, and meaningful.
                 Our journey began with a simple belief: that the best hampers
-                are those that strengthen relationships and create genuine
-                connections.`}
+                are those that create magical moments and celebrate life's
+                special occasions with genuine connections.`}
               </p>
             </div>
           </div>

@@ -11,6 +11,7 @@ import { handleWhatsApp } from "../lib/contact-utils";
 import HamperTag from "./HamperTag";
 import PrimaryButton from "./PrimaryButton";
 import SecondaryButton from "./SecondaryButton";
+import { TransformedHeroSlide } from "../lib/home-api-types";
 
 // Enhanced Background Elements with Motion
 const MotionBackground = () => {
@@ -94,120 +95,56 @@ const MotionBackground = () => {
   );
 };
 
-// SEO-optimized slides with seasonal keywords and images
-const slides = [
-  {
-    id: 1,
-    title: "Festivals That Feel Like Home",
-    subtitle: "Rakhi & Diwali Gift Hampers for the People You Love Most",
-    description:
-      "Bring hearts closer with gift hampers made to celebrate love, laughter, and the bonds that matter. From Rakhi gift hampers for your brother to Diwali sweets and snacks for your parents, every box is a tribute to tradition and togetherness. Packed with warmth and a personal touch, these gift hampers say what words can't.",
-    cta: "🎁 Browse Festival Gift Hampers",
-    secondaryCta: "WhatsApp Us",
-    gradient: "from-brand-amber/15 via-brand-light to-brand-gold/20",
-    buttonClass:
-      "bg-gradient-to-r from-brand-amber to-brand-gold hover:from-brand-gold hover:to-brand-amber",
-    features: [
-      "Gift Hamper with Love",
-      "Rakhi Gift Hampers for Brother & Sister",
-      "Diwali for Family",
-      "Tradition in a Box",
-      "Handwritten Notes",
-      "Home in Every Gift Hamper"
-    ],
-    image: IMAGES.DIWALI,
-    imageAlt: IMAGE_ALT.DIWALI_MAGIC,
-    stats: {
-      festivals: "Celebrated",
-      traditions: "Honored",
-      joy: "Shared"
+// Transform API data to include styling based on category
+const getSlideWithStyling = (apiSlide: TransformedHeroSlide) => {
+  // Category-based gradients and button styles
+  const categoryStyles: Record<string, Record<string, string>> = {
+    Festival: {
+      gradient: "from-brand-amber/15 via-brand-light to-brand-gold/20",
+      buttonClass:
+        "bg-gradient-to-r from-brand-amber to-brand-gold hover:from-brand-gold hover:to-brand-amber",
+      image: IMAGES.DIWALI,
+      imageAlt: IMAGE_ALT.DIWALI_MAGIC
     },
-    category: "festival",
-    keywords: "diwali hampers, rakhi gift hampers, festival gift hampers, diwali chocolate hampers"
-  },
-  {
-    id: 2,
-    title: "Wedding Room Gift Hampers & Return Gift Hampers",
-    subtitle: "Welcome Guests with Warmth, Thank Them with Love",
-    description:
-      "From heartfelt room welcome gift hampers for your guests and bridal suite, to elegant wedding return gift hampers for friends and family — every gift hamper is designed to make your celebrations feel personal, memorable, and full of love.",
-    cta: "💒 Browse Wedding Gift Hampers",
-    secondaryCta: "WhatsApp Us",
-    gradient: "from-brand-gold/20 via-brand-light to-brand-amber/10",
-    buttonClass:
-      "bg-gradient-to-r from-brand-brown to-brand-amber hover:from-brand-amber hover:to-brand-brown",
-    features: [
-      "Room Welcome Gift Hampers",
-      "Guest Entry Gift Hampers",
-      "Bridal Suite Gift Hamper",
-      "Wedding Return Gift Hampers",
-      "Couple Gift Hampers",
-      "Sangeet / Mehendi Favors"
-    ],
-    image: IMAGES.WEDDING_WELCOME_HAMPERS,
-    imageAlt: IMAGE_ALT.WEDDING_WELCOME_HAMPERS,
+    Wedding: {
+      gradient: "from-brand-gold/20 via-brand-light to-brand-amber/10",
+      buttonClass:
+        "bg-gradient-to-r from-brand-brown to-brand-amber hover:from-brand-amber hover:to-brand-brown",
+      image: IMAGES.WEDDING_WELCOME_HAMPERS,
+      imageAlt: IMAGE_ALT.WEDDING_WELCOME_HAMPERS
+    },
+    Business: {
+      gradient: "from-brand-gold/20 via-brand-light to-brand-amber/10",
+      buttonClass:
+        "bg-gradient-to-r from-brand-dark to-brand-brown hover:from-brand-brown hover:to-brand-dark",
+      image: IMAGES.EMPLOYEE_ONBOARDING,
+      imageAlt: IMAGE_ALT.EMPLOYEE_ONBOARDING
+    },
+    Personal: {
+      gradient: "from-brand-brown/10 via-brand-light to-brand-amber/15",
+      buttonClass:
+        "bg-gradient-to-r from-brand-gold to-brand-amber hover:from-brand-amber hover:to-brand-gold",
+      image: IMAGES.BIRTHDAY_CELEBRATION,
+      imageAlt: IMAGE_ALT.BIRTHDAY_CELEBRATION_MAGIC
+    }
+  };
+
+  const styles = categoryStyles[apiSlide.category] || categoryStyles.Festival;
+
+  return {
+    ...apiSlide,
+    ...styles,
+    // Use API image if available, otherwise fallback to category image
+    image: apiSlide.image || styles.image,
+    imageAlt: apiSlide.imageAlt || styles.imageAlt,
     stats: {
-      love: "Celebrated",
-      moments: "Treasured",
+      celebrations: "Enhanced",
+      relationships: "Strengthened",
       memories: "Created"
     },
-    category: "wedding",
-    keywords:
-      "wedding gift hamper, wedding hampers, wedding return gift hampers, wedding hamper for couple"
-  },
-  {
-    id: 3,
-    title: "Corporate Gift Hampers & Business Gifting Solutions",
-    subtitle: "Premium Gift Hampers for Employees, Clients & Celebrations",
-    description:
-      "Show appreciation that resonates. From employee onboarding to client thank-yous and festival gifting, our premium corporate gift hampers are crafted to build meaningful connections, boost morale, and leave a lasting impression — all while reflecting your brand's values with elegance and warmth.",
-    cta: "🏢 View Corporate Gift Hampers",
-    secondaryCta: "WhatsApp Us",
-    gradient: "from-brand-gold/20 via-brand-light to-brand-amber/10",
-    buttonClass:
-      "bg-gradient-to-r from-brand-amber to-brand-brown hover:from-brand-brown hover:to-brand-amber",
-    features: [
-      "Employee Gifting",
-      "Client Gift Hampers",
-      "Milestone Celebrations",
-      "Corporate Festive Gifting"
-    ],
-    image: IMAGES.EMPLOYEE_ONBOARDING,
-    imageAlt: IMAGE_ALT.EMPLOYEE_ONBOARDING,
-    stats: { relationships: "Strengthened", appreciation: "Expressed", success: "Celebrated" },
-    category: "business",
-    keywords:
-      "corporate gift hampers, employee appreciation gifts, business hampers, corporate gifting"
-  },
-  {
-    id: 4,
-    title: "Birthday & Personal Gift Hampers",
-    subtitle: "Valentine Gift Hampers | Gifts for Her, Him & Every Beautiful Bond",
-    description:
-      "Celebrate the moments that matter most. From birthday gift hampers that bring joy to Valentine's Day baskets filled with love, and anniversary gifts that rekindle memories — each gift hamper is thoughtfully curated to make your personal celebrations more meaningful, memorable, and full of heart.",
-    cta: "💝 Browse Personal Gift Hampers",
-    secondaryCta: "WhatsApp Us",
-    gradient: "from-brand-brown/10 via-brand-light to-brand-amber/15",
-    buttonClass:
-      "bg-gradient-to-r from-brand-gold to-brand-brown hover:from-brand-brown hover:to-brand-gold",
-    features: [
-      "Birthday Gift Hampers",
-      "Valentine's Day Gifts",
-      "Anniversary Gift Hampers",
-      "Made with Love"
-    ],
-    image: IMAGES.BIRTHDAY_CELEBRATION,
-    imageAlt: IMAGE_ALT.BIRTHDAY_CELEBRATION_MAGIC,
-    stats: {
-      love: "Expressed",
-      moments: "Cherished",
-      bonds: "Strengthened"
-    },
-    category: "personal",
-    keywords:
-      "birthday hampers, valentine hamper, birthday gift hampers for her, valentine's day gift basket"
-  }
-];
+    keywords: `${apiSlide.category?.toLowerCase()} hampers, gift hampers, ${apiSlide.title?.toLowerCase()}`
+  };
+};
 
 // Motion variants for animations
 const slideVariants = {
@@ -238,7 +175,11 @@ const contentVariants = {
   }
 };
 
-export default function HeroSlider() {
+interface HeroSliderProps {
+  slides: TransformedHeroSlide[];
+}
+
+export default function HeroSlider({ slides = [] }: HeroSliderProps) {
   const router = useRouter();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [direction, setDirection] = useState(0);
@@ -252,10 +193,31 @@ export default function HeroSlider() {
     setIsMounted(true);
   }, []);
 
+  // Apply styling to API slides on mount
+  const [styledSlides, setStyledSlides] = useState<TransformedHeroSlide[]>([]);
+
+  useEffect(() => {
+    if (isMounted && slides.length > 0) {
+      // Transform API slides to include styling
+      const styled = slides.map(getSlideWithStyling);
+      setStyledSlides(styled);
+    }
+  }, [isMounted, slides]);
+
   // Memoized navigation handlers
   const navigateToCategory = useCallback(
     (category: string) => {
-      router.push(`/collections?category=${category}`);
+      // Map categories to SEO-friendly URLs
+      const categoryUrlMap: Record<string, string> = {
+        festival: "/hampers/festival-gift-hampers",
+        wedding: "/hampers/wedding-gift-hampers",
+        business: "/hampers/business-gift-hampers",
+        personal: "/hampers/personal-gift-hampers",
+        corporate: "/hampers/business-gift-hampers", // Alias for business
+        all: "/hampers"
+      };
+      const url = categoryUrlMap[category] || "/hampers";
+      router.push(url);
     },
     [router]
   );
@@ -263,7 +225,7 @@ export default function HeroSlider() {
   const getCategoryMessage = (category: string) => {
     const categoryMessages = {
       festival:
-        "Hi! I'm interested in your Festival Gift Hampers. Can you help me with Diwali and Rakhi gift hampers?",
+        "Hi! I'm interested in your Festival Gift Hampers. Can you help me with Diwali and Raksha Bandhan gift hampers?",
       wedding:
         "Hi! I'm interested in your Wedding Gift Hampers. Can you help me with room welcome hampers and return gifts?",
       business:
@@ -282,15 +244,15 @@ export default function HeroSlider() {
     (newDirection: number) => {
       const nextIndex =
         newDirection > 0
-          ? (currentSlide + 1) % slides.length
+          ? (currentSlide + 1) % styledSlides.length
           : currentSlide === 0
-            ? slides.length - 1
+            ? styledSlides.length - 1
             : currentSlide - 1;
 
       setDirection(newDirection);
       setCurrentSlide(nextIndex);
     },
-    [currentSlide]
+    [currentSlide, styledSlides.length]
   );
 
   const goToSlide = useCallback(
@@ -364,7 +326,31 @@ export default function HeroSlider() {
     }
   }, [isPaused, startAutoplay, stopAutoplay, isMounted]);
 
-  const currentSlideData = slides[currentSlide];
+  // Don't render until mounted to prevent hydration mismatch
+  if (!isMounted) {
+    return (
+      <section className='relative w-full h-[calc(100vh-80px)] sm:h-[calc(100vh-100px)] lg:h-[calc(100vh-120px)] min-h-[500px] sm:min-h-[600px] overflow-hidden bg-gradient-to-br from-brand-light via-white to-brand-gold/5 flex items-center justify-center'>
+        <div className='animate-pulse text-brand-brown text-lg'>Loading...</div>
+      </section>
+    );
+  }
+
+  // Show message when no data is available
+  if (!styledSlides || styledSlides.length === 0) {
+    return (
+      <section className='relative w-full h-[calc(100vh-80px)] sm:h-[calc(100vh-100px)] lg:h-[calc(100vh-120px)] min-h-[500px] sm:min-h-[600px] overflow-hidden bg-gradient-to-br from-brand-light via-white to-brand-gold/5 flex items-center justify-center'>
+        <div className='text-center max-w-md mx-auto px-4'>
+          <h2 className='text-3xl font-bold text-brand-dark mb-4'>Welcome to Shubhhampers</h2>
+          <p className='text-lg text-brand-brown mb-6'>Premium Gift Hampers for Every Occasion</p>
+          <PrimaryButton onClick={() => router.push("/hampers")} size='lg'>
+            🎁 Browse Hampers
+          </PrimaryButton>
+        </div>
+      </section>
+    );
+  }
+
+  const currentSlideData = styledSlides[currentSlide];
 
   return (
     <section
@@ -374,8 +360,8 @@ export default function HeroSlider() {
     >
       {/* SEO-optimized H1 tag with seasonal keywords */}
       <h1 className='sr-only'>
-        Diwali Hampers | Wedding Gift Hampers | Birthday Hampers | Valentine's Day Gift Baskets |
-        Premium Festival, Corporate & Personal Gift Hampers - Shubhhampers
+        Diwali Hampers | Wedding Gift Hampers | Birthday Hampers | Valentine&apos;s Day Gift Baskets
+        | Premium Festival, Corporate & Personal Gift Hampers - Shubhhampers
       </h1>
 
       <div className='relative w-full h-full'>
@@ -485,7 +471,7 @@ export default function HeroSlider() {
                       transition={{ duration: 0.6, delay: 1.0 }}
                     >
                       <div className='flex flex-wrap gap-1.5 xs:gap-2 sm:gap-3 md:gap-4 justify-center lg:justify-start'>
-                        {currentSlideData.features.map((feature, index) => (
+                        {currentSlideData.features.map((feature: string, index: number) => (
                           <motion.div
                             key={`slide-${currentSlideData.id}-feature-${feature.replace(/\s+/g, "-").toLowerCase()}`}
                             initial={{ opacity: 0, scale: 0.5, y: 30, rotateX: -15 }}

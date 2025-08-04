@@ -28,9 +28,9 @@ export const metadata: Metadata = {
     canonical: "https://www.shubhhampers.com"
   },
   icons: {
-    icon: "/logo-dark.png",
-    shortcut: "/logo-dark.png",
-    apple: "/logo-dark.png"
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/favicon.ico"
   },
   keywords: [
     // Core Hamper Keywords
@@ -74,7 +74,7 @@ export const metadata: Metadata = {
     // Seasonal & Festival Keywords
     "Diwali Hampers",
     "Holi Hampers",
-    "Rakhi Hampers",
+    "Raksha Bandhan Hampers",
     "Karva Chauth Hampers",
     "Christmas Hampers India",
     "New Year Hampers",
@@ -96,12 +96,12 @@ export const metadata: Metadata = {
     "Celebration Hampers",
     "Relationship Building Hampers",
     // Quality & Premium Keywords
-    "Premium Hamper Collections",
+    "Premium Gift Hampers",
     "Luxury Hamper Boxes",
     "High-End Hampers",
     "Exclusive Hampers",
     "Designer Hampers",
-    "Curated Hamper Collections",
+    "Curated Gift Hampers",
     // Social Media & Trending Keywords
     "Instagram Worthy Hampers",
     "Unboxing Experience Hampers",

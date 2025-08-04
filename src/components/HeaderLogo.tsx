@@ -26,9 +26,6 @@ export default function HeaderLogo() {
         <div className='font-display text-xl sm:text-2xl md:text-3xl font-extrabold bg-gradient-to-r from-brand-brown to-brand-amber bg-clip-text text-transparent tracking-tight drop-shadow-sm leading-none'>
           Shubhhampers
         </div>
-        <p className='text-xs sm:text-sm text-brand-brown font-semibold tracking-wide opacity-90 mt-0.5'>
-          Hampers that build relationships.
-        </p>
       </div>
     </Link>
   );

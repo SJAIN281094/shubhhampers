@@ -23,9 +23,9 @@ export default function ServicesCTA() {
                 💬 Discuss Your Needs
               </Button>
             </Link>
-            <Link href='/collections'>
+            <Link href='/hampers'>
               <Button className='bg-transparent text-white font-semibold px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-200 border-2 border-brand-gold hover:bg-brand-gold/20'>
-                🎁 Explore Collections
+                🎁 Explore Hampers
               </Button>
             </Link>
           </div>

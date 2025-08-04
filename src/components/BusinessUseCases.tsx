@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { Button } from "@ui-kit/button";
+import SectionHeader from "./ui/SectionHeader";
+import GradientCard from "./ui/GradientCard";
 
 // Type definitions
 interface BusinessUseCase {
@@ -55,22 +57,16 @@ export default function BusinessUseCases() {
   return (
     <section className='py-20 bg-white'>
       <div className='container mx-auto px-4 sm:px-6 lg:px-8'>
-        <div className='text-center mb-16'>
-          <h2 className='font-display text-4xl lg:text-5xl font-bold text-brand-dark mb-6'>
-            How Businesses Use Hampers
-          </h2>
-          <p className='text-xl text-gray-700 max-w-3xl mx-auto'>
-            From strengthening team culture to building client partnerships, discover how thoughtful
-            hampers can transform every aspect of your business relationships.
-          </p>
-        </div>
+        <SectionHeader
+          title='How Businesses Use Hampers'
+          description='From strengthening team culture to building client partnerships, discover how thoughtful hampers can transform every aspect of your business relationships.'
+          variant='center'
+          size='md'
+        />
 
         <div className='grid grid-cols-1 md:grid-cols-2 gap-12'>
           {BUSINESS_USE_CASES.map((useCase: BusinessUseCase) => (
-            <div
-              key={useCase.title}
-              className='bg-gradient-to-br from-brand-light/20 to-brand-gold/10 rounded-3xl p-8 shadow-lg border border-brand-gold/20 hover:shadow-xl transition-shadow duration-200'
-            >
+            <GradientCard key={useCase.title} variant='light' size='lg' hover={true}>
               <div className='flex items-start gap-6 mb-6'>
                 <div className='text-5xl'>{useCase.icon}</div>
                 <div>
@@ -96,7 +92,7 @@ export default function BusinessUseCases() {
                   ))}
                 </div>
               </div>
-            </div>
+            </GradientCard>
           ))}
         </div>
 

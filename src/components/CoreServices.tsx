@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { Button } from "@ui-kit/button";
+import SectionHeader from "./ui/SectionHeader";
+import GradientCard from "./ui/GradientCard";
 
 // Type definitions
 interface ServiceData {
@@ -26,7 +28,7 @@ const SERVICES_DATA: ServiceData[] = [
       "Complete wedding support from planning and logistics to custom design and coordination.",
     icon: "💒",
     features: ["Wedding Planning", "Logistics Management", "Custom Design", "Guest Relations"],
-    link: "/collections?category=wedding"
+    link: "/hampers/wedding-gift-hampers"
   },
   {
     title: "Custom Curation",
@@ -47,22 +49,16 @@ export default function CoreServices() {
   return (
     <section className='py-20 bg-white'>
       <div className='container mx-auto px-4 sm:px-6 lg:px-8'>
-        <div className='text-center mb-16'>
-          <h2 className='font-display text-4xl lg:text-5xl font-bold text-brand-dark mb-6'>
-            Our Core Services
-          </h2>
-          <p className='text-xl text-gray-700 max-w-3xl mx-auto'>
-            From business relationship building to wedding celebrations, we provide specialized
-            services that create meaningful connections and lasting impact.
-          </p>
-        </div>
+        <SectionHeader
+          title='Our Core Services'
+          description='From business relationship building to wedding celebrations, we provide specialized services that create meaningful connections and lasting impact.'
+          variant='center'
+          size='md'
+        />
 
         <div className='grid grid-cols-1 lg:grid-cols-3 gap-8'>
           {SERVICES_DATA.map((service: ServiceData) => (
-            <div
-              key={service.title}
-              className='bg-gradient-to-br from-brand-light/20 to-brand-gold/10 rounded-3xl p-8 shadow-lg border border-brand-gold/20 hover:shadow-xl transition-shadow duration-200'
-            >
+            <GradientCard key={service.title} variant='light' size='lg' hover={true}>
               <div className='text-center mb-6'>
                 <div className='text-6xl mb-4'>{service.icon}</div>
                 <h3 className='text-2xl font-bold text-brand-dark mb-3'>{service.title}</h3>
@@ -91,7 +87,7 @@ export default function CoreServices() {
                   </Button>
                 </Link>
               </div>
-            </div>
+            </GradientCard>
           ))}
         </div>
       </div>

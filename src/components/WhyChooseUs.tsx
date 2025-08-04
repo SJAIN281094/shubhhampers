@@ -8,8 +8,8 @@ export default function WhyChooseUs() {
           </h2>
           <p className='text-xl text-gray-700 max-w-3xl mx-auto'>
             {`We bring a fresh approach to hamper services, focusing on what
-            matters most: building meaningful relationships and creating
-            lasting business impact.`}
+            matters most: creating magical moments and celebrating life's
+            special occasions with lasting impact.`}
           </p>
         </div>
 
@@ -18,13 +18,15 @@ export default function WhyChooseUs() {
             <div className='w-16 h-16 bg-gradient-to-br from-brand-gold to-brand-amber rounded-full mx-auto mb-6 flex items-center justify-center text-2xl'>
               🎯
             </div>
-            <h3 className='text-xl font-bold text-brand-dark mb-4 text-center'>Strategic Focus</h3>
+            <h3 className='text-xl font-bold text-brand-dark mb-4 text-center'>
+              Celebration Focus
+            </h3>
             <p className='text-gray-600 text-center mb-4'>
-              {`Every hamper is strategically designed to strengthen relationships
-              and drive business outcomes, not just deliver products.`}
+              {`Every hamper is thoughtfully designed to create magical moments
+              and celebrate special occasions, not just deliver products.`}
             </p>
             <div className='bg-brand-gold/10 rounded-lg p-3 text-center'>
-              <span className='text-sm font-semibold text-brand-brown'>Relationship ROI</span>
+              <span className='text-sm font-semibold text-brand-brown'>Magical Moments</span>
             </div>
           </div>
 
@@ -46,13 +48,15 @@ export default function WhyChooseUs() {
             <div className='w-16 h-16 bg-gradient-to-br from-brand-brown to-brand-gold rounded-full mx-auto mb-6 flex items-center justify-center text-2xl'>
               🚀
             </div>
-            <h3 className='text-xl font-bold text-brand-dark mb-4 text-center'>Business Impact</h3>
+            <h3 className='text-xl font-bold text-brand-dark mb-4 text-center'>
+              Special Occasions
+            </h3>
             <p className='text-gray-600 text-center mb-4'>
-              {`Measurable results including improved employee retention,
-              stronger client relationships, and enhanced brand reputation.`}
+              {`Perfect for weddings, festivals, and business celebrations
+              with enhanced relationships and lasting memories.`}
             </p>
             <div className='bg-brand-brown/10 rounded-lg p-3 text-center'>
-              <span className='text-sm font-semibold text-brand-brown'>Proven Results</span>
+              <span className='text-sm font-semibold text-brand-brown'>Celebration Results</span>
             </div>
           </div>
 
@@ -61,11 +65,11 @@ export default function WhyChooseUs() {
               🤝
             </div>
             <h3 className='text-xl font-bold text-brand-dark mb-4 text-center'>
-              Partnership Approach
+              Celebration Partnership
             </h3>
             <p className='text-gray-600 text-center mb-4'>
-              {`We're not just vendors - we're strategic partners invested in
-              your success and relationship-building goals.`}
+              {`We're not just vendors - we're celebration partners invested in
+              your special moments and creating magical experiences.`}
             </p>
             <div className='bg-brand-gold/10 rounded-lg p-3 text-center'>
               <span className='text-sm font-semibold text-brand-brown'>True Partnership</span>
@@ -93,7 +97,7 @@ export default function WhyChooseUs() {
             <h3 className='text-xl font-bold text-brand-dark mb-4 text-center'>Custom Solutions</h3>
             <p className='text-gray-600 text-center mb-4'>
               {`Tailored hampers that reflect your brand, values, and specific
-              relationship-building objectives.`}
+              celebration objectives for weddings, festivals, and business.`}
             </p>
             <div className='bg-brand-brown/10 rounded-lg p-3 text-center'>
               <span className='text-sm font-semibold text-brand-brown'>Personalized Touch</span>
@@ -107,7 +111,7 @@ export default function WhyChooseUs() {
             <h3 className='text-2xl font-bold text-brand-dark mb-4'>Our Commitment to You</h3>
             <p className='text-gray-700 max-w-2xl mx-auto'>
               {`When you choose Shubhhampers, you're choosing a partner dedicated
-              to your success and relationship-building goals.`}
+              to your celebrations and creating magical moments.`}
             </p>
           </div>
 
@@ -130,7 +134,7 @@ export default function WhyChooseUs() {
               <div className='text-2xl mb-2'>🔄</div>
               <h4 className='font-semibold text-brand-dark mb-2'>Ongoing Support</h4>
               <p className='text-sm text-gray-600'>
-                Continuous guidance for your relationship strategies
+                Continuous guidance for your celebration strategies
               </p>
             </div>
           </div>

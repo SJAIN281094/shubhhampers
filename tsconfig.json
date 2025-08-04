@@ -19,6 +19,7 @@
       }
     ],
     "paths": {
+      "@/*": ["./src/*"],
       "@components/*": ["./src/components/*"],
       "@ui-kit/*": ["./src/ui-kit/*"],
       "@utils": ["./src/lib/utils.ts"],

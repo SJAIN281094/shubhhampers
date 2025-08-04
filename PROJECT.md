@@ -36,7 +36,7 @@
    - Custom packaging available
 
 3. **Festival Hampers**
-   - Diwali collections
+   - Diwali hampers
    - Raksha Bandhan
    - Christmas/New Year
    - Regional festival support
@@ -96,7 +96,7 @@ src/
 ├── app/                     # Next.js App Router pages
 │   ├── about/              # About page
 │   ├── catalogue/          # Product catalogue
-│   ├── collections/        # Product collections with filtering
+│   ├── hampers/        # Product hampers with filtering
 │   ├── contact/            # Contact page
 │   ├── layout.tsx          # Root layout
 │   └── page.tsx            # Homepage
@@ -129,7 +129,7 @@ src/
 ### Header Navigation (Product-Focused)
 
 ```
-Collections (Dropdown):
+Hampers (Dropdown):
 ├── Business Hampers
 ├── Wedding Hampers
 ├── Festival Hampers
@@ -180,7 +180,7 @@ Contact:
 - CTA Section (Engagement)
 - Footer
 
-### 2. Collections (`/collections`)
+### 2. Hampers (`/hampers`)
 
 **Features:**
 
@@ -488,7 +488,7 @@ Contact:
 
 ### Content Expansion
 
-- Blog/resource section
+- Blogs/resource section
 - Business case studies
 - Festival celebration guides
 - Hamper customization guides
