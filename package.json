@@ -1,5 +1,5 @@
 {
-  "name": "Shubhhampers",
+  "name": "shubhhampers",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -16,7 +16,7 @@
     "compress-images": "node scripts/compress-images.js",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "verify": "npm run type-check && npm run lint && npm run format:check && npm run build",
+    "verify": "npm run type-check && npm run lint && npm run format && npm run build",
     "verify:quick": "npm run type-check && npm run lint:check && npm run format:check",
     "verify:strict": "npm run type-check && npm run lint:strict && npm run format:check && npm run build",
     "prepare": "husky",

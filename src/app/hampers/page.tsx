@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Header from "@components/Header";
 import Footer from "@components/Footer";
-import HamperListingPage from "@components/HamperListingPage";
+import HamperListingPageServer from "@components/HamperListingPageServer";
 import { HamperPageData } from "@lib/hamper-url-utils";
 import { fetchHampers, transformApiHamperToUI } from "@lib/hamper-api";
 
@@ -76,18 +76,24 @@ const mainHampersPageData: HamperPageData = {
   ]
 };
 
-// Server-side data fetching
-async function getHampersPageData() {
+// Server-side data fetching with search params support
+async function getHampersPageData(searchParams: { [key: string]: string | string[] | undefined }) {
   try {
+    const page = Number(searchParams.page) || 1;
+    const category = searchParams.category as string;
+    const pageSize = 25;
+
     const response = await fetchHampers({
-      pageSize: 25,
-      page: 1,
-      isActive: true
+      pageSize,
+      page,
+      isActive: true,
+      ...(category && category !== "all" && { category })
     });
 
     return {
       hampers: response.data.map(transformApiHamperToUI),
-      pagination: response.meta.pagination
+      pagination: response.meta.pagination,
+      currentCategory: category || "all"
     };
   } catch {
     return {
@@ -97,23 +103,31 @@ async function getHampersPageData() {
         pageSize: 25,
         pageCount: 0,
         total: 0
-      }
+      },
+      currentCategory: "all"
     };
   }
 }
 
-export default async function HampersPage() {
-  // Fetch data server-side
-  const { hampers, pagination } = await getHampersPageData();
+export default async function HampersPage({
+  searchParams
+}: {
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}) {
+  // Fetch data server-side with search params
+  const resolvedSearchParams = await searchParams;
+  const { hampers, pagination, currentCategory } = await getHampersPageData(resolvedSearchParams);
 
   return (
     <main className='min-h-screen'>
       <Header />
-      <HamperListingPage
+      <HamperListingPageServer
         pageData={mainHampersPageData}
+        hampers={hampers}
+        pagination={pagination}
+        currentCategory={currentCategory}
         showCategoryFilters={true}
-        initialHampers={hampers}
-        initialPagination={pagination}
+        baseUrl='/hampers'
       />
       <Footer />
     </main>

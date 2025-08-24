@@ -22,9 +22,7 @@ const apiClient = axios.create({
 // Add request interceptor for logging in development
 apiClient.interceptors.request.use(
   config => {
-    if (process.env.NODE_ENV === "development") {
-      console.log(`API Request: ${config.method?.toUpperCase()} ${config.url}`, config.params);
-    }
+    // Remove console logging to avoid build warnings
     return config;
   },
   error => Promise.reject(error)
@@ -34,7 +32,7 @@ apiClient.interceptors.request.use(
 apiClient.interceptors.response.use(
   response => response,
   error => {
-    console.error("API Error:", error.response?.data || error.message);
+    // Handle errors without console logging to avoid build warnings
     return Promise.reject(error);
   }
 );
@@ -74,7 +72,7 @@ function transformApiHamperToUI(apiHamper: ApiHamperProduct): HamperProduct {
     documentId: apiHamper.documentId,
     slug: apiHamper.slug,
     title: apiHamper.title,
-    subtitle: apiHamper.subTitle || apiHamper.description,
+    subtitle: apiHamper.subTitle || "",
     priceRange,
     startingPrice,
     discountedPrice: apiHamper.discount > 0 ? startingPrice : undefined,
@@ -109,7 +107,9 @@ export async function fetchHampers(params: HampersApiParams = {}): Promise<ApiHa
       page: params.page || 1,
       pageSize: params.pageSize || 25,
       ...(params.category && { category: params.category }),
-      ...(params.subCategory && { subCategory: params.subCategory })
+      ...(params.subCategory && { subCategory: params.subCategory }),
+      ...(params.search && { search: params.search }),
+      ...(params.isActive !== undefined && { isActive: params.isActive })
     };
 
     const response = await apiClient.get<ApiHampersResponse>("/hampers", {
@@ -117,8 +117,7 @@ export async function fetchHampers(params: HampersApiParams = {}): Promise<ApiHa
     });
 
     return response.data;
-  } catch (error) {
-    console.error("Error fetching hampers:", error);
+  } catch {
     throw new Error("Failed to fetch hampers");
   }
 }
@@ -163,8 +162,7 @@ export async function getHamperPageDataBySlug(
     };
 
     return pageData;
-  } catch (error) {
-    console.error("Error fetching hamper page data:", error);
+  } catch {
     return null;
   }
 }
@@ -179,8 +177,7 @@ export async function fetchHamperById(id: string): Promise<HamperProduct | null>
     });
 
     return transformApiHamperToUI(response.data.data);
-  } catch (error) {
-    console.error("Error fetching hamper by ID:", error);
+  } catch {
     return null;
   }
 }
@@ -199,7 +196,7 @@ export async function fetchHamperCategories(): Promise<string[]> {
     });
 
     const categories = new Set<string>();
-    response.data.data.forEach((hamper: any) => {
+    response.data.data.forEach((hamper: ApiHamperProduct) => {
       if (hamper.category?.name) {
         categories.add(hamper.category.name);
       }

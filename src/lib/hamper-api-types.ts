@@ -132,6 +132,7 @@ export interface HampersApiParams {
   page?: number;
   pageSize?: number;
   isActive?: boolean;
+  search?: string; // For relationship-based and keyword searches
 }
 
 // Transformed types for UI components (matching your existing types)

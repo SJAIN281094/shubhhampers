@@ -3,7 +3,7 @@
 ## 🎯 **BUSINESS ESSENCE**
 
 **Company Name:** Shubhhampers  
-**Tagline:** "Hampers that build relationships"  
+**Tagline:** "gifting the joy of every tyohaar"  
 **Core Mission:** Transform business relationships through thoughtful, emotionally-driven hamper experiences that create lasting connections and drive business success.
 
 **What We're NOT:** Just another hamper company selling gift boxes  

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Button } from "../ui-kit/button";
+import SectionHeader from "./ui/SectionHeader";
 
 export default function OurApproachSection() {
   return (
@@ -9,21 +10,15 @@ export default function OurApproachSection() {
     >
       <div className='container mx-auto px-4 sm:px-6 lg:px-8'>
         {/* Section Header */}
-        <div className='text-center mb-12 md:mb-16'>
-          <div className='inline-flex items-center gap-2 bg-brand-gold/20 px-4 py-2 md:px-6 md:py-2 rounded-full mb-4 md:mb-6'>
-            <span className='text-brand-brown font-semibold text-sm md:text-base'>
-              ✨ Our Fresh Approach
-            </span>
-          </div>
-          <h2 className='font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-brand-brown mb-4 md:mb-6 tracking-wide'>
-            Hampers with Heart & Purpose
-          </h2>
-          <p className='text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-brand-dark max-w-4xl mx-auto leading-relaxed px-4 md:px-0'>
-            We believe every hamper should tell a story. Our approach combines thoughtful curation,
+        <SectionHeader
+          tag={{ emoji: "✨", text: "Our Fresh Approach" }}
+          title='Hampers with Heart & Purpose'
+          description='We believe every hamper should tell a story. Our approach combines thoughtful curation,
             personal consultation, and genuine care to create experiences that strengthen
-            relationships and create lasting memories.
-          </p>
-        </div>
+            relationships and create lasting memories.'
+          variant='center'
+          size='lg'
+        />
 
         {/* Approach Values Grid */}
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-12 md:mb-16'>

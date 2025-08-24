@@ -166,12 +166,6 @@ export const NAVIGATION_ITEMS: NavigationItem[] = [
 // Additional navigation items for mobile menu
 export const ADDITIONAL_NAVIGATION_ITEMS: NavigationSubItem[] = [
   {
-    id: "services",
-    label: "Services",
-    emoji: "🔧",
-    href: "/services"
-  },
-  {
     id: "blogs",
     label: "Blogs",
     emoji: "📝",

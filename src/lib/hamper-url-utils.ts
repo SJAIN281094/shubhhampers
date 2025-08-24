@@ -114,7 +114,7 @@ export function generateHamperPath(params: HamperRouteParams): string {
 export function getHamperPageData(params: HamperRouteParams): HamperPageData {
   switch (params.type) {
     case "category": {
-      const category = capitalizeWord(params.category!);
+      const category = capitalizeWord(params.category || "");
       return {
         title: `${category} Gift Hampers`,
         description: `Explore our curated collection of ${category.toLowerCase()} gift hampers`,
@@ -130,8 +130,8 @@ export function getHamperPageData(params: HamperRouteParams): HamperPageData {
     }
 
     case "subcategory": {
-      const category = capitalizeWord(params.category!);
-      const subCategory = capitalizeWord(params.subCategory!);
+      const category = capitalizeWord(params.category || "");
+      const subCategory = capitalizeWord(params.subCategory || "");
       return {
         title: `${subCategory} ${category} Gift Hampers`,
         description: `Special ${subCategory.toLowerCase()} hampers for ${category.toLowerCase()} celebrations`,
@@ -152,13 +152,13 @@ export function getHamperPageData(params: HamperRouteParams): HamperPageData {
     }
 
     case "relation": {
-      const relationship = capitalizeWord(params.relationship!);
+      const relationship = capitalizeWord(params.relationship || "");
       return {
         title: `Gift Hamper for ${relationship}`,
-        description: `Thoughtful gift hampers specially curated for your ${relationship.toLowerCase()}`,
+        description: `Thoughtful gift hampers specially curated for your ${relationship.toLowerCase()}. Perfect for expressing your love, care and appreciation.`,
         apiParams: {
-          // For relationship-based hampers, we might need special handling
-          // This could be a custom filter or tag in the API
+          // API params are handled by relationship-mapping.ts
+          // This ensures relationship-specific filtering is applied
         },
         breadcrumbs: [
           { label: "Home", href: "/" },

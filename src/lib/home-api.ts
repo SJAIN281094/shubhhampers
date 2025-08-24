@@ -30,7 +30,6 @@ export async function fetchHomePageData(): Promise<HomePageApiResponse> {
     const data: HomePageApiResponse = await response.json();
     return data;
   } catch (error) {
-    console.error("Failed to fetch home page data:", error);
     throw error;
   }
 }
@@ -103,8 +102,7 @@ export async function getHeroSlides(): Promise<TransformedHeroSlide[]> {
 
     // Transform to slide format
     return activeBanners.map(transformBannerToSlide);
-  } catch (error) {
-    console.error("Failed to get hero slides:", error);
+  } catch {
     // Return empty array on error - component should handle gracefully
     return [];
   }
@@ -124,8 +122,7 @@ export async function getHeroConfig() {
       infinite: homeData.data.heroCarousel.infinite,
       pauseOnHover: homeData.data.heroCarousel.pauseOnHover
     };
-  } catch (error) {
-    console.error("Failed to get hero config:", error);
+  } catch {
     // Return default config on error
     return {
       autoPlay: true,

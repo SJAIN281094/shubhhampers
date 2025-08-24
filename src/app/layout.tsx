@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import dynamic from "next/dynamic";
-import { Poppins } from "next/font/google";
+import { Poppins, Allura } from "next/font/google";
 import "./globals.css";
 
 // Font configurations using Next.js optimized font loading
@@ -9,6 +9,13 @@ const poppins = Poppins({
   subsets: ["latin"],
   weight: ["400", "500", "600"],
   variable: "--font-sans",
+  display: "swap"
+});
+
+const allura = Allura({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-display",
   display: "swap"
 });
 
@@ -137,11 +144,7 @@ export default function RootLayout({
         <link rel='preconnect' href='https://fonts.googleapis.com' />
         <link rel='preconnect' href='https://fonts.gstatic.com' crossOrigin='anonymous' />
 
-        {/* Load Bonheur Royale font (not available in Next.js fonts) */}
-        <link
-          href='https://fonts.googleapis.com/css2?family=Bonheur+Royale&display=swap'
-          rel='stylesheet'
-        />
+        {/* Allura font now loaded via Next.js font optimization */}
 
         {/* Critical Structured Data - Load immediately */}
         <script
@@ -180,7 +183,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${poppins.variable} antialiased`}>
+      <body className={`${poppins.variable} ${allura.variable} antialiased`}>
         {/* Performance Optimizer - Preloads critical resources and optimizes rendering */}
         <PerformanceOptimizer />
 

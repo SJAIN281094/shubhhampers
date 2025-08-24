@@ -5,6 +5,7 @@
 
 import NavigationLinkList from "../ui/NavigationLinkList";
 import { CONTACT_INFO } from "@lib/contact-utils";
+import { FaPhone, FaEnvelope } from "react-icons/fa";
 
 const footerLinksData = {
   people: {
@@ -44,7 +45,6 @@ const footerLinksData = {
     title: "Quick Links & Contact",
     links: [
       { href: "/about", label: "About Us" },
-      { href: "/services", label: "Our Services" },
       { href: "/blogs", label: "Blogs" },
       { href: "/gallery", label: "Gallery" },
       { href: "/contact", label: "Contact Us" }
@@ -89,13 +89,15 @@ export default function FooterLinks({ onModalOpen: _onModalOpen }: FooterLinksPr
         />
 
         {/* Contact Information */}
-        <div className='mt-4 space-y-1'>
-          <p className='text-brand-gold pt-1 font-medium text-brand-light text-sm'>
-            {CONTACT_INFO.displayPhone}
-          </p>
-          <p className='text-brand-gold font-medium text-brand-light text-sm whitespace-nowrap'>
-            {CONTACT_INFO.displayEmail}
-          </p>
+        <div className='mt-4 bg-brand-gold/10 border border-brand-gold/30 rounded-lg p-3 space-y-2 backdrop-blur-sm w-fit'>
+          <div className='flex items-center gap-2 text-brand-light font-medium text-sm'>
+            <FaPhone className='w-3 h-3 text-brand-gold flex-shrink-0' />
+            <span className='whitespace-nowrap'>{CONTACT_INFO.displayPhone}</span>
+          </div>
+          <div className='flex items-center gap-2 text-brand-light font-medium text-sm'>
+            <FaEnvelope className='w-3 h-3 text-brand-gold flex-shrink-0' />
+            <span className='whitespace-nowrap'>{CONTACT_INFO.displayEmail}</span>
+          </div>
         </div>
       </div>
     </>

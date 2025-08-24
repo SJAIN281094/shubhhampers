@@ -11,6 +11,7 @@ import { handleWhatsApp } from "../lib/contact-utils";
 import HamperTag from "./HamperTag";
 import PrimaryButton from "./PrimaryButton";
 import SecondaryButton from "./SecondaryButton";
+import SectionHeader from "./ui/SectionHeader";
 import { TransformedHeroSlide } from "../lib/home-api-types";
 
 // Enhanced Background Elements with Motion
@@ -339,12 +340,20 @@ export default function HeroSlider({ slides = [] }: HeroSliderProps) {
   if (!styledSlides || styledSlides.length === 0) {
     return (
       <section className='relative w-full h-[calc(100vh-80px)] sm:h-[calc(100vh-100px)] lg:h-[calc(100vh-120px)] min-h-[500px] sm:min-h-[600px] overflow-hidden bg-gradient-to-br from-brand-light via-white to-brand-gold/5 flex items-center justify-center'>
-        <div className='text-center max-w-md mx-auto px-4'>
-          <h2 className='text-3xl font-bold text-brand-dark mb-4'>Welcome to Shubhhampers</h2>
-          <p className='text-lg text-brand-brown mb-6'>Premium Gift Hampers for Every Occasion</p>
-          <PrimaryButton onClick={() => router.push("/hampers")} size='lg'>
-            🎁 Browse Hampers
-          </PrimaryButton>
+        <div className='max-w-3xl mx-auto px-4'>
+          <SectionHeader
+            title='Welcome to Shubhhampers'
+            description='Premium Gift Hampers for Every Occasion'
+            variant='center'
+            size='md'
+            showDecorations={true}
+          >
+            <div className='w-full flex justify-center mt-8'>
+              <PrimaryButton onClick={() => router.push("/hampers")} size='lg'>
+                🎁 Browse Hampers
+              </PrimaryButton>
+            </div>
+          </SectionHeader>
         </div>
       </section>
     );
@@ -442,15 +451,17 @@ export default function HeroSlider({ slides = [] }: HeroSliderProps) {
                     >
                       {currentSlideData.title}
                     </motion.h2>
-                    <motion.h3
-                      className='text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-semibold text-brand-brown mb-3 xs:mb-4 md:mb-6'
-                      variants={contentVariants}
-                      initial='hidden'
-                      animate='visible'
-                      transition={{ duration: 0.8, delay: 0.6 }}
-                    >
-                      {currentSlideData.subtitle}
-                    </motion.h3>
+                    {currentSlideData.subtitle && (
+                      <motion.h3
+                        className='text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-semibold text-brand-brown mb-3 xs:mb-4 md:mb-6'
+                        variants={contentVariants}
+                        initial='hidden'
+                        animate='visible'
+                        transition={{ duration: 0.8, delay: 0.6 }}
+                      >
+                        {currentSlideData.subtitle}
+                      </motion.h3>
+                    )}
 
                     {/* Description */}
                     <motion.p

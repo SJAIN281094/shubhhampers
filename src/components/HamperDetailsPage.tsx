@@ -26,8 +26,8 @@ export default function HamperDetailsPage({ hamper }: HamperDetailsPageProps) {
           text: `Check out this amazing ${hamper.title} hamper from Shubhhampers!`,
           url: window.location.href
         });
-      } catch (error) {
-        console.log("Error sharing:", error);
+      } catch {
+        // Sharing failed, fallback to clipboard copy below
       }
     } else {
       // Fallback: copy to clipboard
@@ -89,9 +89,11 @@ export default function HamperDetailsPage({ hamper }: HamperDetailsPageProps) {
               {hamper.title}
             </h1>
 
-            <p className='text-xl lg:text-2xl text-gray-200 mb-6 leading-relaxed'>
-              {hamper.subtitle}
-            </p>
+            {hamper.subtitle && (
+              <p className='text-xl lg:text-2xl text-gray-200 mb-6 leading-relaxed'>
+                {hamper.subtitle}
+              </p>
+            )}
 
             <div className='flex flex-wrap gap-4 items-center'>
               <div className='bg-black/40 backdrop-blur-sm px-4 py-2 rounded-full'>
@@ -119,12 +121,12 @@ export default function HamperDetailsPage({ hamper }: HamperDetailsPageProps) {
               {/* Features */}
               <div className='bg-white rounded-2xl p-8 shadow-lg border border-brand-gold/20'>
                 <h2 className='font-display text-2xl font-bold text-brand-dark mb-6'>
-                  What's Included
+                  What&apos;s Included
                 </h2>
                 <div className='grid grid-cols-1 sm:grid-cols-2 gap-4'>
-                  {hamper.features.map((feature, index) => (
+                  {hamper.features.map(feature => (
                     <div
-                      key={index}
+                      key={feature}
                       className='flex items-center gap-3 p-3 bg-brand-gold/10 rounded-lg'
                     >
                       <IoCheckmarkCircle className='w-5 h-5 text-green-600 flex-shrink-0' />

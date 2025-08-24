@@ -85,7 +85,7 @@ export default function HamperCard({
       }}
     >
       {/* Card Background */}
-      <div className='relative min-h-[400px] sm:min-h-[450px] md:min-h-[400px] lg:min-h-[450px] h-full bg-white group-hover:bg-gradient-to-br group-hover:from-brand-gold/20 group-hover:via-brand-light group-hover:to-brand-amber/10 transition-all duration-300 ease-out'>
+      <div className='relative min-h-[380px] sm:min-h-[420px] md:min-h-[400px] lg:min-h-[440px] h-full bg-white group-hover:bg-gradient-to-br group-hover:from-brand-gold/20 group-hover:via-brand-light group-hover:to-brand-amber/10 transition-all duration-300 ease-out'>
         {/* Background Image */}
         {hamper.backgroundImage && (
           <div className='absolute inset-0 opacity-100 group-hover:opacity-30 transition-opacity duration-300 ease-out'>
@@ -149,9 +149,11 @@ export default function HamperCard({
             <h4 className='font-display text-2xl sm:text-3xl md:text-2xl lg:text-3xl font-bold text-brand-dark leading-tight tracking-wide drop-shadow-sm mb-1'>
               {hamper.title}
             </h4>
-            <h5 className='text-sm sm:text-base md:text-sm lg:text-base font-medium text-brand-brown tracking-wider uppercase drop-shadow-sm opacity-90'>
-              {hamper.subtitle}
-            </h5>
+            {hamper.subtitle && (
+              <h5 className='text-sm sm:text-base md:text-sm lg:text-base font-medium text-brand-brown tracking-wider uppercase drop-shadow-sm opacity-90'>
+                {hamper.subtitle}
+              </h5>
+            )}
           </div>
 
           {/* Description */}
@@ -188,21 +190,21 @@ export default function HamperCard({
           )}
 
           {/* Action Buttons */}
-          <div className='flex gap-2 sm:gap-3 mt-auto'>
+          <div className='flex flex-col sm:flex-row gap-2 sm:gap-3 mt-auto'>
             <button
               onClick={handleBrowseClick}
-              className='bg-gradient-to-r from-brand-gold to-brand-amber text-brand-dark font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-105 hover:-translate-y-1 flex items-center justify-center gap-2 whitespace-nowrap cursor-pointer py-1 px-4 text-sm flex-1'
+              className='bg-gradient-to-r from-brand-gold to-brand-amber text-brand-dark font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-105 hover:-translate-y-1 flex items-center justify-center gap-2 cursor-pointer py-2 px-3 text-xs sm:text-sm flex-1 min-w-0'
             >
-              <span>{showDetailsButton ? "View Details" : "Browse"}</span>
-              <IoArrowForward className='w-4 h-4 transition-transform duration-300 ease-out group-hover:translate-x-1' />
+              <span className='truncate'>{showDetailsButton ? "View Details" : "Browse"}</span>
+              <IoArrowForward className='w-3 h-3 sm:w-4 sm:h-4 transition-transform duration-300 ease-out group-hover:translate-x-1 flex-shrink-0' />
             </button>
 
             <button
               onClick={handleWhatsAppInquiry}
-              className='bg-white/90 backdrop-blur-sm text-brand-brown border-2 border-brand-gold font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-105 hover:-translate-y-1 flex items-center justify-center gap-2 whitespace-nowrap cursor-pointer py-1 px-4 text-sm flex-1'
+              className='bg-white/90 backdrop-blur-sm text-brand-brown border-2 border-brand-gold font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-105 hover:-translate-y-1 flex items-center justify-center gap-2 cursor-pointer py-2 px-3 text-xs sm:text-sm flex-1 min-w-0'
             >
-              <FaWhatsapp className='w-4 h-4' />
-              <span>Let&apos;s Connect</span>
+              <FaWhatsapp className='w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0' />
+              <span className='truncate'>Let&apos;s Connect</span>
             </button>
           </div>
         </div>

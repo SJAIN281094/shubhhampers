@@ -5,7 +5,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { FaInstagram, FaPlay, FaExternalLinkAlt } from "react-icons/fa";
 import { IoRefresh } from "react-icons/io5";
-import FeatureTag from "./FeatureTag";
+
+import SectionHeader from "./ui/SectionHeader";
+import PrimaryButton from "./PrimaryButton";
+import SecondaryButton from "./SecondaryButton";
 
 // Mock data structure - replace with real Instagram API data
 interface InstagramPost {
@@ -116,11 +119,9 @@ export default function InstagramGallery() {
         setPosts(data.posts);
       } else {
         // Fallback to mock data if API fails
-        console.warn("Instagram API returned no posts, using mock data");
         setPosts(MOCK_INSTAGRAM_POSTS);
       }
-    } catch (err) {
-      console.error("Instagram API Error:", err);
+    } catch {
       // Fallback to mock data on error
       setPosts(MOCK_INSTAGRAM_POSTS);
       setError("Using demo content. Configure Instagram API for live posts.");
@@ -150,39 +151,39 @@ export default function InstagramGallery() {
     <section className='py-20 bg-gradient-to-br from-brand-light via-white to-brand-gold/5'>
       <div className='container mx-auto px-4 sm:px-6 lg:px-8'>
         {/* Header */}
-        <div className='text-center mb-16'>
-          <FeatureTag>📸 Instagram Gallery</FeatureTag>
+        <div className='mb-8'>
+          <SectionHeader
+            tag={{ emoji: "📸", text: "Instagram Gallery" }}
+            title='Behind the Scenes & Hamper Showcases'
+            description='Discover our latest hamper creations, packaging processes, and happy customer moments. Follow our journey on Instagram for daily inspiration and exclusive behind-the-scenes content.'
+            variant='center'
+            size='lg'
+            showDecorations={false}
+          />
+        </div>
 
-          <h1 className='font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-brand-brown mb-4 leading-tight'>
-            Behind the Scenes & Hamper Showcases
-          </h1>
-
-          <p className='text-lg text-gray-700 max-w-3xl mx-auto mb-8'>
-            Discover our latest hamper creations, packaging processes, and happy customer moments.
-            Follow our journey on Instagram for daily inspiration and exclusive behind-the-scenes
-            content.
-          </p>
-
+        {/* Social Links */}
+        <div className='text-center mb-12'>
           <div className='flex flex-col sm:flex-row gap-4 justify-center items-center'>
             <Link
               href='https://instagram.com/shubhhampers_'
               target='_blank'
               rel='noopener noreferrer'
-              className='inline-flex items-center gap-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold px-6 py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-105'
             >
-              <FaInstagram className='w-5 h-5' />
-              Follow @shubhhampers_
-              <FaExternalLinkAlt className='w-4 h-4' />
+              <PrimaryButton
+                size='sm'
+                className='bg-gradient-to-r from-purple-600 to-pink-600 hover:from-pink-600 hover:to-purple-600'
+              >
+                <FaInstagram className='w-4 h-4' />
+                Follow @shubhhampers_
+                <FaExternalLinkAlt className='w-3 h-3' />
+              </PrimaryButton>
             </Link>
 
-            <button
-              onClick={fetchInstagramPosts}
-              disabled={loading}
-              className='inline-flex items-center gap-2 bg-white/80 text-brand-dark font-semibold px-6 py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-105 border border-brand-gold/30 disabled:opacity-50'
-            >
+            <SecondaryButton onClick={fetchInstagramPosts} disabled={loading} size='sm'>
               <IoRefresh className={`w-4 h-4 ${loading ? "animate-spin" : ""}`} />
               Refresh Feed
-            </button>
+            </SecondaryButton>
           </div>
         </div>
 
@@ -324,20 +325,18 @@ export default function InstagramGallery() {
             celebration. Follow us for daily updates and exclusive content!
           </p>
           <div className='flex flex-col sm:flex-row gap-4 justify-center'>
-            <Link
-              href='/contact'
-              className='inline-flex items-center justify-center bg-gradient-to-r from-brand-gold to-brand-amber text-brand-dark font-semibold px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-105'
-            >
-              Create Custom Hamper
+            <Link href='/contact'>
+              <PrimaryButton size='sm'>Create Custom Hamper</PrimaryButton>
             </Link>
             <Link
               href='https://instagram.com/shubhhampers_'
               target='_blank'
               rel='noopener noreferrer'
-              className='inline-flex items-center justify-center gap-2 bg-white/80 text-brand-dark font-semibold px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-105 border border-brand-gold/30'
             >
-              <FaInstagram className='w-5 h-5' />
-              Follow Us
+              <SecondaryButton size='sm'>
+                <FaInstagram className='w-4 h-4' />
+                Follow Us
+              </SecondaryButton>
             </Link>
           </div>
         </div>

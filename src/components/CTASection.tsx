@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import { FaWhatsapp } from "react-icons/fa";
-import FeatureTag from "./FeatureTag";
+
+import SectionHeader from "./ui/SectionHeader";
 import PrimaryButton from "./PrimaryButton";
 import SecondaryButton from "./SecondaryButton";
 import { handleWhatsApp } from "../lib/contact-utils";
@@ -49,22 +50,16 @@ export default function CTASection() {
 
       <div className='container mx-auto px-4 sm:px-6 lg:px-8 relative z-10'>
         <div className='text-center max-w-5xl mx-auto'>
-          {/* Brand Badge */}
-          <FeatureTag className='mb-6 md:mb-8 bg-brand-light/90 text-brand-dark border-brand-gold'>
-            🎯 Why Choose Shubhhampers?
-          </FeatureTag>
-
-          {/* Main Heading */}
-          <h2 className='font-display text-2xl xs:text-3xl sm:text-4xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-brand-light mb-2 xs:mb-3 md:mb-4 leading-tight tracking-wide'>
-            India's Most Trusted Hamper Partner
-          </h2>
-
-          {/* Description */}
-          <p className='text-xs xs:text-sm sm:text-base md:text-lg text-brand-gold mb-6 md:mb-8 leading-relaxed max-w-4xl mx-auto px-4 md:px-0'>
-            {`From corporate celebrations to personal milestones, we've been creating 
+          <SectionHeader
+            tag={{ emoji: "🎯", text: "Why Choose Shubhhampers?" }}
+            title="India's Most Trusted Hamper Partner"
+            description={`From corporate celebrations to personal milestones, we've been creating 
             memorable hamper experiences that strengthen relationships and spread joy. 
             Discover why thousands of clients trust Shubhhampers for their gifting needs.`}
-          </p>
+            variant='center'
+            size='lg'
+            theme='dark'
+          />
 
           {/* CTA Buttons */}
           <div className='flex flex-col sm:flex-row gap-3 justify-center items-center mb-8 md:mb-12 px-4 md:px-0'>
@@ -80,7 +75,7 @@ export default function CTASection() {
               }
             >
               <FaWhatsapp className='w-4 h-4' />
-              Let's Chat
+              Let&apos;s Chat
             </SecondaryButton>
           </div>
 

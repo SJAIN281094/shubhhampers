@@ -128,7 +128,7 @@ export async function POST(request: NextRequest) {
         <p style="color: #462506; font-size: 16px; line-height: 1.6; margin-top: 25px;">
           Warm regards,<br>
           <strong style="color: #9f6920;">The Shubhhampers Team</strong><br>
-          <em style="color: #666;">Hampers that build relationships</em>
+          <em style="color: #666;">gifting the joy of every tyohaar</em>
         </p>
       </div>
     </div>

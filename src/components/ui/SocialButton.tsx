@@ -61,32 +61,56 @@ export default function SocialButton({
   const config = platformConfig[platform];
   const IconComponent = config.icon;
 
-  const handleClick = () => {
-    if (onClick) {
-      onClick();
-    } else if (href || config.defaultHref) {
-      window.open(href || config.defaultHref, "_blank");
-    }
-  };
-
-  // Map custom size prop to Button component sizes
+  // Map custom size prop to Button component sizes - prevent hydration issues
   const buttonSize = size === "md" ? "default" : size;
 
+  // Pre-define icon classes to avoid conditional rendering during hydration
+  const iconSizeClasses = {
+    sm: "mr-2 w-4 h-4",
+    md: "mr-2 w-5 h-5",
+    lg: "mr-2 w-6 h-6"
+  };
+
+  // If there's a custom onClick, use button behavior, otherwise use link behavior
+  if (onClick) {
+    return (
+      <Button
+        variant={variant}
+        size={buttonSize}
+        onClick={onClick}
+        className={cn(
+          "bg-brand-gold/20 border-2 border-brand-gold text-brand-light hover:bg-brand-gold hover:text-white cursor-pointer transition-all duration-300 hover:scale-105 font-semibold",
+          config.color,
+          className
+        )}
+      >
+        <IconComponent className={iconSizeClasses[size]} />
+        {config.label}
+      </Button>
+    );
+  }
+
+  // Use proper link behavior for better SSR compatibility and accessibility
   return (
     <Button
       variant={variant}
       size={buttonSize}
-      onClick={handleClick}
+      asChild
       className={cn(
-        "bg-brand-gold/20 border-2 border-brand-gold text-brand-light hover:bg-brand-gold hover:text-brand-dark cursor-pointer transition-all duration-300 hover:scale-105 font-semibold",
+        "bg-brand-gold/20 border-2 border-brand-gold text-brand-light hover:bg-brand-gold hover:text-white cursor-pointer transition-all duration-300 hover:scale-105 font-semibold",
         config.color,
         className
       )}
     >
-      <IconComponent
-        className={cn("mr-2", size === "sm" ? "w-4 h-4" : size === "md" ? "w-5 h-5" : "w-6 h-6")}
-      />
-      {config.label}
+      <a
+        href={href || config.defaultHref}
+        target='_blank'
+        rel='noopener noreferrer'
+        aria-label={`Visit our ${config.label} page`}
+      >
+        <IconComponent className={iconSizeClasses[size]} />
+        {config.label}
+      </a>
     </Button>
   );
 }

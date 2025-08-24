@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Header from "@components/Header";
 import Footer from "@components/Footer";
-import HamperListingPage from "@components/HamperListingPage";
+import HamperListingPageServer from "@components/HamperListingPageServer";
 import { parseHamperRoute, getHamperPageData, generateAllHamperPaths } from "@lib/hamper-url-utils";
 import { fetchHampers, transformApiHamperToUI } from "@lib/hamper-api";
 
@@ -37,7 +37,7 @@ export async function generateMetadata({
   }
 
   const pageData = getHamperPageData(routeParams);
-  const categoryName = routeParams.category!;
+  const categoryName = routeParams.category || "";
   const capitalizedCategory = categoryName.charAt(0).toUpperCase() + categoryName.slice(1);
 
   return {
@@ -99,12 +99,12 @@ export async function generateMetadata({
 
 // Category page component
 // Server-side data fetching for category page
-async function getCategoryPageData(categoryName: string) {
+async function getCategoryPageData(categoryName: string, page: number = 1) {
   try {
     const response = await fetchHampers({
       category: categoryName,
       pageSize: 25,
-      page: 1,
+      page,
       isActive: true
     });
 
@@ -125,8 +125,15 @@ async function getCategoryPageData(categoryName: string) {
   }
 }
 
-export default async function CategoryPage({ params }: { params: Promise<{ category: string }> }) {
+export default async function CategoryPage({
+  params,
+  searchParams
+}: {
+  params: Promise<{ category: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}) {
   const resolvedParams = await params;
+  const resolvedSearchParams = await searchParams;
 
   // Parse and validate the route
   const routeParams = parseHamperRoute([resolvedParams.category]);
@@ -138,19 +145,25 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
   // Get page data based on the parsed route
   const pageData = getHamperPageData(routeParams);
 
+  // Get page number from search params
+  const page = Number(resolvedSearchParams.page) || 1;
+
   // Fetch hampers data server-side
-  const categoryName =
-    routeParams.category!.charAt(0).toUpperCase() + routeParams.category!.slice(1);
-  const { hampers, pagination } = await getCategoryPageData(categoryName);
+  const categoryName = routeParams.category
+    ? routeParams.category.charAt(0).toUpperCase() + routeParams.category.slice(1)
+    : "Unknown";
+  const { hampers, pagination } = await getCategoryPageData(categoryName, page);
 
   return (
     <main className='min-h-screen'>
       <Header />
-      <HamperListingPage
+      <HamperListingPageServer
         pageData={pageData}
+        hampers={hampers}
+        pagination={pagination}
+        currentCategory={categoryName}
         showCategoryFilters={false} // Don't show category filters on category-specific pages
-        initialHampers={hampers}
-        initialPagination={pagination}
+        baseUrl={`/hampers/${resolvedParams.category}`}
       />
       <Footer />
     </main>

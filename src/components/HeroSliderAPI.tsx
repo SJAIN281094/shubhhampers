@@ -111,8 +111,7 @@ export default function HeroSliderAPI({ fallbackSlides = [] }: HeroSliderProps) 
           setSlides(apiSlides);
         }
         setConfig(apiConfig);
-      } catch (error) {
-        console.error("Failed to fetch hero data:", error);
+      } catch {
         // Fallback to provided slides or keep current slides
       } finally {
         setIsLoading(false);
@@ -336,8 +335,8 @@ export default function HeroSliderAPI({ fallbackSlides = [] }: HeroSliderProps) 
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3, duration: 0.5 }}
               >
-                {currentSlideData.features.slice(0, 3).map((feature, index) => (
-                  <HamperTag key={`${currentSlide}-${index}`} title={feature} />
+                {currentSlideData.features.slice(0, 3).map(feature => (
+                  <HamperTag key={`feature-${feature}`} title={feature} />
                 ))}
               </motion.div>
 
@@ -352,14 +351,16 @@ export default function HeroSliderAPI({ fallbackSlides = [] }: HeroSliderProps) 
               </motion.h1>
 
               {/* Subtitle */}
-              <motion.h2
-                className='text-xl sm:text-2xl lg:text-3xl text-brand-brown font-semibold mb-4 lg:mb-6 leading-relaxed'
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5, duration: 0.6 }}
-              >
-                {currentSlideData.subtitle}
-              </motion.h2>
+              {currentSlideData.subtitle && (
+                <motion.h2
+                  className='text-xl sm:text-2xl lg:text-3xl text-brand-brown font-semibold mb-4 lg:mb-6 leading-relaxed'
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.5, duration: 0.6 }}
+                >
+                  {currentSlideData.subtitle}
+                </motion.h2>
+              )}
 
               {/* Description */}
               <motion.p
@@ -473,9 +474,9 @@ export default function HeroSliderAPI({ fallbackSlides = [] }: HeroSliderProps) 
           transition={{ delay: 1 }}
         >
           <div className='flex space-x-2 lg:space-x-3 bg-white/80 backdrop-blur-sm rounded-full px-4 py-3 shadow-lg border border-brand-gold/20'>
-            {slides.map((_, index) => (
+            {slides.map((slide, index) => (
               <button
-                key={index}
+                key={`slide-indicator-${slide.id || index}`}
                 onClick={() => goToSlide(index)}
                 className={`w-2 h-2 lg:w-3 lg:h-3 rounded-full transition-all duration-200 ${
                   index === currentSlide

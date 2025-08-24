@@ -1,16 +1,16 @@
+import SectionHeader from "./ui/SectionHeader";
+
 export default function ContactMethods() {
   return (
     <section className='py-20 bg-white'>
       <div className='container mx-auto px-4 sm:px-6 lg:px-8'>
-        <div className='text-center mb-16'>
-          <h2 className='font-display text-4xl lg:text-5xl font-bold text-brand-dark mb-6'>
-            Get in Touch
-          </h2>
-          <p className='text-xl text-gray-700 max-w-3xl mx-auto'>
-            Choose the way that works best for you. We&apos;re here to help you create meaningful
-            hamper experiences.
-          </p>
-        </div>
+        <SectionHeader
+          title='Get in Touch'
+          description="Choose the way that works best for you. We're here to help you create meaningful hamper experiences."
+          variant='center'
+          size='lg'
+          className='mb-16'
+        />
 
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8'>
           <div className='bg-gradient-to-br from-brand-gold/10 to-brand-amber/10 rounded-2xl p-8 text-center hover:shadow-xl transition-shadow duration-200 border border-brand-gold/20'>

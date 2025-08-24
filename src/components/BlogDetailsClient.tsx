@@ -20,6 +20,8 @@ import {
 } from "react-icons/fa";
 import { IoArrowForward } from "react-icons/io5";
 import FeatureTag from "./FeatureTag";
+import PrimaryButton from "./PrimaryButton";
+import SecondaryButton from "./SecondaryButton";
 import { BlogPost, getRelatedPosts, BLOG_CATEGORIES } from "@/lib/blogs-data";
 
 interface BlogDetailsClientProps {
@@ -241,17 +243,11 @@ export default function BlogDetailsClient({ post }: BlogDetailsClientProps) {
                   and strengthens relationships. Get started with a free consultation today.
                 </p>
                 <div className='flex flex-col sm:flex-row gap-4'>
-                  <Link
-                    href='/contact'
-                    className='inline-flex items-center justify-center bg-gradient-to-r from-brand-gold to-brand-amber text-brand-dark font-semibold px-6 py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-105'
-                  >
-                    Start Your Custom Hamper
+                  <Link href='/contact'>
+                    <PrimaryButton size='sm'>Start Your Custom Hamper</PrimaryButton>
                   </Link>
-                  <Link
-                    href='/hampers'
-                    className='inline-flex items-center justify-center gap-2 bg-white/80 text-brand-dark font-semibold px-6 py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-105 border border-brand-gold/30'
-                  >
-                    Browse Collections
+                  <Link href='/hampers'>
+                    <SecondaryButton size='sm'>Browse Collections</SecondaryButton>
                   </Link>
                 </div>
               </div>

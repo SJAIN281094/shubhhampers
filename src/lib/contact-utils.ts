@@ -20,8 +20,8 @@ export const CONTACT_INFO = {
   // Business information
   company: {
     name: "Shubhhampers",
-    tagline: "Hampers that build relationships",
-    fullTagline: "✨ Hampers that build relationships",
+    tagline: "Gifting the joy of every tyohaar",
+    fullTagline: "✨ Gifting the joy of every tyohaar",
     description:
       "Premium hamper curation service specializing in corporate hampers, wedding hampers, and festival celebrations"
   }

@@ -385,7 +385,7 @@ Contact:
 
 **Primary Emotional Taglines:**
 
-- "Hampers that build relationships" (Primary tagline)
+- "gifting the joy of every tyohaar" (Primary tagline)
 - "Hampers that Touch Hearts" (Secondary)
 - "Where Every Gesture Creates Lasting Memories" (Descriptive)
 

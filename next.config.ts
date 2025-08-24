@@ -29,6 +29,12 @@ const nextConfig: NextConfig = {
         hostname: "shubhhampers-admin.s3.ap-south-1.amazonaws.com",
         port: "",
         pathname: "/**"
+      },
+      {
+        protocol: "https",
+        hostname: "placehold.co",
+        port: "",
+        pathname: "/**"
       }
     ]
   },

@@ -59,8 +59,11 @@ export default function ProcessStep({
         {/* Details List */}
         {step.details && (
           <ul className='space-y-2 text-sm text-gray-500'>
-            {step.details.map((detail, idx) => (
-              <li key={idx} className='flex items-center justify-center gap-2'>
+            {step.details.map(detail => (
+              <li
+                key={`detail-${detail.slice(0, 20)}`}
+                className='flex items-center justify-center gap-2'
+              >
                 <div className='w-1.5 h-1.5 bg-brand-gold rounded-full' />
                 {detail}
               </li>
@@ -94,8 +97,11 @@ export default function ProcessStep({
       {/* Details */}
       {step.details && (
         <div className='mt-4 space-y-2'>
-          {step.details.map((detail, idx) => (
-            <div key={idx} className='flex items-center gap-2 text-xs text-gray-500'>
+          {step.details.map(detail => (
+            <div
+              key={`horizontal-detail-${detail.slice(0, 20)}`}
+              className='flex items-center gap-2 text-xs text-gray-500'
+            >
               <div className='w-1 h-1 bg-brand-gold rounded-full' />
               {detail}
             </div>

@@ -9,7 +9,7 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        bonheur: ["Bonheur Royale", "cursive"],
+        bonheur: ["Allura", "cursive"],
         poppins: ["Poppins", "sans-serif"]
       },
       backgroundImage: () => ({

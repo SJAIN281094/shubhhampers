@@ -3,8 +3,9 @@
 import { useRouter } from "next/navigation";
 import { ArrowRight } from "lucide-react";
 // import { IMAGES } from "../lib/image-constants"; // Not needed for server-side data
-import FeatureTag from "./FeatureTag";
+
 import PrimaryButton from "./PrimaryButton";
+import SectionHeader from "./ui/SectionHeader";
 import type { HamperProduct } from "../lib/hamper-api-types";
 import HamperCard from "./HamperCard";
 
@@ -98,24 +99,17 @@ export default function EventsSection({ categoryHampers = {} }: EventsSectionPro
 
       <div className='container mx-auto px-4 sm:px-6 lg:px-8 relative z-10'>
         {/* Section Header */}
-        <div className='text-center mb-20 relative'>
-          {/* Floating elements for header */}
-          <div className='absolute top-0 left-1/4 w-16 h-16 bg-brand-gold/20 rounded-full blur-lg animate-pulse' />
-          <div className='absolute top-10 right-1/4 w-12 h-12 bg-brand-amber/30 rounded-full blur-md animate-bounce delay-300' />
-
-          <FeatureTag>🎯 Complete Hamper Solutions</FeatureTag>
-
-          <h2 className='font-display text-2xl xs:text-3xl sm:text-4xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-brand-brown mb-2 xs:mb-3 md:mb-4 leading-tight tracking-wide drop-shadow-sm relative z-10'>
-            Hampers for Every Celebration & Relationship
-          </h2>
-
-          <p className='text-xs xs:text-sm sm:text-base md:text-lg text-brand-dark max-w-4xl mx-auto leading-relaxed mb-6 md:mb-8 px-4 md:px-0 font-normal drop-shadow-sm relative z-10'>
-            {`Whether it's honoring family ties, celebrating milestones, or expressing heartfelt
+        <SectionHeader
+          tag={{ emoji: "🎯", text: "Complete Hamper Solutions" }}
+          title='Hampers for Every Celebration & Relationship'
+          description={`Whether it's honoring family ties, celebrating milestones, or expressing heartfelt
             gratitude — our thoughtfully crafted hampers are made for every occasion that matters.
             From wedding and festive hampers to birthday, Raksha Bandhan, and business gifts, each one is a
             beautiful way to cherish bonds and create meaningful memories.`}
-          </p>
-        </div>
+          variant='center'
+          size='lg'
+          showDecorations={true}
+        />
 
         {/* Category Filter Buttons - Only show for categories with hampers */}
         {(() => {
@@ -128,7 +122,7 @@ export default function EventsSection({ categoryHampers = {} }: EventsSectionPro
           if (availableCategories.length === 0) return null;
 
           return (
-            <div className='flex flex-wrap justify-center gap-3 md:gap-4 mb-16'>
+            <div className='flex flex-wrap justify-center gap-3 md:gap-4 mt-16 mb-4'>
               {availableCategories.map(category => (
                 <button
                   key={category.id}
@@ -172,11 +166,11 @@ export default function EventsSection({ categoryHampers = {} }: EventsSectionPro
                 return (
                   <div key={category.id} id={`${category.id}-section`} className='scroll-mt-20'>
                     {/* Category Title */}
-                    <div className='text-center mb-12'>
-                      <h3 className='text-2xl md:text-3xl lg:text-4xl font-bold text-brand-dark mb-4'>
+                    <div className='text-center mb-6'>
+                      <h3 className='font-display text-2xl md:text-3xl lg:text-4xl font-bold text-brand-brown mb-4 leading-tight tracking-wide drop-shadow-sm'>
                         {category.icon} {category.title}
                       </h3>
-                      <p className='text-gray-600 max-w-3xl mx-auto text-lg leading-relaxed'>
+                      <p className='text-brand-dark max-w-3xl mx-auto text-lg leading-relaxed'>
                         {category.description}
                       </p>
                     </div>

@@ -2,8 +2,14 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Header from "@components/Header";
 import Footer from "@components/Footer";
-import HamperListingPage from "@components/HamperListingPage";
+import HamperListingPageServer from "@components/HamperListingPageServer";
+import { fetchHampers, transformApiHamperToUI } from "@lib/hamper-api";
 import { parseHamperRoute, getHamperPageData, generateAllHamperPaths } from "@lib/hamper-url-utils";
+import {
+  getRelationshipApiParams,
+  getRelationshipFallbackParams,
+  isRelationshipSupported
+} from "@lib/relationship-mapping";
 
 // Generate static params for all relationship pages
 export async function generateStaticParams() {
@@ -36,7 +42,7 @@ export async function generateMetadata({
   }
 
   const pageData = getHamperPageData(routeParams);
-  const relationshipName = routeParams.relationship!;
+  const relationshipName = routeParams.relationship || "";
 
   // Extract relationship from URL (gift-hamper-for-sister -> sister)
   const relationshipMatch = resolvedParams.relationship.match(/^gift-hamper-for-(.+)$/);
@@ -100,13 +106,48 @@ export async function generateMetadata({
   };
 }
 
+// Server-side data fetching for relationship page
+async function getRelationshipPageData(relationship: string, page: number = 1) {
+  try {
+    // Get relationship-specific API parameters
+    const apiParams = getRelationshipApiParams(relationship, page, 25);
+
+    let response = await fetchHampers(apiParams);
+
+    // If no results found and this is a supported relationship, try fallback
+    if (response.data.length === 0 && isRelationshipSupported(relationship)) {
+      const fallbackParams = getRelationshipFallbackParams(relationship, page, 25);
+      response = await fetchHampers(fallbackParams);
+    }
+
+    return {
+      hampers: response.data.map(transformApiHamperToUI),
+      pagination: response.meta.pagination
+    };
+  } catch {
+    // Error is handled by returning empty results
+    return {
+      hampers: [],
+      pagination: {
+        page: 1,
+        pageSize: 25,
+        pageCount: 0,
+        total: 0
+      }
+    };
+  }
+}
+
 // Relationship page component
 export default async function RelationshipPage({
-  params
+  params,
+  searchParams
 }: {
   params: Promise<{ relationship: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
   const resolvedParams = await params;
+  const resolvedSearchParams = await searchParams;
 
   // Parse and validate the route
   const routeParams = parseHamperRoute(["relation", resolvedParams.relationship]);
@@ -118,20 +159,25 @@ export default async function RelationshipPage({
   // Get page data based on the parsed route
   const pageData = getHamperPageData(routeParams);
 
-  // For relationship-based hampers, we might need custom filtering
-  // This could be based on tags, special categories, or custom API parameters
-  const customFilters = {
-    // You can add custom logic here to filter hampers by relationship
-    // For example: tags: [routeParams.relationship], or special relationship-based categories
-  };
+  // Get page number from search params
+  const page = Number(resolvedSearchParams.page) || 1;
+
+  // Fetch hampers data server-side
+  const { hampers, pagination } = await getRelationshipPageData(
+    routeParams.relationship || "",
+    page
+  );
 
   return (
     <main className='min-h-screen'>
       <Header />
-      <HamperListingPage
+      <HamperListingPageServer
         pageData={pageData}
+        hampers={hampers}
+        pagination={pagination}
+        currentCategory='relationship'
         showCategoryFilters={false} // Don't show category filters on relationship pages
-        customFilters={customFilters}
+        baseUrl={`/hampers/relation/${resolvedParams.relationship}`}
       />
       <Footer />
     </main>

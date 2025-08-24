@@ -1,17 +1,16 @@
+import SectionHeader from "./ui/SectionHeader";
+
 export default function WhyChooseUs() {
   return (
     <section className='py-20 bg-gradient-to-br from-brand-light/30 to-brand-gold/10'>
       <div className='container mx-auto px-4 sm:px-6 lg:px-8'>
-        <div className='text-center mb-16'>
-          <h2 className='font-display text-4xl lg:text-5xl font-bold text-brand-dark mb-6'>
-            Why Choose Shubhhampers?
-          </h2>
-          <p className='text-xl text-gray-700 max-w-3xl mx-auto'>
-            {`We bring a fresh approach to hamper services, focusing on what
-            matters most: creating magical moments and celebrating life's
-            special occasions with lasting impact.`}
-          </p>
-        </div>
+        <SectionHeader
+          title='Why Choose Shubhhampers?'
+          description="We bring a fresh approach to hamper services, focusing on what matters most: creating magical moments and celebrating life's special occasions with lasting impact."
+          variant='center'
+          size='lg'
+          className='mb-16'
+        />
 
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
           <div className='bg-white rounded-2xl p-8 shadow-lg border border-brand-gold/20 hover:shadow-xl transition-shadow duration-200'>

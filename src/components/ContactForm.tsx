@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Button } from "@ui-kit/button";
+import PrimaryButton from "./PrimaryButton";
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -193,15 +193,7 @@ export default function ContactForm() {
           </div>
         )}
 
-        <Button
-          type='submit'
-          disabled={isSubmitting}
-          className={`w-full font-semibold px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-shadow duration-200 ${
-            isSubmitting
-              ? "bg-gray-400 cursor-not-allowed"
-              : "bg-gradient-to-r from-brand-amber to-brand-gold hover:from-brand-gold hover:to-brand-amber text-white"
-          }`}
-        >
+        <PrimaryButton type='submit' disabled={isSubmitting} size='md' className='w-full'>
           {isSubmitting ? (
             <div className='flex items-center justify-center'>
               <div className='animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2' />
@@ -210,7 +202,7 @@ export default function ContactForm() {
           ) : (
             "💬 Send Message"
           )}
-        </Button>
+        </PrimaryButton>
       </form>
     </div>
   );

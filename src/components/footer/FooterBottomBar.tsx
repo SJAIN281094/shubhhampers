@@ -39,24 +39,6 @@ export default function FooterBottomBar({ onCatalogueOpen }: FooterBottomBarProp
           >
             Contact Us
           </Link>
-          <Link
-            href='/hampers/personal/birthday-gift-hampers'
-            className='text-brand-gold hover:text-brand-light text-sm transition-colors cursor-pointer hover:underline'
-          >
-            Birthday Hampers
-          </Link>
-          <Link
-            href='/hampers/festival/diwali-gift-hampers'
-            className='text-brand-gold hover:text-brand-light text-sm transition-colors cursor-pointer hover:underline'
-          >
-            Diwali Hampers
-          </Link>
-          <Link
-            href='/hampers/business-gift-hampers'
-            className='text-brand-gold hover:text-brand-light text-sm transition-colors cursor-pointer hover:underline'
-          >
-            Business Hampers
-          </Link>
           <button
             onClick={onCatalogueOpen}
             className='text-brand-gold hover:text-brand-light text-sm transition-colors cursor-pointer hover:underline'

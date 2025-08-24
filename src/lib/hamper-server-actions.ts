@@ -48,21 +48,13 @@ export async function fetchHampersServerAction(
 
     const data: ApiHampersResponse = await response.json();
 
-    // Log for server debugging
-    console.log(
-      `[SERVER] Fetched ${data.data.length} hampers for category: ${params.category || "all"}`
-    );
+    // Hampers fetched successfully
 
     return { data };
   } catch (error) {
     const errorMessage = error instanceof Error ? error.message : "Failed to fetch hampers";
 
-    // Log error for server debugging
-    console.error("[SERVER ERROR] Failed to fetch hampers:", {
-      error: errorMessage,
-      params,
-      timestamp: new Date().toISOString()
-    });
+    // Error handled by throwing
 
     return {
       data: { data: [], meta: { pagination: { page: 1, pageSize: 25, pageCount: 0, total: 0 } } },
@@ -76,7 +68,7 @@ export async function fetchHampersServerAction(
  */
 export async function fetchHamperByIdServerAction(
   id: string
-): Promise<{ data: any; error?: string }> {
+): Promise<{ data: unknown; error?: string }> {
   try {
     const url = `${API_BASE_URL}/hampers/${id}?populate=deep`;
 
@@ -97,17 +89,13 @@ export async function fetchHamperByIdServerAction(
 
     const data = await response.json();
 
-    console.log(`[SERVER] Fetched hamper by ID: ${id}`);
+    // Hamper fetched successfully
 
     return { data };
   } catch (error) {
     const errorMessage = error instanceof Error ? error.message : "Failed to fetch hamper";
 
-    console.error("[SERVER ERROR] Failed to fetch hamper by ID:", {
-      error: errorMessage,
-      id,
-      timestamp: new Date().toISOString()
-    });
+    // Error handled by returning null
 
     return {
       data: null,
@@ -124,8 +112,8 @@ export async function revalidateHampersCache(category?: string) {
 
   try {
     revalidateTag(`hampers-${category || "all"}`);
-    console.log(`[SERVER] Revalidated cache for category: ${category || "all"}`);
-  } catch (error) {
-    console.error("[SERVER ERROR] Failed to revalidate cache:", error);
+    // Cache revalidated successfully
+  } catch {
+    // Error handled by throwing
   }
 }

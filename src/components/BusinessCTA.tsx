@@ -19,9 +19,9 @@ export default function BusinessCTA() {
                 🚀 Start Your Business Journey
               </Button>
             </Link>
-            <Link href='/services'>
+            <Link href='/hampers/business-gift-hampers'>
               <Button className='bg-transparent text-white font-semibold px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-200 border-2 border-brand-gold hover:bg-brand-gold/20'>
-                🎯 Explore Services
+                🎯 View Business Hampers
               </Button>
             </Link>
           </div>

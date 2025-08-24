@@ -66,7 +66,12 @@ export interface HomePageData {
   documentId: string;
   title: string;
   heroCarousel: HeroCarousel;
-  seo: any | null;
+  seo: {
+    metaTitle?: string;
+    metaDescription?: string;
+    keywords?: string;
+    canonicalUrl?: string;
+  } | null;
 }
 
 export interface HomePageApiResponse {

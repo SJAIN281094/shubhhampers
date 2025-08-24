@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Header from "@components/Header";
 import Footer from "@components/Footer";
-import HamperListingPage from "@components/HamperListingPage";
+import HamperListingPageServer from "@components/HamperListingPageServer";
 import { parseHamperRoute, getHamperPageData, generateAllHamperPaths } from "@lib/hamper-url-utils";
 import { fetchHampers, transformApiHamperToUI } from "@lib/hamper-api";
 
@@ -38,8 +38,8 @@ export async function generateMetadata({
   }
 
   const pageData = getHamperPageData(routeParams);
-  const categoryName = routeParams.category!;
-  const subCategoryName = routeParams.subCategory!;
+  const categoryName = routeParams.category || "";
+  const subCategoryName = routeParams.subCategory || "";
   const capitalizedCategory = categoryName.charAt(0).toUpperCase() + categoryName.slice(1);
   const capitalizedSubCategory = subCategoryName.charAt(0).toUpperCase() + subCategoryName.slice(1);
 
@@ -102,13 +102,17 @@ export async function generateMetadata({
 
 // Subcategory page component
 // Server-side data fetching for subcategory page
-async function getSubCategoryPageData(categoryName: string, subCategoryName: string) {
+async function getSubCategoryPageData(
+  categoryName: string,
+  subCategoryName: string,
+  page: number = 1
+) {
   try {
     const response = await fetchHampers({
       category: categoryName,
       subCategory: subCategoryName,
       pageSize: 25,
-      page: 1,
+      page,
       isActive: true
     });
 
@@ -130,11 +134,14 @@ async function getSubCategoryPageData(categoryName: string, subCategoryName: str
 }
 
 export default async function SubCategoryPage({
-  params
+  params,
+  searchParams
 }: {
   params: Promise<{ category: string; subCategory: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
   const resolvedParams = await params;
+  const resolvedSearchParams = await searchParams;
 
   // Parse and validate the route
   const routeParams = parseHamperRoute([resolvedParams.category, resolvedParams.subCategory]);
@@ -146,21 +153,28 @@ export default async function SubCategoryPage({
   // Get page data based on the parsed route
   const pageData = getHamperPageData(routeParams);
 
+  // Get page number from search params
+  const page = Number(resolvedSearchParams.page) || 1;
+
   // Fetch hampers data server-side
-  const categoryName =
-    routeParams.category!.charAt(0).toUpperCase() + routeParams.category!.slice(1);
-  const subCategoryName =
-    routeParams.subCategory!.charAt(0).toUpperCase() + routeParams.subCategory!.slice(1);
-  const { hampers, pagination } = await getSubCategoryPageData(categoryName, subCategoryName);
+  const categoryName = routeParams.category
+    ? routeParams.category.charAt(0).toUpperCase() + routeParams.category.slice(1)
+    : "Unknown";
+  const subCategoryName = routeParams.subCategory
+    ? routeParams.subCategory.charAt(0).toUpperCase() + routeParams.subCategory.slice(1)
+    : "Unknown";
+  const { hampers, pagination } = await getSubCategoryPageData(categoryName, subCategoryName, page);
 
   return (
     <main className='min-h-screen'>
       <Header />
-      <HamperListingPage
+      <HamperListingPageServer
         pageData={pageData}
+        hampers={hampers}
+        pagination={pagination}
+        currentCategory={categoryName}
         showCategoryFilters={false} // Don't show category filters on specific subcategory pages
-        initialHampers={hampers}
-        initialPagination={pagination}
+        baseUrl={`/hampers/${resolvedParams.category}/${resolvedParams.subCategory}`}
       />
       <Footer />
     </main>

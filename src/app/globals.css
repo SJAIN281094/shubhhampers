@@ -56,7 +56,7 @@
   --color-brand-brown: var(--brand-brown);
   --color-brand-dark: var(--brand-dark);
 
-  --font-display: "Bonheur Royale", cursive;
+  --font-display: "Allura", cursive;
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -68,7 +68,7 @@ body {
 }
 
 .font-display {
-  font-family: "Bonheur Royale", cursive;
+  font-family: "Allura", cursive;
   letter-spacing: 0.05em;
 }
 

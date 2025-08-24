@@ -1,12 +1,12 @@
+import SectionHeader from "./ui/SectionHeader";
+
 export default function OurMission() {
   return (
     <section className='py-20 bg-white'>
       <div className='container mx-auto px-4 sm:px-6 lg:px-8'>
         <div className='grid grid-cols-1 lg:grid-cols-2 gap-12 items-center'>
           <div>
-            <h2 className='font-display text-4xl lg:text-5xl font-bold text-brand-dark mb-6'>
-              Our Mission
-            </h2>
+            <SectionHeader title='Our Mission' variant='left' size='md' className='mb-0' />
             <p className='text-lg text-gray-700 mb-6 leading-relaxed'>
               {`At Shubhhampers, we believe that every hamper is an opportunity
               to create magical moments and celebrate life's special occasions.

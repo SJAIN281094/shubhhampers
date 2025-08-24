@@ -1,7 +1,8 @@
 import Link from "next/link";
-import { Button } from "@ui-kit/button";
 import GradientCard from "./ui/GradientCard";
 import ProcessStep from "./ui/ProcessStep";
+import SectionHeader from "./ui/SectionHeader";
+import PrimaryButton from "./PrimaryButton";
 
 export default function OurApproach() {
   const processSteps = [
@@ -55,9 +56,7 @@ export default function OurApproach() {
           </div>
 
           <div className='order-1 lg:order-2'>
-            <h2 className='font-display text-4xl lg:text-5xl font-bold text-brand-dark mb-6'>
-              Our Approach
-            </h2>
+            <SectionHeader title='Our Approach' variant='left' size='md' className='mb-0' />
             <p className='text-lg text-gray-700 mb-6 leading-relaxed'>
               {`We don't believe in one-size-fits-all solutions. Every celebration
               is unique, and every special moment deserves personalized
@@ -72,9 +71,7 @@ export default function OurApproach() {
             </p>
 
             <Link href='/contact'>
-              <Button className='bg-gradient-to-r from-brand-amber to-brand-gold hover:from-brand-gold hover:to-brand-amber text-white font-semibold px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-shadow duration-200'>
-                💬 {"Let's Start Your Journey"}
-              </Button>
+              <PrimaryButton size='sm'>💬 {"Let's Start Your Journey"}</PrimaryButton>
             </Link>
           </div>
         </div>

@@ -5,7 +5,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { FaCalendarAlt, FaClock, FaTag, FaUser, FaSearch } from "react-icons/fa";
 import { IoArrowForward } from "react-icons/io5";
-import FeatureTag from "./FeatureTag";
+
+import SectionHeader from "./ui/SectionHeader";
+import EmptyState, { EmptyStateVariants } from "./ui/EmptyState";
+import PrimaryButton from "./PrimaryButton";
+import SecondaryButton from "./SecondaryButton";
 import { getAllPublishedPosts, BLOG_CATEGORIES } from "@/lib/blogs-data";
 
 export default function BlogListingClient() {
@@ -52,18 +56,15 @@ export default function BlogListingClient() {
     <section className='py-16 bg-gradient-to-br from-brand-light/30 to-white'>
       <div className='container mx-auto px-4 sm:px-6 lg:px-8'>
         {/* Header */}
-        <div className='text-center mb-16'>
-          <FeatureTag>📝 Our Blogs</FeatureTag>
-
-          <h1 className='font-display text-4xl sm:text-5xl md:text-6xl font-bold text-brand-brown mb-6 leading-tight'>
-            Insights & Inspiration
-          </h1>
-
-          <p className='text-lg text-gray-700 max-w-3xl mx-auto mb-8'>
-            Discover expert tips for thoughtful gifting, creative hamper ideas, celebration guides,
-            and insights into building meaningful relationships through the art of giving.
-          </p>
-        </div>
+        <SectionHeader
+          tag={{ emoji: "📝", text: "Our Blogs" }}
+          title='Insights & Inspiration'
+          description='Discover expert tips for thoughtful gifting, creative hamper ideas, celebration guides,
+            and insights into building meaningful relationships through the art of giving.'
+          variant='center'
+          size='lg'
+          className='mb-16'
+        />
 
         {/* Search & Filters */}
         <div className='mb-12'>
@@ -222,23 +223,22 @@ export default function BlogListingClient() {
           </div>
         ) : (
           /* Empty State */
-          <div className='text-center py-16'>
-            <div className='text-6xl mb-6'>📝</div>
-            <h3 className='text-2xl font-bold text-brand-dark mb-4'>No Articles Found</h3>
-            <p className='text-gray-600 mb-8 max-w-md mx-auto'>
-              We couldn't find any articles matching your search criteria. Try adjusting your
-              filters or search terms.
-            </p>
-            <button
-              onClick={() => {
-                setSelectedCategory("all");
-                setSearchQuery("");
-              }}
-              className='bg-brand-gold text-brand-dark font-semibold px-6 py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-105'
-            >
-              View All Articles
-            </button>
-          </div>
+          <EmptyState
+            icon={EmptyStateVariants.noArticles.icon}
+            title={EmptyStateVariants.noArticles.title}
+            description="We couldn't find any articles matching your search criteria. Try adjusting your filters or search terms."
+            actions={[
+              {
+                label: "View All Articles",
+                onClick: () => {
+                  setSelectedCategory("all");
+                  setSearchQuery("");
+                },
+                variant: "custom"
+              }
+            ]}
+            className='py-16'
+          />
         )}
 
         {/* CTA Section */}
@@ -251,17 +251,11 @@ export default function BlogListingClient() {
             you curate the perfect hamper for any occasion.
           </p>
           <div className='flex flex-col sm:flex-row gap-4 justify-center'>
-            <Link
-              href='/contact'
-              className='inline-flex items-center justify-center bg-gradient-to-r from-brand-gold to-brand-amber text-brand-dark font-semibold px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-105'
-            >
-              Start Your Custom Hamper
+            <Link href='/contact'>
+              <PrimaryButton size='sm'>Start Your Custom Hamper</PrimaryButton>
             </Link>
-            <Link
-              href='/hampers'
-              className='inline-flex items-center justify-center gap-2 bg-white/80 text-brand-dark font-semibold px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-105 border border-brand-gold/30'
-            >
-              Browse Our Collections
+            <Link href='/hampers'>
+              <SecondaryButton size='sm'>Browse Our Collections</SecondaryButton>
             </Link>
           </div>
         </div>
