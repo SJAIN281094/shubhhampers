@@ -123,18 +123,10 @@ async function getHomePageData() {
             const categoryName = apiHamper.category.name;
             const subCategoryName = apiHamper.subCategory?.name;
 
-            // Generate features from hamper items (first 4 items)
+            // Generate features from hamper items (first 4 items) - only from API data
             const features = apiHamper.hamperItems
               .slice(0, 4)
               .map(item => `${item.quantity}x ${item.item.name}`);
-            if (features.length === 0) {
-              features.push(
-                "Premium Quality",
-                "Thoughtful Curation",
-                "Express Delivery",
-                "Perfect Gifting"
-              );
-            }
 
             // Calculate price display
             const startingPrice = `₹${apiHamper.discountedPrice.toLocaleString()}`;
@@ -204,6 +196,11 @@ export default async function Home() {
   return (
     <main className='min-h-screen'>
       <Header />
+      {/* Hidden H1 for SEO - main page heading */}
+      <h1 className='sr-only'>
+        Premium Gift Hampers for Every Occasion - Corporate, Wedding, Festival & Personal |
+        Shubhhampers
+      </h1>
       <HeroSlider slides={heroSlides} />
       <EventsSection categoryHampers={categoryHampers} />
       <HowWeWorkSection />

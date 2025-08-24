@@ -192,11 +192,11 @@ export default function EventsSection({ categoryHampers = {} }: EventsSectionPro
                     </div>
 
                     {/* View All Button */}
-                    <div className='text-center'>
+                    <div className='flex justify-center'>
                       <PrimaryButton
                         onClick={() => handleViewAll(category.id)}
                         size='md'
-                        className='px-6 py-2 rounded-full flex items-center gap-2 mx-auto'
+                        className='px-6 py-2 rounded-full inline-flex items-center gap-2'
                       >
                         <span>View All {category.label} Hampers</span>
                         <ArrowRight className='w-4 h-4 transition-transform duration-300 group-hover:translate-x-1' />

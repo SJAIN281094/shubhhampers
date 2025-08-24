@@ -4,7 +4,7 @@ import Header from "@components/Header";
 import Footer from "@components/Footer";
 import SectionHeader from "@components/ui/SectionHeader";
 
-export default function HamperNotFound() {
+export default function GlobalNotFound() {
   return (
     <main className='min-h-screen'>
       <Header />
@@ -18,31 +18,29 @@ export default function HamperNotFound() {
 
           <div className='container mx-auto px-4 sm:px-6 lg:px-8 relative z-10'>
             {/* SEO H1 - Hidden but accessible */}
-            <h1 className='sr-only'>Hamper Not Found - Page Not Available</h1>
+            <h1 className='sr-only'>Page Not Found - 404 Error</h1>
 
             <SectionHeader
-              title='Hamper Not Found'
-              description={
-                "We couldn't find the hamper you're looking for. But don't worry, we have plenty of amazing hampers waiting for you!"
-              }
+              title='Page Not Found'
+              description="We couldn't find the page you're looking for. Let's get you back to exploring our amazing hamper collections!"
               variant='center'
               size='lg'
               showDecorations={true}
               tag={{
                 emoji: "🔍",
-                text: "Page Not Found"
+                text: "404 Error"
               }}
             />
 
             <div className='flex flex-col sm:flex-row gap-4 justify-center mt-12'>
-              <Link href='/hampers'>
+              <Link href='/'>
                 <Button className='bg-gradient-to-r from-brand-gold to-brand-amber text-brand-dark font-semibold px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300'>
-                  🎁 Explore All Hampers
+                  🏠 Go Home
                 </Button>
               </Link>
-              <Link href='/contact'>
+              <Link href='/hampers'>
                 <Button className='bg-white text-brand-brown font-semibold px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-200 border-2 border-brand-gold hover:bg-brand-gold/10'>
-                  💬 Contact Us
+                  🎁 Browse Hampers
                 </Button>
               </Link>
             </div>

@@ -140,12 +140,6 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <head>
-        {/* Optimized Font Loading with preconnect and font-display swap */}
-        <link rel='preconnect' href='https://fonts.googleapis.com' />
-        <link rel='preconnect' href='https://fonts.gstatic.com' crossOrigin='anonymous' />
-
-        {/* Allura font now loaded via Next.js font optimization */}
-
         {/* Critical Structured Data - Load immediately */}
         <script
           type='application/ld+json'

@@ -1,228 +1,223 @@
+/**
+ * Hamper Details Page Component (Updated for SEO)
+ * Displays individual hamper product details with proper H1 structure and internal linking
+ */
+
 "use client";
 
+import React from "react";
 import Image from "next/image";
-import Link from "next/link";
-import { IoCheckmarkCircle, IoTime, IoGift, IoPricetag } from "react-icons/io5";
-import { FaWhatsapp, FaShare } from "react-icons/fa";
-import { Button } from "@ui-kit/button";
-import { handleWhatsApp } from "../lib/contact-utils";
-import { HamperProduct } from "../lib/hamper-api-types";
+import { HamperProduct } from "@lib/hamper-api-types";
+import SectionHeader from "./ui/SectionHeader";
+import RelatedProducts from "./ui/RelatedProducts";
+import ProductSchema from "./ui/ProductSchema";
+import PrimaryButton from "./PrimaryButton";
+import SecondaryButton from "./SecondaryButton";
+import HamperTag from "./HamperTag";
+import { handleWhatsApp } from "@lib/contact-utils";
 
 interface HamperDetailsPageProps {
   hamper: HamperProduct;
+  relatedProducts?: HamperProduct[];
 }
 
-export default function HamperDetailsPage({ hamper }: HamperDetailsPageProps) {
+export default function HamperDetailsPage({
+  hamper,
+  relatedProducts = []
+}: HamperDetailsPageProps) {
   const handleWhatsAppInquiry = () => {
-    const message = `Hi! I'm interested in the "${hamper.title}" hamper. Could you provide more details about customization options, pricing, and availability?`;
-    handleWhatsApp(message);
+    handleWhatsApp(
+      `Hello! I'm interested in ${hamper.title} gift hamper. Could you help me with pricing and availability details?`
+    );
   };
 
-  const handleShare = async () => {
-    if (navigator.share) {
-      try {
-        await navigator.share({
-          title: `${hamper.title} - Shubhhampers`,
-          text: `Check out this amazing ${hamper.title} hamper from Shubhhampers!`,
-          url: window.location.href
-        });
-      } catch {
-        // Sharing failed, fallback to clipboard copy below
-      }
-    } else {
-      // Fallback: copy to clipboard
-      navigator.clipboard.writeText(window.location.href);
-      // eslint-disable-next-line no-alert
-      alert("Link copied to clipboard!");
+  // Generate breadcrumbs
+  const breadcrumbs = [
+    { label: "Home", href: "/" },
+    { label: "Gift Hampers", href: "/hampers" },
+    {
+      label: `${hamper.categoryName || hamper.category} Hampers`,
+      href: `/hampers/${hamper.category?.toLowerCase()}-gift-hampers`
+    },
+    {
+      label: hamper.title,
+      href: "#"
     }
-  };
-
-  const getCategoryLink = (category: string) => {
-    const categoryUrlMap: Record<string, string> = {
-      festival: "/hampers/festival-gift-hampers",
-      wedding: "/hampers/wedding-gift-hampers",
-      business: "/hampers/business-gift-hampers",
-      personal: "/hampers/personal-gift-hampers"
-    };
-    return categoryUrlMap[category] || "/hampers";
-  };
+  ];
 
   return (
-    <div className='min-h-screen bg-gradient-to-br from-brand-light via-white to-brand-gold/5'>
-      {/* Hero Section with Background Image */}
-      <section className='relative h-[60vh] overflow-hidden'>
-        {/* Background Image */}
-        {hamper.backgroundImage && (
-          <div className='absolute inset-0'>
-            <Image
-              src={hamper.backgroundImage}
-              alt={hamper.title}
-              fill
-              className='object-cover'
-              quality={90}
-              priority
-            />
-            <div className='absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent' />
-          </div>
-        )}
+    <div className='min-h-screen bg-gradient-to-br from-brand-light/30 via-white to-brand-gold/10'>
+      {/* Product Schema */}
+      <ProductSchema product={hamper} />
 
-        {/* Header Controls */}
-        <div className='absolute top-8 right-8 z-20'>
-          <button
-            onClick={handleShare}
-            className='bg-white/90 backdrop-blur-sm text-brand-dark p-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105'
-          >
-            <FaShare className='w-5 h-5' />
-          </button>
+      <div className='container mx-auto px-4 sm:px-6 lg:px-8 py-12'>
+        {/* Product Header - SEO Optimized */}
+        <div className='text-center mb-8'>
+          {/* SEO H1 - Hidden but accessible */}
+          <h1 className='sr-only'>{hamper.title}</h1>
+
+          {/* Breadcrumb Structured Data */}
+          {breadcrumbs && breadcrumbs.length > 0 && (
+            <script
+              type='application/ld+json'
+              dangerouslySetInnerHTML={{
+                __html: JSON.stringify({
+                  "@context": "https://schema.org",
+                  "@type": "BreadcrumbList",
+                  itemListElement: breadcrumbs.map((crumb, index) => ({
+                    "@type": "ListItem",
+                    position: index + 1,
+                    name: crumb.label,
+                    item: `https://www.shubhhampers.com${crumb.href}`
+                  }))
+                })
+              }}
+            />
+          )}
+
+          <SectionHeader
+            title={hamper.title}
+            description={
+              hamper.description || `Premium ${hamper.title} from our curated collection`
+            }
+            variant='center'
+            size='lg'
+            tag={{
+              emoji: "🎁",
+              text: `${hamper.categoryName || hamper.category} Collection`
+            }}
+          />
         </div>
 
-        {/* Hero Content */}
-        <div className='absolute bottom-8 left-8 right-8 z-20 text-white'>
-          <div className='max-w-4xl'>
-            <div className='inline-flex items-center gap-2 bg-black/40 backdrop-blur-sm px-4 py-2 rounded-full mb-4'>
-              <span className='text-brand-gold font-semibold capitalize'>
-                🎁 {hamper.categoryName || hamper.category} Hamper
-              </span>
-            </div>
-
-            <h1 className='font-display text-4xl sm:text-5xl lg:text-6xl font-bold mb-4 leading-tight'>
-              {hamper.title}
-            </h1>
-
-            {hamper.subtitle && (
-              <p className='text-xl lg:text-2xl text-gray-200 mb-6 leading-relaxed'>
-                {hamper.subtitle}
-              </p>
+        {/* Product Details */}
+        <div className='grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-12'>
+          {/* Product Images */}
+          <div className='space-y-4'>
+            {hamper.images && hamper.images.length > 0 ? (
+              <div className='aspect-square relative rounded-2xl overflow-hidden shadow-xl'>
+                <Image
+                  src={hamper.images[0].url}
+                  alt={`${hamper.title} - Premium Gift Hamper`}
+                  fill
+                  className='object-cover'
+                  priority
+                />
+              </div>
+            ) : (
+              <div className='aspect-square bg-brand-gold/20 rounded-2xl flex items-center justify-center'>
+                <div className='text-center text-brand-brown'>
+                  <div className='text-6xl mb-4'>🎁</div>
+                  <p className='text-lg font-medium'>Premium Hamper</p>
+                </div>
+              </div>
             )}
 
-            <div className='flex flex-wrap gap-4 items-center'>
-              <div className='bg-black/40 backdrop-blur-sm px-4 py-2 rounded-full'>
-                <span className='text-gray-200'>📦 {hamper.deliveryTime}</span>
+            {/* Additional Images */}
+            {hamper.images && hamper.images.length > 1 && (
+              <div className='grid grid-cols-3 gap-2'>
+                {hamper.images.slice(1, 4).map((image, index) => (
+                  <div
+                    key={image.url || `image-${index}`}
+                    className='aspect-square relative rounded-lg overflow-hidden'
+                  >
+                    <Image
+                      src={image.url}
+                      alt={`${hamper.title} - View ${index + 2}`}
+                      fill
+                      className='object-cover'
+                    />
+                  </div>
+                ))}
               </div>
-            </div>
+            )}
           </div>
-        </div>
-      </section>
 
-      {/* Main Content */}
-      <section className='py-16'>
-        <div className='container mx-auto px-4 sm:px-6 lg:px-8'>
-          <div className='grid grid-cols-1 lg:grid-cols-3 gap-12'>
-            {/* Left Column - Product Details */}
-            <div className='lg:col-span-2 space-y-8'>
-              {/* Description */}
-              <div className='bg-white rounded-2xl p-8 shadow-lg border border-brand-gold/20'>
-                <h2 className='font-display text-2xl font-bold text-brand-dark mb-4'>
+          {/* Product Information */}
+          <div className='space-y-6'>
+            {/* Features/Tags */}
+            {hamper.features && hamper.features.length > 0 && (
+              <div className='flex flex-wrap gap-2'>
+                {hamper.features.slice(0, 5).map((feature, index) => (
+                  <HamperTag key={feature || `feature-tag-${index}`} title={feature} />
+                ))}
+              </div>
+            )}
+
+            {/* Description */}
+            {hamper.description && (
+              <div className='prose prose-lg max-w-none'>
+                <h2 className='text-2xl font-display font-bold text-brand-brown mb-4'>
                   About This Hamper
                 </h2>
-                <p className='text-gray-700 text-lg leading-relaxed'>{hamper.description}</p>
-              </div>
-
-              {/* Features */}
-              <div className='bg-white rounded-2xl p-8 shadow-lg border border-brand-gold/20'>
-                <h2 className='font-display text-2xl font-bold text-brand-dark mb-6'>
-                  What&apos;s Included
-                </h2>
-                <div className='grid grid-cols-1 sm:grid-cols-2 gap-4'>
-                  {hamper.features.map(feature => (
-                    <div
-                      key={feature}
-                      className='flex items-center gap-3 p-3 bg-brand-gold/10 rounded-lg'
-                    >
-                      <IoCheckmarkCircle className='w-5 h-5 text-green-600 flex-shrink-0' />
-                      <span className='text-gray-700 font-medium'>{feature}</span>
-                    </div>
+                <div className='text-brand-dark leading-relaxed'>
+                  {hamper.description.split("\n").map((paragraph, index) => (
+                    <p key={paragraph.slice(0, 50) || `desc-${index}`} className='mb-4'>
+                      {paragraph}
+                    </p>
                   ))}
                 </div>
               </div>
+            )}
 
-              {/* Additional Info */}
-              <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
-                <div className='bg-white rounded-2xl p-6 shadow-lg border border-brand-gold/20'>
-                  <div className='flex items-center gap-3 mb-3'>
-                    <IoTime className='w-6 h-6 text-brand-gold' />
-                    <h3 className='font-bold text-brand-dark'>Delivery</h3>
-                  </div>
-                  <p className='text-gray-700'>{hamper.deliveryTime}</p>
-                </div>
-
-                <div className='bg-white rounded-2xl p-6 shadow-lg border border-brand-gold/20'>
-                  <div className='flex items-center gap-3 mb-3'>
-                    <IoGift className='w-6 h-6 text-brand-gold' />
-                    <h3 className='font-bold text-brand-dark'>Minimum Order</h3>
-                  </div>
-                  <p className='text-gray-700'>{hamper.minimumOrder}</p>
-                </div>
+            {/* Key Features */}
+            {hamper.features && hamper.features.length > 0 && (
+              <div>
+                <h3 className='text-xl font-display font-semibold text-brand-brown mb-4'>
+                  What&apos;s Included
+                </h3>
+                <ul className='space-y-2'>
+                  {hamper.features.slice(0, 8).map((feature, index) => (
+                    <li
+                      key={feature || `feature-list-${index}`}
+                      className='flex items-start gap-3 text-brand-dark'
+                    >
+                      <span className='text-brand-gold mt-1'>✓</span>
+                      <span>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
+            )}
 
-              {/* Bulk Benefits */}
-              <div className='bg-gradient-to-r from-brand-gold/20 to-brand-amber/20 rounded-2xl p-6 border border-brand-gold/30'>
-                <div className='flex items-center gap-3 mb-3'>
-                  <IoPricetag className='w-6 h-6 text-brand-brown' />
-                  <h3 className='font-bold text-brand-dark'>Bulk Benefits</h3>
-                </div>
-                <p className='text-brand-brown font-medium'>{hamper.bulkBenefit}</p>
-              </div>
+            {/* Action Buttons */}
+            <div className='flex flex-col sm:flex-row gap-4 pt-6'>
+              <PrimaryButton onClick={handleWhatsAppInquiry} className='flex-1'>
+                Get Pricing on WhatsApp
+              </PrimaryButton>
+              <SecondaryButton onClick={handleWhatsAppInquiry} className='flex-1'>
+                Customize This Hamper
+              </SecondaryButton>
             </div>
 
-            {/* Right Column - Order Section */}
-            <div className='lg:col-span-1'>
-              <div className='sticky top-8 space-y-6'>
-                {/* Order Card */}
-                <div className='bg-white rounded-2xl p-8 shadow-lg border border-brand-gold/20'>
-                  <div className='space-y-4'>
-                    <Button
-                      onClick={handleWhatsAppInquiry}
-                      className='w-full bg-gradient-to-r from-green-600 to-green-700 text-white font-semibold py-4 rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-105 flex items-center justify-center gap-3'
-                    >
-                      <FaWhatsapp className='w-5 h-5' />
-                      Order via WhatsApp
-                    </Button>
-
-                    <Link href='/contact?service=custom'>
-                      <Button className='w-full bg-gradient-to-r from-brand-gold to-brand-amber text-brand-dark font-semibold py-4 rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-105'>
-                        Customize This Hamper
-                      </Button>
-                    </Link>
-                  </div>
-                </div>
-
-                {/* Quick Info */}
-                <div className='bg-brand-light/50 rounded-2xl p-6 border border-brand-gold/20'>
-                  <h3 className='font-bold text-brand-dark mb-4 text-center'>Why Choose Us?</h3>
-                  <div className='space-y-3 text-sm'>
-                    <div className='flex items-center gap-2'>
-                      <IoCheckmarkCircle className='w-4 h-4 text-green-600' />
-                      <span>Premium quality guaranteed</span>
-                    </div>
-                    <div className='flex items-center gap-2'>
-                      <IoCheckmarkCircle className='w-4 h-4 text-green-600' />
-                      <span>Custom packaging available</span>
-                    </div>
-                    <div className='flex items-center gap-2'>
-                      <IoCheckmarkCircle className='w-4 h-4 text-green-600' />
-                      <span>Timely delivery</span>
-                    </div>
-                    <div className='flex items-center gap-2'>
-                      <IoCheckmarkCircle className='w-4 h-4 text-green-600' />
-                      <span>Relationship building focus</span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Browse Similar */}
-                <Link
-                  href={getCategoryLink((hamper.categoryName || hamper.category).toLowerCase())}
-                >
-                  <Button className='w-full bg-white text-brand-brown border-2 border-brand-gold font-semibold py-3 rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 hover:bg-brand-gold/10'>
-                    Browse More {hamper.categoryName || hamper.category} Hampers
-                  </Button>
-                </Link>
+            {/* Additional Info */}
+            <div className='bg-brand-light/30 rounded-xl p-6 space-y-3'>
+              <div className='flex items-center gap-3 text-brand-dark'>
+                <span className='text-brand-gold'>🚚</span>
+                <span>Free delivery across India</span>
+              </div>
+              <div className='flex items-center gap-3 text-brand-dark'>
+                <span className='text-brand-gold'>📞</span>
+                <span>24/7 customer support</span>
+              </div>
+              <div className='flex items-center gap-3 text-brand-dark'>
+                <span className='text-brand-gold'>🎨</span>
+                <span>100% customizable hampers</span>
               </div>
             </div>
           </div>
         </div>
-      </section>
+
+        {/* Internal Linking - Related Products */}
+        {relatedProducts.length > 0 && (
+          <RelatedProducts
+            title='You Might Also Like'
+            products={relatedProducts}
+            currentProductId={hamper.id}
+            showPrice={false}
+            linkContext='recommended'
+          />
+        )}
+      </div>
     </div>
   );
 }

@@ -5,7 +5,6 @@
 
 import React from "react";
 import Link from "next/link";
-import { cn } from "@lib/utils";
 import PrimaryButton from "../PrimaryButton";
 import SecondaryButton from "../SecondaryButton";
 
@@ -33,7 +32,7 @@ export default function EmptyState({
   className = ""
 }: EmptyStateProps) {
   return (
-    <div className={cn("text-center py-12", className)}>
+    <div className={`text-center py-12 ${className}`}>
       <div className='text-6xl mb-4'>{icon}</div>
       <h3 className='text-2xl font-bold text-brand-dark mb-4'>{title}</h3>
       <p className='text-gray-600 mb-6 max-w-xl mx-auto leading-relaxed'>{description}</p>
@@ -79,10 +78,7 @@ export default function EmptyState({
             const CustomButtonElement = (
               <button
                 onClick={action.onClick}
-                className={cn(
-                  "bg-gradient-to-r from-brand-gold to-brand-amber text-brand-dark font-semibold px-6 py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300",
-                  action.className
-                )}
+                className={`bg-gradient-to-r from-brand-gold to-brand-amber text-brand-dark font-semibold px-6 py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 ${action.className || ""}`}
               >
                 {buttonContent}
               </button>

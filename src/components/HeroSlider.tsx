@@ -367,11 +367,7 @@ export default function HeroSlider({ slides = [] }: HeroSliderProps) {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      {/* SEO-optimized H1 tag with seasonal keywords */}
-      <h1 className='sr-only'>
-        Diwali Hampers | Wedding Gift Hampers | Birthday Hampers | Valentine&apos;s Day Gift Baskets
-        | Premium Festival, Corporate & Personal Gift Hampers - Shubhhampers
-      </h1>
+      {/* Hero content - H1 is handled at page level */}
 
       <div className='relative w-full h-full'>
         <AnimatePresence initial={false} custom={direction} mode='wait'>

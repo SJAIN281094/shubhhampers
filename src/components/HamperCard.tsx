@@ -28,6 +28,8 @@ export default function HamperCard({
   showDetailsButton = false
 }: HamperCardProps) {
   const router = useRouter();
+  // Check if features exist for layout purposes
+  const hasTags = hamper.features && hamper.features.length > 0;
 
   const handleCardClick = () => {
     if (onClick) {
@@ -128,8 +130,8 @@ export default function HamperCard({
         {/* HOVER STATE */}
         <div className='absolute inset-0 p-6 sm:p-8 flex flex-col opacity-0 group-hover:opacity-100 transition-all duration-300 ease-out z-10'>
           {/* Header */}
-          <div className='text-center mb-4'>
-            <div className='relative w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-brand-amber via-brand-gold to-brand-brown rounded-xl flex items-center justify-center shadow-lg mx-auto mb-3 overflow-hidden'>
+          <div className='text-center mb-3'>
+            <div className='relative w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-brand-amber via-brand-gold to-brand-brown rounded-xl flex items-center justify-center shadow-lg mx-auto mb-2 overflow-hidden'>
               {hamper.images && Array.isArray(hamper.images) && hamper.images.length > 0 ? (
                 <Image
                   src={
@@ -146,54 +148,57 @@ export default function HamperCard({
               )}
             </div>
 
-            <h4 className='font-display text-2xl sm:text-3xl md:text-2xl lg:text-3xl font-bold text-brand-dark leading-tight tracking-wide drop-shadow-sm mb-1'>
+            <h4 className='font-display text-lg sm:text-xl md:text-lg lg:text-xl font-bold text-brand-dark leading-tight tracking-wide drop-shadow-sm mb-0.5'>
               {hamper.title}
             </h4>
             {hamper.subtitle && (
-              <h5 className='text-sm sm:text-base md:text-sm lg:text-base font-medium text-brand-brown tracking-wider uppercase drop-shadow-sm opacity-90'>
+              <h5 className='text-xs sm:text-sm md:text-xs lg:text-sm font-medium text-brand-brown tracking-wider uppercase drop-shadow-sm opacity-90'>
                 {hamper.subtitle}
               </h5>
             )}
           </div>
 
           {/* Description */}
-          <div className='flex-1 flex flex-col overflow-hidden'>
-            <div className='overflow-y-auto flex-1 mb-3'>
-              <p className='text-sm sm:text-base md:text-sm lg:text-base text-gray-700 leading-relaxed text-center line-clamp-4'>
+          <div className='flex-1 flex flex-col overflow-hidden mb-2'>
+            <div className='overflow-y-auto flex-1'>
+              <p className='text-sm sm:text-base md:text-sm lg:text-base text-gray-700 leading-relaxed text-center'>
                 {hamper.description}
               </p>
             </div>
           </div>
 
-          {/* Features (if available) */}
-          {hamper.features && hamper.features.length > 0 && (
-            <div className='mb-4'>
-              <div className='grid grid-cols-2 gap-2'>
-                {hamper.features.slice(0, 4).map((feature: string) => (
-                  <div key={feature} className='flex items-center gap-2 p-2 bg-white/60 rounded-lg'>
-                    <div className='w-1.5 h-1.5 bg-gradient-to-r from-brand-gold to-brand-amber rounded-full' />
-                    <span className='text-xs text-gray-700 font-medium'>{feature}</span>
+          {/* Features section - compact design */}
+          <div className={`mb-3 ${hasTags ? "min-h-[60px]" : ""}`}>
+            {hasTags ? (
+              <div className='grid grid-cols-2 gap-1.5'>
+                {hamper.features?.slice(0, 4).map((feature: string) => (
+                  <div
+                    key={feature}
+                    className='flex items-center gap-2 p-1.5 bg-white/60 rounded-lg'
+                  >
+                    <div className='w-1 h-1 bg-gradient-to-r from-brand-gold to-brand-amber rounded-full flex-shrink-0' />
+                    <span className='text-xs text-gray-700 font-medium truncate'>{feature}</span>
                   </div>
                 ))}
               </div>
-            </div>
-          )}
+            ) : null}
+          </div>
 
           {/* Price Display in Hover State */}
           {showPrice && hamper.startingPrice && (
-            <div className='text-center mb-4'>
-              <p className='text-lg font-semibold text-brand-dark'>
+            <div className='text-center mb-3'>
+              <p className='text-sm font-semibold text-brand-dark'>
                 Starting from <span className='text-brand-brown'>{hamper.startingPrice}</span>
               </p>
-              {hamper.priceRange && <p className='text-sm text-gray-600'>{hamper.priceRange}</p>}
+              {hamper.priceRange && <p className='text-xs text-gray-600'>{hamper.priceRange}</p>}
             </div>
           )}
 
           {/* Action Buttons */}
-          <div className='flex flex-col sm:flex-row gap-2 sm:gap-3 mt-auto'>
+          <div className='flex flex-col sm:flex-row gap-1.5 sm:gap-2 mt-auto'>
             <button
               onClick={handleBrowseClick}
-              className='bg-gradient-to-r from-brand-gold to-brand-amber text-brand-dark font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-105 hover:-translate-y-1 flex items-center justify-center gap-2 cursor-pointer py-2 px-3 text-xs sm:text-sm flex-1 min-w-0'
+              className='bg-gradient-to-r from-brand-gold to-brand-amber text-brand-dark font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-105 hover:-translate-y-1 flex items-center justify-center gap-2 cursor-pointer py-1.5 px-2.5 text-xs flex-1 min-w-0'
             >
               <span className='truncate'>{showDetailsButton ? "View Details" : "Browse"}</span>
               <IoArrowForward className='w-3 h-3 sm:w-4 sm:h-4 transition-transform duration-300 ease-out group-hover:translate-x-1 flex-shrink-0' />
@@ -201,7 +206,7 @@ export default function HamperCard({
 
             <button
               onClick={handleWhatsAppInquiry}
-              className='bg-white/90 backdrop-blur-sm text-brand-brown border-2 border-brand-gold font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-105 hover:-translate-y-1 flex items-center justify-center gap-2 cursor-pointer py-2 px-3 text-xs sm:text-sm flex-1 min-w-0'
+              className='bg-white/90 backdrop-blur-sm text-brand-brown border-2 border-brand-gold font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-105 hover:-translate-y-1 flex items-center justify-center gap-2 cursor-pointer py-1.5 px-2.5 text-xs flex-1 min-w-0'
             >
               <FaWhatsapp className='w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0' />
               <span className='truncate'>Let&apos;s Connect</span>

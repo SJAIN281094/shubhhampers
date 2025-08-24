@@ -90,11 +90,13 @@ async function getHampersPageData(searchParams: { [key: string]: string | string
       ...(category && category !== "all" && { category })
     });
 
-    return {
+    const result = {
       hampers: response.data.map(transformApiHamperToUI),
       pagination: response.meta.pagination,
       currentCategory: category || "all"
     };
+
+    return result;
   } catch {
     return {
       hampers: [],

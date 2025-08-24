@@ -1,12 +1,12 @@
 /**
- * Reusable Section Header Component
- * Eliminates repeated section header patterns across components
+ * SEO-Optimized Page Header Component
+ * Provides proper H1 structure with contextual titles for each page type
  */
 
 import React from "react";
 import FeatureTag from "../FeatureTag";
 
-interface SectionHeaderProps {
+interface PageHeaderProps {
   title: string;
   description?: string;
   tag?: {
@@ -15,10 +15,14 @@ interface SectionHeaderProps {
   };
   variant?: "center" | "left" | "hero";
   size?: "sm" | "md" | "lg";
-  theme?: "default" | "dark"; // For different background themes
+  theme?: "default" | "dark";
   showDecorations?: boolean;
   className?: string;
   children?: React.ReactNode;
+  breadcrumbs?: Array<{
+    label: string;
+    href: string;
+  }>;
 }
 
 const variantStyles = {
@@ -39,13 +43,13 @@ const sizeStyles = {
     spacing: "mb-12 md:mb-16"
   },
   lg: {
-    title: "text-2xl xs:text-3xl sm:text-4xl md:text-4xl lg:text-5xl xl:text-6xl",
-    description: "text-xs xs:text-sm sm:text-base md:text-lg",
+    title: "text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl",
+    description: "text-base sm:text-lg md:text-xl lg:text-2xl",
     spacing: "mb-6 md:mb-8"
   }
 };
 
-export default function SectionHeader({
+export default function PageHeader({
   title,
   description,
   tag,
@@ -54,8 +58,9 @@ export default function SectionHeader({
   theme = "default",
   showDecorations = false,
   className = "",
-  children
-}: SectionHeaderProps) {
+  children,
+  breadcrumbs
+}: PageHeaderProps) {
   const styles = sizeStyles[size];
 
   // Theme-based color classes
@@ -82,6 +87,31 @@ export default function SectionHeader({
         </>
       )}
 
+      {/* Breadcrumbs - Hidden visually but available for screen readers and SEO */}
+      {breadcrumbs && breadcrumbs.length > 0 && (
+        <nav aria-label='Breadcrumb navigation' className='sr-only'>
+          <ol className='flex items-center space-x-1 md:space-x-2 text-sm text-brand-dark/70'>
+            {breadcrumbs.map((crumb, index) => (
+              <li key={crumb.href} className='flex items-center'>
+                {index > 0 && <span className='mx-1 md:mx-2 text-brand-gold'>›</span>}
+                {index === breadcrumbs.length - 1 ? (
+                  <span className='font-medium text-brand-brown' aria-current='page'>
+                    {crumb.label}
+                  </span>
+                ) : (
+                  <a
+                    href={crumb.href}
+                    className='hover:text-brand-brown transition-colors duration-200'
+                  >
+                    {crumb.label}
+                  </a>
+                )}
+              </li>
+            ))}
+          </ol>
+        </nav>
+      )}
+
       {/* Feature Tag */}
       {tag && (
         <FeatureTag
@@ -94,12 +124,12 @@ export default function SectionHeader({
         </FeatureTag>
       )}
 
-      {/* Title */}
-      <h2
+      {/* H1 Title - SEO Optimized */}
+      <h1
         className={`font-display font-bold mb-2 xs:mb-3 md:mb-4 leading-tight tracking-wide drop-shadow-sm relative z-10 ${styles.title} ${currentTheme.title}`}
       >
         {title}
-      </h2>
+      </h1>
 
       {/* Description */}
       {description && (
@@ -114,6 +144,25 @@ export default function SectionHeader({
 
       {/* Additional content */}
       {children}
+
+      {/* Structured Data for Breadcrumbs */}
+      {breadcrumbs && breadcrumbs.length > 0 && (
+        <script
+          type='application/ld+json'
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              itemListElement: breadcrumbs.map((crumb, index) => ({
+                "@type": "ListItem",
+                position: index + 1,
+                name: crumb.label,
+                item: `https://www.shubhhampers.com${crumb.href}`
+              }))
+            })
+          }}
+        />
+      )}
     </div>
   );
 }

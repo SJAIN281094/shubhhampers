@@ -45,7 +45,7 @@ function transformApiHamperToUI(apiHamper: ApiHamperProduct): HamperProduct {
   const categoryName = apiHamper.category.name;
   const subCategoryName = apiHamper.subCategory?.name;
 
-  // Generate features from hamper items
+  // Generate features from hamper items - only from API data, no fallbacks
   const features = apiHamper.hamperItems.map(item => `${item.quantity}x ${item.item.name}`);
 
   // Calculate price display

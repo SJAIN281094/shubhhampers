@@ -8,6 +8,7 @@ interface CategoryOption {
   id: string;
   label: string;
   icon: string;
+  description?: string;
 }
 
 interface HamperListingPageServerProps {
@@ -104,7 +105,7 @@ function PaginationControls({
   );
 }
 
-// Server component for category filters
+// Server component for category filters - Chip Design
 function CategoryFilters({
   currentCategory = "all",
   baseUrl = "/hampers"
@@ -128,23 +129,30 @@ function CategoryFilters({
   };
 
   return (
-    <div className='bg-white rounded-2xl shadow-lg border border-brand-gold/20 p-6 mb-8'>
-      <h3 className='text-lg font-semibold text-brand-dark mb-4'>Filter by Category</h3>
-      <div className='grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3'>
-        {categories.map(category => (
-          <Link
-            key={category.id}
-            href={buildCategoryUrl(category.id)}
-            className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
-              currentCategory === category.id
-                ? "bg-brand-gold text-white shadow-md"
-                : "bg-gray-50 text-gray-700 hover:bg-brand-gold/10 hover:text-brand-brown"
-            }`}
-          >
-            <span className='text-lg'>{category.icon}</span>
-            <span>{category.label}</span>
-          </Link>
-        ))}
+    <div className='text-center mb-8'>
+      {/* Centered Heading */}
+      <h3 className='text-xl font-semibold text-brand-dark mb-6'>Explore by Category</h3>
+
+      {/* Category Chips */}
+      <div className='flex flex-wrap justify-center gap-3'>
+        {categories.map(category => {
+          const isActive = currentCategory === category.id;
+
+          return (
+            <Link
+              key={category.id}
+              href={buildCategoryUrl(category.id)}
+              className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+                isActive
+                  ? "bg-gradient-to-r from-brand-gold to-brand-amber text-white shadow-lg transform scale-105"
+                  : "bg-white border border-brand-gold/30 text-brand-dark hover:bg-brand-gold/10 hover:border-brand-gold shadow-sm"
+              }`}
+            >
+              <span>{category.icon}</span>
+              <span>{category.label}</span>
+            </Link>
+          );
+        })}
       </div>
     </div>
   );
@@ -165,6 +173,27 @@ export default function HamperListingPageServer({
       <div className='container mx-auto px-4 sm:px-6 lg:px-8'>
         {/* Hero Section */}
         <div className='text-center mb-8 sm:mb-12'>
+          {/* SEO H1 - Hidden but accessible */}
+          <h1 className='sr-only'>{pageData.title}</h1>
+
+          {/* Breadcrumb Structured Data */}
+          {pageData.breadcrumbs && pageData.breadcrumbs.length > 0 && (
+            <script
+              type='application/ld+json'
+              dangerouslySetInnerHTML={{
+                __html: JSON.stringify({
+                  "@context": "https://schema.org",
+                  "@type": "BreadcrumbList",
+                  itemListElement: pageData.breadcrumbs.map((crumb, index) => ({
+                    "@type": "ListItem",
+                    position: index + 1,
+                    name: crumb.label,
+                    item: `https://www.shubhhampers.com${crumb.href}`
+                  }))
+                })
+              }}
+            />
+          )}
           <SectionHeader
             tag={categoryTag}
             title={pageData.title}
