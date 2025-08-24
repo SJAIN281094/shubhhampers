@@ -91,12 +91,12 @@ export default function FooterLinks({ onModalOpen: _onModalOpen }: FooterLinksPr
         {/* Contact Information */}
         <div className='mt-4 bg-brand-gold/10 border border-brand-gold/30 rounded-lg p-3 space-y-2 backdrop-blur-sm w-fit'>
           <div className='flex items-center gap-2 text-brand-light font-medium text-sm'>
-            <FaPhone className='w-3 h-3 text-brand-gold flex-shrink-0' />
-            <span className='whitespace-nowrap'>{CONTACT_INFO.displayPhone}</span>
+            <FaPhone className='w-3 h-3 text-brand-gold flex-shrink-0 rotate-90' />
+            <span className='whitespace-nowrap'>{CONTACT_INFO.phone}</span>
           </div>
           <div className='flex items-center gap-2 text-brand-light font-medium text-sm'>
             <FaEnvelope className='w-3 h-3 text-brand-gold flex-shrink-0' />
-            <span className='whitespace-nowrap'>{CONTACT_INFO.displayEmail}</span>
+            <span className='whitespace-nowrap'>{CONTACT_INFO.email}</span>
           </div>
         </div>
       </div>

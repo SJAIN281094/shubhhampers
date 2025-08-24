@@ -61,27 +61,29 @@ export function transformBannerToSlide(banner: HeroBanner): TransformedHeroSlide
       "bg-gradient-to-r from-brand-amber to-brand-gold hover:from-brand-gold hover:to-brand-amber"
   };
 
-  // Find primary and secondary CTA buttons
-  const primaryCTA = banner.ctaButtons.find(btn => btn.variant === "primary");
-  const secondaryCTA = banner.ctaButtons.find(btn => btn.variant === "secondary");
-
   // Use optimized image URL (prefer small format for better performance)
   const imageUrl = banner.image.formats?.small?.url || banner.image.url;
+
+  // Get first primary and secondary for legacy compatibility
+  const primaryCTA = banner.ctaButtons.find(btn => btn.variant === "primary");
+  const secondaryCTA = banner.ctaButtons.find(btn => btn.variant === "secondary");
 
   return {
     id: banner.id,
     title: banner.title,
     subtitle: banner.subtitle,
     description: banner.description,
-    cta: primaryCTA?.text || "Learn More",
-    ctaUrl: primaryCTA?.url || "/hampers",
-    secondaryCta: secondaryCTA?.text || "Contact Us",
-    secondaryCtaUrl: secondaryCTA?.url || "/contact",
+    ctaButtons: banner.ctaButtons || [], // Pass all CTAs dynamically
     gradient: categoryGradients[banner.category] || categoryGradients.default,
     buttonClass: categoryButtonClasses[banner.category] || categoryButtonClasses.default,
     features: banner.tags.map(tag => tag.text),
     image: imageUrl,
     imageAlt: `${banner.title} - ${banner.category} Gift Hampers`,
+    // Legacy compatibility fields
+    cta: primaryCTA?.text || "",
+    ctaUrl: primaryCTA?.url || "",
+    secondaryCta: secondaryCTA?.text || "",
+    secondaryCtaUrl: secondaryCTA?.url || "",
     category: banner.category.toLowerCase(),
     priority: banner.priority,
     isActive: banner.isActive

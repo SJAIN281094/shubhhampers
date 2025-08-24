@@ -84,10 +84,7 @@ export interface TransformedHeroSlide {
   title: string;
   subtitle: string;
   description: string;
-  cta: string;
-  ctaUrl: string;
-  secondaryCta: string;
-  secondaryCtaUrl: string;
+  ctaButtons: HeroCTAButton[]; // Dynamic array of all CTAs
   gradient: string; // Generated based on category
   buttonClass: string; // Generated based on variant
   features: string[];
@@ -96,4 +93,9 @@ export interface TransformedHeroSlide {
   category: string;
   priority: number;
   isActive: boolean;
+  // Legacy fields for backward compatibility
+  cta?: string;
+  ctaUrl?: string;
+  secondaryCta?: string;
+  secondaryCtaUrl?: string;
 }

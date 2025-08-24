@@ -153,8 +153,11 @@ async function getHomePageData() {
               description: apiHamper.description,
               features,
               deliveryTime: apiHamper.delivery.description,
+              deliveryTitle: apiHamper.delivery.title,
               minimumOrder: apiHamper.minimumOrder.description,
+              minimumOrderTitle: apiHamper.minimumOrder.title,
               bulkBenefit: apiHamper.bulkBenefit.description,
+              bulkBenefitTitle: apiHamper.bulkBenefit.title,
               bgColor: "#FFF7ED",
               accentColor: "#F97316",
               textColor: "#9A3412",
@@ -162,6 +165,7 @@ async function getHomePageData() {
               subCategory: subCategoryName, // Use string for HamperProduct type
               backgroundImage: mainImage,
               hamperItems: apiHamper.hamperItems,
+              tags: apiHamper.tags || [],
               isActive: apiHamper.isActive
             };
           });

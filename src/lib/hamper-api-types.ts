@@ -71,6 +71,11 @@ export interface HamperBulkBenefit {
   icon: string | null;
 }
 
+export interface HamperTag {
+  id: number;
+  text: string;
+}
+
 export interface HamperItem {
   id: number;
   documentId: string;
@@ -109,6 +114,7 @@ export interface ApiHamperProduct {
   bulkBenefit: HamperBulkBenefit;
   image: HamperImage[];
   hamperItems: HamperItemWithQuantity[];
+  tags: HamperTag[];
 }
 
 export interface ApiPagination {
@@ -152,8 +158,11 @@ export interface HamperProduct {
   description: string;
   features: string[];
   deliveryTime: string;
+  deliveryTitle: string;
   minimumOrder: string;
+  minimumOrderTitle: string;
   bulkBenefit: string;
+  bulkBenefitTitle: string;
   bgColor: string;
   accentColor: string;
   category: string;
@@ -164,6 +173,7 @@ export interface HamperProduct {
   textColor?: string;
   bgGradient?: string;
   hamperItems: HamperItemWithQuantity[];
+  tags: HamperTag[];
   isActive: boolean;
 }
 

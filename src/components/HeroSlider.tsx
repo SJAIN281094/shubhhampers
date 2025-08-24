@@ -205,24 +205,6 @@ export default function HeroSlider({ slides = [] }: HeroSliderProps) {
     }
   }, [isMounted, slides]);
 
-  // Memoized navigation handlers
-  const navigateToCategory = useCallback(
-    (category: string) => {
-      // Map categories to SEO-friendly URLs
-      const categoryUrlMap: Record<string, string> = {
-        festival: "/hampers/festival-gift-hampers",
-        wedding: "/hampers/wedding-gift-hampers",
-        business: "/hampers/business-gift-hampers",
-        personal: "/hampers/personal-gift-hampers",
-        corporate: "/hampers/business-gift-hampers", // Alias for business
-        all: "/hampers"
-      };
-      const url = categoryUrlMap[category] || "/hampers";
-      router.push(url);
-    },
-    [router]
-  );
-
   const getCategoryMessage = (category: string) => {
     const categoryMessages = {
       festival:
@@ -437,27 +419,59 @@ export default function HeroSlider({ slides = [] }: HeroSliderProps) {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 1, delay: 0.2 }}
                   >
-                    {/* Title & Subtitle */}
-                    <motion.h2
-                      className='font-display text-2xl xs:text-3xl sm:text-4xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-brand-dark mb-2 xs:mb-3 md:mb-4 leading-tight tracking-wide'
-                      variants={contentVariants}
-                      initial='hidden'
-                      animate='visible'
-                      transition={{ duration: 0.8, delay: 0.4 }}
-                    >
-                      {currentSlideData.title}
-                    </motion.h2>
-                    {currentSlideData.subtitle && (
-                      <motion.h3
-                        className='text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-semibold text-brand-brown mb-3 xs:mb-4 md:mb-6'
+                    {/* Enhanced Title & Subtitle with Decorative Elements */}
+                    <div className='relative'>
+                      {/* Decorative Background Elements */}
+                      <motion.div
+                        className='absolute -top-4 -left-8 w-16 h-16 bg-brand-gold/20 rounded-full blur-lg'
+                        animate={{
+                          scale: [1, 1.2, 1],
+                          opacity: [0.3, 0.6, 0.3]
+                        }}
+                        transition={{
+                          duration: 4,
+                          repeat: Infinity,
+                          ease: "easeInOut"
+                        }}
+                      />
+                      <motion.div
+                        className='absolute -top-2 -right-6 w-12 h-12 bg-brand-amber/30 rounded-full blur-md'
+                        animate={{
+                          y: [0, -8, 0],
+                          opacity: [0.2, 0.5, 0.2]
+                        }}
+                        transition={{
+                          duration: 3,
+                          repeat: Infinity,
+                          ease: "easeInOut",
+                          delay: 0.5
+                        }}
+                      />
+
+                      {/* Enhanced Title */}
+                      <motion.h2
+                        className='font-display text-2xl xs:text-3xl sm:text-4xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-brand-brown mb-2 xs:mb-3 md:mb-4 leading-tight tracking-wide drop-shadow-sm relative z-10'
                         variants={contentVariants}
                         initial='hidden'
                         animate='visible'
-                        transition={{ duration: 0.8, delay: 0.6 }}
+                        transition={{ duration: 0.8, delay: 0.4 }}
                       >
-                        {currentSlideData.subtitle}
-                      </motion.h3>
-                    )}
+                        {currentSlideData.title}
+                      </motion.h2>
+
+                      {/* Enhanced Subtitle */}
+                      {currentSlideData.subtitle && (
+                        <motion.h3
+                          className='text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-semibold text-brand-dark mb-3 xs:mb-4 md:mb-6 drop-shadow-sm relative z-10 leading-relaxed'
+                          variants={contentVariants}
+                          initial='hidden'
+                          animate='visible'
+                          transition={{ duration: 0.8, delay: 0.6 }}
+                        >
+                          {currentSlideData.subtitle}
+                        </motion.h3>
+                      )}
+                    </div>
 
                     {/* Description */}
                     <motion.p
@@ -506,32 +520,47 @@ export default function HeroSlider({ slides = [] }: HeroSliderProps) {
                       </div>
                     </motion.div>
 
-                    {/* CTA Buttons */}
-                    <motion.div
-                      className='flex flex-col lg:flex-row items-center lg:items-start lg:justify-start justify-center space-y-3 lg:space-y-0 lg:space-x-4 w-full'
-                      variants={contentVariants}
-                      initial='hidden'
-                      animate='visible'
-                      transition={{ duration: 0.8, delay: 1.6 }}
-                    >
-                      <PrimaryButton
-                        onClick={() => navigateToCategory(currentSlideData.category)}
-                        size='md'
-                        className='w-full lg:w-auto lg:flex-1 lg:max-w-[280px]'
+                    {/* CTA Buttons - Dynamic rendering */}
+                    {currentSlideData.ctaButtons && currentSlideData.ctaButtons.length > 0 && (
+                      <motion.div
+                        className='flex flex-col lg:flex-row items-center lg:items-start lg:justify-start justify-center space-y-3 lg:space-y-0 lg:space-x-4 w-full'
+                        variants={contentVariants}
+                        initial='hidden'
+                        animate='visible'
+                        transition={{ duration: 0.8, delay: 1.6 }}
                       >
-                        {currentSlideData.cta}
-                      </PrimaryButton>
-                      <SecondaryButton
-                        onClick={() =>
-                          handleWhatsApp(getCategoryMessage(currentSlideData.category))
-                        }
-                        size='md'
-                        className='w-full lg:w-auto lg:flex-1 lg:max-w-[220px]'
-                      >
-                        <TbBrandWhatsapp className='w-5 h-5' />
-                        WhatsApp Us
-                      </SecondaryButton>
-                    </motion.div>
+                        {currentSlideData.ctaButtons
+                          .filter(cta => cta.text && cta.url && !cta.disabled)
+                          .map((cta, _index) => {
+                            const handleClick = () => {
+                              if (cta.url.includes("whatsapp")) {
+                                handleWhatsApp(getCategoryMessage(currentSlideData.category));
+                              } else if (cta.url.startsWith("http")) {
+                                window.open(cta.url, cta.isExternal ? "_blank" : "_self");
+                              } else {
+                                router.push(cta.url);
+                              }
+                            };
+
+                            const ButtonComponent =
+                              cta.variant === "primary" ? PrimaryButton : SecondaryButton;
+
+                            return (
+                              <ButtonComponent
+                                key={`cta-${cta.id}`}
+                                onClick={handleClick}
+                                size='md'
+                                className='w-full lg:w-auto lg:flex-1 lg:max-w-[280px]'
+                              >
+                                {cta.url.includes("whatsapp") && (
+                                  <TbBrandWhatsapp className='w-5 h-5' />
+                                )}
+                                {cta.text}
+                              </ButtonComponent>
+                            );
+                          })}
+                      </motion.div>
+                    )}
                   </motion.div>
                 </div>
               </div>

@@ -38,16 +38,16 @@ export const NAVIGATION_ITEMS: NavigationItem[] = [
         description: "All Festival Hampers"
       },
       {
-        id: "rakhi",
-        label: "Raksha Bandhan Gift Hampers",
-        emoji: "🪢",
-        href: "/hampers/festival/rakhi-gift-hampers"
-      },
-      {
         id: "diwali",
         label: "Diwali Gift Hampers",
         emoji: "✨",
         href: "/hampers/festival/diwali-gift-hampers"
+      },
+      {
+        id: "rakhi",
+        label: "Raksha Bandhan Gift Hampers",
+        emoji: "🪢",
+        href: "/hampers/festival/rakhi-gift-hampers"
       },
       {
         id: "holi",

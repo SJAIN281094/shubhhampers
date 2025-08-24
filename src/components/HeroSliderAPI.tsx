@@ -126,24 +126,6 @@ export default function HeroSliderAPI({ fallbackSlides = [] }: HeroSliderProps) 
     setIsMounted(true);
   }, []);
 
-  // Memoized navigation handlers
-  const _navigateToCategory = useCallback(
-    (category: string) => {
-      // Map categories to SEO-friendly URLs
-      const categoryUrlMap: Record<string, string> = {
-        festival: "/hampers/festival-gift-hampers",
-        wedding: "/hampers/wedding-gift-hampers",
-        business: "/hampers/business-gift-hampers",
-        personal: "/hampers/personal-gift-hampers",
-        corporate: "/hampers/business-gift-hampers", // Alias for business
-        all: "/hampers"
-      };
-      const url = categoryUrlMap[category] || "/hampers";
-      router.push(url);
-    },
-    [router]
-  );
-
   const getCategoryMessage = (category: string) => {
     const categoryMessages = {
       festival:
@@ -159,34 +141,6 @@ export default function HeroSliderAPI({ fallbackSlides = [] }: HeroSliderProps) 
     };
     return categoryMessages[category as keyof typeof categoryMessages] || categoryMessages.default;
   };
-
-  const handleSecondaryAction = useCallback(
-    (slide: TransformedHeroSlide) => {
-      // If secondary CTA is a WhatsApp URL, handle it as WhatsApp
-      if (slide.secondaryCtaUrl.includes("whatsapp")) {
-        handleWhatsApp(getCategoryMessage(slide.category));
-      } else {
-        // Otherwise navigate to the URL
-        if (slide.secondaryCtaUrl.startsWith("http")) {
-          window.open(slide.secondaryCtaUrl, "_blank");
-        } else {
-          router.push(slide.secondaryCtaUrl);
-        }
-      }
-    },
-    [router]
-  );
-
-  const handlePrimaryAction = useCallback(
-    (slide: TransformedHeroSlide) => {
-      if (slide.ctaUrl.startsWith("http")) {
-        window.open(slide.ctaUrl, "_blank");
-      } else {
-        router.push(slide.ctaUrl);
-      }
-    },
-    [router]
-  );
 
   // Navigation functions
   const paginate = useCallback(
@@ -340,27 +294,58 @@ export default function HeroSliderAPI({ fallbackSlides = [] }: HeroSliderProps) 
                 ))}
               </motion.div>
 
-              {/* Title */}
-              <motion.h1
-                className='font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-brand-dark mb-4 lg:mb-6 leading-tight tracking-wide'
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4, duration: 0.6 }}
-              >
-                {currentSlideData.title}
-              </motion.h1>
+              {/* Enhanced Title & Subtitle with Decorative Elements */}
+              <div className='relative'>
+                {/* Decorative Background Elements */}
+                <motion.div
+                  className='absolute -top-6 -left-12 w-20 h-20 bg-brand-gold/20 rounded-full blur-lg'
+                  animate={{
+                    scale: [1, 1.3, 1],
+                    opacity: [0.3, 0.7, 0.3]
+                  }}
+                  transition={{
+                    duration: 5,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                />
+                <motion.div
+                  className='absolute -top-3 -right-8 w-16 h-16 bg-brand-amber/30 rounded-full blur-md'
+                  animate={{
+                    y: [0, -12, 0],
+                    x: [0, 8, 0],
+                    opacity: [0.2, 0.6, 0.2]
+                  }}
+                  transition={{
+                    duration: 4,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: 0.8
+                  }}
+                />
 
-              {/* Subtitle */}
-              {currentSlideData.subtitle && (
-                <motion.h2
-                  className='text-xl sm:text-2xl lg:text-3xl text-brand-brown font-semibold mb-4 lg:mb-6 leading-relaxed'
+                {/* Enhanced Title */}
+                <motion.h1
+                  className='font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-brand-brown mb-4 lg:mb-6 leading-tight tracking-wide drop-shadow-sm relative z-10'
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.5, duration: 0.6 }}
+                  transition={{ delay: 0.4, duration: 0.6 }}
                 >
-                  {currentSlideData.subtitle}
-                </motion.h2>
-              )}
+                  {currentSlideData.title}
+                </motion.h1>
+
+                {/* Enhanced Subtitle */}
+                {currentSlideData.subtitle && (
+                  <motion.h2
+                    className='text-xl sm:text-2xl lg:text-3xl text-brand-dark font-semibold mb-4 lg:mb-6 leading-relaxed drop-shadow-sm relative z-10'
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.5, duration: 0.6 }}
+                  >
+                    {currentSlideData.subtitle}
+                  </motion.h2>
+                )}
+              </div>
 
               {/* Description */}
               <motion.p
@@ -372,32 +357,44 @@ export default function HeroSliderAPI({ fallbackSlides = [] }: HeroSliderProps) 
                 {currentSlideData.description}
               </motion.p>
 
-              {/* CTA Buttons */}
-              <motion.div
-                className='flex flex-col sm:flex-row gap-3 lg:gap-4 justify-center lg:justify-start'
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.7, duration: 0.6 }}
-              >
-                <PrimaryButton
-                  onClick={() => handlePrimaryAction(currentSlideData)}
-                  size='lg'
-                  className='whitespace-nowrap'
+              {/* CTA Buttons - Dynamic rendering */}
+              {currentSlideData.ctaButtons && currentSlideData.ctaButtons.length > 0 && (
+                <motion.div
+                  className='flex flex-col sm:flex-row gap-3 lg:gap-4 justify-center lg:justify-start'
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.7, duration: 0.6 }}
                 >
-                  {currentSlideData.cta}
-                </PrimaryButton>
+                  {currentSlideData.ctaButtons
+                    .filter(cta => cta.text && cta.url && !cta.disabled)
+                    .map(cta => {
+                      const handleClick = () => {
+                        if (cta.url.includes("whatsapp")) {
+                          handleWhatsApp(getCategoryMessage(currentSlideData.category));
+                        } else if (cta.url.startsWith("http")) {
+                          window.open(cta.url, cta.isExternal ? "_blank" : "_self");
+                        } else {
+                          router.push(cta.url);
+                        }
+                      };
 
-                <SecondaryButton
-                  onClick={() => handleSecondaryAction(currentSlideData)}
-                  size='lg'
-                  className='whitespace-nowrap'
-                >
-                  {currentSlideData.secondaryCta.includes("WhatsApp") && (
-                    <TbBrandWhatsapp className='w-5 h-5' />
-                  )}
-                  {currentSlideData.secondaryCta}
-                </SecondaryButton>
-              </motion.div>
+                      const ButtonComponent =
+                        cta.variant === "primary" ? PrimaryButton : SecondaryButton;
+
+                      return (
+                        <ButtonComponent
+                          key={`cta-${cta.id}`}
+                          onClick={handleClick}
+                          size='lg'
+                          className='whitespace-nowrap'
+                        >
+                          {cta.url.includes("whatsapp") && <TbBrandWhatsapp className='w-5 h-5' />}
+                          {cta.text}
+                        </ButtonComponent>
+                      );
+                    })}
+                </motion.div>
+              )}
             </motion.div>
 
             {/* Right Column - Image */}

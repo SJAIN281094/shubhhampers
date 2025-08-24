@@ -82,8 +82,11 @@ function transformApiHamperToUI(apiHamper: ApiHamperProduct): HamperProduct {
     description: apiHamper.description,
     features,
     deliveryTime: apiHamper.delivery.description,
+    deliveryTitle: apiHamper.delivery.title,
     minimumOrder: apiHamper.minimumOrder.description,
+    minimumOrderTitle: apiHamper.minimumOrder.title,
     bulkBenefit: apiHamper.bulkBenefit.description,
+    bulkBenefitTitle: apiHamper.bulkBenefit.title,
     bgColor: colors.bgColor,
     accentColor: colors.accentColor,
     textColor: colors.textColor,
@@ -94,6 +97,7 @@ function transformApiHamperToUI(apiHamper: ApiHamperProduct): HamperProduct {
     backgroundImage: mainImage,
     hamperItems: apiHamper.hamperItems,
     images: apiHamper.image,
+    tags: apiHamper.tags || [],
     isActive: apiHamper.isActive
   };
 }

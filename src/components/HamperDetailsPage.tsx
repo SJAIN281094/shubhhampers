@@ -134,19 +134,10 @@ export default function HamperDetailsPage({
 
           {/* Product Information */}
           <div className='space-y-6'>
-            {/* Features/Tags */}
-            {hamper.features && hamper.features.length > 0 && (
-              <div className='flex flex-wrap gap-2'>
-                {hamper.features.slice(0, 5).map((feature, index) => (
-                  <HamperTag key={feature || `feature-tag-${index}`} title={feature} />
-                ))}
-              </div>
-            )}
-
             {/* Description */}
             {hamper.description && (
               <div className='prose prose-lg max-w-none'>
-                <h2 className='text-2xl font-display font-bold text-brand-brown mb-4'>
+                <h2 className='text-3xl font-display font-bold text-brand-brown mb-4'>
                   About This Hamper
                 </h2>
                 <div className='text-brand-dark leading-relaxed'>
@@ -159,14 +150,28 @@ export default function HamperDetailsPage({
               </div>
             )}
 
+            {/* Product Highlights */}
+            {hamper.tags && hamper.tags.length > 0 && (
+              <div>
+                <h3 className='text-2xl font-display font-semibold text-brand-brown mb-4'>
+                  Highlights
+                </h3>
+                <div className='flex flex-wrap gap-2'>
+                  {hamper.tags.map(tag => (
+                    <HamperTag key={tag.id} title={tag.text} variant='compact' />
+                  ))}
+                </div>
+              </div>
+            )}
+
             {/* Key Features */}
             {hamper.features && hamper.features.length > 0 && (
               <div>
-                <h3 className='text-xl font-display font-semibold text-brand-brown mb-4'>
+                <h3 className='text-2xl font-display font-semibold text-brand-brown mb-4'>
                   What&apos;s Included
                 </h3>
                 <ul className='space-y-2'>
-                  {hamper.features.slice(0, 8).map((feature, index) => (
+                  {hamper.features.map((feature, index) => (
                     <li
                       key={feature || `feature-list-${index}`}
                       className='flex items-start gap-3 text-brand-dark'
@@ -179,6 +184,42 @@ export default function HamperDetailsPage({
               </div>
             )}
 
+            {/* Additional Info */}
+            <div className='space-y-4'>
+              {/* Delivery Information */}
+              {hamper.deliveryTime && hamper.deliveryTitle && (
+                <div className='bg-brand-light/30 rounded-xl p-4 border-l-4 border-brand-gold'>
+                  <h4 className='font-display font-semibold text-brand-brown text-2xl mb-2 flex items-center gap-2'>
+                    <span className='text-brand-gold'>🚚</span>
+                    {hamper.deliveryTitle}
+                  </h4>
+                  <p className='text-brand-dark leading-relaxed'>{hamper.deliveryTime}</p>
+                </div>
+              )}
+
+              {/* Minimum Order Information */}
+              {hamper.minimumOrder && hamper.minimumOrderTitle && (
+                <div className='bg-brand-light/30 rounded-xl p-4 border-l-4 border-brand-gold'>
+                  <h4 className='font-display font-semibold text-brand-brown text-2xl mb-2 flex items-center gap-2'>
+                    <span className='text-brand-gold'>📦</span>
+                    {hamper.minimumOrderTitle}
+                  </h4>
+                  <p className='text-brand-dark leading-relaxed'>{hamper.minimumOrder}</p>
+                </div>
+              )}
+
+              {/* Bulk Benefit Information */}
+              {hamper.bulkBenefit && hamper.bulkBenefitTitle && (
+                <div className='bg-brand-light/30 rounded-xl p-4 border-l-4 border-brand-gold'>
+                  <h4 className='font-display font-semibold text-brand-brown text-2xl mb-2 flex items-center gap-2'>
+                    <span className='text-brand-gold'>🎯</span>
+                    {hamper.bulkBenefitTitle}
+                  </h4>
+                  <p className='text-brand-dark leading-relaxed'>{hamper.bulkBenefit}</p>
+                </div>
+              )}
+            </div>
+
             {/* Action Buttons */}
             <div className='flex flex-col sm:flex-row gap-4 pt-6'>
               <PrimaryButton onClick={handleWhatsAppInquiry} className='flex-1'>
@@ -187,22 +228,6 @@ export default function HamperDetailsPage({
               <SecondaryButton onClick={handleWhatsAppInquiry} className='flex-1'>
                 Customize This Hamper
               </SecondaryButton>
-            </div>
-
-            {/* Additional Info */}
-            <div className='bg-brand-light/30 rounded-xl p-6 space-y-3'>
-              <div className='flex items-center gap-3 text-brand-dark'>
-                <span className='text-brand-gold'>🚚</span>
-                <span>Free delivery across India</span>
-              </div>
-              <div className='flex items-center gap-3 text-brand-dark'>
-                <span className='text-brand-gold'>📞</span>
-                <span>24/7 customer support</span>
-              </div>
-              <div className='flex items-center gap-3 text-brand-dark'>
-                <span className='text-brand-gold'>🎨</span>
-                <span>100% customizable hampers</span>
-              </div>
             </div>
           </div>
         </div>
