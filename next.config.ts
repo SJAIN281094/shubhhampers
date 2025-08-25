@@ -7,10 +7,6 @@ const nextConfig: NextConfig = {
   // Enable React strict mode for better development
   reactStrictMode: true,
 
-  experimental: {
-    optimizeCss: false
-  },
-
   // Enhanced image optimization for Next.js 15
   images: {
     formats: ["image/webp", "image/avif"],

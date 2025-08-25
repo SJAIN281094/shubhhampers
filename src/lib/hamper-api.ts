@@ -243,10 +243,20 @@ export async function searchHampers(
  */
 export async function fetchHamperBySlug(slug: string): Promise<HamperProduct | null> {
   try {
-    const response = await apiClient.get(`/hampers?slug=${encodeURIComponent(slug)}`);
+    const response = await apiClient.get(`/hampers/${encodeURIComponent(slug)}`);
 
-    if (response.data?.data && response.data.data.length > 0) {
-      return transformApiHamperToUI(response.data.data[0]);
+    if (response.data?.data) {
+      // API now returns single hamper object directly: { data: { id, title, slug, ... } }
+      const hamper = response.data.data;
+
+      // Verify the slug matches (defensive programming)
+      if (hamper.slug === slug) {
+        return transformApiHamperToUI(hamper);
+      }
+
+      // Log warning if slug doesn't match but still return the data
+      console.warn(`⚠️ API returned different slug. Requested: '${slug}', Got: '${hamper.slug}'`);
+      return transformApiHamperToUI(hamper);
     }
 
     return null;
