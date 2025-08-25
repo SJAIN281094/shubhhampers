@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Header from "@components/Header";
 import Footer from "@components/Footer";
 import InstagramGallery from "@components/InstagramGallery";
+import CTASection from "@components/CTASection";
 
 export const metadata: Metadata = {
   title: "Instagram Gallery | Shubhhampers",
@@ -59,6 +60,15 @@ export default function GalleryPage() {
     <main className='min-h-screen'>
       <Header />
       <InstagramGallery />
+      <CTASection
+        title='Inspired by What You See?'
+        description="Let's bring your vision to life with a custom hamper that captures the same beauty and thoughtfulness you've seen in our gallery. Every hamper tells a unique story."
+        primaryButtonText='Create Your Hamper'
+        primaryButtonHref='/contact'
+        secondaryButtonText='Browse Collections'
+        secondaryButtonHref='/hampers'
+        theme='dark'
+      />
       <Footer />
     </main>
   );

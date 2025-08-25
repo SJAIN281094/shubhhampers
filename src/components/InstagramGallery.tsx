@@ -314,32 +314,6 @@ export default function InstagramGallery() {
             </Link>
           </div>
         )}
-
-        {/* CTA Section */}
-        <div className='text-center mt-20 bg-gradient-to-r from-brand-gold/20 to-brand-amber/20 rounded-3xl p-8 md:p-12'>
-          <h2 className='font-display text-2xl md:text-3xl font-bold text-brand-dark mb-4'>
-            Love What You See?
-          </h2>
-          <p className='text-gray-700 text-lg mb-6 max-w-2xl mx-auto'>
-            Get inspired by our hamper creations and let us design something special for your next
-            celebration. Follow us for daily updates and exclusive content!
-          </p>
-          <div className='flex flex-col sm:flex-row gap-4 justify-center'>
-            <Link href='/contact'>
-              <PrimaryButton size='sm'>Create Custom Hamper</PrimaryButton>
-            </Link>
-            <Link
-              href='https://instagram.com/shubhhampers_'
-              target='_blank'
-              rel='noopener noreferrer'
-            >
-              <SecondaryButton size='sm'>
-                <FaInstagram className='w-4 h-4' />
-                Follow Us
-              </SecondaryButton>
-            </Link>
-          </div>
-        </div>
       </div>
     </section>
   );

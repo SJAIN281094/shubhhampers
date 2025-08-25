@@ -107,7 +107,7 @@ function transformApiHamperToUI(apiHamper: ApiHamperProduct): HamperProduct {
  */
 export async function fetchHampers(params: HampersApiParams = {}): Promise<ApiHampersResponse> {
   try {
-    const queryParams: Record<string, any> = {};
+    const queryParams: Record<string, string | number | boolean> = {};
 
     // Use limit/offset if provided, otherwise fall back to page/pageSize
     if (params.limit !== undefined) {

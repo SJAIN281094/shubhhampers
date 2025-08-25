@@ -4,8 +4,7 @@ import { useState } from "react";
 import { Button } from "@ui-kit/button";
 import CatalogueModal from "./CatalogueModal";
 import CatalogueHero from "./CatalogueHero";
-import PrimaryButton from "./PrimaryButton";
-import SecondaryButton from "./SecondaryButton";
+import CTASection from "./CTASection";
 
 interface CatalogueViewPageProps {
   catalogueUrl?: string;
@@ -137,22 +136,17 @@ export default function CatalogueViewPage({ catalogueUrl }: CatalogueViewPagePro
               </div>
 
               {/* CTA Section */}
-              <div className='mt-12 text-center bg-gradient-to-br from-brand-gold/10 to-brand-amber/10 rounded-2xl p-8 border border-brand-gold/20'>
-                <h2 className='text-2xl lg:text-3xl font-bold text-brand-dark mb-4'>
-                  Ready to Order or Need Custom Solutions?
-                </h2>
-                <p className='text-gray-700 mb-6 max-w-2xl mx-auto'>
-                  Contact our team for personalized consultations, bulk orders, or custom hamper
-                  designs that perfectly match your requirements.
-                </p>
-                <div className='flex flex-col sm:flex-row items-center justify-center gap-4'>
-                  <PrimaryButton onClick={() => setIsCatalogueModalOpen(true)}>
-                    Download Full Catalogue
-                  </PrimaryButton>
-                  <a href='/contact'>
-                    <SecondaryButton>Get Custom Quote</SecondaryButton>
-                  </a>
-                </div>
+              <div className='mt-12'>
+                <CTASection
+                  title='Ready to Create Something Special?'
+                  description="Let's work together to create magical hamper experiences that celebrate your special moments and make every occasion unforgettable."
+                  primaryButtonText='Download Full Catalogue'
+                  primaryButtonAction={() => setIsCatalogueModalOpen(true)}
+                  secondaryButtonText='Get Custom Quote'
+                  secondaryButtonHref='/contact'
+                  theme='light'
+                  className='rounded-2xl border border-brand-gold/20'
+                />
               </div>
             </div>
           </div>
@@ -193,22 +187,17 @@ export default function CatalogueViewPage({ catalogueUrl }: CatalogueViewPagePro
             </div>
 
             {/* CTA Section */}
-            <div className='mt-12 text-center bg-gradient-to-br from-brand-gold/10 to-brand-amber/10 rounded-2xl p-8 border border-brand-gold/20'>
-              <h2 className='text-2xl lg:text-3xl font-bold text-brand-dark mb-4'>
-                Ready to Order or Need Custom Solutions?
-              </h2>
-              <p className='text-gray-700 mb-6 max-w-2xl mx-auto'>
-                Contact our team for personalized consultations, bulk orders, or custom hamper
-                designs that perfectly match your requirements.
-              </p>
-              <div className='flex flex-col sm:flex-row items-center justify-center gap-4'>
-                <PrimaryButton onClick={() => setIsCatalogueModalOpen(true)}>
-                  Download Full Catalogue
-                </PrimaryButton>
-                <a href='/contact'>
-                  <SecondaryButton>Get Custom Quote</SecondaryButton>
-                </a>
-              </div>
+            <div className='mt-12'>
+              <CTASection
+                title='Ready to Create Something Special?'
+                description="Let's work together to create magical hamper experiences that celebrate your special moments and make every occasion unforgettable."
+                primaryButtonText='Download Full Catalogue'
+                primaryButtonAction={() => setIsCatalogueModalOpen(true)}
+                secondaryButtonText='Get Custom Quote'
+                secondaryButtonHref='/contact'
+                theme='light'
+                className='rounded-2xl border border-brand-gold/20'
+              />
             </div>
           </div>
         </div>

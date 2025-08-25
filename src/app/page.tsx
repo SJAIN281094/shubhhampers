@@ -20,7 +20,7 @@ const HowWeWorkSection = dynamic(() => import("@components/HowWeWorkSection"), {
   loading: () => <div className='h-20 bg-gradient-to-br from-brand-light/20 to-white' />
 });
 
-const CTASection = dynamic(() => import("@components/CTASection"), {
+const WhyChooseUsSection = dynamic(() => import("@components/WhyChooseUsSection"), {
   loading: () => <div className='h-20 bg-gradient-to-br from-brand-brown to-brand-dark' />
 });
 
@@ -208,7 +208,7 @@ export default async function Home() {
       <HeroSlider slides={heroSlides} />
       <EventsSection categoryHampers={categoryHampers} />
       <HowWeWorkSection />
-      <CTASection />
+      <WhyChooseUsSection />
       <Footer />
     </main>
   );

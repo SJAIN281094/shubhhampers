@@ -35,7 +35,7 @@ export default function HamperTag({ title, className = "", variant = "default" }
         <div className='absolute top-0 left-1/2 transform -translate-x-1/2 w-8 sm:w-12 h-0.5 bg-gradient-to-r from-transparent via-brand-gold to-transparent rounded-full' />
 
         {/* Tag Title */}
-        <span className='text-brand-dark font-bold text-sm xs:text-base sm:text-lg md:text-xl group-hover:text-base group-hover:xs:text-lg group-hover:sm:text-xl group-hover:md:text-2xl text-center tracking-wide leading-tight whitespace-nowrap transition-all duration-300 ease-out'>
+        <span className='text-brand-dark font-bold text-sm xs:text-base sm:text-lg md:text-xl lg:text-lg xl:text-xl group-hover:text-base group-hover:xs:text-lg group-hover:sm:text-xl group-hover:md:text-2xl group-hover:lg:text-xl group-hover:xl:text-2xl text-center tracking-wide leading-tight whitespace-nowrap transition-all duration-300 ease-out'>
           {title}
         </span>
 

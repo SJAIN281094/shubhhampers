@@ -4,7 +4,7 @@ import Footer from "@components/Footer";
 import ContactHero from "@components/ContactHero";
 import ContactMethods from "@components/ContactMethods";
 import ContactFormSection from "@components/ContactFormSection";
-import QuickContact from "@components/QuickContact";
+import CTASection from "@components/CTASection";
 
 export const metadata: Metadata = {
   title: "Contact Us - Curated Gift Hamper Service | Shubhhampers",
@@ -81,7 +81,15 @@ export default function ContactPage() {
         <ContactHero />
         <ContactMethods />
         <ContactFormSection />
-        <QuickContact />
+        <CTASection
+          title='Need Immediate Help?'
+          description='For urgent inquiries or immediate assistance, reach out to us directly. Our team is ready to help you create the perfect hamper experience.'
+          primaryButtonText='📞 Call Now: +91 96858 47274'
+          primaryButtonHref='tel:+919685847274'
+          secondaryButtonText='✉️ Email: connect@shubhhampers.com'
+          secondaryButtonHref='mailto:connect@shubhhampers.com'
+          theme='light'
+        />
       </div>
 
       <Footer />

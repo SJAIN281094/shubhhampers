@@ -112,7 +112,7 @@ export default function MobileNavigation() {
                 }`}
                 onClick={handleClose}
               >
-                🏠 Home
+                Home
               </Link>
 
               {/* Navigation Sections */}
@@ -122,7 +122,7 @@ export default function MobileNavigation() {
                     onClick={() => toggleSection(navItem.id)}
                     className='flex items-center justify-between w-full font-semibold text-brand-dark text-sm uppercase tracking-wide hover:text-brand-brown transition-colors py-3 px-3 rounded-lg hover:bg-brand-gold/10 min-h-[48px]'
                   >
-                    {navItem.emoji} {navItem.label} Gift Hampers
+                    {navItem.label} Gift Hampers
                     {expandedSections.has(navItem.id) ? (
                       <ChevronDown className='w-4 h-4 text-brand-amber' />
                     ) : (
@@ -142,7 +142,7 @@ export default function MobileNavigation() {
                           }`}
                           onClick={handleClose}
                         >
-                          {child.emoji} {child.label}
+                          {child.label}
                         </Link>
                       ))}
                     </div>
@@ -163,7 +163,7 @@ export default function MobileNavigation() {
                       className='block text-gray-600 hover:text-brand-brown cursor-pointer text-sm py-2 px-3 rounded hover:bg-brand-gold/5 transition-colors'
                       onClick={handleClose}
                     >
-                      {item.emoji} {item.label}
+                      {item.label}
                     </Link>
                   ))}
                 </div>
@@ -176,14 +176,14 @@ export default function MobileNavigation() {
                 onClick={handleNavigateToContact}
                 className='w-full bg-gradient-to-r from-brand-gold to-brand-amber text-brand-dark font-semibold py-3 rounded-lg shadow-md hover:shadow-lg transition-all duration-200 transform hover:scale-[1.02]'
               >
-                💬 Start Consultation
+                Start Consultation
               </Button>
 
               <Button
                 onClick={handleNavigateToWhatsApp}
                 className='w-full bg-transparent text-brand-brown border-2 border-brand-gold font-semibold py-3 rounded-lg hover:bg-brand-gold/10 transition-all duration-200 transform hover:scale-[1.02]'
               >
-                📱 WhatsApp Us
+                WhatsApp Us
               </Button>
 
               {/* Contact Info */}

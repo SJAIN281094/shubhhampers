@@ -15,7 +15,7 @@ interface SectionHeaderProps {
   };
   variant?: "center" | "left" | "hero";
   size?: "sm" | "md" | "lg";
-  theme?: "default" | "dark"; // For different background themes
+  theme?: "default" | "dark" | "light"; // For different background themes
   showDecorations?: boolean;
   className?: string;
   children?: React.ReactNode;
@@ -64,13 +64,17 @@ export default function SectionHeader({
       title: "text-brand-brown",
       description: "text-brand-dark"
     },
+    light: {
+      title: "text-brand-brown",
+      description: "text-brand-dark"
+    },
     dark: {
       title: "text-brand-light",
       description: "text-brand-gold"
     }
   };
 
-  const currentTheme = themeStyles[theme];
+  const currentTheme = themeStyles[theme] || themeStyles.default;
 
   return (
     <div className={`${variantStyles[variant]} ${styles.spacing} relative ${className}`}>
