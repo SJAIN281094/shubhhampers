@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import dynamic from "next/dynamic";
 import { Poppins, Allura } from "next/font/google";
+import { getEnvVar } from "@lib/env-server-actions";
 import "./globals.css";
 
 // Font configurations using Next.js optimized font loading
@@ -132,11 +133,15 @@ export const metadata: Metadata = {
   }
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // Get environment variables from server
+  const googleAnalytics = await getEnvVar("NEXT_PUBLIC_GOOGLE_ANALYTICS");
+  const googleTagManager = await getEnvVar("NEXT_PUBLIC_GOOGLE_TAG_MANAGER");
+  const environment = await getEnvVar("NEXT_PUBLIC_ENV");
   return (
     <html lang='en'>
       <head>
@@ -204,7 +209,7 @@ export default function RootLayout({
         <noscript>
           <iframe
             title='Google Tag Manager'
-            src={`https://www.googletagmanager.com/ns.html?id=${process.env.NEXT_PUBLIC_GOOGLE_TAG_MANAGER}`}
+            src={`https://www.googletagmanager.com/ns.html?id=${googleTagManager}`}
             height='0'
             width='0'
             style={{ display: "none", visibility: "hidden" }}
@@ -220,15 +225,15 @@ export default function RootLayout({
           id='google-tag-manager'
           strategy='beforeInteractive'
           dangerouslySetInnerHTML={{
-            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${process.env.NEXT_PUBLIC_GOOGLE_TAG_MANAGER}');`
+            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${googleTagManager}');`
           }}
         />
 
         {/* Google Analytics - Load after page becomes interactive */}
-        {process.env.NEXT_PUBLIC_ENV === "production" && (
+        {environment === "production" && googleAnalytics && (
           <>
             <Script
-              src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
+              src={`https://www.googletagmanager.com/gtag/js?id=${googleAnalytics}`}
               strategy='afterInteractive'
             />
             <Script
@@ -239,7 +244,7 @@ export default function RootLayout({
                   window.dataLayer = window.dataLayer || [];
                   function gtag(){dataLayer.push(arguments);}
                   gtag('js', new Date());
-                  gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}');
+                  gtag('config', '${googleAnalytics}');
                 `
               }}
             />
