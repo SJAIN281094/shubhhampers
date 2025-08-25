@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Header from "@components/Header";
 import Footer from "@components/Footer";
 import CatalogueViewPage from "@components/CatalogueViewPage";
+import { getEnvVar } from "@lib/env-server-actions";
 
 export const metadata: Metadata = {
   title: "Complete Hamper Catalogue - Curated Gift Hampers Collection | Shubhhampers",
@@ -99,10 +100,9 @@ export const metadata: Metadata = {
   }
 };
 
-// Catalogue PDF URL from environment variable (no fallback)
-const CATALOGUE_PDF_URL = process.env.NEXT_PUBLIC_CATALOGUE_URL;
-
-export default function CataloguePage() {
+export default async function CataloguePage() {
+  // Get catalogue PDF URL from environment variable (no fallback)
+  const CATALOGUE_PDF_URL = await getEnvVar("NEXT_PUBLIC_CATALOGUE_URL");
   // Structured data for SEO
   const catalogueStructuredData = {
     "@context": "https://schema.org",
