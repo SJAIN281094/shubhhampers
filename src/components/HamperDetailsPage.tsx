@@ -78,7 +78,8 @@ export default function HamperDetailsPage({
           <SectionHeader
             title={hamper.title}
             description={
-              hamper.description || `Premium ${hamper.title} from our curated collection`
+              hamper.description ||
+              `Curated ${hamper.title} from our thoughtfully crafted collection`
             }
             variant='center'
             size='lg'
@@ -97,7 +98,7 @@ export default function HamperDetailsPage({
               <div className='aspect-square relative rounded-2xl overflow-hidden shadow-xl'>
                 <Image
                   src={hamper.images[0].url}
-                  alt={`${hamper.title} - Premium Gift Hamper`}
+                  alt={`${hamper.title} - Curated Gift Hamper`}
                   fill
                   className='object-cover'
                   priority
@@ -107,7 +108,7 @@ export default function HamperDetailsPage({
               <div className='aspect-square bg-brand-gold/20 rounded-2xl flex items-center justify-center'>
                 <div className='text-center text-brand-brown'>
                   <div className='text-6xl mb-4'>🎁</div>
-                  <p className='text-lg font-medium'>Premium Hamper</p>
+                  <p className='text-lg font-medium'>Curated Hamper</p>
                 </div>
               </div>
             )}

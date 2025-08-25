@@ -325,7 +325,7 @@ export default function HeroSlider({ slides = [] }: HeroSliderProps) {
         <div className='max-w-3xl mx-auto px-4'>
           <SectionHeader
             title='Welcome to Shubhhampers'
-            description='Premium Gift Hampers for Every Occasion'
+            description='Curated Gift Hampers for Every Occasion'
             variant='center'
             size='md'
             showDecorations={true}

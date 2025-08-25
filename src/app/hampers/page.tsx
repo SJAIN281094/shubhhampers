@@ -7,20 +7,20 @@ import { fetchHampers, transformApiHamperToUI } from "@lib/hamper-api";
 
 // Main hampers page metadata
 export const metadata: Metadata = {
-  title: "Gift Hampers & Gift Baskets | Premium Hampers Online | Shubhhampers",
+  title: "Gift Hampers & Gift Baskets | Curated Hampers Online | Shubhhampers",
   description:
-    "Discover premium gift hampers and gift baskets for every occasion. Wedding hampers, festival hampers, corporate gifts, and personal celebrations. Free delivery across India.",
+    "Discover curated gift hampers and gift baskets for every occasion. Wedding hampers, festival hampers, corporate gifts, and personal celebrations. Free delivery across India.",
   keywords:
-    "gift hampers, gift baskets, hampers online, wedding hampers, festival hampers, corporate gifts, diwali hampers, premium hampers, custom hampers, bulk hampers",
+    "gift hampers, gift baskets, hampers online, wedding hampers, festival hampers, corporate gifts, diwali hampers, curated hampers, custom hampers, bulk hampers",
   authors: [{ name: "Shubhhampers Team" }],
   creator: "Shubhhampers",
   publisher: "Shubhhampers",
 
   // Open Graph
   openGraph: {
-    title: "Gift Hampers & Gift Baskets | Premium Hampers Online | Shubhhampers",
+    title: "Gift Hampers & Gift Baskets | Curated Hampers Online | Shubhhampers",
     description:
-      "Discover premium gift hampers and gift baskets for every occasion. Wedding hampers, festival hampers, corporate gifts, and personal celebrations.",
+      "Discover curated gift hampers and gift baskets for every occasion. Wedding hampers, festival hampers, corporate gifts, and personal celebrations.",
     url: "https://www.shubhhampers.com/hampers",
     siteName: "Shubhhampers",
     images: [
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
         url: "https://shubhhampers.s3.ap-south-1.amazonaws.com/website/images/og-hampers.jpg",
         width: 1200,
         height: 630,
-        alt: "Premium Gift Hampers and Gift Baskets"
+        alt: "Curated Gift Hampers and Gift Baskets"
       }
     ],
     locale: "en_IN",
@@ -38,9 +38,9 @@ export const metadata: Metadata = {
   // Twitter
   twitter: {
     card: "summary_large_image",
-    title: "Gift Hampers & Gift Baskets | Premium Hampers Online | Shubhhampers",
+    title: "Gift Hampers & Gift Baskets | Curated Hampers Online | Shubhhampers",
     description:
-      "Discover premium gift hampers and gift baskets for every occasion. Wedding hampers, festival hampers, corporate gifts, and personal celebrations.",
+      "Discover curated gift hampers and gift baskets for every occasion. Wedding hampers, festival hampers, corporate gifts, and personal celebrations.",
     images: ["https://shubhhampers.s3.ap-south-1.amazonaws.com/website/images/og-hampers.jpg"],
     creator: "@shubhhampers"
   },
@@ -68,7 +68,7 @@ export const metadata: Metadata = {
 const mainHampersPageData: HamperPageData = {
   title: "Gift Hampers & Gift Baskets",
   description:
-    "Discover our premium collection of gift hampers and gift baskets for every occasion. From wedding hampers to festival celebrations, find the perfect gift for your loved ones.",
+    "Discover our curated collection of gift hampers and gift baskets for every occasion. From wedding hampers to festival celebrations, find the perfect gift for your loved ones.",
   apiParams: {}, // No specific filters - show all hampers
   breadcrumbs: [
     { label: "Home", href: "/" },

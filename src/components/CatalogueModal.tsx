@@ -2,40 +2,131 @@
 
 import { useState } from "react";
 import { Button } from "@ui-kit/button";
+import axios from "axios";
 
 interface CatalogueModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
+interface FormData {
+  name: string;
+  email: string;
+  mobile: string;
+}
+
+interface CatalogueApiResponse {
+  catalogueUrl: string;
+}
+
+// API client configuration (same as hamper-api.ts)
+const API_BASE_URL = "https://admin.shubhhampers.com/api";
+
+const apiClient = axios.create({
+  baseURL: API_BASE_URL,
+  timeout: 10000,
+  headers: {
+    "Content-Type": "application/json"
+  }
+});
+
 export default function CatalogueModal({ isOpen, onClose }: CatalogueModalProps) {
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [contactMethod, setContactMethod] = useState<"email" | "phone">("email");
+  const [formData, setFormData] = useState<FormData>({
+    name: "",
+    email: "",
+    mobile: ""
+  });
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  const handleInputChange = (field: keyof FormData, value: string) => {
+    setFormData(prev => ({
+      ...prev,
+      [field]: value
+    }));
+    // Clear error when user starts typing
+    if (error) setError("");
+  };
+
+  const validateForm = (): boolean => {
+    if (!formData.name.trim()) {
+      setError("Name is required");
+      return false;
+    }
+    if (!formData.email.trim()) {
+      setError("Email is required");
+      return false;
+    }
+    if (!formData.mobile.trim()) {
+      setError("Mobile number is required");
+      return false;
+    }
+    // Basic email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      setError("Please enter a valid email address");
+      return false;
+    }
+    // Basic mobile validation (Indian format)
+    const mobileRegex = /^[6-9]\d{9}$/;
+    if (!mobileRegex.test(formData.mobile.replace(/\D/g, ""))) {
+      setError("Please enter a valid 10-digit mobile number");
+      return false;
+    }
+    return true;
+  };
+
+  const downloadFile = (url: string, filename: string = "catalogue.pdf") => {
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = filename;
+    link.target = "_blank";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setError("");
 
-    if (contactMethod === "email" && !email.trim()) return;
-    if (contactMethod === "phone" && !phone.trim()) return;
+    if (!validateForm()) return;
 
     setIsLoading(true);
 
-    // Simulate API call delay
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    try {
+      const response = await apiClient.post<CatalogueApiResponse>("/catalogue/download", {
+        name: formData.name.trim(),
+        email: formData.email.trim(),
+        mobile: formData.mobile.trim()
+      });
 
-    setIsLoading(false);
-    setIsSubmitted(true);
+      setIsSubmitted(true);
+      // Download the catalogue file
+      if (response.data.catalogueUrl) {
+        downloadFile(response.data.catalogueUrl);
+      }
+    } catch (error) {
+      if (axios.isAxiosError(error) && error.response?.data?.message) {
+        setError(error.response.data.message);
+      } else {
+        setError("Network error. Please check your connection and try again.");
+      }
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleClose = () => {
-    setEmail("");
-    setPhone("");
-    setContactMethod("email");
+    setFormData({
+      name: "",
+      email: "",
+      mobile: ""
+    });
     setIsSubmitted(false);
     setIsLoading(false);
+    setError("");
     onClose();
   };
 
@@ -53,78 +144,75 @@ export default function CatalogueModal({ isOpen, onClose }: CatalogueModalProps)
               {/* Header */}
               <div className='text-center mb-6'>
                 <div className='text-4xl mb-4'>📋</div>
-                <h2 className='text-2xl font-bold text-brand-dark mb-2'>Access Our Catalogue</h2>
+                <h2 className='text-2xl font-bold text-brand-dark mb-2'>Download Our Catalogue</h2>
                 <p className='text-gray-600'>
-                  Enter your contact details to receive our complete hamper catalogue with pricing
-                  and availability.
+                  Fill in your details below to instantly download our complete hamper catalogue.
                 </p>
               </div>
 
-              {/* Contact Method Toggle */}
-              <div className='flex bg-brand-light/20 rounded-lg p-1 mb-6'>
-                <button
-                  type='button'
-                  onClick={() => setContactMethod("email")}
-                  className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-all duration-200 ${
-                    contactMethod === "email"
-                      ? "bg-gradient-to-r from-brand-gold to-brand-amber text-white shadow-md"
-                      : "text-brand-brown hover:text-brand-dark"
-                  }`}
-                >
-                  📧 Email
-                </button>
-                <button
-                  type='button'
-                  onClick={() => setContactMethod("phone")}
-                  className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-all duration-200 ${
-                    contactMethod === "phone"
-                      ? "bg-gradient-to-r from-brand-gold to-brand-amber text-white shadow-md"
-                      : "text-brand-brown hover:text-brand-dark"
-                  }`}
-                >
-                  💬 WhatsApp
-                </button>
-              </div>
+              {/* Error Message */}
+              {error && (
+                <div className='mb-4 p-3 bg-red-50 border border-red-200 rounded-lg'>
+                  <p className='text-red-600 text-sm flex items-center gap-2'>
+                    <span>⚠️</span>
+                    {error}
+                  </p>
+                </div>
+              )}
 
               {/* Form */}
               <form onSubmit={handleSubmit} className='space-y-4'>
-                {contactMethod === "email" ? (
-                  <div>
-                    <label
-                      htmlFor='email'
-                      className='block text-sm font-medium text-brand-dark mb-2'
-                    >
-                      Email Address
-                    </label>
-                    <input
-                      type='email'
-                      id='email'
-                      value={email}
-                      onChange={e => setEmail(e.target.value)}
-                      placeholder='your.email@company.com'
-                      className='w-full px-4 py-3 border border-brand-gold/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-gold/50 focus:border-brand-gold transition-all duration-200'
-                      required
-                    />
-                  </div>
-                ) : (
-                  <div>
-                    <label
-                      htmlFor='phone'
-                      className='block text-sm font-medium text-brand-dark mb-2'
-                    >
-                      WhatsApp Number
-                    </label>
-                    <input
-                      type='tel'
-                      id='phone'
-                      value={phone}
-                      onChange={e => setPhone(e.target.value)}
-                      placeholder='+91 98765 43210'
-                      className='w-full px-4 py-3 border border-brand-gold/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-gold/50 focus:border-brand-gold transition-all duration-200'
-                      required
-                    />
-                  </div>
-                )}
+                {/* Name Field */}
+                <div>
+                  <label htmlFor='name' className='block text-sm font-medium text-brand-dark mb-2'>
+                    Full Name <span className='text-red-500'>*</span>
+                  </label>
+                  <input
+                    type='text'
+                    id='name'
+                    value={formData.name}
+                    onChange={e => handleInputChange("name", e.target.value)}
+                    placeholder='Enter your full name'
+                    className='w-full px-4 py-3 border border-brand-gold/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-gold/50 focus:border-brand-gold transition-all duration-200'
+                    required
+                  />
+                </div>
+
+                {/* Email Field */}
+                <div>
+                  <label htmlFor='email' className='block text-sm font-medium text-brand-dark mb-2'>
+                    Email Address <span className='text-red-500'>*</span>
+                  </label>
+                  <input
+                    type='email'
+                    id='email'
+                    value={formData.email}
+                    onChange={e => handleInputChange("email", e.target.value)}
+                    placeholder='your.email@company.com'
+                    className='w-full px-4 py-3 border border-brand-gold/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-gold/50 focus:border-brand-gold transition-all duration-200'
+                    required
+                  />
+                </div>
+
+                {/* Mobile Field */}
+                <div>
+                  <label
+                    htmlFor='mobile'
+                    className='block text-sm font-medium text-brand-dark mb-2'
+                  >
+                    Mobile Number <span className='text-red-500'>*</span>
+                  </label>
+                  <input
+                    type='tel'
+                    id='mobile'
+                    value={formData.mobile}
+                    onChange={e => handleInputChange("mobile", e.target.value)}
+                    placeholder='9876543210'
+                    className='w-full px-4 py-3 border border-brand-gold/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-gold/50 focus:border-brand-gold transition-all duration-200'
+                    required
+                  />
+                  <p className='text-xs text-gray-500 mt-1'>10-digit mobile number without +91</p>
+                </div>
 
                 {/* Buttons */}
                 <div className='flex gap-3 mt-6'>
@@ -146,7 +234,7 @@ export default function CatalogueModal({ isOpen, onClose }: CatalogueModalProps)
                         Sending...
                       </div>
                     ) : (
-                      "Send Catalogue"
+                      "Download Catalogue"
                     )}
                   </Button>
                 </div>
@@ -160,12 +248,12 @@ export default function CatalogueModal({ isOpen, onClose }: CatalogueModalProps)
                     <span>Secure</span>
                   </div>
                   <div className='flex items-center gap-1'>
-                    <span>📧</span>
+                    <span>📱</span>
                     <span>No Spam</span>
                   </div>
                   <div className='flex items-center gap-1'>
                     <span>⚡</span>
-                    <span>Instant Access</span>
+                    <span>Instant Download</span>
                   </div>
                 </div>
               </div>
@@ -174,23 +262,20 @@ export default function CatalogueModal({ isOpen, onClose }: CatalogueModalProps)
             <>
               {/* Success State */}
               <div className='text-center'>
-                <div className='text-5xl mb-4'>✅</div>
+                <div className='text-5xl mb-4'>🎉</div>
                 <h2 className='text-2xl font-bold text-brand-dark mb-4'>
-                  Catalogue Sent Successfully!
+                  Catalogue Downloaded Successfully!
                 </h2>
                 <div className='bg-gradient-to-br from-brand-gold/10 to-brand-amber/10 rounded-xl p-6 border border-brand-gold/20 mb-6'>
                   <p className='text-gray-700 mb-3'>
-                    We&apos;ve sent our complete hamper catalogue to:
+                    Thank you for your interest! Your catalogue download has started automatically.
                   </p>
                   <div className='bg-white/50 backdrop-blur-sm rounded-lg p-3 border border-brand-gold/20'>
-                    <p className='font-semibold text-brand-brown'>
-                      {contactMethod === "email" ? <>📧 {email}</> : <>💬 {phone}</>}
-                    </p>
+                    <p className='font-semibold text-brand-brown'>📄 Catalogue.pdf</p>
                   </div>
                   <p className='text-sm text-gray-600 mt-3'>
-                    Please check your{" "}
-                    {contactMethod === "email" ? "inbox (and spam folder)" : "WhatsApp messages"}{" "}
-                    for the catalogue with our latest hampers and pricing.
+                    If the download didn&apos;t start automatically, please check your downloads
+                    folder or try again.
                   </p>
                 </div>
 

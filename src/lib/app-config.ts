@@ -15,21 +15,21 @@ export const API_CONFIG = {
 export const APP_INFO = {
   name: "Shubhhampers",
   version: "1.0.0",
-  description: "Premium gift hampers for corporate clients, weddings & festivals",
+  description: "Curated gift hampers for corporate clients, weddings & festivals",
   url: "https://www.shubhhampers.com",
   buildYear: "2025"
 } as const;
 
 // SEO & Meta Configuration
 export const SEO_CONFIG = {
-  defaultTitle: "Premium Gift Hampers & Baskets | Shubhhampers",
+  defaultTitle: "Curated Gift Hampers & Baskets | Shubhhampers",
   titleTemplate: "%s | Shubhhampers",
   defaultDescription:
-    "Premium gift hampers for corporate clients, weddings & festivals. Custom curated baskets that build meaningful relationships. Order today!",
+    "Curated gift hampers for corporate clients, weddings & festivals. Custom curated baskets that build meaningful relationships. Order today!",
   keywords: [
     // Core Hamper Keywords
     "Shubhhampers",
-    "Premium Hampers",
+    "Curated Hampers",
     "Hamper Delivery",
     "Custom Hampers",
     "Luxury Hampers",
@@ -46,7 +46,7 @@ export const SEO_CONFIG = {
     url: "https://www.shubhhampers.com",
     logo: "https://www.shubhhampers.com/logo-dark.png",
     description:
-      "Premium hamper curation service specializing in corporate hampers, wedding hampers, and festival celebrations"
+      "Curated hamper service specializing in corporate hampers, wedding hampers, and festival celebrations"
   }
 } as const;
 

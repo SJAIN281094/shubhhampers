@@ -9,9 +9,9 @@ import WhyChooseUs from "@components/WhyChooseUs";
 import AboutCTA from "@components/AboutCTA";
 
 export const metadata: Metadata = {
-  title: "About Us - Premium Wedding & Festival Hamper Company | Shubhhampers",
+  title: "About Us - Curated Wedding & Festival Hamper Company | Shubhhampers",
   description:
-    "Meet Shubhhampers - premium wedding hampers and festival gift baskets company creating magical moments through thoughtful curation. Our story, mission & values.",
+    "Meet Shubhhampers - curated wedding hampers and festival gift baskets company creating magical moments through thoughtful curation. Our story, mission & values.",
   alternates: {
     canonical: "https://www.shubhhampers.com/about"
   },
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     "about Shubhhampers",
     "wedding hamper company",
     "festival gift baskets",
-    "premium wedding hampers",
+    "curated wedding hampers",
     "festival hamper specialists",
     "wedding gift curation",
     "authentic hamper service",
@@ -31,9 +31,9 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     type: "website",
-    title: "About Shubhhampers - Premium Wedding & Festival Hamper Company",
+    title: "About Shubhhampers - Curated Wedding & Festival Hamper Company",
     description:
-      "Learn about our mission to create magical moments through thoughtful wedding and festival hamper curation. Authentic approach, premium quality.",
+      "Learn about our mission to create magical moments through thoughtful wedding and festival hamper curation. Authentic approach, curated quality.",
     url: "https://www.shubhhampers.com/about",
     siteName: "Shubhhampers",
     locale: "en_US",
@@ -48,15 +48,15 @@ export const metadata: Metadata = {
         url: "https://shubhhampers.s3.ap-south-1.amazonaws.com/website/images/social-media/social_media_meta_image_300x200.png",
         width: 300,
         height: 200,
-        alt: "Shubhhampers Team - Premium Wedding & Festival Hampers"
+        alt: "Shubhhampers Team - Curated Wedding & Festival Hampers"
       }
     ]
   },
   twitter: {
     card: "summary_large_image",
-    title: "About Shubhhampers - Premium Wedding & Festival Hamper Company",
+    title: "About Shubhhampers - Curated Wedding & Festival Hamper Company",
     description:
-      "Learn about our mission to create magical moments through thoughtful wedding and festival hamper curation. Authentic approach, premium quality.",
+      "Learn about our mission to create magical moments through thoughtful wedding and festival hamper curation. Authentic approach, curated quality.",
     images: [
       {
         url: "https://shubhhampers.s3.ap-south-1.amazonaws.com/website/images/social-media/social_media_meta_image.png",

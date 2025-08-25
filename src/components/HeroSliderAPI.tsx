@@ -226,7 +226,7 @@ export default function HeroSliderAPI({ fallbackSlides = [] }: HeroSliderProps) 
       <section className='min-h-screen bg-gradient-to-br from-brand-light via-white to-brand-gold/5 flex items-center justify-center'>
         <div className='text-center text-brand-brown'>
           <h2 className='text-2xl font-bold mb-4'>Welcome to Shubhhampers</h2>
-          <p className='text-lg mb-6'>Premium Gift Hampers for Every Occasion</p>
+          <p className='text-lg mb-6'>Curated Gift Hampers for Every Occasion</p>
           <PrimaryButton onClick={() => router.push("/hampers")}>Browse Hampers</PrimaryButton>
         </div>
       </section>

@@ -25,14 +25,14 @@ const CTASection = dynamic(() => import("@components/CTASection"), {
 });
 
 export const metadata: Metadata = {
-  title: "Premium Gift Hampers & Baskets | Shubhhampers",
+  title: "Curated Gift Hampers & Baskets | Shubhhampers",
   description:
-    "Premium gift hampers for corporate clients, weddings & festivals. Custom curated baskets that build meaningful relationships. Order today!",
+    "Curated gift hampers for corporate clients, weddings & festivals. Custom curated baskets that build meaningful relationships. Order today!",
   alternates: {
     canonical: "https://www.shubhhampers.com"
   },
   keywords: [
-    "premium hampers India",
+    "curated hampers India",
     "corporate hampers",
     "employee appreciation hampers",
     "wedding hampers",
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     type: "website",
-    title: "Premium Gift Hampers & Baskets | Shubhhampers",
+    title: "Curated Gift Hampers & Baskets | Shubhhampers",
     description:
       "Transform your relationships with thoughtfully curated hampers. Corporate appreciation, weddings, festivals & personal celebrations.",
     url: "https://www.shubhhampers.com",
@@ -56,19 +56,19 @@ export const metadata: Metadata = {
         url: "https://shubhhampers.s3.ap-south-1.amazonaws.com/website/images/social-media/social_media_meta_image.png",
         width: 1200,
         height: 630,
-        alt: "Shubhhampers Homepage - Premium Gift Hampers for Every Occasion"
+        alt: "Shubhhampers Homepage - Curated Gift Hampers for Every Occasion"
       },
       {
         url: "https://shubhhampers.s3.ap-south-1.amazonaws.com/website/images/social-media/social_media_meta_image_300x200.png",
         width: 300,
         height: 200,
-        alt: "Shubhhampers - Premium Gift Hampers"
+        alt: "Shubhhampers - Curated Gift Hampers"
       }
     ]
   },
   twitter: {
     card: "summary_large_image",
-    title: "Premium Gift Hampers & Baskets | Shubhhampers",
+    title: "Curated Gift Hampers & Baskets | Shubhhampers",
     description:
       "Transform your relationships with thoughtfully curated hampers. Corporate appreciation, weddings, festivals & personal celebrations.",
     images: [
@@ -76,7 +76,7 @@ export const metadata: Metadata = {
         url: "https://shubhhampers.s3.ap-south-1.amazonaws.com/website/images/social-media/social_media_meta_image.png",
         width: 1200,
         height: 630,
-        alt: "Shubhhampers Homepage - Premium Gift Hampers for Every Occasion"
+        alt: "Shubhhampers Homepage - Curated Gift Hampers for Every Occasion"
       }
     ],
     creator: "@shubhhampers",
@@ -202,7 +202,7 @@ export default async function Home() {
       <Header />
       {/* Hidden H1 for SEO - main page heading */}
       <h1 className='sr-only'>
-        Premium Gift Hampers for Every Occasion - Corporate, Wedding, Festival & Personal |
+        Curated Gift Hampers for Every Occasion - Corporate, Wedding, Festival & Personal |
         Shubhhampers
       </h1>
       <HeroSlider slides={heroSlides} />
