@@ -16,11 +16,8 @@ export async function fetchHomePageData(): Promise<HomePageApiResponse> {
       headers: {
         "Content-Type": "application/json"
       },
-      // Cache for 5 minutes, revalidate in background
-      next: {
-        revalidate: 300,
-        tags: ["home-page"]
-      }
+      // No caching - always fetch fresh data
+      cache: "no-store"
     });
 
     if (!response.ok) {
