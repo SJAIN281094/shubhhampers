@@ -6,10 +6,10 @@ import FooterCompanyInfo from "./footer/FooterCompanyInfo";
 import FooterLinks from "./footer/FooterLinks";
 import FooterBottomBar from "./footer/FooterBottomBar";
 
-// Dynamic import for modal - only load when needed
+// Dynamic import to avoid potential webpack bundling issues
 const CatalogueModal = dynamic(() => import("./CatalogueModal"), {
-  loading: () => null, // Don't show loading for modals
-  ssr: false // Modals should not be server-side rendered
+  ssr: false,
+  loading: () => null
 });
 
 export default function Footer() {

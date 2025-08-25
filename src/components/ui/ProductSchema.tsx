@@ -15,7 +15,7 @@ export default function ProductSchema({ product }: ProductSchemaProps) {
     "@context": "https://schema.org/",
     "@type": "Product",
     name: product.title,
-    description: product.description || `Premium ${product.title} from Shubhhampers`,
+    description: product.description || `Curated ${product.title} from Shubhhampers`,
     image: product.images?.length > 0 ? product.images.map(img => img.url) : [],
     brand: {
       "@type": "Brand",
@@ -59,8 +59,8 @@ export function ProductListSchema({ products, categoryName }: ProductListSchemaP
   const schema = {
     "@context": "https://schema.org/",
     "@type": "ItemList",
-    name: categoryName ? `${categoryName} Gift Hampers` : "Premium Gift Hampers",
-    description: `Curated collection of premium ${categoryName ? categoryName.toLowerCase() + " " : ""}hampers from Shubhhampers`,
+    name: categoryName ? `${categoryName} Gift Hampers` : "Curated Gift Hampers",
+    description: `Curated collection of curated ${categoryName ? categoryName.toLowerCase() + " " : ""}hampers from Shubhhampers`,
     numberOfItems: products.length,
     itemListElement: products.map((product, index) => ({
       "@type": "ListItem",
@@ -68,7 +68,7 @@ export function ProductListSchema({ products, categoryName }: ProductListSchemaP
       item: {
         "@type": "Product",
         name: product.title,
-        description: product.description || `Premium ${product.title}`,
+        description: product.description || `Curated ${product.title}`,
         image: product.images?.[0]?.url,
         url: `https://www.shubhhampers.com/hampers/${product.slug}`,
         offers: {

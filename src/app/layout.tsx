@@ -26,11 +26,11 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://www.shubhhampers.com"),
   // Global fallback metadata - will be overridden by page-specific metadata
   title: {
-    default: "Premium Gift Hampers & Baskets | Shubhhampers",
+    default: "Curated Gift Hampers & Baskets | Shubhhampers",
     template: "%s | Shubhhampers"
   },
   description:
-    "Premium gift hampers for corporate clients, weddings & festivals. Custom curated baskets that build meaningful relationships. Order today!",
+    "Curated gift hampers for corporate clients, weddings & festivals. Custom curated baskets that build meaningful relationships. Order today!",
   alternates: {
     canonical: "https://www.shubhhampers.com"
   },
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
   keywords: [
     // Core Hamper Keywords
     "Shubhhampers",
-    "Premium Hampers",
+    "Curated Hampers",
     "Hamper Delivery",
     "Custom Hampers",
     "Luxury Hampers",
@@ -102,8 +102,8 @@ export const metadata: Metadata = {
     "Special Moment Hampers",
     "Celebration Hampers",
     "Relationship Building Hampers",
-    // Quality & Premium Keywords
-    "Premium Gift Hampers",
+    // Quality & Curated Keywords
+    "Curated Gift Hampers",
     "Luxury Hamper Boxes",
     "High-End Hampers",
     "Exclusive Hampers",
@@ -151,7 +151,7 @@ export default function RootLayout({
               url: "https://www.shubhhampers.com",
               logo: "https://www.shubhhampers.com/logo-dark.png",
               description:
-                "Premium hamper curation service specializing in corporate hampers, wedding hampers, and festival celebrations",
+                "Curated hamper service specializing in corporate hampers, wedding hampers, and festival celebrations",
               sameAs: [
                 "https://www.instagram.com/shubhhampers_",
                 "https://www.linkedin.com/company/shubhhampers"

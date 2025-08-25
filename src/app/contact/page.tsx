@@ -7,16 +7,16 @@ import ContactFormSection from "@components/ContactFormSection";
 import QuickContact from "@components/QuickContact";
 
 export const metadata: Metadata = {
-  title: "Contact Us - Premium Gift Hamper Service | Shubhhampers",
+  title: "Contact Us - Curated Gift Hamper Service | Shubhhampers",
   description:
-    "Contact Shubhhampers for premium gift hamper consultation. Call +91 96858 47274 or email connect@shubhhampers.com. Free quote available!",
+    "Contact Shubhhampers for curated gift hamper consultation. Call +91 96858 47274 or email connect@shubhhampers.com. Free quote available!",
   alternates: {
     canonical: "https://www.shubhhampers.com/contact"
   },
   keywords: [
     "contact Shubhhampers",
     "hamper consultation",
-    "premium hamper services contact",
+    "curated hamper services contact",
     "corporate hamper inquiry",
     "wedding hamper consultation",
     "hamper service provider contact",
@@ -27,9 +27,9 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     type: "website",
-    title: "Contact Shubhhampers - Premium Gift Hamper Services",
+    title: "Contact Shubhhampers - Curated Gift Hamper Services",
     description:
-      "Contact us for premium hamper curation services. Professional consultation for corporate, wedding, and personal hampers.",
+      "Contact us for curated hamper services. Professional consultation for corporate, wedding, and personal hampers.",
     url: "https://www.shubhhampers.com/contact",
     siteName: "Shubhhampers",
     locale: "en_US",
@@ -50,9 +50,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Contact Shubhhampers - Premium Gift Hamper Services",
+    title: "Contact Shubhhampers - Curated Gift Hamper Services",
     description:
-      "Contact us for premium hamper curation services. Professional consultation for corporate, wedding, and personal hampers.",
+      "Contact us for curated hamper services. Professional consultation for corporate, wedding, and personal hampers.",
     images: [
       {
         url: "https://shubhhampers.s3.ap-south-1.amazonaws.com/website/images/social-media/social_media_meta_image.png",
