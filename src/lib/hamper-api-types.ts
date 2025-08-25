@@ -137,6 +137,8 @@ export interface HampersApiParams {
   subCategory?: string;
   page?: number;
   pageSize?: number;
+  limit?: number;
+  offset?: number;
   isActive?: boolean;
   search?: string; // For relationship-based and keyword searches
 }

@@ -167,10 +167,10 @@ export default function EventsSection({ categoryHampers = {} }: EventsSectionPro
                   <div key={category.id} id={`${category.id}-section`} className='scroll-mt-20'>
                     {/* Category Title */}
                     <div className='text-center mb-6'>
-                      <h3 className='font-display text-2xl md:text-3xl lg:text-4xl font-bold text-brand-brown mb-4 leading-tight tracking-wide drop-shadow-sm'>
+                      <h3 className='font-display text-xl sm:text-2xl md:text-xl lg:text-2xl font-bold text-brand-brown mb-4 leading-tight tracking-wide drop-shadow-sm'>
                         {category.icon} {category.title}
                       </h3>
-                      <p className='text-brand-dark max-w-3xl mx-auto text-lg leading-relaxed'>
+                      <p className='text-brand-dark max-w-3xl mx-auto text-sm sm:text-base md:text-sm lg:text-base leading-relaxed'>
                         {category.description}
                       </p>
                     </div>

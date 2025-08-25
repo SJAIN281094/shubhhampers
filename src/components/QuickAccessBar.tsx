@@ -130,17 +130,13 @@ export default function QuickAccessBar() {
             </button>
           </div>
 
-          <div className='flex items-center space-x-2'>
+          <div className='flex items-center'>
             <button
               onClick={handleQuickQuote}
               className='bg-brand-gold/20 px-2 py-1 rounded text-xs font-medium hover:bg-brand-gold/30 transition-colors'
             >
               Quote
             </button>
-            <div className='flex items-center space-x-1'>
-              <div className='w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse' />
-              <span className='text-brand-light/90'>Online</span>
-            </div>
           </div>
         </div>
       </div>

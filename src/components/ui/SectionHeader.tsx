@@ -40,7 +40,7 @@ const sizeStyles = {
   },
   lg: {
     title: "text-2xl xs:text-3xl sm:text-4xl md:text-4xl lg:text-5xl xl:text-6xl",
-    description: "text-xs xs:text-sm sm:text-base md:text-lg",
+    description: "text-sm xs:text-base sm:text-lg md:text-xl",
     spacing: "mb-6 md:mb-8"
   }
 };

@@ -41,9 +41,9 @@ export const SLUG_TO_API_MAPPING = {
   },
   "rakhi-festival-gift-hampers": {
     category: "Festival",
-    subCategory: "Rakhi",
-    title: "Rakhi Festival Gift Hampers",
-    description: "Special Rakhi hampers for brother-sister celebration"
+    subCategory: "Rakshabandhan",
+    title: "Rakshabandhan Festival Gift Hampers",
+    description: "Special Rakshabandhan hampers for brother-sister celebration"
   },
   "karva-chauth-festival-gift-hampers": {
     category: "Festival",

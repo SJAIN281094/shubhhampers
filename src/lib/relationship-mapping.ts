@@ -38,12 +38,12 @@ const RELATIONSHIP_MAPPINGS: Record<string, RelationshipMapping> = {
   },
   sister: {
     category: "personal",
-    searchTerms: ["sister", "sibling", "family", "rakhi", "bhai dooj"],
+    searchTerms: ["sister", "sibling", "family", "rakhi", "rakshabandhan", "bhai dooj"],
     fallbackCategory: "personal"
   },
   brother: {
     category: "personal",
-    searchTerms: ["brother", "sibling", "family", "rakhi", "bhai dooj"],
+    searchTerms: ["brother", "sibling", "family", "rakhi", "rakshabandhan", "bhai dooj"],
     fallbackCategory: "personal"
   },
   girlfriend: {

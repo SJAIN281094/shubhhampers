@@ -159,7 +159,8 @@ export default async function RootLayout({
                 "Curated hamper service specializing in corporate hampers, wedding hampers, and festival celebrations",
               sameAs: [
                 "https://www.instagram.com/shubhhampers_",
-                "https://www.linkedin.com/company/shubhhampers"
+                "https://www.linkedin.com/company/shubh-hampers",
+                "https://www.facebook.com/profile.php?id=61579813442869"
               ],
               contactPoint: {
                 "@type": "ContactPoint",
@@ -218,20 +219,17 @@ export default async function RootLayout({
 
         {children}
 
-        {/* OPTIMIZED EXTERNAL SCRIPTS */}
-
-        {/* Google Tag Manager - Critical for analytics */}
-        <Script
-          id='google-tag-manager'
-          strategy='beforeInteractive'
-          dangerouslySetInnerHTML={{
-            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${googleTagManager}');`
-          }}
-        />
-
         {/* Google Analytics - Load after page becomes interactive */}
         {environment === "production" && googleAnalytics && (
           <>
+            {/* Google Tag Manager - Critical for analytics */}
+            <Script
+              id='google-tag-manager'
+              strategy='beforeInteractive'
+              dangerouslySetInnerHTML={{
+                __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${googleTagManager}');`
+              }}
+            />
             <Script
               src={`https://www.googletagmanager.com/gtag/js?id=${googleAnalytics}`}
               strategy='afterInteractive'

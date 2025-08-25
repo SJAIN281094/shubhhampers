@@ -326,7 +326,7 @@ export default function HeroSliderAPI({ fallbackSlides = [] }: HeroSliderProps) 
 
                 {/* Enhanced Title */}
                 <motion.h1
-                  className='font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-brand-brown mb-4 lg:mb-6 leading-tight tracking-wide drop-shadow-sm relative z-10'
+                  className='font-display text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold text-brand-brown mb-4 lg:mb-6 leading-tight tracking-wide drop-shadow-sm relative z-10'
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.4, duration: 0.6 }}
@@ -337,7 +337,7 @@ export default function HeroSliderAPI({ fallbackSlides = [] }: HeroSliderProps) 
                 {/* Enhanced Subtitle */}
                 {currentSlideData.subtitle && (
                   <motion.h2
-                    className='text-xl sm:text-2xl lg:text-3xl text-brand-dark font-semibold mb-4 lg:mb-6 leading-relaxed drop-shadow-sm relative z-10'
+                    className='text-2xl sm:text-3xl lg:text-4xl text-brand-dark font-semibold mb-4 lg:mb-6 leading-relaxed drop-shadow-sm relative z-10'
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.5, duration: 0.6 }}
@@ -349,7 +349,7 @@ export default function HeroSliderAPI({ fallbackSlides = [] }: HeroSliderProps) 
 
               {/* Description */}
               <motion.p
-                className='text-base sm:text-lg lg:text-xl text-gray-700 mb-6 lg:mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0'
+                className='text-lg sm:text-xl lg:text-2xl text-gray-700 mb-6 lg:mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0'
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6, duration: 0.6 }}

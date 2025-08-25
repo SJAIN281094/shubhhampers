@@ -70,8 +70,7 @@ export async function GET(request: NextRequest) {
       },
       allowedKeys: SAFE_ENV_VARS
     });
-  } catch (error) {
-    console.error("Environment API error:", error);
+  } catch {
     return NextResponse.json({ error: "Internal server error" }, { status: 500 });
   }
 }
@@ -109,8 +108,7 @@ export async function POST(request: NextRequest) {
       keys,
       values: result
     });
-  } catch (error) {
-    console.error("Environment API POST error:", error);
+  } catch {
     return NextResponse.json({ error: "Invalid request body" }, { status: 400 });
   }
 }

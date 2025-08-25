@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import ReactMarkdown from "react-markdown";
@@ -9,31 +8,24 @@ import {
   FaCalendarAlt,
   FaClock,
   FaTag,
-  FaUser,
-  FaShare,
   FaTwitter,
   FaFacebook,
   FaLinkedin,
-  FaWhatsapp,
-  FaArrowLeft,
-  FaHeart
+  FaWhatsapp
 } from "react-icons/fa";
+import { TbShare3 } from "react-icons/tb";
 import { IoArrowForward } from "react-icons/io5";
 import FeatureTag from "./FeatureTag";
 import PrimaryButton from "./PrimaryButton";
 import SecondaryButton from "./SecondaryButton";
-import { BlogPost, getRelatedPosts, BLOG_CATEGORIES } from "@/lib/blogs-data";
+import { BlogPost, getRelatedPosts } from "@/lib/blogs-data";
 
 interface BlogDetailsClientProps {
   post: BlogPost;
 }
 
 export default function BlogDetailsClient({ post }: BlogDetailsClientProps) {
-  const [isLiked, setIsLiked] = useState(false);
-  const [shareDropdownOpen, setShareDropdownOpen] = useState(false);
-
   const relatedPosts = getRelatedPosts(post.slug);
-  const categoryInfo = BLOG_CATEGORIES.find(cat => cat.id === post.category);
 
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString("en-US", {
@@ -57,28 +49,10 @@ export default function BlogDetailsClient({ post }: BlogDetailsClientProps) {
     if (shareUrls[platform as keyof typeof shareUrls]) {
       window.open(shareUrls[platform as keyof typeof shareUrls], "_blank", "width=600,height=400");
     }
-
-    setShareDropdownOpen(false);
-  };
-
-  const handleLike = () => {
-    setIsLiked(!isLiked);
-    // Here you could add analytics tracking or API call
   };
 
   return (
     <div className='bg-gradient-to-br from-brand-light/30 to-white'>
-      {/* Back Navigation */}
-      <div className='container mx-auto px-4 sm:px-6 lg:px-8 pt-8'>
-        <Link
-          href='/blogs'
-          className='inline-flex items-center gap-2 text-brand-brown hover:text-brand-dark transition-colors duration-200 mb-8'
-        >
-          <FaArrowLeft className='w-4 h-4' />
-          <span>Back to Blogs</span>
-        </Link>
-      </div>
-
       {/* Hero Section */}
       <div className='relative overflow-hidden'>
         {/* Featured Image */}
@@ -90,17 +64,6 @@ export default function BlogDetailsClient({ post }: BlogDetailsClientProps) {
           <div className='absolute inset-0 flex items-end'>
             <div className='container mx-auto px-4 sm:px-6 lg:px-8 pb-12'>
               <div className='max-w-4xl'>
-                {/* Category Badge */}
-                {categoryInfo && (
-                  <div className='mb-4'>
-                    <span
-                      className={`px-4 py-2 rounded-full text-sm font-medium ${categoryInfo.color} bg-white/90 backdrop-blur-sm`}
-                    >
-                      {categoryInfo.name}
-                    </span>
-                  </div>
-                )}
-
                 {/* Title */}
                 <h1 className='font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 leading-tight'>
                   {post.title}
@@ -108,11 +71,6 @@ export default function BlogDetailsClient({ post }: BlogDetailsClientProps) {
 
                 {/* Meta Information */}
                 <div className='flex flex-wrap items-center gap-6 text-white/90 text-sm'>
-                  <div className='flex items-center gap-2'>
-                    <FaUser className='w-4 h-4' />
-                    <span>{post.author}</span>
-                  </div>
-
                   <div className='flex items-center gap-2'>
                     <FaCalendarAlt className='w-4 h-4' />
                     <span>{formatDate(post.publishedAt)}</span>
@@ -131,7 +89,7 @@ export default function BlogDetailsClient({ post }: BlogDetailsClientProps) {
 
       {/* Article Content */}
       <div className='container mx-auto px-4 sm:px-6 lg:px-8 py-16'>
-        <div className='max-w-4xl mx-auto'>
+        <div className='max-w-5xl mx-auto'>
           <div className='grid grid-cols-1 lg:grid-cols-4 gap-8'>
             {/* Main Content */}
             <div className='lg:col-span-3'>
@@ -255,77 +213,46 @@ export default function BlogDetailsClient({ post }: BlogDetailsClientProps) {
 
             {/* Sidebar */}
             <div className='lg:col-span-1'>
-              <div className='sticky top-8 space-y-8'>
-                {/* Share & Like */}
+              <div className='sticky top-20 space-y-8'>
+                {/* Share Article */}
                 <div className='bg-white rounded-2xl p-6 shadow-lg border border-brand-gold/20'>
-                  <h4 className='font-semibold text-brand-dark mb-4'>Share This Article</h4>
+                  <div className='flex items-center justify-center gap-2 mb-4'>
+                    <TbShare3 className='w-6 h-6 text-brand-brown' />
+                    <h4 className='font-semibold text-brand-dark'>Share This Article</h4>
+                  </div>
 
-                  <div className='flex items-center gap-3 mb-4'>
+                  <div className='grid grid-cols-2 gap-3'>
                     <button
-                      onClick={handleLike}
-                      className={`flex items-center gap-2 px-4 py-2 rounded-full transition-all duration-200 ${
-                        isLiked
-                          ? "bg-red-100 text-red-600"
-                          : "bg-gray-100 text-gray-600 hover:bg-red-100 hover:text-red-600"
-                      }`}
+                      onClick={() => handleShare("twitter")}
+                      className='flex items-center justify-center gap-2 px-4 py-3 bg-blue-50 text-blue-600 rounded-lg hover:bg-blue-100 transition-colors duration-200'
                     >
-                      <FaHeart className={`w-4 h-4 ${isLiked ? "fill-current" : ""}`} />
-                      <span className='text-sm'>Like</span>
+                      <FaTwitter className='w-5 h-5' />
+                      <span className='text-sm font-medium'>Twitter</span>
                     </button>
 
-                    <div className='relative'>
-                      <button
-                        onClick={() => setShareDropdownOpen(!shareDropdownOpen)}
-                        className='flex items-center gap-2 px-4 py-2 bg-brand-gold/10 text-brand-brown rounded-full hover:bg-brand-gold/20 transition-colors duration-200'
-                      >
-                        <FaShare className='w-4 h-4' />
-                        <span className='text-sm'>Share</span>
-                      </button>
+                    <button
+                      onClick={() => handleShare("facebook")}
+                      className='flex items-center justify-center gap-2 px-4 py-3 bg-blue-50 text-blue-700 rounded-lg hover:bg-blue-100 transition-colors duration-200'
+                    >
+                      <FaFacebook className='w-5 h-5' />
+                      <span className='text-sm font-medium'>Facebook</span>
+                    </button>
 
-                      {shareDropdownOpen && (
-                        <div className='absolute top-full left-0 mt-2 bg-white rounded-lg shadow-xl border border-brand-gold/20 p-2 z-10 min-w-[160px]'>
-                          <button
-                            onClick={() => handleShare("twitter")}
-                            className='flex items-center gap-3 w-full px-3 py-2 text-left hover:bg-blue-50 rounded-lg transition-colors duration-200'
-                          >
-                            <FaTwitter className='w-4 h-4 text-blue-500' />
-                            <span className='text-sm'>Twitter</span>
-                          </button>
-                          <button
-                            onClick={() => handleShare("facebook")}
-                            className='flex items-center gap-3 w-full px-3 py-2 text-left hover:bg-blue-50 rounded-lg transition-colors duration-200'
-                          >
-                            <FaFacebook className='w-4 h-4 text-blue-600' />
-                            <span className='text-sm'>Facebook</span>
-                          </button>
-                          <button
-                            onClick={() => handleShare("linkedin")}
-                            className='flex items-center gap-3 w-full px-3 py-2 text-left hover:bg-blue-50 rounded-lg transition-colors duration-200'
-                          >
-                            <FaLinkedin className='w-4 h-4 text-blue-700' />
-                            <span className='text-sm'>LinkedIn</span>
-                          </button>
-                          <button
-                            onClick={() => handleShare("whatsapp")}
-                            className='flex items-center gap-3 w-full px-3 py-2 text-left hover:bg-green-50 rounded-lg transition-colors duration-200'
-                          >
-                            <FaWhatsapp className='w-4 h-4 text-green-600' />
-                            <span className='text-sm'>WhatsApp</span>
-                          </button>
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                </div>
+                    <button
+                      onClick={() => handleShare("linkedin")}
+                      className='flex items-center justify-center gap-2 px-4 py-3 bg-blue-50 text-blue-800 rounded-lg hover:bg-blue-100 transition-colors duration-200'
+                    >
+                      <FaLinkedin className='w-5 h-5' />
+                      <span className='text-sm font-medium'>LinkedIn</span>
+                    </button>
 
-                {/* Table of Contents */}
-                <div className='bg-white rounded-2xl p-6 shadow-lg border border-brand-gold/20'>
-                  <h4 className='font-semibold text-brand-dark mb-4'>In This Article</h4>
-                  <div className='space-y-2 text-sm'>
-                    <p className='text-gray-600'>
-                      This article covers essential insights for thoughtful hamper curation and
-                      gifting strategies.
-                    </p>
+                    <button
+                      onClick={() => handleShare("whatsapp")}
+                      className='flex items-center justify-center gap-2 px-4 py-3 bg-green-50 text-green-600 rounded-lg hover:bg-green-100 transition-colors duration-200'
+                    >
+                      <FaWhatsapp className='w-5 h-5' />
+                      <span className='text-sm font-medium'>WhatsApp</span>
+                    </button>
                   </div>
                 </div>
               </div>
@@ -349,64 +276,48 @@ export default function BlogDetailsClient({ post }: BlogDetailsClientProps) {
             </div>
 
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
-              {relatedPosts.map(relatedPost => {
-                const relatedCategoryInfo = BLOG_CATEGORIES.find(
-                  cat => cat.id === relatedPost.category
-                );
+              {relatedPosts.map(relatedPost => (
+                <article
+                  key={relatedPost.id}
+                  className='bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-[1.02] overflow-hidden group'
+                >
+                  <div className='relative h-48 overflow-hidden'>
+                    <Link href={`/blogs/${relatedPost.slug}`}>
+                      <Image
+                        src={relatedPost.featuredImage}
+                        alt={relatedPost.title}
+                        fill
+                        className='object-cover transition-transform duration-300 group-hover:scale-110'
+                      />
+                    </Link>
+                  </div>
 
-                return (
-                  <article
-                    key={relatedPost.id}
-                    className='bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-[1.02] overflow-hidden group'
-                  >
-                    <div className='relative h-48 overflow-hidden'>
-                      <Link href={`/blogs/${relatedPost.slug}`}>
-                        <Image
-                          src={relatedPost.featuredImage}
-                          alt={relatedPost.title}
-                          fill
-                          className='object-cover transition-transform duration-300 group-hover:scale-110'
-                        />
-
-                        {relatedCategoryInfo && (
-                          <div className='absolute top-4 left-4'>
-                            <span
-                              className={`px-3 py-1 rounded-full text-xs font-medium ${relatedCategoryInfo.color}`}
-                            >
-                              {relatedCategoryInfo.name}
-                            </span>
-                          </div>
-                        )}
-                      </Link>
+                  <div className='p-6'>
+                    <div className='flex items-center gap-4 text-xs text-gray-500 mb-3'>
+                      <span>{formatDate(relatedPost.publishedAt)}</span>
+                      <span>{relatedPost.readTime} min</span>
                     </div>
 
-                    <div className='p-6'>
-                      <div className='flex items-center gap-4 text-xs text-gray-500 mb-3'>
-                        <span>{formatDate(relatedPost.publishedAt)}</span>
-                        <span>{relatedPost.readTime} min</span>
-                      </div>
+                    <Link href={`/blogs/${relatedPost.slug}`}>
+                      <h3 className='font-bold text-lg text-brand-dark mb-2 line-clamp-2 group-hover:text-brand-brown transition-colors duration-200'>
+                        {relatedPost.title}
+                      </h3>
+                    </Link>
 
-                      <Link href={`/blogs/${relatedPost.slug}`}>
-                        <h3 className='font-bold text-lg text-brand-dark mb-2 line-clamp-2 group-hover:text-brand-brown transition-colors duration-200'>
-                          {relatedPost.title}
-                        </h3>
-                      </Link>
+                    <p className='text-gray-600 text-sm leading-relaxed mb-4 line-clamp-2'>
+                      {relatedPost.excerpt}
+                    </p>
 
-                      <p className='text-gray-600 text-sm leading-relaxed mb-4 line-clamp-2'>
-                        {relatedPost.excerpt}
-                      </p>
-
-                      <Link
-                        href={`/blogs/${relatedPost.slug}`}
-                        className='inline-flex items-center gap-2 text-brand-brown hover:text-brand-dark font-medium text-sm transition-colors duration-200 group'
-                      >
-                        <span>Read More</span>
-                        <IoArrowForward className='w-4 h-4 transition-transform duration-300 group-hover:translate-x-1' />
-                      </Link>
-                    </div>
-                  </article>
-                );
-              })}
+                    <Link
+                      href={`/blogs/${relatedPost.slug}`}
+                      className='inline-flex items-center gap-2 text-brand-brown hover:text-brand-dark font-medium text-sm transition-colors duration-200 group'
+                    >
+                      <span>Read More</span>
+                      <IoArrowForward className='w-4 h-4 transition-transform duration-300 group-hover:translate-x-1' />
+                    </Link>
+                  </div>
+                </article>
+              ))}
             </div>
           </div>
         </div>

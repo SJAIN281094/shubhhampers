@@ -3,28 +3,22 @@
 import { useState, useMemo } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { FaCalendarAlt, FaClock, FaTag, FaUser, FaSearch } from "react-icons/fa";
+import { FaCalendarAlt, FaClock, FaTag, FaSearch } from "react-icons/fa";
 import { IoArrowForward } from "react-icons/io5";
 
 import SectionHeader from "./ui/SectionHeader";
 import EmptyState, { EmptyStateVariants } from "./ui/EmptyState";
 import PrimaryButton from "./PrimaryButton";
 import SecondaryButton from "./SecondaryButton";
-import { getAllPublishedPosts, BLOG_CATEGORIES } from "@/lib/blogs-data";
+import { getAllPublishedPosts } from "@/lib/blogs-data";
 
 export default function BlogListingClient() {
-  const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [searchQuery, setSearchQuery] = useState<string>("");
 
   const allPosts = getAllPublishedPosts();
 
   const filteredPosts = useMemo(() => {
     let posts = allPosts;
-
-    // Filter by category
-    if (selectedCategory !== "all") {
-      posts = posts.filter(post => post.category === selectedCategory);
-    }
 
     // Filter by search query
     if (searchQuery) {
@@ -38,7 +32,7 @@ export default function BlogListingClient() {
     }
 
     return posts;
-  }, [allPosts, selectedCategory, searchQuery]);
+  }, [allPosts, searchQuery]);
 
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString("en-US", {
@@ -46,10 +40,6 @@ export default function BlogListingClient() {
       month: "long",
       day: "numeric"
     });
-  };
-
-  const getCategoryInfo = (categoryId: string) => {
-    return BLOG_CATEGORIES.find(cat => cat.id === categoryId);
   };
 
   return (
@@ -80,146 +70,91 @@ export default function BlogListingClient() {
               />
               <FaSearch className='absolute left-4 top-1/2 transform -translate-y-1/2 text-brand-brown/50 w-4 h-4' />
             </div>
-
-            {/* Category Filters */}
-            <div className='flex flex-wrap gap-3'>
-              <button
-                onClick={() => setSelectedCategory("all")}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
-                  selectedCategory === "all"
-                    ? "bg-brand-gold text-brand-dark shadow-md"
-                    : "bg-white/80 text-brand-brown hover:bg-brand-gold/20 border border-brand-gold/20"
-                }`}
-              >
-                All Posts
-              </button>
-
-              {BLOG_CATEGORIES.map(category => (
-                <button
-                  key={category.id}
-                  onClick={() => setSelectedCategory(category.id)}
-                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
-                    selectedCategory === category.id
-                      ? "bg-brand-gold text-brand-dark shadow-md"
-                      : "bg-white/80 text-brand-brown hover:bg-brand-gold/20 border border-brand-gold/20"
-                  }`}
-                >
-                  {category.name}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Results Count */}
-          <div className='mt-6 text-center'>
-            <p className='text-brand-brown'>
-              {filteredPosts.length === 0
-                ? "No articles found matching your criteria"
-                : `${filteredPosts.length} article${filteredPosts.length !== 1 ? "s" : ""} found`}
-            </p>
           </div>
         </div>
 
         {/* Blogs Grid */}
         {filteredPosts.length > 0 ? (
           <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
-            {filteredPosts.map((post, index) => {
-              const categoryInfo = getCategoryInfo(post.category);
+            {filteredPosts.map((post, index) => (
+              <article
+                key={post.id}
+                className='bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-[1.02] overflow-hidden group'
+                style={{
+                  animationDelay: `${index * 100}ms`
+                }}
+              >
+                {/* Featured Image */}
+                <div className='relative h-48 overflow-hidden'>
+                  <Link href={`/blogs/${post.slug}`}>
+                    <Image
+                      src={post.featuredImage}
+                      alt={post.title}
+                      fill
+                      className='object-cover transition-transform duration-300 group-hover:scale-110'
+                    />
 
-              return (
-                <article
-                  key={post.id}
-                  className='bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-[1.02] overflow-hidden group'
-                  style={{
-                    animationDelay: `${index * 100}ms`
-                  }}
-                >
-                  {/* Featured Image */}
-                  <div className='relative h-48 overflow-hidden'>
-                    <Link href={`/blogs/${post.slug}`}>
-                      <Image
-                        src={post.featuredImage}
-                        alt={post.title}
-                        fill
-                        className='object-cover transition-transform duration-300 group-hover:scale-110'
-                      />
+                    {/* Overlay */}
+                    <div className='absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300' />
+                  </Link>
+                </div>
 
-                      {/* Category Badge */}
-                      {categoryInfo && (
-                        <div className='absolute top-4 left-4'>
-                          <span
-                            className={`px-3 py-1 rounded-full text-xs font-medium ${categoryInfo.color}`}
-                          >
-                            {categoryInfo.name}
-                          </span>
-                        </div>
-                      )}
-
-                      {/* Overlay */}
-                      <div className='absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300' />
-                    </Link>
-                  </div>
-
-                  {/* Content */}
-                  <div className='p-6'>
-                    {/* Meta Information */}
-                    <div className='flex items-center gap-4 text-xs text-gray-500 mb-3'>
-                      <div className='flex items-center gap-1'>
-                        <FaUser className='w-3 h-3' />
-                        <span>{post.author}</span>
-                      </div>
-
-                      <div className='flex items-center gap-1'>
-                        <FaCalendarAlt className='w-3 h-3' />
-                        <span>{formatDate(post.publishedAt)}</span>
-                      </div>
-
-                      <div className='flex items-center gap-1'>
-                        <FaClock className='w-3 h-3' />
-                        <span>{post.readTime} min read</span>
-                      </div>
+                {/* Content */}
+                <div className='p-6'>
+                  {/* Meta Information */}
+                  <div className='flex items-center gap-4 text-xs text-gray-500 mb-3'>
+                    <div className='flex items-center gap-1'>
+                      <FaCalendarAlt className='w-3 h-3' />
+                      <span>{formatDate(post.publishedAt)}</span>
                     </div>
 
-                    {/* Title */}
-                    <Link href={`/blogs/${post.slug}`}>
-                      <h2 className='font-bold text-lg text-brand-dark mb-3 line-clamp-2 group-hover:text-brand-brown transition-colors duration-200'>
-                        {post.title}
-                      </h2>
-                    </Link>
-
-                    {/* Excerpt */}
-                    <p className='text-gray-600 text-sm leading-relaxed mb-4 line-clamp-3'>
-                      {post.excerpt}
-                    </p>
-
-                    {/* Tags */}
-                    <div className='flex flex-wrap gap-2 mb-4'>
-                      {post.tags.slice(0, 3).map(tag => (
-                        <span
-                          key={tag}
-                          className='inline-flex items-center gap-1 px-2 py-1 bg-brand-gold/10 text-brand-brown rounded-full text-xs'
-                        >
-                          <FaTag className='w-2 h-2' />
-                          {tag}
-                        </span>
-                      ))}
-                      {post.tags.length > 3 && (
-                        <span className='text-xs text-gray-500'>+{post.tags.length - 3} more</span>
-                      )}
+                    <div className='flex items-center gap-1'>
+                      <FaClock className='w-3 h-3' />
+                      <span>{post.readTime} min read</span>
                     </div>
-
-                    {/* Read More Button */}
-                    <Link
-                      href={`/blogs/${post.slug}`}
-                      className='inline-flex items-center gap-2 text-brand-brown hover:text-brand-dark font-medium text-sm transition-colors duration-200 group'
-                    >
-                      <span>Read Article</span>
-                      <IoArrowForward className='w-4 h-4 transition-transform duration-300 group-hover:translate-x-1' />
-                    </Link>
                   </div>
-                </article>
-              );
-            })}
+
+                  {/* Title */}
+                  <Link href={`/blogs/${post.slug}`}>
+                    <h2 className='font-bold text-lg text-brand-dark mb-3 line-clamp-2 group-hover:text-brand-brown transition-colors duration-200'>
+                      {post.title}
+                    </h2>
+                  </Link>
+
+                  {/* Excerpt */}
+                  <p className='text-gray-600 text-sm leading-relaxed mb-4 line-clamp-3'>
+                    {post.excerpt}
+                  </p>
+
+                  {/* Tags */}
+                  <div className='flex flex-wrap gap-2 mb-4'>
+                    {post.tags.slice(0, 3).map(tag => (
+                      <span
+                        key={tag}
+                        className='inline-flex items-center gap-1 px-2 py-1 bg-brand-gold/10 text-brand-brown rounded-full text-xs'
+                      >
+                        <FaTag className='w-2 h-2' />
+                        {tag}
+                      </span>
+                    ))}
+                    {post.tags.length > 3 && (
+                      <span className='text-xs text-gray-500 flex items-center'>
+                        +{post.tags.length - 3} more
+                      </span>
+                    )}
+                  </div>
+
+                  {/* Read More Button */}
+                  <Link
+                    href={`/blogs/${post.slug}`}
+                    className='inline-flex items-center gap-2 text-brand-brown hover:text-brand-dark font-medium text-sm transition-colors duration-200 group'
+                  >
+                    <span>Read Article</span>
+                    <IoArrowForward className='w-4 h-4 transition-transform duration-300 group-hover:translate-x-1' />
+                  </Link>
+                </div>
+              </article>
+            ))}
           </div>
         ) : (
           /* Empty State */
@@ -231,7 +166,6 @@ export default function BlogListingClient() {
               {
                 label: "View All Articles",
                 onClick: () => {
-                  setSelectedCategory("all");
                   setSearchQuery("");
                 },
                 variant: "custom"

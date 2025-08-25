@@ -13,8 +13,8 @@ export const CONTACT_INFO = {
   // Social media links
   social: {
     instagram: "https://www.instagram.com/shubhhampers_",
-    linkedin: "https://www.linkedin.com/company/shubhhampers",
-    facebook: "https://www.facebook.com/shubhhampers" // Placeholder
+    linkedin: "https://www.linkedin.com/company/shubh-hampers",
+    facebook: "https://www.facebook.com/profile.php?id=61579813442869"
   },
 
   // Business information

@@ -7,13 +7,13 @@ export default function OurMission() {
         <div className='grid grid-cols-1 lg:grid-cols-2 gap-12 items-center'>
           <div>
             <SectionHeader title='Our Mission' variant='left' size='md' className='mb-0' />
-            <p className='text-lg text-gray-700 mb-6 leading-relaxed'>
+            <p className='text-sm sm:text-base md:text-sm lg:text-base text-gray-700 mb-6 leading-relaxed'>
               {`At Shubhhampers, we believe that every hamper is an opportunity
               to create magical moments and celebrate life's special occasions.
               We're not just delivering packages – we're delivering joy,
               celebration, and genuine human connection.`}
             </p>
-            <p className='text-lg text-gray-700 mb-8 leading-relaxed'>
+            <p className='text-sm sm:text-base md:text-sm lg:text-base text-gray-700 mb-8 leading-relaxed'>
               {`Whether it's celebrating weddings, festivals, or nurturing
               business relationships, we're here to help you make every
               moment special and meaningful.`}

@@ -57,14 +57,14 @@ export default function OurApproach() {
 
           <div className='order-1 lg:order-2'>
             <SectionHeader title='Our Approach' variant='left' size='md' className='mb-0' />
-            <p className='text-lg text-gray-700 mb-6 leading-relaxed'>
+            <p className='text-sm sm:text-base md:text-sm lg:text-base text-gray-700 mb-6 leading-relaxed'>
               {`We don't believe in one-size-fits-all solutions. Every celebration
               is unique, and every special moment deserves personalized
               attention. That's why we work closely with you to understand
               your specific needs and create hamper experiences that truly
               matter.`}
             </p>
-            <p className='text-lg text-gray-700 mb-8 leading-relaxed'>
+            <p className='text-sm sm:text-base md:text-sm lg:text-base text-gray-700 mb-8 leading-relaxed'>
               {`From the initial consultation to the final delivery, we're
               with you every step of the way, ensuring that every hamper
               reflects your values and creates magical moments.`}

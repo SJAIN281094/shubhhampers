@@ -204,7 +204,7 @@ export default function HowWeWorkSection() {
         {/* Why This Process Works */}
         <div className='bg-gradient-to-br from-brand-brown to-brand-dark text-white rounded-3xl p-8 md:p-12 shadow-2xl'>
           <div className='text-center max-w-4xl mx-auto'>
-            <h3 className='font-display text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-4 md:mb-6'>
+            <h3 className='font-display text-xl sm:text-2xl md:text-2xl lg:text-3xl font-bold mb-4 md:mb-6'>
               Why Our Process Works
             </h3>
             <div className='grid grid-cols-1 md:grid-cols-3 gap-8 mb-8'>
@@ -231,14 +231,16 @@ export default function HowWeWorkSection() {
               </div>
             </div>
 
-            <p className='text-sm sm:text-base md:text-lg mb-6 md:mb-8 text-brand-gold leading-relaxed px-4 md:px-0'>
+            <p className='text-sm sm:text-base md:text-sm lg:text-base mb-6 md:mb-8 text-brand-gold leading-relaxed px-4 md:px-0'>
               {`Ready to start your custom hamper journey? Let's discuss your needs
               and create something special together.`}
             </p>
 
-            <div className='flex flex-col sm:flex-row gap-3 justify-center'>
-              <Link href='/contact'>
-                <PrimaryButton size='md'>💬 Start Consultation</PrimaryButton>
+            <div className='flex flex-col sm:flex-row gap-3 w-full'>
+              <Link href='/contact' className='w-full sm:flex-1'>
+                <PrimaryButton size='md' className='w-full'>
+                  💬 Start Consultation
+                </PrimaryButton>
               </Link>
               <SecondaryButton
                 onClick={() =>
@@ -247,6 +249,7 @@ export default function HowWeWorkSection() {
                   )
                 }
                 size='md'
+                className='w-full sm:flex-1'
               >
                 💬 WhatsApp Us Now
               </SecondaryButton>

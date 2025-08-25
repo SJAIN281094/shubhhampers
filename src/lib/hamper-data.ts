@@ -131,7 +131,12 @@ export const ALL_HAMPER_PRODUCTS: HamperProduct[] = [
     image: "💕",
     description:
       "Honor the unbreakable bond between siblings with hampers that touch the heart. Our Raksha Bandhan collection celebrates this sacred relationship with traditional elements and modern touches that create treasured memories.",
-    features: ["Sacred Rakhis", "Sweet Traditions", "Heartfelt Messages", "Sibling Love"],
+    features: [
+      "Sacred Rakshabandhan Threads",
+      "Sweet Traditions",
+      "Heartfelt Messages",
+      "Sibling Love"
+    ],
     deliveryTime: "2-3 days",
     minimumOrder: "20 pieces",
     bulkBenefit: "25% off on 50+ orders",

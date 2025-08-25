@@ -148,7 +148,7 @@ export default function HamperCard({
               )}
             </div>
 
-            <h4 className='font-display text-lg sm:text-xl md:text-lg lg:text-xl font-bold text-brand-dark leading-tight tracking-wide drop-shadow-sm mb-0.5'>
+            <h4 className='font-display text-lg sm:text-xl md:text-lg lg:text-xl group-hover:text-xl group-hover:sm:text-2xl group-hover:md:text-xl group-hover:lg:text-2xl font-bold text-brand-dark leading-tight tracking-wide drop-shadow-sm mb-0.5 transition-all duration-300 ease-out'>
               {hamper.title}
             </h4>
             {hamper.subtitle && (

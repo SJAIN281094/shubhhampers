@@ -450,7 +450,7 @@ export default function HeroSlider({ slides = [] }: HeroSliderProps) {
 
                       {/* Enhanced Title */}
                       <motion.h2
-                        className='font-display text-2xl xs:text-3xl sm:text-4xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-brand-brown mb-2 xs:mb-3 md:mb-4 leading-tight tracking-wide drop-shadow-sm relative z-10'
+                        className='font-display text-3xl xs:text-4xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-brand-brown mb-2 xs:mb-3 md:mb-4 leading-tight tracking-wide drop-shadow-sm relative z-10'
                         variants={contentVariants}
                         initial='hidden'
                         animate='visible'
@@ -462,7 +462,7 @@ export default function HeroSlider({ slides = [] }: HeroSliderProps) {
                       {/* Enhanced Subtitle */}
                       {currentSlideData.subtitle && (
                         <motion.h3
-                          className='text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-semibold text-brand-dark mb-3 xs:mb-4 md:mb-6 drop-shadow-sm relative z-10 leading-relaxed'
+                          className='text-base xs:text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-semibold text-brand-dark mb-3 xs:mb-4 md:mb-6 drop-shadow-sm relative z-10 leading-relaxed'
                           variants={contentVariants}
                           initial='hidden'
                           animate='visible'
@@ -475,7 +475,7 @@ export default function HeroSlider({ slides = [] }: HeroSliderProps) {
 
                     {/* Description */}
                     <motion.p
-                      className='text-xs xs:text-sm sm:text-base md:text-lg text-brand-dark/80 mb-4 xs:mb-6 md:mb-8 leading-relaxed'
+                      className='text-sm xs:text-base sm:text-lg md:text-xl text-brand-dark/80 mb-4 xs:mb-6 md:mb-8 leading-relaxed'
                       variants={contentVariants}
                       initial='hidden'
                       animate='visible'
@@ -511,10 +511,7 @@ export default function HeroSlider({ slides = [] }: HeroSliderProps) {
                             }}
                             className='h-full'
                           >
-                            <HamperTag
-                              title={feature}
-                              className='scale-75 xs:scale-90 sm:scale-100'
-                            />
+                            <HamperTag title={feature} className='scale-100' />
                           </motion.div>
                         ))}
                       </div>

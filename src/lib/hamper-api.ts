@@ -107,14 +107,30 @@ function transformApiHamperToUI(apiHamper: ApiHamperProduct): HamperProduct {
  */
 export async function fetchHampers(params: HampersApiParams = {}): Promise<ApiHampersResponse> {
   try {
-    const queryParams = {
-      page: params.page || 1,
-      pageSize: params.pageSize || 25,
-      ...(params.category && { category: params.category }),
-      ...(params.subCategory && { subCategory: params.subCategory }),
-      ...(params.search && { search: params.search }),
-      ...(params.isActive !== undefined && { isActive: params.isActive })
-    };
+    const queryParams: Record<string, any> = {};
+
+    // Use limit/offset if provided, otherwise fall back to page/pageSize
+    if (params.limit !== undefined) {
+      queryParams.limit = params.limit;
+    } else if (params.pageSize !== undefined) {
+      queryParams.pageSize = params.pageSize;
+    } else {
+      queryParams.pageSize = 25;
+    }
+
+    if (params.offset !== undefined) {
+      queryParams.offset = params.offset;
+    } else if (params.page !== undefined) {
+      queryParams.page = params.page;
+    } else {
+      queryParams.page = 1;
+    }
+
+    // Add other parameters
+    if (params.category) queryParams.category = params.category;
+    if (params.subCategory) queryParams.subCategory = params.subCategory;
+    if (params.search) queryParams.search = params.search;
+    if (params.isActive !== undefined) queryParams.isActive = params.isActive;
 
     const response = await apiClient.get<ApiHampersResponse>("/hampers", {
       params: queryParams

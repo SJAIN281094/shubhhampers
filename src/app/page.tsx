@@ -112,8 +112,8 @@ async function getHomePageData() {
         try {
           const response = await fetchHampers({
             category: apiCategory,
-            pageSize: 3, // Only fetch 3 items per category
-            page: 1,
+            limit: 3, // Only fetch 3 items per category
+            offset: 0,
             isActive: true
           });
 

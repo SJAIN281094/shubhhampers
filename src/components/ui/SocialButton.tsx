@@ -7,6 +7,7 @@ import React from "react";
 import { Button } from "@ui-kit/button";
 import { FaLinkedin, FaInstagram, FaFacebook, FaTwitter, FaYoutube } from "react-icons/fa";
 import { cn } from "@lib/utils";
+import { CONTACT_INFO } from "@lib/contact-utils";
 
 interface SocialButtonProps {
   platform: "linkedin" | "instagram" | "facebook" | "twitter" | "youtube";
@@ -21,19 +22,19 @@ const platformConfig = {
   linkedin: {
     icon: FaLinkedin,
     label: "LinkedIn",
-    defaultHref: "https://www.linkedin.com/company/shubhhampers",
+    defaultHref: CONTACT_INFO.social.linkedin,
     color: "hover:bg-blue-600"
   },
   instagram: {
     icon: FaInstagram,
     label: "Instagram",
-    defaultHref: "https://www.instagram.com/shubhhampers_",
+    defaultHref: CONTACT_INFO.social.instagram,
     color: "hover:bg-pink-600"
   },
   facebook: {
     icon: FaFacebook,
     label: "Facebook",
-    defaultHref: "https://www.facebook.com/shubhhampers",
+    defaultHref: CONTACT_INFO.social.facebook,
     color: "hover:bg-blue-700"
   },
   twitter: {

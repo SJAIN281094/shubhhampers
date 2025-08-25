@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     "bridal gift collection",
     "festival celebration hampers",
     "diwali hamper catalogue",
-    "rakhi gift collection",
+    "rakshabandhan gift collection",
     "birthday hamper options",
     "anniversary gift catalogue",
     // Business Keywords
