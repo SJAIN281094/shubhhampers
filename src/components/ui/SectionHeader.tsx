@@ -8,6 +8,7 @@ import FeatureTag from "../FeatureTag";
 
 interface SectionHeaderProps {
   title: string;
+  subtitle?: string;
   description?: string;
   tag?: {
     emoji?: string;
@@ -30,16 +31,19 @@ const variantStyles = {
 const sizeStyles = {
   sm: {
     title: "text-xl sm:text-2xl md:text-3xl",
+    subtitle: "text-sm sm:text-base",
     description: "text-sm sm:text-base",
     spacing: "mb-8"
   },
   md: {
     title: "text-2xl sm:text-3xl md:text-4xl lg:text-5xl",
+    subtitle: "text-base sm:text-lg md:text-xl",
     description: "text-base md:text-lg lg:text-xl",
     spacing: "mb-12 md:mb-16"
   },
   lg: {
     title: "text-2xl xs:text-3xl sm:text-4xl md:text-4xl lg:text-5xl xl:text-6xl",
+    subtitle: "text-base sm:text-lg md:text-xl lg:text-2xl",
     description: "text-sm xs:text-base sm:text-lg md:text-xl",
     spacing: "mb-6 md:mb-8"
   }
@@ -47,6 +51,7 @@ const sizeStyles = {
 
 export default function SectionHeader({
   title,
+  subtitle,
   description,
   tag,
   variant = "center",
@@ -62,14 +67,17 @@ export default function SectionHeader({
   const themeStyles = {
     default: {
       title: "text-brand-brown",
+      subtitle: "text-brand-brown",
       description: "text-brand-dark"
     },
     light: {
       title: "text-brand-brown",
+      subtitle: "text-brand-brown",
       description: "text-brand-dark"
     },
     dark: {
       title: "text-brand-light",
+      subtitle: "text-brand-light",
       description: "text-brand-gold"
     }
   };
@@ -104,6 +112,27 @@ export default function SectionHeader({
       >
         {title}
       </h2>
+
+      {/* Subtitle */}
+      {subtitle && (
+        <div
+          className={`relative z-10 mb-3 md:mb-5 ${variant === "center" ? "max-w-3xl mx-auto" : ""} ${variant === "left" ? "max-w-2xl" : ""}`}
+        >
+          <p
+            className={`italic font-semibold leading-relaxed tracking-wide ${styles.subtitle} ${currentTheme.subtitle} relative drop-shadow-sm`}
+          >
+            <span className='relative inline-block px-2'>
+              <span className='absolute -left-1 -top-2 text-brand-gold text-2xl font-bold opacity-80'>
+                "
+              </span>
+              {subtitle}
+              <span className='absolute -right-1 -bottom-2 text-brand-gold text-2xl font-bold opacity-80'>
+                "
+              </span>
+            </span>
+          </p>
+        </div>
+      )}
 
       {/* Description */}
       {description && (

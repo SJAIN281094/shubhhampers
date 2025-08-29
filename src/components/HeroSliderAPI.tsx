@@ -336,14 +336,24 @@ export default function HeroSliderAPI({ fallbackSlides = [] }: HeroSliderProps) 
 
                 {/* Enhanced Subtitle */}
                 {currentSlideData.subtitle && (
-                  <motion.h2
-                    className='text-2xl sm:text-3xl lg:text-4xl text-brand-dark font-semibold mb-4 lg:mb-6 leading-relaxed drop-shadow-sm relative z-10'
+                  <motion.div
+                    className='relative z-10 mb-3 md:mb-5 max-w-3xl mx-auto lg:mx-0'
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.5, duration: 0.6 }}
                   >
-                    {currentSlideData.subtitle}
-                  </motion.h2>
+                    <p className='italic font-semibold leading-relaxed tracking-wide text-base sm:text-lg md:text-xl lg:text-2xl text-brand-brown relative drop-shadow-sm'>
+                      <span className='relative inline-block px-2'>
+                        <span className='absolute -left-1 -top-2 text-brand-gold text-2xl font-bold opacity-80'>
+                          "
+                        </span>
+                        {currentSlideData.subtitle}
+                        <span className='absolute -right-1 -bottom-2 text-brand-gold text-2xl font-bold opacity-80'>
+                          "
+                        </span>
+                      </span>
+                    </p>
+                  </motion.div>
                 )}
               </div>
 

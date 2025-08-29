@@ -77,10 +77,7 @@ export default function HamperDetailsPage({
 
           <SectionHeader
             title={hamper.title}
-            description={
-              hamper.description ||
-              `Curated ${hamper.title} from our thoughtfully crafted collection`
-            }
+            subtitle={hamper.subtitle}
             variant='center'
             size='lg'
             tag={{

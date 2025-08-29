@@ -461,15 +461,25 @@ export default function HeroSlider({ slides = [] }: HeroSliderProps) {
 
                       {/* Enhanced Subtitle */}
                       {currentSlideData.subtitle && (
-                        <motion.h3
-                          className='text-base xs:text-lg sm:text-xl md:text-2xl lg:text-2xl xl:text-3xl font-semibold text-brand-dark mb-3 xs:mb-4 md:mb-6 drop-shadow-sm relative z-10 leading-relaxed'
+                        <motion.div
+                          className='relative z-10 mb-3 md:mb-5 max-w-3xl mx-auto'
                           variants={contentVariants}
                           initial='hidden'
                           animate='visible'
                           transition={{ duration: 0.8, delay: 0.6 }}
                         >
-                          {currentSlideData.subtitle}
-                        </motion.h3>
+                          <p className='italic font-semibold leading-relaxed tracking-wide text-base sm:text-lg md:text-xl lg:text-2xl text-brand-brown relative drop-shadow-sm'>
+                            <span className='relative inline-block px-2'>
+                              <span className='absolute -left-1 -top-2 text-brand-gold text-2xl font-bold opacity-80'>
+                                "
+                              </span>
+                              {currentSlideData.subtitle}
+                              <span className='absolute -right-1 -bottom-2 text-brand-gold text-2xl font-bold opacity-80'>
+                                "
+                              </span>
+                            </span>
+                          </p>
+                        </motion.div>
                       )}
                     </div>
 
