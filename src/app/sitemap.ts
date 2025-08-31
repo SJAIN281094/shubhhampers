@@ -30,7 +30,7 @@ async function fetchAllHamperSlugs() {
 }
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const base = process.env.NEXT_PUBLIC_SITE_URL || "https://www.shubhampers.com";
+  const base = process.env.NEXT_PUBLIC_SITE_URL || "https://www.shubhhampers.com";
 
   // Fetch data dynamically
   const [posts, hampers] = await Promise.all([fetchAllBlogSlugs(), fetchAllHamperSlugs()]);

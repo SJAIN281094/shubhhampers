@@ -9,7 +9,9 @@ import {
 } from "./blog-api-types";
 
 const API_BASE_URL =
-  process.env.NEXT_PUBLIC_API_BASE_URL || process.env.API_BASE_URL || "http://localhost:1337";
+  process.env.NEXT_PUBLIC_API_BASE_URL ||
+  process.env.API_BASE_URL ||
+  "https://admin.shubhhampers.com";
 
 // Fetch blog posts - simplified to just get all data
 export async function fetchBlogPosts(_params: BlogApiParams = {}): Promise<{

@@ -37,7 +37,7 @@ export async function POST(req: NextRequest) {
 
   // Fire IndexNow for participating search engines
   try {
-    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.shubhampers.com";
+    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.shubhhampers.com";
 
     if (contentType === "blog" || contentType === "blog-post") {
       await fetch(`${baseUrl}/api/test-indexnow`, {

@@ -177,7 +177,7 @@ API_BASE_URL=https://admin.shubhhampers.com/api
 
 # Development
 NODE_ENV=development
-API_BASE_URL=http://localhost:1337/api
+API_BASE_URL=https://admin.shubhhampers.com/api
 ```
 
 ## 📈 **Monitoring & Testing**
