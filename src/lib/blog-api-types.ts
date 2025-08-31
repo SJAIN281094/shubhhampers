@@ -93,34 +93,28 @@ export interface BlogSocialSharing {
 
 export interface ApiBlogPost {
   id: number;
+  documentId: string;
   attributes: {
     title: string;
     slug: string;
     excerpt: string;
-    content: string;
-    featuredImage: {
-      data: BlogImage | null;
-    };
-    gallery?: {
-      data: BlogImage[];
-    };
-    author: {
-      data: BlogAuthor;
-    };
-    category: {
-      data: BlogCategory;
-    };
-    tags: {
-      data: BlogTag[];
-    };
-    readTime: number;
-    publishedAt: string;
+    content?: string;
+    readTime?: number;
+    isPublished?: boolean;
+    isFeatured?: boolean;
+    viewCount?: number;
+    publishedAt?: string;
     updatedAt: string;
-    isPublished: boolean;
-    isFeatured: boolean;
-    viewCount: number;
-    seo: BlogSEO;
-    socialSharing?: BlogSocialSharing;
+    featuredImage: {
+      url: string;
+      formats?: {
+        large?: { url: string };
+        medium?: { url: string };
+        small?: { url: string };
+        thumbnail?: { url: string };
+      };
+    };
+    tags: string; // API returns comma-separated string
   };
 }
 
@@ -213,30 +207,35 @@ export interface BlogApiParams {
 export function transformApiBlogPost(apiPost: ApiBlogPost): BlogPost {
   const { id } = apiPost;
 
-  // Parse tags from API response
-  const tags =
-    apiPost.attributes.tags?.data?.map(tag => ({
-      name: tag.attributes.name,
-      slug: tag.attributes.slug,
-      color: tag.attributes.color || "#8B4513"
-    })) || [];
+  // Parse tags from API response - API returns tags as comma-separated string
+  const tagsString = apiPost.attributes.tags || "";
+  const tags = tagsString
+    .split(",")
+    .map(tag => tag.trim())
+    .filter(tag => tag.length > 0)
+    .map(tag => ({
+      name: tag,
+      slug: tag.toLowerCase().replace(/\s+/g, "-"),
+      color: "#8B4513"
+    }));
 
-  // Handle image data - the API returns image object with url property
-  const featuredImageUrl = apiPost.attributes.featuredImage?.data?.attributes?.url || "";
+  // Handle image data - API returns featuredImage.url directly
+  const featuredImageUrl = apiPost.attributes.featuredImage?.url || "";
 
   return {
     id: id.toString(),
     title: apiPost.attributes.title,
     slug: apiPost.attributes.slug,
     excerpt: apiPost.attributes.excerpt,
-    content: apiPost.attributes.content || apiPost.attributes.excerpt,
+    content: apiPost.attributes.content || apiPost.attributes.excerpt || "",
     author: {
       name: "Shubhhampers Team", // Default since API doesn't have author
       bio: undefined,
       avatar: undefined,
       socialLinks: undefined
     },
-    publishedAt: apiPost.attributes.publishedAt || apiPost.attributes.updatedAt,
+    publishedAt:
+      apiPost.attributes.publishedAt || apiPost.attributes.updatedAt || new Date().toISOString(),
     updatedAt: apiPost.attributes.updatedAt,
     category: {
       name: "General", // Default since API doesn't have category
@@ -247,31 +246,27 @@ export function transformApiBlogPost(apiPost: ApiBlogPost): BlogPost {
     tags,
     featuredImage: featuredImageUrl,
     gallery: [],
-    readTime: apiPost.attributes.readTime,
-    isPublished: apiPost.attributes.isPublished !== false,
-    isFeatured: apiPost.attributes.isFeatured || false,
-    viewCount: apiPost.attributes.viewCount || 0,
+    readTime: apiPost.attributes.readTime || 5,
+    isPublished: true, // Default to published since API doesn't have this field
+    isFeatured: false, // Default to not featured
+    viewCount: 0, // Default to 0 since API doesn't have this field
     seo: {
-      title: apiPost.attributes.seo?.metaTitle || apiPost.attributes.title,
-      description: apiPost.attributes.seo?.metaDescription || apiPost.attributes.excerpt,
-      keywords:
-        apiPost.attributes.seo?.keywords?.split(",").map(k => k.trim()) ||
-        tags.map(tag => tag.name),
-      ogTitle: apiPost.attributes.seo?.ogTitle || apiPost.attributes.title,
-      ogDescription: apiPost.attributes.seo?.ogDescription || apiPost.attributes.excerpt,
-      ogImage: apiPost.attributes.seo?.ogImage?.data?.attributes?.url || featuredImageUrl,
-      twitterTitle: apiPost.attributes.seo?.twitterTitle || apiPost.attributes.title,
-      twitterDescription: apiPost.attributes.seo?.twitterDescription || apiPost.attributes.excerpt,
-      canonicalUrl: apiPost.attributes.seo?.canonicalUrl,
-      noIndex: apiPost.attributes.seo?.noIndex || false
+      title: apiPost.attributes.title,
+      description: apiPost.attributes.excerpt,
+      keywords: tags.map(tag => tag.name),
+      ogTitle: apiPost.attributes.title,
+      ogDescription: apiPost.attributes.excerpt,
+      ogImage: featuredImageUrl,
+      twitterTitle: apiPost.attributes.title,
+      twitterDescription: apiPost.attributes.excerpt,
+      canonicalUrl: undefined,
+      noIndex: false
     },
-    socialSharing: apiPost.attributes.socialSharing
-      ? {
-          enableSharing: apiPost.attributes.socialSharing.enableSharing,
-          shareText: apiPost.attributes.socialSharing.shareText,
-          platforms: apiPost.attributes.socialSharing.platforms
-        }
-      : undefined
+    socialSharing: {
+      enableSharing: true,
+      shareText: apiPost.attributes.excerpt,
+      platforms: ["facebook", "twitter", "linkedin", "whatsapp"]
+    }
   };
 }
 

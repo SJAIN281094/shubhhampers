@@ -64,21 +64,23 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${base}/hampers`, lastModified: currentDate, changeFrequency: "weekly", priority: 0.9 }
   ];
 
-  // Blog posts
-  const blogPages = posts.map((post: any) => ({
-    url: `${base}/blogs/${post.slug}`,
-    lastModified: new Date(post.updatedAt || post.publishedAt || currentDate),
-    changeFrequency: "monthly" as const,
-    priority: 0.8
-  }));
+  // Blog posts - API returns { data: [{ slug, updatedAt }] }
+  const blogPages =
+    posts.data?.map((post: any) => ({
+      url: `${base}/blogs/${post.slug}`,
+      lastModified: new Date(post.updatedAt || currentDate),
+      changeFrequency: "monthly" as const,
+      priority: 0.8
+    })) || [];
 
-  // Hamper pages
-  const hamperPages = hampers.map((hamper: any) => ({
-    url: `${base}/hampers/${hamper.category?.name || "general"}/${hamper.subCategory?.name || "general"}/${hamper.slug}`,
-    lastModified: new Date(hamper.updatedAt || currentDate),
-    changeFrequency: "weekly" as const,
-    priority: 0.9
-  }));
+  // Hamper pages - API returns { data: [{ slug, updatedAt }] }
+  const hamperPages =
+    hampers.data?.map((hamper: any) => ({
+      url: `${base}/hampers/${hamper.category?.name || "general"}/${hamper.subCategory?.name || "general"}/${hamper.slug}`,
+      lastModified: new Date(hamper.updatedAt || currentDate),
+      changeFrequency: "weekly" as const,
+      priority: 0.9
+    })) || [];
 
   return [...staticPages, ...blogPages, ...hamperPages];
 }
