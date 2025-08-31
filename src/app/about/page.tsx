@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     "wedding gift curation",
     "authentic hamper service",
     "business hampers",
-    "corporate gift hampers",
+    "festival gift hampers",
     "trusted hamper partner",
     "wedding celebration hampers",
     "festival celebration gifts"

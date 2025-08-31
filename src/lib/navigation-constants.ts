@@ -110,10 +110,10 @@ export const NAVIGATION_ITEMS: NavigationItem[] = [
         description: "All Business Hampers"
       },
       {
-        id: "corporate",
-        label: "Corporate Gift Hampers",
-        emoji: "👥",
-        href: "/hampers/business/corporate-gift-hampers"
+        id: "festival",
+        label: "Festival Gift Hampers",
+        emoji: "🎉",
+        href: "/hampers/business/business-festival-gift-hampers"
       },
       {
         id: "employee",

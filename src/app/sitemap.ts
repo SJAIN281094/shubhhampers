@@ -82,7 +82,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         category?: { name: string };
         subCategory?: { name: string };
       }) => ({
-        url: `${base}/hampers/${hamper.category?.name || "general"}/${hamper.subCategory?.name || "general"}/${hamper.slug}`,
+        url: `${base}/hampers/${(hamper.category?.name || "general").toLowerCase()}/${(hamper.subCategory?.name || "general").toLowerCase()}/${hamper.slug}`,
         lastModified: new Date(hamper.updatedAt || currentDate),
         changeFrequency: "weekly" as const,
         priority: 0.9

@@ -462,14 +462,14 @@ export const INDIVIDUAL_HAMPER_PAGES: Record<string, HamperPageData> = {
     products: ALL_HAMPER_PRODUCTS.filter(p => p.id === "new-baby-blessings")
   },
 
-  "corporate-gift-hampers": {
-    pageTitle: "Corporate Gift Hampers",
-    pageSubtitle: "Employee Appreciation",
-    heroTitle: "Employee Onboarding Gift Hampers",
+  "business-festival-gift-hampers": {
+    pageTitle: "Business Festival Gift Hampers",
+    pageSubtitle: "Business Celebrations",
+    heroTitle: "Festival Gift Hampers for Business",
     heroDescription:
-      "Transform first days into lasting memories. Our thoughtfully curated onboarding hampers help new team members feel genuinely valued from day one.",
+      "Celebrate festivals with your business partners and employees. Our thoughtfully curated festival hampers help strengthen business relationships during festive seasons.",
     seoDescription:
-      "Corporate gift hampers for employee onboarding and appreciation. Professional business hampers with custom branding.",
+      "Festival gift hampers for business celebrations. Professional business hampers for Diwali, Holi, and other festivals.",
     category: "business",
     products: ALL_HAMPER_PRODUCTS.filter(p => p.id === "employee-onboarding")
   },

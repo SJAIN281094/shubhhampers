@@ -133,7 +133,7 @@ export default function HeroSliderAPI({ fallbackSlides = [] }: HeroSliderProps) 
       wedding:
         "Hi! I'm interested in your Wedding Gift Hampers. Can you help me with room welcome hampers and return gifts?",
       business:
-        "Hi! I'm interested in your Corporate Gift Hampers. Can you help me with employee and client gifting solutions?",
+        "Hi! I'm interested in your Festival Gift Hampers. Can you help me with employee and client gifting solutions?",
       personal:
         "Hi! I'm interested in your Personal Gift Hampers. Can you help me with birthday and anniversary celebrations?",
       default:

@@ -36,7 +36,7 @@ const footerLinksData = {
   business: {
     title: "Corporate & Business",
     links: [
-      { href: "/hampers/business/corporate-gift-hampers", label: "Corporate Gift Hampers" },
+      { href: "/hampers/business/business-festival-gift-hampers", label: "Festival Gift Hampers" },
       { href: "/hampers/business/employee-gift-hampers", label: "Employee Gift Hampers" },
       { href: "/hampers/business/client-gift-hampers", label: "Client Gift Hampers" }
     ]

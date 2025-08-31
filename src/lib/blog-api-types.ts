@@ -94,28 +94,74 @@ export interface BlogSocialSharing {
 export interface ApiBlogPost {
   id: number;
   documentId: string;
-  attributes: {
-    title: string;
-    slug: string;
-    excerpt: string;
-    content?: string;
-    readTime?: number;
-    isPublished?: boolean;
-    isFeatured?: boolean;
-    viewCount?: number;
-    publishedAt?: string;
-    updatedAt: string;
-    featuredImage: {
-      url: string;
-      formats?: {
-        large?: { url: string };
-        medium?: { url: string };
-        small?: { url: string };
-        thumbnail?: { url: string };
+  title: string;
+  slug: string;
+  excerpt: string;
+  content?: string;
+  readTime?: number;
+  isPublished?: boolean;
+  isFeatured?: boolean;
+  viewCount?: number;
+  publishedAt?: string;
+  updatedAt: string;
+  featuredImage: {
+    id: number;
+    documentId: string;
+    name: string;
+    caption?: string;
+    url: string;
+    formats?: {
+      large?: {
+        ext: string;
+        url: string;
+        hash: string;
+        mime: string;
+        name: string;
+        path?: string;
+        size: number;
+        width: number;
+        height: number;
+        sizeInBytes: number;
+      };
+      medium?: {
+        ext: string;
+        url: string;
+        hash: string;
+        mime: string;
+        name: string;
+        path?: string;
+        size: number;
+        width: number;
+        height: number;
+        sizeInBytes: number;
+      };
+      small?: {
+        ext: string;
+        url: string;
+        hash: string;
+        mime: string;
+        name: string;
+        path?: string;
+        size: number;
+        width: number;
+        height: number;
+        sizeInBytes: number;
+      };
+      thumbnail?: {
+        ext: string;
+        url: string;
+        hash: string;
+        mime: string;
+        name: string;
+        path?: string;
+        size: number;
+        width: number;
+        height: number;
+        sizeInBytes: number;
       };
     };
-    tags: string; // API returns comma-separated string
   };
+  tags: string; // API returns comma-separated string
 }
 
 export interface ApiBlogListResponse {
@@ -208,7 +254,17 @@ export function transformApiBlogPost(apiPost: ApiBlogPost): BlogPost {
   const { id } = apiPost;
 
   // Parse tags from API response - API returns tags as comma-separated string
-  const tagsString = apiPost.attributes.tags || "";
+
+  // Try different possible locations for tags
+  let tagsString = "";
+  if (apiPost.tags) {
+    tagsString = apiPost.tags;
+  } else if (typeof apiPost === "string") {
+    tagsString = apiPost;
+  }
+
+  console.log("Raw tags from API:", tagsString);
+
   const tags = tagsString
     .split(",")
     .map(tag => tag.trim())
@@ -220,51 +276,50 @@ export function transformApiBlogPost(apiPost: ApiBlogPost): BlogPost {
     }));
 
   // Handle image data - API returns featuredImage.url directly
-  const featuredImageUrl = apiPost.attributes.featuredImage?.url || "";
+  const featuredImageUrl = apiPost.featuredImage?.url || "";
 
   return {
     id: id.toString(),
-    title: apiPost.attributes.title,
-    slug: apiPost.attributes.slug,
-    excerpt: apiPost.attributes.excerpt,
-    content: apiPost.attributes.content || apiPost.attributes.excerpt || "",
+    title: apiPost.title,
+    slug: apiPost.slug,
+    excerpt: apiPost.excerpt,
+    content: apiPost.content || apiPost.excerpt || "",
     author: {
       name: "Shubhhampers Team", // Default since API doesn't have author
       bio: undefined,
       avatar: undefined,
       socialLinks: undefined
     },
-    publishedAt:
-      apiPost.attributes.publishedAt || apiPost.attributes.updatedAt || new Date().toISOString(),
-    updatedAt: apiPost.attributes.updatedAt,
+    publishedAt: apiPost.publishedAt || apiPost.updatedAt || new Date().toISOString(),
+    updatedAt: apiPost.updatedAt,
     category: {
       name: "General", // Default since API doesn't have category
       slug: "general",
       color: "#8B4513",
       icon: undefined
     },
-    tags,
+    tags: Array.isArray(tags) ? tags : [],
     featuredImage: featuredImageUrl,
     gallery: [],
-    readTime: apiPost.attributes.readTime || 5,
+    readTime: apiPost.readTime || 5,
     isPublished: true, // Default to published since API doesn't have this field
     isFeatured: false, // Default to not featured
     viewCount: 0, // Default to 0 since API doesn't have this field
     seo: {
-      title: apiPost.attributes.title,
-      description: apiPost.attributes.excerpt,
+      title: apiPost.title,
+      description: apiPost.excerpt,
       keywords: tags.map(tag => tag.name),
-      ogTitle: apiPost.attributes.title,
-      ogDescription: apiPost.attributes.excerpt,
+      ogTitle: apiPost.title,
+      ogDescription: apiPost.excerpt,
       ogImage: featuredImageUrl,
-      twitterTitle: apiPost.attributes.title,
-      twitterDescription: apiPost.attributes.excerpt,
+      twitterTitle: apiPost.title,
+      twitterDescription: apiPost.excerpt,
       canonicalUrl: undefined,
       noIndex: false
     },
     socialSharing: {
       enableSharing: true,
-      shareText: apiPost.attributes.excerpt,
+      shareText: apiPost.excerpt,
       platforms: ["facebook", "twitter", "linkedin", "whatsapp"]
     }
   };

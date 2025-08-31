@@ -100,7 +100,7 @@ export async function generateBlogSlugs(): Promise<string[]> {
     }
 
     const data: ApiBlogListResponse = await response.json();
-    return data.data.map(post => post.attributes.slug);
+    return data.data.map(post => post.slug);
   } catch {
     // Remove console.error to avoid build warnings
     return [];

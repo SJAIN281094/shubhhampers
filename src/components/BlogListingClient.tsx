@@ -48,7 +48,9 @@ export default function BlogListingClient() {
         post =>
           post.title.toLowerCase().includes(query) ||
           post.excerpt.toLowerCase().includes(query) ||
-          post.tags.some(tag => tag.name.toLowerCase().includes(query))
+          (post.tags &&
+            Array.isArray(post.tags) &&
+            post.tags.some(tag => tag.name.toLowerCase().includes(query)))
       );
     }
 
@@ -197,7 +199,7 @@ export default function BlogListingClient() {
                   </p>
 
                   {/* Tags */}
-                  {post.tags && post.tags.length > 0 && (
+                  {post.tags && Array.isArray(post.tags) && post.tags.length > 0 && (
                     <div className="flex flex-wrap gap-2 mt-3">
                       {post.tags.map((tag, index) => (
                         <HamperTag

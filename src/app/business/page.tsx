@@ -9,7 +9,7 @@ import BusinessCTA from "@components/BusinessCTA";
 export const metadata: Metadata = {
   title: "Corporate Gift Baskets & Business Hampers | Shubhhampers",
   description:
-    "Boost business relationships with corporate gift hampers. Employee recognition, client appreciation & team building. Measurable ROI guaranteed!",
+    "Boost business relationships with festival gift hampers. Employee recognition, client appreciation & team building. Measurable ROI guaranteed!",
   alternates: {
     canonical: "https://www.shubhhampers.com/business"
   },
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
         url: "https://shubhhampers.s3.ap-south-1.amazonaws.com/website/images/social-media/social_media_meta_image.png",
         width: 1200,
         height: 630,
-        alt: "Shubhhampers Business Solutions - Corporate Gift Hampers"
+        alt: "Shubhhampers Business Solutions - Festival Gift Hampers"
       },
       {
         url: "https://shubhhampers.s3.ap-south-1.amazonaws.com/website/images/social-media/social_media_meta_image_300x200.png",
@@ -63,7 +63,7 @@ export const metadata: Metadata = {
         url: "https://shubhhampers.s3.ap-south-1.amazonaws.com/website/images/social-media/social_media_meta_image.png",
         width: 1200,
         height: 630,
-        alt: "Shubhhampers Business Solutions - Corporate Gift Hampers"
+        alt: "Shubhhampers Business Solutions - Festival Gift Hampers"
       }
     ],
     creator: "@shubhhampers",
