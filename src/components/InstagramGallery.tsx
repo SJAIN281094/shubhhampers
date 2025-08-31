@@ -148,39 +148,39 @@ export default function InstagramGallery() {
   };
 
   return (
-    <section className='py-20 bg-gradient-to-br from-brand-light via-white to-brand-gold/5'>
-      <div className='container mx-auto px-4 sm:px-6 lg:px-8'>
+    <section className="py-20 bg-gradient-to-br from-brand-light via-white to-brand-gold/5">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className='mb-8'>
+        <div className="mb-8">
           <SectionHeader
             tag={{ emoji: "📸", text: "Instagram Gallery" }}
-            title='Behind the Scenes & Hamper Showcases'
-            description='Discover our latest hamper creations, packaging processes, and happy customer moments. Follow our journey on Instagram for daily inspiration and exclusive behind-the-scenes content.'
-            variant='center'
-            size='lg'
+            title="Behind the Scenes & Hamper Showcases"
+            description="Discover our latest hamper creations, packaging processes, and happy customer moments. Follow our journey on Instagram for daily inspiration and exclusive behind-the-scenes content."
+            variant="center"
+            size="lg"
             showDecorations={false}
           />
         </div>
 
         {/* Social Links */}
-        <div className='text-center mb-12'>
-          <div className='flex flex-col sm:flex-row gap-4 justify-center items-center'>
+        <div className="text-center mb-12">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Link
-              href='https://instagram.com/shubhhampers_'
-              target='_blank'
-              rel='noopener noreferrer'
+              href="https://instagram.com/shubhhampers_"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               <PrimaryButton
-                size='sm'
-                className='bg-gradient-to-r from-purple-600 to-pink-600 hover:from-pink-600 hover:to-purple-600'
+                size="sm"
+                className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-pink-600 hover:to-purple-600"
               >
-                <FaInstagram className='w-4 h-4' />
+                <FaInstagram className="w-4 h-4" />
                 Follow @shubhhampers_
-                <FaExternalLinkAlt className='w-3 h-3' />
+                <FaExternalLinkAlt className="w-3 h-3" />
               </PrimaryButton>
             </Link>
 
-            <SecondaryButton onClick={fetchInstagramPosts} disabled={loading} size='sm'>
+            <SecondaryButton onClick={fetchInstagramPosts} disabled={loading} size="sm">
               <IoRefresh className={`w-4 h-4 ${loading ? "animate-spin" : ""}`} />
               Refresh Feed
             </SecondaryButton>
@@ -189,24 +189,24 @@ export default function InstagramGallery() {
 
         {/* Loading State */}
         {loading && (
-          <div className='text-center py-16'>
-            <div className='inline-flex items-center gap-3 text-brand-dark'>
-              <div className='animate-spin rounded-full h-8 w-8 border-b-2 border-brand-gold' />
-              <span className='text-lg font-medium'>Loading Instagram posts...</span>
+          <div className="text-center py-16">
+            <div className="inline-flex items-center gap-3 text-brand-dark">
+              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-brand-gold" />
+              <span className="text-lg font-medium">Loading Instagram posts...</span>
             </div>
           </div>
         )}
 
         {/* Error State */}
         {error && (
-          <div className='text-center py-16'>
-            <div className='bg-red-50 border border-red-200 rounded-2xl p-8 max-w-md mx-auto'>
-              <div className='text-red-600 text-xl mb-4'>📱</div>
-              <h3 className='text-red-800 font-bold text-lg mb-2'>Unable to Load Posts</h3>
-              <p className='text-red-600 mb-4'>{error}</p>
+          <div className="text-center py-16">
+            <div className="bg-red-50 border border-red-200 rounded-2xl p-8 max-w-md mx-auto">
+              <div className="text-red-600 text-xl mb-4">📱</div>
+              <h3 className="text-red-800 font-bold text-lg mb-2">Unable to Load Posts</h3>
+              <p className="text-red-600 mb-4">{error}</p>
               <button
                 onClick={fetchInstagramPosts}
-                className='bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors'
+                className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors"
               >
                 Try Again
               </button>
@@ -216,22 +216,22 @@ export default function InstagramGallery() {
 
         {/* Instagram Gallery - Masonry Layout */}
         {!loading && !error && posts.length > 0 && (
-          <div className='columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-6 space-y-6'>
+          <div className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-6 space-y-6">
             {posts.map((post, index) => (
               <div
                 key={post.id}
-                className='break-inside-avoid bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-[1.02] overflow-hidden group'
+                className="break-inside-avoid bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-[1.02] overflow-hidden group"
                 style={{
                   animationDelay: `${index * 100}ms`
                 }}
               >
                 {/* Media Content */}
-                <div className='relative overflow-hidden'>
+                <div className="relative overflow-hidden">
                   <Link
                     href={post.permalink}
-                    target='_blank'
-                    rel='noopener noreferrer'
-                    className='block'
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block"
                   >
                     <Image
                       src={
@@ -242,50 +242,50 @@ export default function InstagramGallery() {
                       alt={post.caption?.substring(0, 100) || "Instagram post"}
                       width={600}
                       height={400}
-                      className='w-full h-auto object-cover transition-transform duration-300 group-hover:scale-110'
-                      loading='lazy'
+                      className="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-110"
+                      loading="lazy"
                     />
 
                     {/* Video Play Icon */}
                     {post.media_type === "VIDEO" && (
-                      <div className='absolute inset-0 flex items-center justify-center'>
-                        <div className='bg-black/50 backdrop-blur-sm rounded-full p-4 transition-all duration-200 group-hover:bg-black/70 group-hover:scale-110'>
-                          <FaPlay className='w-6 h-6 text-white ml-1' />
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="bg-black/50 backdrop-blur-sm rounded-full p-4 transition-all duration-200 group-hover:bg-black/70 group-hover:scale-110">
+                          <FaPlay className="w-6 h-6 text-white ml-1" />
                         </div>
                       </div>
                     )}
 
                     {/* Overlay */}
-                    <div className='absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300' />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
                     {/* External Link Icon */}
-                    <div className='absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300'>
-                      <div className='bg-white/90 backdrop-blur-sm rounded-full p-2'>
-                        <FaExternalLinkAlt className='w-3 h-3 text-brand-dark' />
+                    <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="bg-white/90 backdrop-blur-sm rounded-full p-2">
+                        <FaExternalLinkAlt className="w-3 h-3 text-brand-dark" />
                       </div>
                     </div>
                   </Link>
                 </div>
 
                 {/* Post Details */}
-                <div className='p-4'>
+                <div className="p-4">
                   {/* Caption */}
                   {post.caption && (
-                    <p className='text-gray-700 text-sm leading-relaxed mb-3'>
+                    <p className="text-gray-700 text-sm leading-relaxed mb-3">
                       {truncateCaption(post.caption)}
                     </p>
                   )}
 
                   {/* Meta Information */}
-                  <div className='flex items-center justify-between text-xs text-gray-500'>
-                    <span className='font-medium'>{formatDate(post.timestamp)}</span>
+                  <div className="flex items-center justify-between text-xs text-gray-500">
+                    <span className="font-medium">{formatDate(post.timestamp)}</span>
 
-                    <div className='flex items-center gap-3'>
+                    <div className="flex items-center gap-3">
                       {post.like_count && (
-                        <span className='flex items-center gap-1'>❤️ {post.like_count}</span>
+                        <span className="flex items-center gap-1">❤️ {post.like_count}</span>
                       )}
                       {post.comments_count && (
-                        <span className='flex items-center gap-1'>💬 {post.comments_count}</span>
+                        <span className="flex items-center gap-1">💬 {post.comments_count}</span>
                       )}
                     </div>
                   </div>
@@ -297,19 +297,19 @@ export default function InstagramGallery() {
 
         {/* Empty State */}
         {!loading && !error && posts.length === 0 && (
-          <div className='text-center py-16'>
-            <div className='text-6xl mb-4'>📸</div>
-            <h3 className='text-2xl font-bold text-brand-dark mb-4'>No Posts Found</h3>
-            <p className='text-gray-600 mb-6'>
+          <div className="text-center py-16">
+            <div className="text-6xl mb-4">📸</div>
+            <h3 className="text-2xl font-bold text-brand-dark mb-4">No Posts Found</h3>
+            <p className="text-gray-600 mb-6">
               We&apos;re working on loading our Instagram content. Please check back soon!
             </p>
             <Link
-              href='https://instagram.com/shubhhampers_'
-              target='_blank'
-              rel='noopener noreferrer'
-              className='inline-flex items-center gap-2 bg-brand-gold text-brand-dark font-semibold px-6 py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-105'
+              href="https://instagram.com/shubhhampers_"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-brand-gold text-brand-dark font-semibold px-6 py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-105"
             >
-              <FaInstagram className='w-5 h-5' />
+              <FaInstagram className="w-5 h-5" />
               Visit Our Instagram
             </Link>
           </div>

@@ -46,12 +46,12 @@ function PaginationControls({
   const showPages = pages.slice(Math.max(0, page - 3), Math.min(pageCount, page + 2));
 
   return (
-    <div className='flex justify-center items-center space-x-2 mt-12'>
+    <div className="flex justify-center items-center space-x-2 mt-12">
       {/* Previous Page */}
       {page > 1 && (
         <Link
           href={buildUrl(page - 1)}
-          className='px-4 py-2 border border-brand-gold text-brand-brown hover:bg-brand-gold hover:text-white rounded-lg transition-colors'
+          className="px-4 py-2 border border-brand-gold text-brand-brown hover:bg-brand-gold hover:text-white rounded-lg transition-colors"
         >
           Previous
         </Link>
@@ -76,7 +76,7 @@ function PaginationControls({
       {page < pageCount && (
         <Link
           href={buildUrl(page + 1)}
-          className='px-4 py-2 border border-brand-gold text-brand-brown hover:bg-brand-gold hover:text-white rounded-lg transition-colors'
+          className="px-4 py-2 border border-brand-gold text-brand-brown hover:bg-brand-gold hover:text-white rounded-lg transition-colors"
         >
           Next
         </Link>
@@ -92,22 +92,22 @@ export default function HamperPageTemplateServer({ data, slug }: HamperPageTempl
   const baseUrl = `/hampers/${slug}`;
 
   return (
-    <section className='py-8 sm:py-12 md:py-16 lg:py-20 bg-gradient-to-br from-brand-light via-white to-brand-gold/5'>
-      <div className='container mx-auto px-4 sm:px-6 lg:px-8'>
+    <section className="py-8 sm:py-12 md:py-16 lg:py-20 bg-gradient-to-br from-brand-light via-white to-brand-gold/5">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Hero Section */}
-        <div className='text-center mb-8 sm:mb-12'>
+        <div className="text-center mb-8 sm:mb-12">
           <SectionHeader
             title={heroTitle}
             description={heroDescription}
-            variant='center'
-            size='lg'
+            variant="center"
+            size="lg"
             showDecorations={false}
           />
         </div>
 
         {/* Products Grid */}
         {products.length > 0 ? (
-          <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8'>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
             {products.map(hamper => (
               <HamperCard
                 key={hamper.id}
@@ -129,7 +129,7 @@ export default function HamperPageTemplateServer({ data, slug }: HamperPageTempl
                 variant: "primary" as const
               }
             ]}
-            className='py-16'
+            className="py-16"
           />
         )}
 
@@ -137,9 +137,9 @@ export default function HamperPageTemplateServer({ data, slug }: HamperPageTempl
         <PaginationControls pagination={pagination} baseUrl={baseUrl} />
 
         {/* SEO Content */}
-        <div className='mt-16 bg-white rounded-2xl p-8 shadow-lg border border-brand-gold/20'>
-          <h2 className='text-2xl font-bold text-brand-dark mb-4'>{pageTitle}</h2>
-          <p className='text-gray-700 leading-relaxed'>{data.seoDescription}</p>
+        <div className="mt-16 bg-white rounded-2xl p-8 shadow-lg border border-brand-gold/20">
+          <h2 className="text-2xl font-bold text-brand-dark mb-4">{pageTitle}</h2>
+          <p className="text-gray-700 leading-relaxed">{data.seoDescription}</p>
         </div>
       </div>
     </section>

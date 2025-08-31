@@ -159,10 +159,10 @@ export default async function CataloguePage() {
   };
 
   return (
-    <main className='min-h-screen'>
+    <main className="min-h-screen">
       {/* Structured Data for SEO */}
       <script
-        type='application/ld+json'
+        type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify([catalogueStructuredData, breadcrumbStructuredData])
         }}
@@ -171,11 +171,11 @@ export default async function CataloguePage() {
       <Header />
 
       {/* Hidden H1 for SEO */}
-      <h1 className='sr-only'>
+      <h1 className="sr-only">
         Hamper Catalogue - Complete Collection of Curated Gift Hampers | Shubhhampers
       </h1>
 
-      <div className='bg-gradient-to-br from-brand-light via-white to-brand-gold/5'>
+      <div className="bg-gradient-to-br from-brand-light via-white to-brand-gold/5">
         <CatalogueViewPage catalogueUrl={CATALOGUE_PDF_URL || undefined} />
       </div>
 

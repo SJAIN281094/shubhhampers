@@ -76,104 +76,104 @@ export default function ContactForm() {
   };
 
   return (
-    <div className='bg-white rounded-3xl p-8 shadow-lg border border-brand-gold/20'>
-      <form onSubmit={handleSubmit} className='space-y-6'>
-        <div className='grid grid-cols-1 sm:grid-cols-2 gap-6'>
+    <div className="bg-white rounded-3xl p-8 shadow-lg border border-brand-gold/20">
+      <form onSubmit={handleSubmit} className="space-y-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           <div>
-            <label htmlFor='name' className='block text-sm font-semibold text-brand-dark mb-2'>
+            <label htmlFor="name" className="block text-sm font-semibold text-brand-dark mb-2">
               Full Name *
             </label>
             <input
-              type='text'
-              id='name'
-              name='name'
+              type="text"
+              id="name"
+              name="name"
               value={formData.name}
               onChange={handleInputChange}
               required
-              className='w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-gold focus:border-transparent transition-colors duration-200'
-              placeholder='Your full name'
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-gold focus:border-transparent transition-colors duration-200"
+              placeholder="Your full name"
             />
           </div>
           <div>
-            <label htmlFor='email' className='block text-sm font-semibold text-brand-dark mb-2'>
+            <label htmlFor="email" className="block text-sm font-semibold text-brand-dark mb-2">
               Email Address *
             </label>
             <input
-              type='email'
-              id='email'
-              name='email'
+              type="email"
+              id="email"
+              name="email"
               value={formData.email}
               onChange={handleInputChange}
               required
-              className='w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-gold focus:border-transparent transition-colors duration-200'
-              placeholder='your@email.com'
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-gold focus:border-transparent transition-colors duration-200"
+              placeholder="your@email.com"
             />
           </div>
         </div>
 
-        <div className='grid grid-cols-1 sm:grid-cols-2 gap-6'>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           <div>
-            <label htmlFor='phone' className='block text-sm font-semibold text-brand-dark mb-2'>
+            <label htmlFor="phone" className="block text-sm font-semibold text-brand-dark mb-2">
               Phone Number
             </label>
             <input
-              type='tel'
-              id='phone'
-              name='phone'
+              type="tel"
+              id="phone"
+              name="phone"
               value={formData.phone}
               onChange={handleInputChange}
-              className='w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-gold focus:border-transparent transition-colors duration-200'
-              placeholder='+91 96858 47274'
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-gold focus:border-transparent transition-colors duration-200"
+              placeholder="+91 96858 47274"
             />
           </div>
           <div>
-            <label htmlFor='company' className='block text-sm font-semibold text-brand-dark mb-2'>
+            <label htmlFor="company" className="block text-sm font-semibold text-brand-dark mb-2">
               Company (Optional)
             </label>
             <input
-              type='text'
-              id='company'
-              name='company'
+              type="text"
+              id="company"
+              name="company"
               value={formData.company}
               onChange={handleInputChange}
-              className='w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-gold focus:border-transparent transition-colors duration-200'
-              placeholder='Your company name'
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-gold focus:border-transparent transition-colors duration-200"
+              placeholder="Your company name"
             />
           </div>
         </div>
 
         <div>
           <label
-            htmlFor='contactMethod'
-            className='block text-sm font-semibold text-brand-dark mb-2'
+            htmlFor="contactMethod"
+            className="block text-sm font-semibold text-brand-dark mb-2"
           >
             Preferred Contact Method
           </label>
           <select
-            id='contactMethod'
-            name='contactMethod'
+            id="contactMethod"
+            name="contactMethod"
             value={formData.contactMethod}
             onChange={handleInputChange}
-            className='w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-gold focus:border-transparent transition-colors duration-200'
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-gold focus:border-transparent transition-colors duration-200"
           >
-            <option value='email'>Email</option>
-            <option value='whatsapp'>WhatsApp</option>
+            <option value="email">Email</option>
+            <option value="whatsapp">WhatsApp</option>
           </select>
         </div>
 
         <div>
-          <label htmlFor='message' className='block text-sm font-semibold text-brand-dark mb-2'>
+          <label htmlFor="message" className="block text-sm font-semibold text-brand-dark mb-2">
             Your Message *
           </label>
           <textarea
-            id='message'
-            name='message'
+            id="message"
+            name="message"
             value={formData.message}
             onChange={handleInputChange}
             required
             rows={5}
-            className='w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-gold focus:border-transparent transition-colors duration-200 resize-none'
-            placeholder='Tell us about your hamper needs, occasion, budget, or any questions you have...'
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-gold focus:border-transparent transition-colors duration-200 resize-none"
+            placeholder="Tell us about your hamper needs, occasion, budget, or any questions you have..."
           />
         </div>
 
@@ -186,17 +186,17 @@ export default function ContactForm() {
                 : "bg-red-50 border-red-400 text-red-700"
             }`}
           >
-            <div className='flex items-center'>
-              <span className='mr-2'>{submitStatus.type === "success" ? "✅" : "❌"}</span>
-              <p className='font-medium'>{submitStatus.message}</p>
+            <div className="flex items-center">
+              <span className="mr-2">{submitStatus.type === "success" ? "✅" : "❌"}</span>
+              <p className="font-medium">{submitStatus.message}</p>
             </div>
           </div>
         )}
 
-        <PrimaryButton type='submit' disabled={isSubmitting} size='md' className='w-full'>
+        <PrimaryButton type="submit" disabled={isSubmitting} size="md" className="w-full">
           {isSubmitting ? (
-            <div className='flex items-center justify-center'>
-              <div className='animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2' />
+            <div className="flex items-center justify-center">
+              <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2" />
               Sending Message...
             </div>
           ) : (

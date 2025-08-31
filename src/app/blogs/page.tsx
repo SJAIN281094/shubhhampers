@@ -50,7 +50,7 @@ export const metadata: Metadata = {
 
 export default function BlogsPage() {
   return (
-    <main className='min-h-screen'>
+    <main className="min-h-screen">
       <Header />
       <BlogListingClient />
       <Footer />

@@ -105,8 +105,8 @@ export default function SocialButton({
     >
       <a
         href={href || config.defaultHref}
-        target='_blank'
-        rel='noopener noreferrer'
+        target="_blank"
+        rel="noopener noreferrer"
         aria-label={`Visit our ${config.label} page`}
       >
         <IconComponent className={iconSizeClasses[size]} />

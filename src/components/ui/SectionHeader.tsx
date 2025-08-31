@@ -89,8 +89,8 @@ export default function SectionHeader({
       {/* Decorative Elements */}
       {showDecorations && (
         <>
-          <div className='absolute top-0 left-1/4 w-16 h-16 bg-brand-gold/20 rounded-full blur-lg animate-pulse' />
-          <div className='absolute top-10 right-1/4 w-12 h-12 bg-brand-amber/30 rounded-full blur-md animate-bounce delay-300' />
+          <div className="absolute top-0 left-1/4 w-16 h-16 bg-brand-gold/20 rounded-full blur-lg animate-pulse" />
+          <div className="absolute top-10 right-1/4 w-12 h-12 bg-brand-amber/30 rounded-full blur-md animate-bounce delay-300" />
         </>
       )}
 
@@ -121,13 +121,13 @@ export default function SectionHeader({
           <p
             className={`italic font-semibold leading-relaxed tracking-wide ${styles.subtitle} ${currentTheme.subtitle} relative drop-shadow-sm`}
           >
-            <span className='relative inline-block px-2'>
-              <span className='absolute -left-1 -top-2 text-brand-gold text-2xl font-bold opacity-80'>
-                "
+            <span className="relative inline-block px-2">
+              <span className="absolute -left-1 -top-2 text-brand-gold text-2xl font-bold opacity-80">
+                &ldquo;
               </span>
               {subtitle}
-              <span className='absolute -right-1 -bottom-2 text-brand-gold text-2xl font-bold opacity-80'>
-                "
+              <span className="absolute -right-1 -bottom-2 text-brand-gold text-2xl font-bold opacity-80">
+                &rdquo;
               </span>
             </span>
           </p>

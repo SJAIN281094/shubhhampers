@@ -17,10 +17,10 @@ import { TransformedHeroSlide } from "../lib/home-api-types";
 // Enhanced Background Elements with Motion
 const MotionBackground = () => {
   return (
-    <div className='absolute inset-0 overflow-hidden pointer-events-none'>
+    <div className="absolute inset-0 overflow-hidden pointer-events-none">
       {/* Background Image */}
       <motion.div
-        className='absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30'
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30"
         style={{
           backgroundImage: `url(${IMAGES.HERO_BACKGROUND})`
         }}
@@ -31,7 +31,7 @@ const MotionBackground = () => {
 
       {/* Overlay for better text readability */}
       <motion.div
-        className='absolute inset-0 bg-gradient-to-br from-brand-light/40 via-white/30 to-brand-gold/20'
+        className="absolute inset-0 bg-gradient-to-br from-brand-light/40 via-white/30 to-brand-gold/20"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
@@ -39,7 +39,7 @@ const MotionBackground = () => {
 
       {/* Floating Elements with Motion - Hidden on mobile for better performance */}
       <motion.div
-        className='hidden md:block absolute top-20 right-20 w-32 h-32 bg-gradient-to-br from-brand-gold/20 to-brand-amber/20 rounded-full blur-2xl'
+        className="hidden md:block absolute top-20 right-20 w-32 h-32 bg-gradient-to-br from-brand-gold/20 to-brand-amber/20 rounded-full blur-2xl"
         animate={{
           y: [0, -20, 0],
           scale: [1, 1.1, 1],
@@ -52,7 +52,7 @@ const MotionBackground = () => {
         }}
       />
       <motion.div
-        className='hidden md:block absolute bottom-32 left-16 w-24 h-24 bg-gradient-to-br from-brand-brown/15 to-brand-gold/15 rounded-full blur-xl'
+        className="hidden md:block absolute bottom-32 left-16 w-24 h-24 bg-gradient-to-br from-brand-brown/15 to-brand-gold/15 rounded-full blur-xl"
         animate={{
           x: [0, 15, 0],
           scale: [1, 1.2, 1],
@@ -66,7 +66,7 @@ const MotionBackground = () => {
         }}
       />
       <motion.div
-        className='hidden lg:block absolute top-1/2 left-1/3 w-20 h-20 bg-gradient-to-br from-brand-amber/20 to-brand-brown/20 rounded-full blur-lg'
+        className="hidden lg:block absolute top-1/2 left-1/3 w-20 h-20 bg-gradient-to-br from-brand-amber/20 to-brand-brown/20 rounded-full blur-lg"
         animate={{
           rotate: [0, 360],
           scale: [1, 1.3, 1],
@@ -81,13 +81,13 @@ const MotionBackground = () => {
 
       {/* Decorative Lines with Motion - Hidden on mobile */}
       <motion.div
-        className='hidden lg:block absolute top-1/4 right-1/4 w-32 h-px bg-gradient-to-r from-transparent via-brand-amber/30 to-transparent'
+        className="hidden lg:block absolute top-1/4 right-1/4 w-32 h-px bg-gradient-to-r from-transparent via-brand-amber/30 to-transparent"
         initial={{ width: 0, opacity: 0 }}
         animate={{ width: 128, opacity: 1 }}
         transition={{ duration: 2, delay: 1 }}
       />
       <motion.div
-        className='hidden lg:block absolute bottom-1/3 left-1/4 w-24 h-px bg-gradient-to-r from-transparent via-brand-gold/30 to-transparent'
+        className="hidden lg:block absolute bottom-1/3 left-1/4 w-24 h-px bg-gradient-to-r from-transparent via-brand-gold/30 to-transparent"
         initial={{ width: 0, opacity: 0 }}
         animate={{ width: 96, opacity: 1 }}
         transition={{ duration: 2, delay: 1.5 }}
@@ -312,8 +312,8 @@ export default function HeroSlider({ slides = [] }: HeroSliderProps) {
   // Don't render until mounted to prevent hydration mismatch
   if (!isMounted) {
     return (
-      <section className='relative w-full h-[calc(100vh-80px)] sm:h-[calc(100vh-100px)] lg:h-[calc(100vh-120px)] min-h-[500px] sm:min-h-[600px] overflow-hidden bg-gradient-to-br from-brand-light via-white to-brand-gold/5 flex items-center justify-center'>
-        <div className='animate-pulse text-brand-brown text-lg'>Loading...</div>
+      <section className="relative w-full h-[calc(100vh-80px)] sm:h-[calc(100vh-100px)] lg:h-[calc(100vh-120px)] min-h-[500px] sm:min-h-[600px] overflow-hidden bg-gradient-to-br from-brand-light via-white to-brand-gold/5 flex items-center justify-center">
+        <div className="animate-pulse text-brand-brown text-lg">Loading...</div>
       </section>
     );
   }
@@ -321,17 +321,17 @@ export default function HeroSlider({ slides = [] }: HeroSliderProps) {
   // Show message when no data is available
   if (!styledSlides || styledSlides.length === 0) {
     return (
-      <section className='relative w-full h-[calc(100vh-80px)] sm:h-[calc(100vh-100px)] lg:h-[calc(100vh-120px)] min-h-[500px] sm:min-h-[600px] overflow-hidden bg-gradient-to-br from-brand-light via-white to-brand-gold/5 flex items-center justify-center'>
-        <div className='max-w-3xl mx-auto px-4'>
+      <section className="relative w-full h-[calc(100vh-80px)] sm:h-[calc(100vh-100px)] lg:h-[calc(100vh-120px)] min-h-[500px] sm:min-h-[600px] overflow-hidden bg-gradient-to-br from-brand-light via-white to-brand-gold/5 flex items-center justify-center">
+        <div className="max-w-3xl mx-auto px-4">
           <SectionHeader
-            title='Welcome to Shubhhampers'
-            description='Curated Gift Hampers for Every Occasion'
-            variant='center'
-            size='md'
+            title="Welcome to Shubhhampers"
+            description="Curated Gift Hampers for Every Occasion"
+            variant="center"
+            size="md"
             showDecorations={true}
           >
-            <div className='w-full flex justify-center mt-8'>
-              <PrimaryButton onClick={() => router.push("/hampers")} size='lg'>
+            <div className="w-full flex justify-center mt-8">
+              <PrimaryButton onClick={() => router.push("/hampers")} size="lg">
                 🎁 Browse Hampers
               </PrimaryButton>
             </div>
@@ -345,21 +345,21 @@ export default function HeroSlider({ slides = [] }: HeroSliderProps) {
 
   return (
     <section
-      className='relative w-full h-[calc(100vh-80px)] sm:h-[calc(100vh-100px)] lg:h-[calc(100vh-120px)] min-h-[500px] sm:min-h-[600px] overflow-hidden bg-gradient-to-br from-brand-light via-white to-brand-gold/5'
+      className="relative w-full h-[calc(100vh-80px)] sm:h-[calc(100vh-100px)] lg:h-[calc(100vh-120px)] min-h-[500px] sm:min-h-[600px] overflow-hidden bg-gradient-to-br from-brand-light via-white to-brand-gold/5"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
       {/* Hero content - H1 is handled at page level */}
 
-      <div className='relative w-full h-full'>
-        <AnimatePresence initial={false} custom={direction} mode='wait'>
+      <div className="relative w-full h-full">
+        <AnimatePresence initial={false} custom={direction} mode="wait">
           <motion.div
             key={currentSlide}
             custom={direction}
             variants={slideVariants}
-            initial='enter'
-            animate='center'
-            exit='exit'
+            initial="enter"
+            animate="center"
+            exit="exit"
             transition={{
               x: { type: "spring", stiffness: 300, damping: 30 },
               opacity: { duration: 0.5 }
@@ -368,62 +368,62 @@ export default function HeroSlider({ slides = [] }: HeroSliderProps) {
           >
             <MotionBackground />
             {/* Content Container - Alternating Layout */}
-            <div className='relative z-10 flex items-center justify-center h-full px-3 xs:px-4 sm:px-6 lg:px-8 py-6 sm:py-8 md:py-16'>
-              <div className='max-w-7xl mx-auto w-full'>
+            <div className="relative z-10 flex items-center justify-center h-full px-3 xs:px-4 sm:px-6 lg:px-8 py-6 sm:py-8 md:py-16">
+              <div className="max-w-7xl mx-auto w-full">
                 <div
                   className={`flex flex-col ${currentSlide % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"} items-center gap-8 lg:gap-12 xl:gap-16`}
                 >
                   {/* Hero Image Section */}
                   <motion.div
-                    className='flex-1 w-full max-w-[200px] xs:max-w-[250px] sm:max-w-xs lg:max-w-lg'
+                    className="flex-1 w-full max-w-[200px] xs:max-w-[250px] sm:max-w-xs lg:max-w-lg"
                     initial={{ opacity: 0, x: currentSlide % 2 === 0 ? -50 : 50 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 1, delay: 0 }}
                   >
                     {/* Floating Card Container */}
-                    <div className='relative'>
+                    <div className="relative">
                       {/* Decorative Background Elements */}
-                      <div className='absolute -inset-2 xs:-inset-4 bg-gradient-to-br from-brand-gold/20 via-brand-amber/10 to-brand-brown/20 rounded-2xl xs:rounded-3xl blur-xl' />
-                      <div className='absolute -inset-1 xs:-inset-2 bg-gradient-to-br from-brand-light/30 to-brand-gold/20 rounded-xl xs:rounded-2xl' />
+                      <div className="absolute -inset-2 xs:-inset-4 bg-gradient-to-br from-brand-gold/20 via-brand-amber/10 to-brand-brown/20 rounded-2xl xs:rounded-3xl blur-xl" />
+                      <div className="absolute -inset-1 xs:-inset-2 bg-gradient-to-br from-brand-light/30 to-brand-gold/20 rounded-xl xs:rounded-2xl" />
 
                       {/* Main Image Card */}
-                      <div className='relative w-full aspect-[3/4] lg:aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl bg-white/10 backdrop-blur-sm border border-white/20'>
+                      <div className="relative w-full aspect-[3/4] lg:aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl bg-white/10 backdrop-blur-sm border border-white/20">
                         {/* Image */}
                         <Image
                           src={currentSlideData.image}
                           alt={currentSlideData.imageAlt}
                           fill
-                          className='object-cover'
+                          className="object-cover"
                           priority
-                          sizes='(max-width: 1024px) 100vw, 50vw'
+                          sizes="(max-width: 1024px) 100vw, 50vw"
                         />
 
                         {/* Multi-layered Overlay */}
-                        <div className='absolute inset-0 bg-gradient-to-t from-brand-dark/30 via-transparent to-white/10' />
-                        <div className='absolute inset-0 bg-gradient-to-br from-transparent via-brand-gold/5 to-brand-amber/10' />
+                        <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/30 via-transparent to-white/10" />
+                        <div className="absolute inset-0 bg-gradient-to-br from-transparent via-brand-gold/5 to-brand-amber/10" />
 
                         {/* Corner Accent */}
-                        <div className='absolute top-2 xs:top-4 right-2 xs:right-4 w-12 xs:w-16 h-12 xs:h-16 bg-gradient-to-br from-brand-gold/30 to-brand-amber/40 rounded-full blur-lg' />
-                        <div className='absolute bottom-2 xs:bottom-4 left-2 xs:left-4 w-8 xs:w-12 h-8 xs:h-12 bg-gradient-to-tr from-brand-brown/20 to-brand-gold/30 rounded-full blur-md' />
+                        <div className="absolute top-2 xs:top-4 right-2 xs:right-4 w-12 xs:w-16 h-12 xs:h-16 bg-gradient-to-br from-brand-gold/30 to-brand-amber/40 rounded-full blur-lg" />
+                        <div className="absolute bottom-2 xs:bottom-4 left-2 xs:left-4 w-8 xs:w-12 h-8 xs:h-12 bg-gradient-to-tr from-brand-brown/20 to-brand-gold/30 rounded-full blur-md" />
 
                         {/* Inner Border Highlight */}
-                        <div className='absolute inset-2 rounded-xl border border-white/10 pointer-events-none' />
+                        <div className="absolute inset-2 rounded-xl border border-white/10 pointer-events-none" />
                       </div>
                     </div>
                   </motion.div>
 
                   {/* Content Section */}
                   <motion.div
-                    className='flex-1 text-center lg:text-left max-w-2xl'
+                    className="flex-1 text-center lg:text-left max-w-2xl"
                     initial={{ opacity: 0, x: currentSlide % 2 === 0 ? 50 : -50 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 1, delay: 0.2 }}
                   >
                     {/* Enhanced Title & Subtitle with Decorative Elements */}
-                    <div className='relative'>
+                    <div className="relative">
                       {/* Decorative Background Elements */}
                       <motion.div
-                        className='absolute -top-4 -left-8 w-16 h-16 bg-brand-gold/20 rounded-full blur-lg'
+                        className="absolute -top-4 -left-8 w-16 h-16 bg-brand-gold/20 rounded-full blur-lg"
                         animate={{
                           scale: [1, 1.2, 1],
                           opacity: [0.3, 0.6, 0.3]
@@ -435,7 +435,7 @@ export default function HeroSlider({ slides = [] }: HeroSliderProps) {
                         }}
                       />
                       <motion.div
-                        className='absolute -top-2 -right-6 w-12 h-12 bg-brand-amber/30 rounded-full blur-md'
+                        className="absolute -top-2 -right-6 w-12 h-12 bg-brand-amber/30 rounded-full blur-md"
                         animate={{
                           y: [0, -8, 0],
                           opacity: [0.2, 0.5, 0.2]
@@ -450,10 +450,10 @@ export default function HeroSlider({ slides = [] }: HeroSliderProps) {
 
                       {/* Enhanced Title */}
                       <motion.h2
-                        className='font-display text-3xl xs:text-4xl sm:text-5xl md:text-5xl lg:text-5xl xl:text-6xl font-bold text-brand-brown mb-2 xs:mb-3 md:mb-4 leading-tight tracking-wide drop-shadow-sm relative z-10'
+                        className="font-display text-3xl xs:text-4xl sm:text-5xl md:text-5xl lg:text-5xl xl:text-6xl font-bold text-brand-brown mb-2 xs:mb-3 md:mb-4 leading-tight tracking-wide drop-shadow-sm relative z-10"
                         variants={contentVariants}
-                        initial='hidden'
-                        animate='visible'
+                        initial="hidden"
+                        animate="visible"
                         transition={{ duration: 0.8, delay: 0.4 }}
                       >
                         {currentSlideData.title}
@@ -462,20 +462,20 @@ export default function HeroSlider({ slides = [] }: HeroSliderProps) {
                       {/* Enhanced Subtitle */}
                       {currentSlideData.subtitle && (
                         <motion.div
-                          className='relative z-10 mb-3 md:mb-5 max-w-3xl mx-auto'
+                          className="relative z-10 mb-3 md:mb-5 max-w-3xl mx-auto"
                           variants={contentVariants}
-                          initial='hidden'
-                          animate='visible'
+                          initial="hidden"
+                          animate="visible"
                           transition={{ duration: 0.8, delay: 0.6 }}
                         >
-                          <p className='italic font-semibold leading-relaxed tracking-wide text-base sm:text-lg md:text-xl lg:text-2xl text-brand-brown relative drop-shadow-sm'>
-                            <span className='relative inline-block px-2'>
-                              <span className='absolute -left-1 -top-2 text-brand-gold text-2xl font-bold opacity-80'>
-                                "
+                          <p className="italic font-semibold leading-relaxed tracking-wide text-base sm:text-lg md:text-xl lg:text-2xl text-brand-brown relative drop-shadow-sm">
+                            <span className="relative inline-block px-2">
+                              <span className="absolute -left-1 -top-2 text-brand-gold text-2xl font-bold opacity-80">
+                                &ldquo;
                               </span>
                               {currentSlideData.subtitle}
-                              <span className='absolute -right-1 -bottom-2 text-brand-gold text-2xl font-bold opacity-80'>
-                                "
+                              <span className="absolute -right-1 -bottom-2 text-brand-gold text-2xl font-bold opacity-80">
+                                &rdquo;
                               </span>
                             </span>
                           </p>
@@ -485,10 +485,10 @@ export default function HeroSlider({ slides = [] }: HeroSliderProps) {
 
                     {/* Description */}
                     <motion.p
-                      className='text-sm xs:text-base sm:text-lg md:text-xl text-brand-dark/80 mb-4 xs:mb-6 md:mb-8 leading-relaxed'
+                      className="text-sm xs:text-base sm:text-lg md:text-xl text-brand-dark/80 mb-4 xs:mb-6 md:mb-8 leading-relaxed"
                       variants={contentVariants}
-                      initial='hidden'
-                      animate='visible'
+                      initial="hidden"
+                      animate="visible"
                       transition={{ duration: 0.8, delay: 0.8 }}
                     >
                       {currentSlideData.description}
@@ -496,12 +496,12 @@ export default function HeroSlider({ slides = [] }: HeroSliderProps) {
 
                     {/* Features Grid */}
                     <motion.div
-                      className='mb-6 md:mb-8'
+                      className="mb-6 md:mb-8"
                       initial={{ opacity: 0, y: 30 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.6, delay: 1.0 }}
                     >
-                      <div className='flex flex-wrap gap-1.5 xs:gap-2 sm:gap-3 md:gap-4 justify-center lg:justify-start'>
+                      <div className="flex flex-wrap gap-1.5 xs:gap-2 sm:gap-3 md:gap-4 justify-center lg:justify-start">
                         {currentSlideData.features.map((feature: string, index: number) => (
                           <motion.div
                             key={`slide-${currentSlideData.id}-feature-${feature.replace(/\s+/g, "-").toLowerCase()}`}
@@ -519,9 +519,9 @@ export default function HeroSlider({ slides = [] }: HeroSliderProps) {
                               y: -2,
                               transition: { duration: 0.2 }
                             }}
-                            className='h-full'
+                            className="h-full"
                           >
-                            <HamperTag title={feature} className='scale-100' />
+                            <HamperTag title={feature} className="scale-100" />
                           </motion.div>
                         ))}
                       </div>
@@ -530,10 +530,10 @@ export default function HeroSlider({ slides = [] }: HeroSliderProps) {
                     {/* CTA Buttons - Dynamic rendering */}
                     {currentSlideData.ctaButtons && currentSlideData.ctaButtons.length > 0 && (
                       <motion.div
-                        className='flex flex-col lg:flex-row items-center lg:items-start lg:justify-start justify-center space-y-3 lg:space-y-0 lg:space-x-4 w-full'
+                        className="flex flex-col lg:flex-row items-center lg:items-start lg:justify-start justify-center space-y-3 lg:space-y-0 lg:space-x-4 w-full"
                         variants={contentVariants}
-                        initial='hidden'
-                        animate='visible'
+                        initial="hidden"
+                        animate="visible"
                         transition={{ duration: 0.8, delay: 1.6 }}
                       >
                         {currentSlideData.ctaButtons
@@ -556,11 +556,11 @@ export default function HeroSlider({ slides = [] }: HeroSliderProps) {
                               <ButtonComponent
                                 key={`cta-${cta.id}`}
                                 onClick={handleClick}
-                                size='md'
-                                className='w-full lg:w-auto lg:flex-1 lg:max-w-[280px]'
+                                size="md"
+                                className="w-full lg:w-auto lg:flex-1 lg:max-w-[280px]"
                               >
                                 {cta.url.includes("whatsapp") && (
-                                  <TbBrandWhatsapp className='w-5 h-5' />
+                                  <TbBrandWhatsapp className="w-5 h-5" />
                                 )}
                                 {cta.text}
                               </ButtonComponent>
@@ -581,7 +581,7 @@ export default function HeroSlider({ slides = [] }: HeroSliderProps) {
             <>
               <motion.button
                 onClick={() => paginate(-1)}
-                className='absolute left-2 xs:left-4 md:left-8 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white border-0 text-brand-dark hover:text-brand-amber shadow-lg hover:shadow-xl transition-all duration-300 w-12 h-12 xs:w-10 xs:h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center z-20 touch-manipulation'
+                className="absolute left-2 xs:left-4 md:left-8 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white border-0 text-brand-dark hover:text-brand-amber shadow-lg hover:shadow-xl transition-all duration-300 w-12 h-12 xs:w-10 xs:h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center z-20 touch-manipulation"
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -20 }}
@@ -589,12 +589,12 @@ export default function HeroSlider({ slides = [] }: HeroSliderProps) {
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <ChevronLeft className='w-6 h-6 xs:w-5 xs:h-5 md:w-6 md:h-6' />
+                <ChevronLeft className="w-6 h-6 xs:w-5 xs:h-5 md:w-6 md:h-6" />
               </motion.button>
 
               <motion.button
                 onClick={() => paginate(1)}
-                className='absolute right-2 xs:right-4 md:right-8 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white border-0 text-brand-dark hover:text-brand-amber shadow-lg hover:shadow-xl transition-all duration-300 w-12 h-12 xs:w-10 xs:h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center z-20 touch-manipulation'
+                className="absolute right-2 xs:right-4 md:right-8 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white border-0 text-brand-dark hover:text-brand-amber shadow-lg hover:shadow-xl transition-all duration-300 w-12 h-12 xs:w-10 xs:h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center z-20 touch-manipulation"
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: 20 }}
@@ -602,14 +602,14 @@ export default function HeroSlider({ slides = [] }: HeroSliderProps) {
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <ChevronRight className='w-6 h-6 xs:w-5 xs:h-5 md:w-6 md:h-6' />
+                <ChevronRight className="w-6 h-6 xs:w-5 xs:h-5 md:w-6 md:h-6" />
               </motion.button>
             </>
           )}
         </AnimatePresence>
 
         {/* Slide Indicators */}
-        <div className='absolute bottom-2 xs:bottom-4 right-2 xs:right-4 md:bottom-8 md:right-8 flex space-x-1.5 xs:space-x-2 z-20'>
+        <div className="absolute bottom-2 xs:bottom-4 right-2 xs:right-4 md:bottom-8 md:right-8 flex space-x-1.5 xs:space-x-2 z-20">
           {slides.map((slideItem, idx) => (
             <motion.button
               key={`slide-indicator-${slideItem.id}`}
@@ -628,7 +628,7 @@ export default function HeroSlider({ slides = [] }: HeroSliderProps) {
         <AnimatePresence>
           {isPaused && (
             <motion.div
-              className='absolute bottom-4 left-4 bg-white/90 text-brand-dark px-3 py-1 rounded-full text-sm font-medium shadow-lg z-20'
+              className="absolute bottom-4 left-4 bg-white/90 text-brand-dark px-3 py-1 rounded-full text-sm font-medium shadow-lg z-20"
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -20 }}

@@ -121,7 +121,7 @@ export default async function HampersPage({
   const { hampers, pagination, currentCategory } = await getHampersPageData(resolvedSearchParams);
 
   return (
-    <main className='min-h-screen'>
+    <main className="min-h-screen">
       <Header />
       <HamperListingPageServer
         pageData={mainHampersPageData}
@@ -129,7 +129,7 @@ export default async function HampersPage({
         pagination={pagination}
         currentCategory={currentCategory}
         showCategoryFilters={true}
-        baseUrl='/hampers'
+        baseUrl="/hampers"
       />
       <Footer />
     </main>

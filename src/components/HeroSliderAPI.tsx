@@ -21,10 +21,10 @@ import { TransformedHeroSlide } from "../lib/home-api-types";
 // Enhanced Background Elements with Motion
 const MotionBackground = () => {
   return (
-    <div className='absolute inset-0 overflow-hidden pointer-events-none'>
+    <div className="absolute inset-0 overflow-hidden pointer-events-none">
       {/* Overlay for better text readability */}
       <motion.div
-        className='absolute inset-0 bg-gradient-to-br from-brand-light/40 via-white/30 to-brand-gold/20'
+        className="absolute inset-0 bg-gradient-to-br from-brand-light/40 via-white/30 to-brand-gold/20"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
@@ -32,7 +32,7 @@ const MotionBackground = () => {
 
       {/* Floating Elements with Motion - Hidden on mobile for better performance */}
       <motion.div
-        className='hidden md:block absolute top-20 right-20 w-32 h-32 bg-gradient-to-br from-brand-gold/20 to-brand-amber/20 rounded-full blur-2xl'
+        className="hidden md:block absolute top-20 right-20 w-32 h-32 bg-gradient-to-br from-brand-gold/20 to-brand-amber/20 rounded-full blur-2xl"
         animate={{
           y: [0, -20, 0],
           scale: [1, 1.1, 1],
@@ -46,7 +46,7 @@ const MotionBackground = () => {
       />
 
       <motion.div
-        className='hidden lg:block absolute bottom-20 left-20 w-24 h-24 bg-gradient-to-br from-brand-amber/15 to-brand-gold/15 rounded-full blur-xl'
+        className="hidden lg:block absolute bottom-20 left-20 w-24 h-24 bg-gradient-to-br from-brand-amber/15 to-brand-gold/15 rounded-full blur-xl"
         animate={{
           x: [0, 15, 0],
           scale: [1, 1.05, 1],
@@ -62,13 +62,13 @@ const MotionBackground = () => {
 
       {/* Decorative Lines with Motion - Hidden on mobile */}
       <motion.div
-        className='hidden lg:block absolute top-1/4 right-1/4 w-32 h-px bg-gradient-to-r from-transparent via-brand-amber/30 to-transparent'
+        className="hidden lg:block absolute top-1/4 right-1/4 w-32 h-px bg-gradient-to-r from-transparent via-brand-amber/30 to-transparent"
         initial={{ width: 0, opacity: 0 }}
         animate={{ width: 128, opacity: 1 }}
         transition={{ duration: 2, delay: 1 }}
       />
       <motion.div
-        className='hidden lg:block absolute bottom-1/3 left-1/4 w-24 h-px bg-gradient-to-r from-transparent via-brand-gold/30 to-transparent'
+        className="hidden lg:block absolute bottom-1/3 left-1/4 w-24 h-px bg-gradient-to-r from-transparent via-brand-gold/30 to-transparent"
         initial={{ width: 0, opacity: 0 }}
         animate={{ width: 96, opacity: 1 }}
         transition={{ duration: 2, delay: 1.5 }}
@@ -214,8 +214,8 @@ export default function HeroSliderAPI({ fallbackSlides = [] }: HeroSliderProps) 
   // Don't render until mounted to prevent hydration mismatch
   if (!isMounted) {
     return (
-      <section className='min-h-screen bg-gradient-to-br from-brand-light via-white to-brand-gold/5 flex items-center justify-center'>
-        <div className='animate-pulse text-brand-brown'>Loading...</div>
+      <section className="min-h-screen bg-gradient-to-br from-brand-light via-white to-brand-gold/5 flex items-center justify-center">
+        <div className="animate-pulse text-brand-brown">Loading...</div>
       </section>
     );
   }
@@ -223,10 +223,10 @@ export default function HeroSliderAPI({ fallbackSlides = [] }: HeroSliderProps) 
   // If no slides available, show a fallback
   if (slides.length === 0) {
     return (
-      <section className='min-h-screen bg-gradient-to-br from-brand-light via-white to-brand-gold/5 flex items-center justify-center'>
-        <div className='text-center text-brand-brown'>
-          <h2 className='text-2xl font-bold mb-4'>Welcome to Shubhhampers</h2>
-          <p className='text-lg mb-6'>Curated Gift Hampers for Every Occasion</p>
+      <section className="min-h-screen bg-gradient-to-br from-brand-light via-white to-brand-gold/5 flex items-center justify-center">
+        <div className="text-center text-brand-brown">
+          <h2 className="text-2xl font-bold mb-4">Welcome to Shubhhampers</h2>
+          <p className="text-lg mb-6">Curated Gift Hampers for Every Occasion</p>
           <PrimaryButton onClick={() => router.push("/hampers")}>Browse Hampers</PrimaryButton>
         </div>
       </section>
@@ -237,16 +237,16 @@ export default function HeroSliderAPI({ fallbackSlides = [] }: HeroSliderProps) 
 
   return (
     <section
-      className='relative min-h-screen bg-gradient-to-br from-brand-light via-white to-brand-gold/5 overflow-hidden'
+      className="relative min-h-screen bg-gradient-to-br from-brand-light via-white to-brand-gold/5 overflow-hidden"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      aria-label='Hero carousel showcasing gift hampers'
+      aria-label="Hero carousel showcasing gift hampers"
     >
       <MotionBackground />
 
       {/* Main Content */}
-      <div className='relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 min-h-screen flex items-center'>
-        <AnimatePresence mode='wait' custom={direction}>
+      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 min-h-screen flex items-center">
+        <AnimatePresence mode="wait" custom={direction}>
           <motion.div
             key={currentSlide}
             custom={direction}
@@ -266,25 +266,25 @@ export default function HeroSliderAPI({ fallbackSlides = [] }: HeroSliderProps) 
                 opacity: 0
               })
             }}
-            initial='enter'
-            animate='center'
-            exit='exit'
+            initial="enter"
+            animate="center"
+            exit="exit"
             transition={{
               x: { type: "spring", stiffness: 300, damping: 30 },
               opacity: { duration: 0.2 }
             }}
-            className='w-full grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center'
+            className="w-full grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center"
           >
             {/* Left Column - Content */}
             <motion.div
-              className='text-center lg:text-left order-2 lg:order-1'
+              className="text-center lg:text-left order-2 lg:order-1"
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.6 }}
             >
               {/* Tags */}
               <motion.div
-                className='flex flex-wrap justify-center lg:justify-start gap-2 mb-6'
+                className="flex flex-wrap justify-center lg:justify-start gap-2 mb-6"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3, duration: 0.5 }}
@@ -295,10 +295,10 @@ export default function HeroSliderAPI({ fallbackSlides = [] }: HeroSliderProps) 
               </motion.div>
 
               {/* Enhanced Title & Subtitle with Decorative Elements */}
-              <div className='relative'>
+              <div className="relative">
                 {/* Decorative Background Elements */}
                 <motion.div
-                  className='absolute -top-6 -left-12 w-20 h-20 bg-brand-gold/20 rounded-full blur-lg'
+                  className="absolute -top-6 -left-12 w-20 h-20 bg-brand-gold/20 rounded-full blur-lg"
                   animate={{
                     scale: [1, 1.3, 1],
                     opacity: [0.3, 0.7, 0.3]
@@ -310,7 +310,7 @@ export default function HeroSliderAPI({ fallbackSlides = [] }: HeroSliderProps) 
                   }}
                 />
                 <motion.div
-                  className='absolute -top-3 -right-8 w-16 h-16 bg-brand-amber/30 rounded-full blur-md'
+                  className="absolute -top-3 -right-8 w-16 h-16 bg-brand-amber/30 rounded-full blur-md"
                   animate={{
                     y: [0, -12, 0],
                     x: [0, 8, 0],
@@ -326,7 +326,7 @@ export default function HeroSliderAPI({ fallbackSlides = [] }: HeroSliderProps) 
 
                 {/* Enhanced Title */}
                 <motion.h1
-                  className='font-display text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold text-brand-brown mb-4 lg:mb-6 leading-tight tracking-wide drop-shadow-sm relative z-10'
+                  className="font-display text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold text-brand-brown mb-4 lg:mb-6 leading-tight tracking-wide drop-shadow-sm relative z-10"
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.4, duration: 0.6 }}
@@ -337,19 +337,19 @@ export default function HeroSliderAPI({ fallbackSlides = [] }: HeroSliderProps) 
                 {/* Enhanced Subtitle */}
                 {currentSlideData.subtitle && (
                   <motion.div
-                    className='relative z-10 mb-3 md:mb-5 max-w-3xl mx-auto lg:mx-0'
+                    className="relative z-10 mb-3 md:mb-5 max-w-3xl mx-auto lg:mx-0"
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.5, duration: 0.6 }}
                   >
-                    <p className='italic font-semibold leading-relaxed tracking-wide text-base sm:text-lg md:text-xl lg:text-2xl text-brand-brown relative drop-shadow-sm'>
-                      <span className='relative inline-block px-2'>
-                        <span className='absolute -left-1 -top-2 text-brand-gold text-2xl font-bold opacity-80'>
-                          "
+                    <p className="italic font-semibold leading-relaxed tracking-wide text-base sm:text-lg md:text-xl lg:text-2xl text-brand-brown relative drop-shadow-sm">
+                      <span className="relative inline-block px-2">
+                        <span className="absolute -left-1 -top-2 text-brand-gold text-2xl font-bold opacity-80">
+                          &ldquo;
                         </span>
                         {currentSlideData.subtitle}
-                        <span className='absolute -right-1 -bottom-2 text-brand-gold text-2xl font-bold opacity-80'>
-                          "
+                        <span className="absolute -right-1 -bottom-2 text-brand-gold text-2xl font-bold opacity-80">
+                          &rdquo;
                         </span>
                       </span>
                     </p>
@@ -359,7 +359,7 @@ export default function HeroSliderAPI({ fallbackSlides = [] }: HeroSliderProps) 
 
               {/* Description */}
               <motion.p
-                className='text-lg sm:text-xl lg:text-2xl text-gray-700 mb-6 lg:mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0'
+                className="text-lg sm:text-xl lg:text-2xl text-gray-700 mb-6 lg:mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6, duration: 0.6 }}
@@ -370,7 +370,7 @@ export default function HeroSliderAPI({ fallbackSlides = [] }: HeroSliderProps) 
               {/* CTA Buttons - Dynamic rendering */}
               {currentSlideData.ctaButtons && currentSlideData.ctaButtons.length > 0 && (
                 <motion.div
-                  className='flex flex-col sm:flex-row gap-3 lg:gap-4 justify-center lg:justify-start'
+                  className="flex flex-col sm:flex-row gap-3 lg:gap-4 justify-center lg:justify-start"
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.7, duration: 0.6 }}
@@ -395,10 +395,10 @@ export default function HeroSliderAPI({ fallbackSlides = [] }: HeroSliderProps) 
                         <ButtonComponent
                           key={`cta-${cta.id}`}
                           onClick={handleClick}
-                          size='lg'
-                          className='whitespace-nowrap'
+                          size="lg"
+                          className="whitespace-nowrap"
                         >
-                          {cta.url.includes("whatsapp") && <TbBrandWhatsapp className='w-5 h-5' />}
+                          {cta.url.includes("whatsapp") && <TbBrandWhatsapp className="w-5 h-5" />}
                           {cta.text}
                         </ButtonComponent>
                       );
@@ -409,31 +409,31 @@ export default function HeroSliderAPI({ fallbackSlides = [] }: HeroSliderProps) 
 
             {/* Right Column - Image */}
             <motion.div
-              className='order-1 lg:order-2 relative'
+              className="order-1 lg:order-2 relative"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.3, duration: 0.7 }}
             >
-              <div className='relative aspect-square lg:aspect-[4/5] max-w-lg mx-auto lg:max-w-none'>
+              <div className="relative aspect-square lg:aspect-[4/5] max-w-lg mx-auto lg:max-w-none">
                 {/* Decorative Background */}
                 <div
                   className={`absolute -inset-2 bg-gradient-to-br ${currentSlideData.gradient} rounded-2xl lg:rounded-3xl`}
                 />
 
                 {/* Image Container */}
-                <div className='relative bg-white/90 backdrop-blur-sm rounded-xl lg:rounded-2xl overflow-hidden shadow-2xl border border-brand-gold/20'>
+                <div className="relative bg-white/90 backdrop-blur-sm rounded-xl lg:rounded-2xl overflow-hidden shadow-2xl border border-brand-gold/20">
                   <Image
                     src={currentSlideData.image}
                     alt={currentSlideData.imageAlt}
                     fill
-                    className='object-cover'
+                    className="object-cover"
                     priority={currentSlide === 0}
                     quality={85}
-                    sizes='(max-width: 768px) 100vw, 50vw'
+                    sizes="(max-width: 768px) 100vw, 50vw"
                   />
 
                   {/* Image Overlay */}
-                  <div className='absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent' />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent" />
                 </div>
               </div>
             </motion.div>
@@ -451,10 +451,10 @@ export default function HeroSliderAPI({ fallbackSlides = [] }: HeroSliderProps) 
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -20 }}
                 onClick={() => paginate(-1)}
-                className='absolute left-4 lg:left-8 top-1/2 transform -translate-y-1/2 z-20 p-3 lg:p-4 bg-white/90 backdrop-blur-sm rounded-full shadow-lg hover:shadow-xl transition-all duration-200 border border-brand-gold/20 text-brand-brown hover:text-brand-dark group'
-                aria-label='Previous slide'
+                className="absolute left-4 lg:left-8 top-1/2 transform -translate-y-1/2 z-20 p-3 lg:p-4 bg-white/90 backdrop-blur-sm rounded-full shadow-lg hover:shadow-xl transition-all duration-200 border border-brand-gold/20 text-brand-brown hover:text-brand-dark group"
+                aria-label="Previous slide"
               >
-                <ChevronLeft className='w-5 h-5 lg:w-6 lg:h-6 group-hover:scale-110 transition-transform' />
+                <ChevronLeft className="w-5 h-5 lg:w-6 lg:h-6 group-hover:scale-110 transition-transform" />
               </motion.button>
 
               <motion.button
@@ -462,10 +462,10 @@ export default function HeroSliderAPI({ fallbackSlides = [] }: HeroSliderProps) 
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: 20 }}
                 onClick={() => paginate(1)}
-                className='absolute right-4 lg:right-8 top-1/2 transform -translate-y-1/2 z-20 p-3 lg:p-4 bg-white/90 backdrop-blur-sm rounded-full shadow-lg hover:shadow-xl transition-all duration-200 border border-brand-gold/20 text-brand-brown hover:text-brand-dark group'
-                aria-label='Next slide'
+                className="absolute right-4 lg:right-8 top-1/2 transform -translate-y-1/2 z-20 p-3 lg:p-4 bg-white/90 backdrop-blur-sm rounded-full shadow-lg hover:shadow-xl transition-all duration-200 border border-brand-gold/20 text-brand-brown hover:text-brand-dark group"
+                aria-label="Next slide"
               >
-                <ChevronRight className='w-5 h-5 lg:w-6 lg:h-6 group-hover:scale-110 transition-transform' />
+                <ChevronRight className="w-5 h-5 lg:w-6 lg:h-6 group-hover:scale-110 transition-transform" />
               </motion.button>
             </>
           )}
@@ -475,12 +475,12 @@ export default function HeroSliderAPI({ fallbackSlides = [] }: HeroSliderProps) 
       {/* Slide Indicators */}
       {config.showDots && slides.length > 1 && (
         <motion.div
-          className='absolute bottom-6 lg:bottom-8 left-1/2 transform -translate-x-1/2 z-20'
+          className="absolute bottom-6 lg:bottom-8 left-1/2 transform -translate-x-1/2 z-20"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1 }}
         >
-          <div className='flex space-x-2 lg:space-x-3 bg-white/80 backdrop-blur-sm rounded-full px-4 py-3 shadow-lg border border-brand-gold/20'>
+          <div className="flex space-x-2 lg:space-x-3 bg-white/80 backdrop-blur-sm rounded-full px-4 py-3 shadow-lg border border-brand-gold/20">
             {slides.map((slide, index) => (
               <button
                 key={`slide-indicator-${slide.id || index}`}
@@ -499,10 +499,10 @@ export default function HeroSliderAPI({ fallbackSlides = [] }: HeroSliderProps) 
 
       {/* Loading indicator for API data */}
       {isLoading && (
-        <div className='absolute top-4 right-4 z-30'>
-          <div className='bg-white/90 backdrop-blur-sm rounded-full px-3 py-2 shadow-lg border border-brand-gold/20'>
-            <div className='flex items-center gap-2 text-brand-brown text-sm'>
-              <div className='w-2 h-2 bg-brand-gold rounded-full animate-pulse' />
+        <div className="absolute top-4 right-4 z-30">
+          <div className="bg-white/90 backdrop-blur-sm rounded-full px-3 py-2 shadow-lg border border-brand-gold/20">
+            <div className="flex items-center gap-2 text-brand-brown text-sm">
+              <div className="w-2 h-2 bg-brand-gold rounded-full animate-pulse" />
               Loading content...
             </div>
           </div>

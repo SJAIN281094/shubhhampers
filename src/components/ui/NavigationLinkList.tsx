@@ -62,8 +62,8 @@ export default function NavigationLinkList({
             {link.external ? (
               <a
                 href={link.href}
-                target='_blank'
-                rel='noopener noreferrer'
+                target="_blank"
+                rel="noopener noreferrer"
                 className={styles.link}
                 onClick={() => handleLinkClick(link.href)}
               >

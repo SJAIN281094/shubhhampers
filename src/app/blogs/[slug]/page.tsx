@@ -3,13 +3,18 @@ import { notFound } from "next/navigation";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import BlogDetailsClient from "@/components/BlogDetailsClient";
-import { getBlogPostBySlug, generateBlogsSlugs } from "@/lib/blogs-data";
+import { fetchBlogPost, generateBlogSlugs } from "@/lib/blog-api";
 
 export async function generateStaticParams() {
-  const slugs = generateBlogsSlugs();
-  return slugs.map(slug => ({
-    slug
-  }));
+  try {
+    const slugs = await generateBlogSlugs();
+    return slugs.map(slug => ({
+      slug
+    }));
+  } catch (error) {
+    console.error("Error generating blog slugs:", error);
+    return [];
+  }
 }
 
 export async function generateMetadata({
@@ -18,36 +23,53 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const resolvedParams = await params;
-  const post = getBlogPostBySlug(resolvedParams.slug);
+  const post = await fetchBlogPost(resolvedParams.slug);
 
   if (!post) {
     return {};
   }
 
+  const postUrl = `https://www.shubhhampers.com/blogs/${resolvedParams.slug}`;
+  const imageUrl = post.featuredImage;
+  const authorName = post.author?.name || "Shubhhampers Team";
+  const categoryName = post.category?.name || "Gift Hampers";
+
+  // Debug logging
+  console.log("Blog Post Data:", {
+    title: post.title,
+    excerpt: post.excerpt,
+    imageUrl: imageUrl,
+    author: authorName,
+    category: categoryName,
+    tags: post.tags.map(tag => tag.name)
+  });
+
   return {
-    title: post.seo.title,
-    description: post.seo.description,
-    keywords: post.seo.keywords,
+    title: post.seo?.title || post.title,
+    description: post.seo?.description || post.excerpt,
+    keywords: post.seo?.keywords || post.tags.map(tag => tag.name).join(", "),
     alternates: {
-      canonical: `https://www.shubhhampers.com/blogs/${resolvedParams.slug}`
+      canonical: postUrl
     },
     openGraph: {
       type: "article",
       title: post.title,
       description: post.excerpt,
-      url: `https://www.shubhhampers.com/blogs/${resolvedParams.slug}`,
-      siteName: "Shubhhampers",
+      url: postUrl,
+      siteName: "Shubhhampers - Premium Gift Hampers",
       locale: "en_US",
       publishedTime: post.publishedAt,
       modifiedTime: post.updatedAt || post.publishedAt,
-      authors: [post.author],
-      tags: post.tags,
+      authors: [authorName],
+      tags: post.tags.map(tag => tag.name),
+      section: categoryName,
       images: [
         {
-          url: post.featuredImage,
+          url: imageUrl,
           width: 1200,
           height: 630,
-          alt: post.title
+          alt: post.title,
+          type: "image/jpeg"
         }
       ]
     },
@@ -55,30 +77,37 @@ export async function generateMetadata({
       card: "summary_large_image",
       title: post.title,
       description: post.excerpt,
-      images: [post.featuredImage],
+      images: [imageUrl],
       creator: "@shubhhampers",
       site: "@shubhhampers"
     },
     other: {
-      "article:author": post.author,
+      "article:author": authorName,
       "article:published_time": post.publishedAt,
       "article:modified_time": post.updatedAt || post.publishedAt,
-      "article:section": post.category,
-      "article:tag": post.tags.join(",")
+      "article:section": categoryName,
+      "article:tag": post.tags.map(tag => tag.name).join(","),
+      "og:image:width": "1200",
+      "og:image:height": "630",
+      "og:image:type": "image/jpeg",
+      "og:image:alt": post.title,
+      "twitter:image:alt": post.title,
+      "twitter:image:width": "1200",
+      "twitter:image:height": "630"
     }
   };
 }
 
 export default async function BlogsPostPage({ params }: { params: Promise<{ slug: string }> }) {
   const resolvedParams = await params;
-  const post = getBlogPostBySlug(resolvedParams.slug);
+  const post = await fetchBlogPost(resolvedParams.slug);
 
   if (!post) {
     notFound();
   }
 
   return (
-    <main className='min-h-screen'>
+    <main className="min-h-screen">
       <Header />
       <BlogDetailsClient post={post} />
       <Footer />

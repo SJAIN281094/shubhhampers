@@ -79,10 +79,10 @@ export const metadata: Metadata = {
 
 export default function BusinessPage() {
   return (
-    <main className='min-h-screen'>
+    <main className="min-h-screen">
       <Header />
 
-      <div className='bg-gradient-to-br from-brand-light via-white to-brand-gold/5'>
+      <div className="bg-gradient-to-br from-brand-light via-white to-brand-gold/5">
         <BusinessHero />
         <BusinessUseCases />
         <BusinessBenefits />

@@ -155,7 +155,7 @@ export default async function CategoryPage({
   const { hampers, pagination } = await getCategoryPageData(categoryName, page);
 
   return (
-    <main className='min-h-screen'>
+    <main className="min-h-screen">
       <Header />
       <HamperListingPageServer
         pageData={pageData}

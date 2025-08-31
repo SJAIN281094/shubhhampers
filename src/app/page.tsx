@@ -13,15 +13,15 @@ import type { HamperProduct } from "@lib/hamper-api-types";
 
 // Aggressively lazy load below-the-fold components with minimal loading states
 const EventsSection = dynamic(() => import("@components/EventsSection"), {
-  loading: () => <div className='h-20 bg-white' />
+  loading: () => <div className="h-20 bg-white" />
 });
 
 const HowWeWorkSection = dynamic(() => import("@components/HowWeWorkSection"), {
-  loading: () => <div className='h-20 bg-gradient-to-br from-brand-light/20 to-white' />
+  loading: () => <div className="h-20 bg-gradient-to-br from-brand-light/20 to-white" />
 });
 
 const WhyChooseUsSection = dynamic(() => import("@components/WhyChooseUsSection"), {
-  loading: () => <div className='h-20 bg-gradient-to-br from-brand-brown to-brand-dark' />
+  loading: () => <div className="h-20 bg-gradient-to-br from-brand-brown to-brand-dark" />
 });
 
 export const metadata: Metadata = {
@@ -198,10 +198,10 @@ export default async function Home() {
   const { heroSlides, categoryHampers } = await getHomePageData();
 
   return (
-    <main className='min-h-screen'>
+    <main className="min-h-screen">
       <Header />
       {/* Hidden H1 for SEO - main page heading */}
-      <h1 className='sr-only'>
+      <h1 className="sr-only">
         Curated Gift Hampers for Every Occasion - Corporate, Wedding, Festival & Personal |
         Shubhhampers
       </h1>

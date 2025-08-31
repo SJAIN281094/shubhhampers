@@ -66,12 +66,12 @@ function PaginationControls({
   const showPages = pages.slice(Math.max(0, page - 3), Math.min(pageCount, page + 2));
 
   return (
-    <div className='flex justify-center items-center space-x-2 mt-12'>
+    <div className="flex justify-center items-center space-x-2 mt-12">
       {/* Previous Page */}
       {page > 1 && (
         <Link
           href={buildUrl(page - 1)}
-          className='px-4 py-2 border border-brand-gold text-brand-brown hover:bg-brand-gold hover:text-white rounded-lg transition-colors'
+          className="px-4 py-2 border border-brand-gold text-brand-brown hover:bg-brand-gold hover:text-white rounded-lg transition-colors"
         >
           Previous
         </Link>
@@ -96,7 +96,7 @@ function PaginationControls({
       {page < pageCount && (
         <Link
           href={buildUrl(page + 1)}
-          className='px-4 py-2 border border-brand-gold text-brand-brown hover:bg-brand-gold hover:text-white rounded-lg transition-colors'
+          className="px-4 py-2 border border-brand-gold text-brand-brown hover:bg-brand-gold hover:text-white rounded-lg transition-colors"
         >
           Next
         </Link>
@@ -129,12 +129,12 @@ function CategoryFilters({
   };
 
   return (
-    <div className='text-center mb-8'>
+    <div className="text-center mb-8">
       {/* Centered Heading */}
-      <h3 className='text-xl font-semibold text-brand-dark mb-6'>Explore by Category</h3>
+      <h3 className="text-xl font-semibold text-brand-dark mb-6">Explore by Category</h3>
 
       {/* Category Chips */}
-      <div className='flex flex-wrap justify-center gap-3'>
+      <div className="flex flex-wrap justify-center gap-3">
         {categories.map(category => {
           const isActive = currentCategory === category.id;
 
@@ -169,17 +169,17 @@ export default function HamperListingPageServer({
   const categoryTag = getCategoryTag(currentCategory !== "all" ? currentCategory : undefined);
 
   return (
-    <section className='py-8 sm:py-12 md:py-16 lg:py-20 bg-gradient-to-br from-brand-light via-white to-brand-gold/5'>
-      <div className='container mx-auto px-4 sm:px-6 lg:px-8'>
+    <section className="py-8 sm:py-12 md:py-16 lg:py-20 bg-gradient-to-br from-brand-light via-white to-brand-gold/5">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Hero Section */}
-        <div className='text-center mb-8 sm:mb-12'>
+        <div className="text-center mb-8 sm:mb-12">
           {/* SEO H1 - Hidden but accessible */}
-          <h1 className='sr-only'>{pageData.title}</h1>
+          <h1 className="sr-only">{pageData.title}</h1>
 
           {/* Breadcrumb Structured Data */}
           {pageData.breadcrumbs && pageData.breadcrumbs.length > 0 && (
             <script
-              type='application/ld+json'
+              type="application/ld+json"
               dangerouslySetInnerHTML={{
                 __html: JSON.stringify({
                   "@context": "https://schema.org",
@@ -198,8 +198,8 @@ export default function HamperListingPageServer({
             tag={categoryTag}
             title={pageData.title}
             description={pageData.description}
-            variant='center'
-            size='lg'
+            variant="center"
+            size="lg"
             showDecorations={false}
           />
         </div>
@@ -211,7 +211,7 @@ export default function HamperListingPageServer({
 
         {/* Hampers Grid */}
         {hampers.length > 0 ? (
-          <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8'>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
             {hampers.map(hamper => (
               <HamperCard
                 key={hamper.id}
@@ -233,7 +233,7 @@ export default function HamperListingPageServer({
                 variant: "primary" as const
               }
             ]}
-            className='py-16'
+            className="py-16"
           />
         )}
 

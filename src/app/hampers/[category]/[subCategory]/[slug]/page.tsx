@@ -172,7 +172,7 @@ export default async function ProductDetailPage({
     }
 
     return (
-      <main className='min-h-screen'>
+      <main className="min-h-screen">
         <Header />
         <HamperDetailsPage hamper={hamper} />
         <Footer />

@@ -42,7 +42,7 @@ export default function ProductSchema({ product }: ProductSchemaProps) {
 
   return (
     <script
-      type='application/ld+json'
+      type="application/ld+json"
       dangerouslySetInnerHTML={{
         __html: JSON.stringify(cleanSchema)
       }}
@@ -84,7 +84,7 @@ export function ProductListSchema({ products, categoryName }: ProductListSchemaP
 
   return (
     <script
-      type='application/ld+json'
+      type="application/ld+json"
       dangerouslySetInnerHTML={{
         __html: JSON.stringify(schema)
       }}

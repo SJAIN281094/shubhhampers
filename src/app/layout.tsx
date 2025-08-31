@@ -143,11 +143,11 @@ export default async function RootLayout({
   const googleTagManager = await getEnvVar("NEXT_PUBLIC_GOOGLE_TAG_MANAGER");
   const environment = await getEnvVar("NEXT_PUBLIC_ENV");
   return (
-    <html lang='en'>
+    <html lang="en">
       <head>
         {/* Critical Structured Data - Load immediately */}
         <script
-          type='application/ld+json'
+          type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
@@ -184,7 +184,7 @@ export default async function RootLayout({
         />
         {/* Matomo */}
         <script
-          type='text/javascript'
+          type="text/javascript"
           dangerouslySetInnerHTML={{
             __html: `
               var _paq = window._paq = window._paq || [];
@@ -209,10 +209,10 @@ export default async function RootLayout({
         {/* Google Tag Manager (noscript) */}
         <noscript>
           <iframe
-            title='Google Tag Manager'
+            title="Google Tag Manager"
             src={`https://www.googletagmanager.com/ns.html?id=${googleTagManager}`}
-            height='0'
-            width='0'
+            height="0"
+            width="0"
             style={{ display: "none", visibility: "hidden" }}
           />
         </noscript>
@@ -224,19 +224,19 @@ export default async function RootLayout({
           <>
             {/* Google Tag Manager - Critical for analytics */}
             <Script
-              id='google-tag-manager'
-              strategy='beforeInteractive'
+              id="google-tag-manager"
+              strategy="beforeInteractive"
               dangerouslySetInnerHTML={{
                 __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${googleTagManager}');`
               }}
             />
             <Script
               src={`https://www.googletagmanager.com/gtag/js?id=${googleAnalytics}`}
-              strategy='afterInteractive'
+              strategy="afterInteractive"
             />
             <Script
-              id='google-analytics'
-              strategy='afterInteractive'
+              id="google-analytics"
+              strategy="afterInteractive"
               dangerouslySetInnerHTML={{
                 __html: `
                   window.dataLayer = window.dataLayer || [];

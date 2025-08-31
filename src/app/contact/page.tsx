@@ -74,21 +74,21 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <main className='min-h-screen'>
+    <main className="min-h-screen">
       <Header />
 
-      <div className='bg-gradient-to-br from-brand-light via-white to-brand-gold/5'>
+      <div className="bg-gradient-to-br from-brand-light via-white to-brand-gold/5">
         <ContactHero />
         <ContactMethods />
         <ContactFormSection />
         <CTASection
-          title='Need Immediate Help?'
-          description='For urgent inquiries or immediate assistance, reach out to us directly. Our team is ready to help you create the perfect hamper experience.'
-          primaryButtonText='📞 Call Now: +91 96858 47274'
-          primaryButtonHref='tel:+919685847274'
-          secondaryButtonText='✉️ Email: connect@shubhhampers.com'
-          secondaryButtonHref='mailto:connect@shubhhampers.com'
-          theme='light'
+          title="Need Immediate Help?"
+          description="For urgent inquiries or immediate assistance, reach out to us directly. Our team is ready to help you create the perfect hamper experience."
+          primaryButtonText="📞 Call Now: +91 96858 47274"
+          primaryButtonHref="tel:+919685847274"
+          secondaryButtonText="✉️ Email: connect@shubhhampers.com"
+          secondaryButtonHref="mailto:connect@shubhhampers.com"
+          theme="light"
         />
       </div>
 

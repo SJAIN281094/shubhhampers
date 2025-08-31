@@ -63,21 +63,21 @@ export default function FooterLinks({ onModalOpen: _onModalOpen }: FooterLinksPr
       <NavigationLinkList
         title={footerLinksData.people.title}
         links={footerLinksData.people.links}
-        variant='footer'
+        variant="footer"
       />
 
       {/* Occasion Gift Hampers */}
       <NavigationLinkList
         title={footerLinksData.occasions.title}
         links={footerLinksData.occasions.links}
-        variant='footer'
+        variant="footer"
       />
 
       {/* Corporate & Business */}
       <NavigationLinkList
         title={footerLinksData.business.title}
         links={footerLinksData.business.links}
-        variant='footer'
+        variant="footer"
       />
 
       {/* Contact & Support */}
@@ -85,18 +85,18 @@ export default function FooterLinks({ onModalOpen: _onModalOpen }: FooterLinksPr
         <NavigationLinkList
           title={footerLinksData.contact.title}
           links={footerLinksData.contact.links}
-          variant='footer'
+          variant="footer"
         />
 
         {/* Contact Information */}
-        <div className='mt-4 bg-brand-gold/10 border border-brand-gold/30 rounded-lg p-3 space-y-2 backdrop-blur-sm w-fit'>
-          <div className='flex items-center gap-2 text-brand-light font-medium text-sm'>
-            <FaPhone className='w-3 h-3 text-brand-gold flex-shrink-0 rotate-90' />
-            <span className='whitespace-nowrap'>{CONTACT_INFO.phone}</span>
+        <div className="mt-4 bg-brand-gold/10 border border-brand-gold/30 rounded-lg p-3 space-y-2 backdrop-blur-sm w-fit">
+          <div className="flex items-center gap-2 text-brand-light font-medium text-sm">
+            <FaPhone className="w-3 h-3 text-brand-gold flex-shrink-0 rotate-90" />
+            <span className="whitespace-nowrap">{CONTACT_INFO.phone}</span>
           </div>
-          <div className='flex items-center gap-2 text-brand-light font-medium text-sm'>
-            <FaEnvelope className='w-3 h-3 text-brand-gold flex-shrink-0' />
-            <span className='whitespace-nowrap'>{CONTACT_INFO.email}</span>
+          <div className="flex items-center gap-2 text-brand-light font-medium text-sm">
+            <FaEnvelope className="w-3 h-3 text-brand-gold flex-shrink-0" />
+            <span className="whitespace-nowrap">{CONTACT_INFO.email}</span>
           </div>
         </div>
       </div>

@@ -44,20 +44,20 @@ export default function OptimizedInstagramEmbed({
   };
 
   return (
-    <div id='instagram-embed-container' className={className}>
+    <div id="instagram-embed-container" className={className}>
       {isVisible && (
         <>
           <Script
-            src='https://www.instagram.com/embed.js'
-            strategy='lazyOnload'
+            src="https://www.instagram.com/embed.js"
+            strategy="lazyOnload"
             onLoad={handleScriptLoad}
           />
 
           {/* Instagram Embed Container */}
           <blockquote
-            className='instagram-media'
+            className="instagram-media"
             data-instgrm-permalink={url}
-            data-instgrm-version='14'
+            data-instgrm-version="14"
             style={{
               background: "#FFF",
               border: 0,
@@ -71,15 +71,15 @@ export default function OptimizedInstagramEmbed({
             }}
           >
             {!isLoaded && (
-              <div className='flex items-center justify-center p-8 bg-gray-100 rounded-lg'>
-                <div className='text-center'>
-                  <div className='w-8 h-8 border-2 border-brand-gold border-t-transparent rounded-full animate-spin mx-auto mb-2' />
-                  <p className='text-sm text-gray-600'>Loading Instagram post...</p>
+              <div className="flex items-center justify-center p-8 bg-gray-100 rounded-lg">
+                <div className="text-center">
+                  <div className="w-8 h-8 border-2 border-brand-gold border-t-transparent rounded-full animate-spin mx-auto mb-2" />
+                  <p className="text-sm text-gray-600">Loading Instagram post...</p>
                 </div>
               </div>
             )}
 
-            <a href={url} target='_blank' rel='noopener noreferrer'>
+            <a href={url} target="_blank" rel="noopener noreferrer">
               View this post on Instagram
             </a>
           </blockquote>
@@ -87,10 +87,10 @@ export default function OptimizedInstagramEmbed({
       )}
 
       {!isVisible && (
-        <div className='flex items-center justify-center p-8 bg-gradient-to-br from-brand-light/50 to-brand-gold/10 rounded-lg border border-brand-gold/20'>
-          <div className='text-center'>
-            <div className='text-4xl mb-2'>📸</div>
-            <p className='text-sm text-gray-600'>Instagram content will load when visible</p>
+        <div className="flex items-center justify-center p-8 bg-gradient-to-br from-brand-light/50 to-brand-gold/10 rounded-lg border border-brand-gold/20">
+          <div className="text-center">
+            <div className="text-4xl mb-2">📸</div>
+            <p className="text-sm text-gray-600">Instagram content will load when visible</p>
           </div>
         </div>
       )}

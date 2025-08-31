@@ -33,12 +33,12 @@ export default function CategoryLinks({
   }
 
   return (
-    <section className={`py-8 ${className}`} aria-labelledby='category-links-heading'>
-      <div className='container mx-auto px-4 sm:px-6 lg:px-8'>
+    <section className={`py-8 ${className}`} aria-labelledby="category-links-heading">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {title && (
           <h3
-            id='category-links-heading'
-            className='text-xl md:text-2xl font-display font-semibold text-brand-brown mb-6'
+            id="category-links-heading"
+            className="text-xl md:text-2xl font-display font-semibold text-brand-brown mb-6"
           >
             {title}
           </h3>
@@ -98,9 +98,9 @@ function CategoryLinkItem({ link, variant, showDescription }: CategoryLinkItemPr
             : "border-brand-gold/30 hover:border-brand-gold hover:bg-brand-gold/10 hover:scale-105"
         }`}
       >
-        <div className='font-medium text-brand-brown mb-1'>{link.label}</div>
+        <div className="font-medium text-brand-brown mb-1">{link.label}</div>
         {showDescription && link.description && (
-          <div className='text-sm text-brand-dark/70'>{link.description}</div>
+          <div className="text-sm text-brand-dark/70">{link.description}</div>
         )}
       </Link>
     );
@@ -114,21 +114,21 @@ function CategoryLinkItem({ link, variant, showDescription }: CategoryLinkItemPr
         link.isActive ? "bg-brand-amber/10 border-l-4 border-brand-amber" : ""
       }`}
     >
-      <div className='flex justify-between items-center'>
+      <div className="flex justify-between items-center">
         <div>
-          <div className='font-medium text-brand-brown'>{link.label}</div>
+          <div className="font-medium text-brand-brown">{link.label}</div>
           {showDescription && link.description && (
-            <div className='text-sm text-brand-dark/70 mt-1'>{link.description}</div>
+            <div className="text-sm text-brand-dark/70 mt-1">{link.description}</div>
           )}
         </div>
         <svg
-          className='w-5 h-5 text-brand-gold'
-          fill='none'
-          stroke='currentColor'
-          viewBox='0 0 24 24'
-          aria-hidden='true'
+          className="w-5 h-5 text-brand-gold"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
         >
-          <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M9 5l7 7-7 7' />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
         </svg>
       </div>
     </Link>

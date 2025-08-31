@@ -67,11 +67,11 @@ export default function Loading({
   if (variant === "skeleton") {
     return (
       <div className={cn("space-y-4", className)}>
-        <div className='h-6 bg-brand-gold/20 rounded w-48 animate-pulse' />
-        <div className='space-y-3'>
-          <div className='h-4 bg-gray-200 rounded animate-pulse' />
-          <div className='h-4 bg-gray-200 rounded w-5/6 animate-pulse' />
-          <div className='h-4 bg-gray-200 rounded w-3/4 animate-pulse' />
+        <div className="h-6 bg-brand-gold/20 rounded w-48 animate-pulse" />
+        <div className="space-y-3">
+          <div className="h-4 bg-gray-200 rounded animate-pulse" />
+          <div className="h-4 bg-gray-200 rounded w-5/6 animate-pulse" />
+          <div className="h-4 bg-gray-200 rounded w-3/4 animate-pulse" />
         </div>
       </div>
     );
@@ -114,11 +114,11 @@ export const LoadingVariants = {
 export function LoadingCard({ className = "" }: { className?: string }) {
   return (
     <div className={cn("bg-white rounded-lg p-4 shadow-sm border", className)}>
-      <div className='animate-pulse space-y-4'>
-        <div className='bg-gray-200 h-40 rounded' />
-        <div className='space-y-2'>
-          <div className='h-4 bg-gray-200 rounded w-3/4' />
-          <div className='h-4 bg-gray-200 rounded w-1/2' />
+      <div className="animate-pulse space-y-4">
+        <div className="bg-gray-200 h-40 rounded" />
+        <div className="space-y-2">
+          <div className="h-4 bg-gray-200 rounded w-3/4" />
+          <div className="h-4 bg-gray-200 rounded w-1/2" />
         </div>
       </div>
     </div>

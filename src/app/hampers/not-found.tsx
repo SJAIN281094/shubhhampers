@@ -6,27 +6,27 @@ import SectionHeader from "@components/ui/SectionHeader";
 
 export default function HamperNotFound() {
   return (
-    <main className='min-h-screen'>
+    <main className="min-h-screen">
       <Header />
 
-      <div className='bg-gradient-to-br from-brand-light via-white to-brand-gold/5'>
-        <section className='relative py-20 overflow-hidden'>
+      <div className="bg-gradient-to-br from-brand-light via-white to-brand-gold/5">
+        <section className="relative py-20 overflow-hidden">
           {/* Background Elements */}
-          <div className='absolute inset-0 bg-brand-gold/8' />
-          <div className='absolute top-10 right-10 w-40 h-40 bg-brand-gold/15 rounded-full opacity-60' />
-          <div className='absolute bottom-20 left-10 w-32 h-32 bg-brand-amber/20 rounded-full opacity-50' />
+          <div className="absolute inset-0 bg-brand-gold/8" />
+          <div className="absolute top-10 right-10 w-40 h-40 bg-brand-gold/15 rounded-full opacity-60" />
+          <div className="absolute bottom-20 left-10 w-32 h-32 bg-brand-amber/20 rounded-full opacity-50" />
 
-          <div className='container mx-auto px-4 sm:px-6 lg:px-8 relative z-10'>
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             {/* SEO H1 - Hidden but accessible */}
-            <h1 className='sr-only'>Hamper Not Found - Page Not Available</h1>
+            <h1 className="sr-only">Hamper Not Found - Page Not Available</h1>
 
             <SectionHeader
-              title='Hamper Not Found'
+              title="Hamper Not Found"
               description={
                 "We couldn't find the hamper you're looking for. But don't worry, we have plenty of amazing hampers waiting for you!"
               }
-              variant='center'
-              size='lg'
+              variant="center"
+              size="lg"
               showDecorations={true}
               tag={{
                 emoji: "🔍",
@@ -34,14 +34,14 @@ export default function HamperNotFound() {
               }}
             />
 
-            <div className='flex flex-col sm:flex-row gap-4 justify-center mt-12'>
-              <Link href='/hampers'>
-                <Button className='bg-gradient-to-r from-brand-gold to-brand-amber text-brand-dark font-semibold px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300'>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mt-12">
+              <Link href="/hampers">
+                <Button className="bg-gradient-to-r from-brand-gold to-brand-amber text-brand-dark font-semibold px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300">
                   🎁 Explore All Hampers
                 </Button>
               </Link>
-              <Link href='/contact'>
-                <Button className='bg-white text-brand-brown font-semibold px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-200 border-2 border-brand-gold hover:bg-brand-gold/10'>
+              <Link href="/contact">
+                <Button className="bg-white text-brand-brown font-semibold px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-200 border-2 border-brand-gold hover:bg-brand-gold/10">
                   💬 Contact Us
                 </Button>
               </Link>

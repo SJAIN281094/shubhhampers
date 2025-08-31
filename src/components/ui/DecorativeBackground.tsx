@@ -123,36 +123,36 @@ export default function DecorativeBackground({
       ))}
 
       {/* Geometric Decorations */}
-      <div className='absolute top-0 right-0 w-40 h-40'>
-        <svg viewBox='0 0 160 160' className='w-full h-full'>
+      <div className="absolute top-0 right-0 w-40 h-40">
+        <svg viewBox="0 0 160 160" className="w-full h-full">
           <polygon
-            points='80,20 100,60 140,60 110,90 140,120 100,120 80,160 60,120 20,120 50,90 20,60 60,60'
-            fill='#F1DEA8'
-            opacity='0.1'
-            className='animate-spin'
+            points="80,20 100,60 140,60 110,90 140,120 100,120 80,160 60,120 20,120 50,90 20,60 60,60"
+            fill="#F1DEA8"
+            opacity="0.1"
+            className="animate-spin"
             style={{ animationDuration: "40s" }}
           />
         </svg>
       </div>
 
-      <div className='absolute bottom-0 left-0 w-32 h-32'>
-        <svg viewBox='0 0 128 128' className='w-full h-full'>
+      <div className="absolute bottom-0 left-0 w-32 h-32">
+        <svg viewBox="0 0 128 128" className="w-full h-full">
           <circle
-            cx='64'
-            cy='64'
-            r='48'
-            fill='none'
-            stroke='#E9C579'
-            strokeWidth='2'
-            opacity='0.15'
-            className='animate-ping'
+            cx="64"
+            cy="64"
+            r="48"
+            fill="none"
+            stroke="#E9C579"
+            strokeWidth="2"
+            opacity="0.15"
+            className="animate-ping"
           />
-          <circle cx='64' cy='64' r='32' fill='#E9C579' opacity='0.1' />
+          <circle cx="64" cy="64" r="32" fill="#E9C579" opacity="0.1" />
         </svg>
       </div>
 
       {/* Content */}
-      <div className='relative z-10'>{children}</div>
+      <div className="relative z-10">{children}</div>
     </div>
   );
 }

@@ -41,11 +41,11 @@ export default function CTASection({
     isPrimary: boolean = true
   ) => {
     const ButtonComponent = isPrimary ? PrimaryButton : SecondaryButton;
-    const buttonContent = <ButtonComponent size='sm'>{text}</ButtonComponent>;
+    const buttonContent = <ButtonComponent size="sm">{text}</ButtonComponent>;
 
     if (action) {
       return (
-        <button onClick={action} className='inline-block'>
+        <button onClick={action} className="inline-block">
           {buttonContent}
         </button>
       );
@@ -60,17 +60,17 @@ export default function CTASection({
 
   return (
     <section className={`py-20 ${backgroundClass} ${className}`}>
-      <div className='container mx-auto px-4 sm:px-6 lg:px-8'>
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
           title={title}
           description={description}
-          variant='center'
-          size='lg'
+          variant="center"
+          size="lg"
           theme={theme}
-          className='mb-8'
+          className="mb-8"
         />
-        <div className='text-center max-w-4xl mx-auto'>
-          <div className='flex flex-col sm:flex-row gap-4 justify-center'>
+        <div className="text-center max-w-4xl mx-auto">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
             {renderButton(primaryButtonText, primaryButtonHref, primaryButtonAction, true)}
             {renderButton(secondaryButtonText, secondaryButtonHref, secondaryButtonAction, false)}
           </div>

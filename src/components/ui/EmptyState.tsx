@@ -33,18 +33,18 @@ export default function EmptyState({
 }: EmptyStateProps) {
   return (
     <div className={`text-center py-12 ${className}`}>
-      <div className='text-6xl mb-4'>{icon}</div>
-      <h3 className='text-2xl font-bold text-brand-dark mb-4'>{title}</h3>
-      <p className='text-gray-600 mb-6 max-w-xl mx-auto leading-relaxed'>{description}</p>
+      <div className="text-6xl mb-4">{icon}</div>
+      <h3 className="text-2xl font-bold text-brand-dark mb-4">{title}</h3>
+      <p className="text-gray-600 mb-6 max-w-xl mx-auto leading-relaxed">{description}</p>
 
       {actions.length > 0 && (
-        <div className='flex flex-wrap gap-4 justify-center'>
+        <div className="flex flex-wrap gap-4 justify-center">
           {actions.map(action => {
             const buttonContent = action.label;
             const buttonKey = `${action.variant || "custom"}-${action.label}`;
             if (action.variant === "primary") {
               const PrimaryButtonElement = (
-                <PrimaryButton onClick={action.onClick} size='md' className={action.className}>
+                <PrimaryButton onClick={action.onClick} size="md" className={action.className}>
                   {buttonContent}
                 </PrimaryButton>
               );
@@ -60,7 +60,7 @@ export default function EmptyState({
 
             if (action.variant === "secondary") {
               const SecondaryButtonElement = (
-                <SecondaryButton onClick={action.onClick} size='md' className={action.className}>
+                <SecondaryButton onClick={action.onClick} size="md" className={action.className}>
                   {buttonContent}
                 </SecondaryButton>
               );

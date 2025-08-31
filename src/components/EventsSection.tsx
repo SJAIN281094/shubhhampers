@@ -88,26 +88,26 @@ export default function EventsSection({ categoryHampers = {} }: EventsSectionPro
 
   return (
     <section
-      id='events-section'
-      className='py-20 bg-gradient-to-br from-brand-gold/20 via-brand-light to-brand-amber/10 relative overflow-hidden'
+      id="events-section"
+      className="py-20 bg-gradient-to-br from-brand-gold/20 via-brand-light to-brand-amber/10 relative overflow-hidden"
     >
       {/* Background Elements */}
-      <div className='absolute inset-0 bg-gradient-to-br from-brand-gold/5 via-transparent to-brand-amber/3' />
-      <div className='absolute top-20 right-10 w-48 h-48 bg-brand-gold/10 rounded-full blur-3xl animate-pulse delay-1000' />
-      <div className='absolute bottom-40 left-10 w-36 h-36 bg-brand-amber/15 rounded-full blur-2xl animate-bounce delay-2000' />
-      <div className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-brand-light/20 rounded-full blur-3xl animate-pulse delay-500' />
+      <div className="absolute inset-0 bg-gradient-to-br from-brand-gold/5 via-transparent to-brand-amber/3" />
+      <div className="absolute top-20 right-10 w-48 h-48 bg-brand-gold/10 rounded-full blur-3xl animate-pulse delay-1000" />
+      <div className="absolute bottom-40 left-10 w-36 h-36 bg-brand-amber/15 rounded-full blur-2xl animate-bounce delay-2000" />
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-brand-light/20 rounded-full blur-3xl animate-pulse delay-500" />
 
-      <div className='container mx-auto px-4 sm:px-6 lg:px-8 relative z-10'>
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <SectionHeader
           tag={{ emoji: "🎯", text: "Complete Hamper Solutions" }}
-          title='Hampers for Every Celebration & Relationship'
+          title="Hampers for Every Celebration & Relationship"
           description={`Whether it's honoring family ties, celebrating milestones, or expressing heartfelt
             gratitude — our thoughtfully crafted hampers are made for every occasion that matters.
             From wedding and festive hampers to birthday, Raksha Bandhan, and business gifts, each one is a
             beautiful way to cherish bonds and create meaningful memories.`}
-          variant='center'
-          size='lg'
+          variant="center"
+          size="lg"
           showDecorations={true}
         />
 
@@ -122,12 +122,12 @@ export default function EventsSection({ categoryHampers = {} }: EventsSectionPro
           if (availableCategories.length === 0) return null;
 
           return (
-            <div className='flex flex-wrap justify-center gap-3 md:gap-4 mt-16 mb-4'>
+            <div className="flex flex-wrap justify-center gap-3 md:gap-4 mt-16 mb-4">
               {availableCategories.map(category => (
                 <button
                   key={category.id}
                   onClick={() => handleCategoryClick(category.id)}
-                  className='px-4 md:px-6 py-2 md:py-3 text-sm md:text-base font-semibold rounded-full shadow-lg hover:shadow-xl transition-all cursor-pointer duration-200 bg-white/80 text-brand-dark hover:bg-brand-gold hover:text-brand-brown'
+                  className="px-4 md:px-6 py-2 md:py-3 text-sm md:text-base font-semibold rounded-full shadow-lg hover:shadow-xl transition-all cursor-pointer duration-200 bg-white/80 text-brand-dark hover:bg-brand-gold hover:text-brand-brown"
                 >
                   {category.icon} {category.label}
                 </button>
@@ -147,11 +147,11 @@ export default function EventsSection({ categoryHampers = {} }: EventsSectionPro
           // If no categories have hampers, show minimal message
           if (availableCategories.length === 0) {
             return (
-              <div className='text-center py-12'>
-                <p className='text-gray-500 text-lg mb-4'>
+              <div className="text-center py-12">
+                <p className="text-gray-500 text-lg mb-4">
                   Our hamper collections are being updated.
                 </p>
-                <PrimaryButton onClick={() => router.push("/hampers")} size='md'>
+                <PrimaryButton onClick={() => router.push("/hampers")} size="md">
                   View All Hampers
                 </PrimaryButton>
               </div>
@@ -159,31 +159,31 @@ export default function EventsSection({ categoryHampers = {} }: EventsSectionPro
           }
 
           return (
-            <div className='space-y-20'>
+            <div className="space-y-20">
               {availableCategories.map(category => {
                 const categoryHampersData = getHampersForCategory(category.id);
 
                 return (
-                  <div key={category.id} id={`${category.id}-section`} className='scroll-mt-20'>
+                  <div key={category.id} id={`${category.id}-section`} className="scroll-mt-20">
                     {/* Category Title */}
-                    <div className='text-center mb-6'>
-                      <h3 className='font-display text-xl sm:text-2xl md:text-xl lg:text-3xl xl:text-4xl font-bold text-brand-brown mb-4 leading-tight tracking-wide drop-shadow-sm'>
+                    <div className="text-center mb-6">
+                      <h3 className="font-display text-xl sm:text-2xl md:text-xl lg:text-3xl xl:text-4xl font-bold text-brand-brown mb-4 leading-tight tracking-wide drop-shadow-sm">
                         {category.icon} {category.title}
                       </h3>
-                      <p className='text-brand-dark max-w-3xl mx-auto text-sm sm:text-base md:text-sm lg:text-lg xl:text-xl leading-relaxed'>
+                      <p className="text-brand-dark max-w-3xl mx-auto text-sm sm:text-base md:text-sm lg:text-lg xl:text-xl leading-relaxed">
                         {category.description}
                       </p>
                     </div>
 
                     {/* Hamper Cards */}
-                    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 mb-10'>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 mb-10">
                       {categoryHampersData.map((hamper, index) => (
                         <HamperCard
                           key={hamper.id}
                           hamper={hamper}
                           showPrice={false}
                           showDetailsButton={true}
-                          className='animate-fade-in'
+                          className="animate-fade-in"
                           style={{
                             animationDelay: `${index * 100}ms`
                           }}
@@ -192,14 +192,14 @@ export default function EventsSection({ categoryHampers = {} }: EventsSectionPro
                     </div>
 
                     {/* View All Button */}
-                    <div className='flex justify-center'>
+                    <div className="flex justify-center">
                       <PrimaryButton
                         onClick={() => handleViewAll(category.id)}
-                        size='md'
-                        className='px-6 py-2 rounded-full inline-flex items-center gap-2'
+                        size="md"
+                        className="px-6 py-2 rounded-full inline-flex items-center gap-2"
                       >
                         <span>View All {category.label} Hampers</span>
-                        <ArrowRight className='w-4 h-4 transition-transform duration-300 group-hover:translate-x-1' />
+                        <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
                       </PrimaryButton>
                     </div>
                   </div>

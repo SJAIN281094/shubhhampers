@@ -82,26 +82,26 @@ export default function PageHeader({
       {/* Decorative Elements */}
       {showDecorations && (
         <>
-          <div className='absolute top-0 left-1/4 w-16 h-16 bg-brand-gold/20 rounded-full blur-lg animate-pulse' />
-          <div className='absolute top-10 right-1/4 w-12 h-12 bg-brand-amber/30 rounded-full blur-md animate-bounce delay-300' />
+          <div className="absolute top-0 left-1/4 w-16 h-16 bg-brand-gold/20 rounded-full blur-lg animate-pulse" />
+          <div className="absolute top-10 right-1/4 w-12 h-12 bg-brand-amber/30 rounded-full blur-md animate-bounce delay-300" />
         </>
       )}
 
       {/* Breadcrumbs - Hidden visually but available for screen readers and SEO */}
       {breadcrumbs && breadcrumbs.length > 0 && (
-        <nav aria-label='Breadcrumb navigation' className='sr-only'>
-          <ol className='flex items-center space-x-1 md:space-x-2 text-sm text-brand-dark/70'>
+        <nav aria-label="Breadcrumb navigation" className="sr-only">
+          <ol className="flex items-center space-x-1 md:space-x-2 text-sm text-brand-dark/70">
             {breadcrumbs.map((crumb, index) => (
-              <li key={crumb.href} className='flex items-center'>
-                {index > 0 && <span className='mx-1 md:mx-2 text-brand-gold'>›</span>}
+              <li key={crumb.href} className="flex items-center">
+                {index > 0 && <span className="mx-1 md:mx-2 text-brand-gold">›</span>}
                 {index === breadcrumbs.length - 1 ? (
-                  <span className='font-medium text-brand-brown' aria-current='page'>
+                  <span className="font-medium text-brand-brown" aria-current="page">
                     {crumb.label}
                   </span>
                 ) : (
                   <a
                     href={crumb.href}
-                    className='hover:text-brand-brown transition-colors duration-200'
+                    className="hover:text-brand-brown transition-colors duration-200"
                   >
                     {crumb.label}
                   </a>
@@ -148,7 +148,7 @@ export default function PageHeader({
       {/* Structured Data for Breadcrumbs */}
       {breadcrumbs && breadcrumbs.length > 0 && (
         <script
-          type='application/ld+json'
+          type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",

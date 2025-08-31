@@ -169,13 +169,13 @@ export default async function RelationshipPage({
   );
 
   return (
-    <main className='min-h-screen'>
+    <main className="min-h-screen">
       <Header />
       <HamperListingPageServer
         pageData={pageData}
         hampers={hampers}
         pagination={pagination}
-        currentCategory='relationship'
+        currentCategory="relationship"
         showCategoryFilters={false} // Don't show category filters on relationship pages
         baseUrl={`/hampers/relation/${resolvedParams.relationship}`}
       />

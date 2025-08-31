@@ -57,17 +57,17 @@ export const metadata: Metadata = {
 
 export default function GalleryPage() {
   return (
-    <main className='min-h-screen'>
+    <main className="min-h-screen">
       <Header />
       <InstagramGallery />
       <CTASection
-        title='Inspired by What You See?'
+        title="Inspired by What You See?"
         description="Let's bring your vision to life with a custom hamper that captures the same beauty and thoughtfulness you've seen in our gallery. Every hamper tells a unique story."
-        primaryButtonText='Create Your Hamper'
-        primaryButtonHref='/contact'
-        secondaryButtonText='Browse Collections'
-        secondaryButtonHref='/hampers'
-        theme='dark'
+        primaryButtonText="Create Your Hamper"
+        primaryButtonHref="/contact"
+        secondaryButtonText="Browse Collections"
+        secondaryButtonHref="/hampers"
+        theme="dark"
       />
       <Footer />
     </main>
