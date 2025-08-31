@@ -5,7 +5,7 @@ export const dynamic = "force-dynamic";
 
 async function fetchAllBlogSlugs() {
   try {
-    const apiUrl = process.env.CMS_API_URL || "http://localhost:1337/api";
+    const apiUrl = process.env.CMS_API_URL || "https://admin.shubhhampers.com/api";
     const res = await fetch(`${apiUrl}/blog-posts?fields=slug,updatedAt`, {
       cache: "no-store"
     });
@@ -18,7 +18,7 @@ async function fetchAllBlogSlugs() {
 
 async function fetchAllHamperSlugs() {
   try {
-    const apiUrl = process.env.CMS_API_URL || "http://localhost:1337/api";
+    const apiUrl = process.env.CMS_API_URL || "https://admin.shubhhampers.com/api";
     const res = await fetch(`${apiUrl}/hampers?fields=slug,updatedAt`, {
       cache: "no-store"
     });
@@ -66,7 +66,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   // Blog posts - API returns { data: [{ slug, updatedAt }] }
   const blogPages =
-    posts.data?.map((post: any) => ({
+    posts.data?.map((post: { slug: string; updatedAt?: string }) => ({
       url: `${base}/blogs/${post.slug}`,
       lastModified: new Date(post.updatedAt || currentDate),
       changeFrequency: "monthly" as const,
@@ -75,12 +75,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   // Hamper pages - API returns { data: [{ slug, updatedAt }] }
   const hamperPages =
-    hampers.data?.map((hamper: any) => ({
-      url: `${base}/hampers/${hamper.category?.name || "general"}/${hamper.subCategory?.name || "general"}/${hamper.slug}`,
-      lastModified: new Date(hamper.updatedAt || currentDate),
-      changeFrequency: "weekly" as const,
-      priority: 0.9
-    })) || [];
+    hampers.data?.map(
+      (hamper: {
+        slug: string;
+        updatedAt?: string;
+        category?: { name: string };
+        subCategory?: { name: string };
+      }) => ({
+        url: `${base}/hampers/${hamper.category?.name || "general"}/${hamper.subCategory?.name || "general"}/${hamper.slug}`,
+        lastModified: new Date(hamper.updatedAt || currentDate),
+        changeFrequency: "weekly" as const,
+        priority: 0.9
+      })
+    ) || [];
 
   return [...staticPages, ...blogPages, ...hamperPages];
 }
