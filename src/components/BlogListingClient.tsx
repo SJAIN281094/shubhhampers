@@ -3,7 +3,7 @@
 import { useState, useEffect, useMemo } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { FaCalendarAlt, FaClock, FaSearch } from "react-icons/fa";
+import { FaCalendarAlt, FaClock, FaSearch, FaTag } from "react-icons/fa";
 import { IoArrowForward } from "react-icons/io5";
 
 import SectionHeader from "./ui/SectionHeader";
@@ -12,7 +12,6 @@ import PrimaryButton from "./PrimaryButton";
 import SecondaryButton from "./SecondaryButton";
 import { fetchBlogPosts } from "@/lib/blog-api";
 import { BlogPost } from "@/lib/blog-api-types";
-import HamperTag from "./HamperTag";
 
 export default function BlogListingClient() {
   const [searchQuery, setSearchQuery] = useState<string>("");
@@ -201,20 +200,27 @@ export default function BlogListingClient() {
                   {/* Tags */}
                   {post.tags && Array.isArray(post.tags) && post.tags.length > 0 && (
                     <div className="flex flex-wrap gap-2 mt-3">
-                      {post.tags.map((tag, index) => (
-                        <HamperTag
+                      {post.tags.slice(0, 4).map((tag, index) => (
+                        <span
                           key={`tag-${tag.slug}-${index}`}
-                          title={tag.name}
-                          className="text-xs px-2 py-1"
-                        />
+                          className="inline-flex items-center gap-2 px-3 py-1.5 bg-brand-gold/10 text-brand-brown rounded-full text-xs hover:bg-brand-gold/20 transition-colors duration-200"
+                        >
+                          <FaTag className="w-3 h-3" />
+                          {tag.name}
+                        </span>
                       ))}
+                      {post.tags.length > 4 && (
+                        <span className="text-brand-brown text-xs px-2 py-1.5">
+                          +{post.tags.length - 4} more
+                        </span>
+                      )}
                     </div>
                   )}
 
                   {/* Read More Button */}
                   <Link
                     href={`/blogs/${post.slug}`}
-                    className="inline-flex items-center gap-2 text-brand-brown hover:text-brand-dark font-medium text-sm transition-colors duration-200 group"
+                    className="inline-flex items-center gap-2 text-brand-brown hover:text-brand-dark font-medium text-sm transition-colors duration-200 group mt-4"
                   >
                     <span>Read Article</span>
                     <IoArrowForward className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
