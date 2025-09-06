@@ -58,8 +58,6 @@ export default function BlogDetailsClient({ post }: BlogDetailsClientProps) {
     });
   };
 
-  const shareUrl =
-    typeof window !== "undefined" ? `${window.location.origin}/blogs/${post.slug}` : "";
   const shareTitle = post.title;
   const shareDescription = post.excerpt;
 
@@ -86,7 +84,7 @@ export default function BlogDetailsClient({ post }: BlogDetailsClientProps) {
     dateModified: post.updatedAt || post.publishedAt,
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": shareUrl
+      "@id": `https://www.shubhhampers.com/blogs/${post.slug}`
     },
     articleSection: post.category?.name || "Gift Hampers",
     keywords: post.tags.map(tag => tag.name).join(", "),
@@ -252,23 +250,33 @@ export default function BlogDetailsClient({ post }: BlogDetailsClientProps) {
                   Share This Article
                 </h3>
                 <div className="flex justify-center gap-6">
-                  <FacebookShareButton url={shareUrl} hashtag="#Shubhhampers">
+                  <FacebookShareButton
+                    url={`https://www.shubhhampers.com/blogs/${post.slug}`}
+                    hashtag="#Shubhhampers"
+                  >
                     <FacebookIcon size={48} round />
                   </FacebookShareButton>
 
                   <TwitterShareButton
-                    url={shareUrl}
+                    url={`https://www.shubhhampers.com/blogs/${post.slug}`}
                     title={shareTitle}
                     hashtags={["Shubhhampers", "Hampers", "Gifting"]}
                   >
                     <TwitterIcon size={48} round />
                   </TwitterShareButton>
 
-                  <LinkedinShareButton url={shareUrl} title={shareTitle} summary={shareDescription}>
+                  <LinkedinShareButton
+                    url={`https://www.shubhhampers.com/blogs/${post.slug}`}
+                    title={shareTitle}
+                    summary={shareDescription}
+                  >
                     <LinkedinIcon size={48} round />
                   </LinkedinShareButton>
 
-                  <WhatsappShareButton url={shareUrl} title={shareTitle}>
+                  <WhatsappShareButton
+                    url={`https://www.shubhhampers.com/blogs/${post.slug}`}
+                    title={shareTitle}
+                  >
                     <WhatsappIcon size={48} round />
                   </WhatsappShareButton>
                 </div>

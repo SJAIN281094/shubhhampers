@@ -25,9 +25,15 @@ export default function HamperDetailsPage({
   hamper,
   relatedProducts = []
 }: HamperDetailsPageProps) {
-  const handleWhatsAppInquiry = () => {
+  const handlePricingInquiry = () => {
     handleWhatsApp(
-      `Hello! I'm interested in ${hamper.title} gift hamper. Could you help me with pricing and availability details?`
+      `Hello! I'm interested in getting pricing information for ${hamper.title} gift hamper. Could you please share the pricing details and availability?`
+    );
+  };
+
+  const handleCustomizationInquiry = () => {
+    handleWhatsApp(
+      `Hello! I'd like to customize the ${hamper.title} gift hamper. Can you help me with customization options and pricing?`
     );
   };
 
@@ -220,10 +226,10 @@ export default function HamperDetailsPage({
 
             {/* Action Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 pt-6">
-              <PrimaryButton onClick={handleWhatsAppInquiry} className="flex-1">
+              <PrimaryButton onClick={handlePricingInquiry} className="flex-1">
                 Get Pricing on WhatsApp
               </PrimaryButton>
-              <SecondaryButton onClick={handleWhatsAppInquiry} className="flex-1">
+              <SecondaryButton onClick={handleCustomizationInquiry} className="flex-1">
                 Customize This Hamper
               </SecondaryButton>
             </div>
