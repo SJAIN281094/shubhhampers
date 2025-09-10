@@ -34,16 +34,6 @@ export async function generateMetadata({
   const authorName = post.author?.name || "Shubhhampers Team";
   const categoryName = post.category?.name || "Gift Hampers";
 
-  // Debug logging
-  console.log("Blog Post Data:", {
-    title: post.title,
-    excerpt: post.excerpt,
-    imageUrl: imageUrl,
-    author: authorName,
-    category: categoryName,
-    tags: post.tags.map(tag => tag.name)
-  });
-
   return {
     title: post.seo?.title || post.title,
     description: post.seo?.description || post.excerpt,
