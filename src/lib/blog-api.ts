@@ -9,18 +9,63 @@ import {
   transformApiBlogList
 } from "./blog-api-types";
 
-const BLOGS_API_BASE_URL = process.env.NEXT_PUBLIC_BLOGS_BASE_URL;
-const BLOGS_TENANT_ID = process.env.NEXT_PUBLIC_BLOGS_TENANT_ID;
-const BLOGS_DOMAIN_ID = process.env.NEXT_PUBLIC_BLOGS_DOMAIN_ID;
+// Helper function to get environment variables (server or client)
+async function getBlogEnvVars() {
+  // Check if we're on the server side
+  if (typeof window === "undefined") {
+    // Server-side: direct access
+    return {
+      BLOGS_API_BASE_URL: process.env.NEXT_PUBLIC_BLOGS_BASE_URL,
+      BLOGS_TENANT_ID: process.env.NEXT_PUBLIC_BLOGS_TENANT_ID,
+      BLOGS_DOMAIN_ID: process.env.NEXT_PUBLIC_BLOGS_DOMAIN_ID
+    };
+  }
+
+  // Client-side: fetch from API
+  try {
+    const envKeys =
+      "NEXT_PUBLIC_BLOGS_BASE_URL,NEXT_PUBLIC_BLOGS_TENANT_ID,NEXT_PUBLIC_BLOGS_DOMAIN_ID";
+    const response = await fetch(`/api/env?keys=${envKeys}`, {
+      headers: {
+        "Content-Type": "application/json"
+      }
+    });
+
+    if (!response.ok) {
+      throw new Error(`Failed to fetch env vars: ${response.status}`);
+    }
+
+    const data = await response.json();
+    return {
+      BLOGS_API_BASE_URL: data.values?.NEXT_PUBLIC_BLOGS_BASE_URL,
+      BLOGS_TENANT_ID: data.values?.NEXT_PUBLIC_BLOGS_TENANT_ID,
+      BLOGS_DOMAIN_ID: data.values?.NEXT_PUBLIC_BLOGS_DOMAIN_ID
+    };
+  } catch (error) {
+    console.error("Failed to get blog env vars from API:", error);
+    // Fallback to process.env (might be undefined on client)
+    return {
+      BLOGS_API_BASE_URL: process.env.NEXT_PUBLIC_BLOGS_BASE_URL,
+      BLOGS_TENANT_ID: process.env.NEXT_PUBLIC_BLOGS_TENANT_ID,
+      BLOGS_DOMAIN_ID: process.env.NEXT_PUBLIC_BLOGS_DOMAIN_ID
+    };
+  }
+}
+
+type BlogEnvVars = {
+  BLOGS_API_BASE_URL?: string;
+  BLOGS_TENANT_ID?: string;
+  BLOGS_DOMAIN_ID?: string;
+};
 
 // Helper function to build the articles API URL with short parameters
-const buildArticlesUrl = () => {
-  return `${BLOGS_API_BASE_URL}/t/${BLOGS_TENANT_ID}/d/${BLOGS_DOMAIN_ID}/blogs`;
+const buildArticlesUrl = (envVars: BlogEnvVars) => {
+  return `${envVars.BLOGS_API_BASE_URL}/t/${envVars.BLOGS_TENANT_ID}/d/${envVars.BLOGS_DOMAIN_ID}/blogs`;
 };
 
 // Helper function to build single article URL by slug
-const buildArticleUrl = (slug: string) => {
-  return `${BLOGS_API_BASE_URL}/t/${BLOGS_TENANT_ID}/d/${BLOGS_DOMAIN_ID}/blogs/${slug}`;
+const buildArticleUrl = (slug: string, envVars: BlogEnvVars) => {
+  return `${envVars.BLOGS_API_BASE_URL}/t/${envVars.BLOGS_TENANT_ID}/d/${envVars.BLOGS_DOMAIN_ID}/blogs/${slug}`;
 };
 
 // Helper function to build headers for public API
@@ -43,18 +88,31 @@ export async function fetchBlogPosts(_params: BlogApiParams = {}): Promise<{
   };
 }> {
   try {
-    const response = await fetch(buildArticlesUrl(), {
-      headers: buildHeaders(),
-      next: {
+    // Get environment variables
+    const envVars = await getBlogEnvVars();
+    if (!envVars.BLOGS_API_BASE_URL || !envVars.BLOGS_TENANT_ID || !envVars.BLOGS_DOMAIN_ID) {
+      throw new Error("Missing required blog environment variables");
+    }
+
+    const url = buildArticlesUrl(envVars);
+    const fetchOptions: RequestInit = {
+      headers: buildHeaders()
+    };
+
+    // Only add Next.js specific options on server-side
+    if (typeof window === "undefined") {
+      fetchOptions.next = {
         revalidate: 300, // Cache for 5 minutes
         tags: ["blog-posts"]
-      }
-    });
+      };
+    }
+
+    const response = await fetch(url, fetchOptions);
 
     if (!response.ok) {
       const errorText = await response.text();
       console.error(`API Error: ${response.status} ${response.statusText}`, {
-        url: buildArticlesUrl(),
+        url: url,
         status: response.status,
         headers: Object.fromEntries(response.headers.entries()),
         body: errorText
@@ -75,13 +133,26 @@ export async function fetchBlogPosts(_params: BlogApiParams = {}): Promise<{
 // Fetch single blog post by slug from new API
 export async function fetchBlogPost(slug: string): Promise<BlogPost | null> {
   try {
-    const response = await fetch(buildArticleUrl(slug), {
-      headers: buildHeaders(),
-      next: {
+    // Get environment variables
+    const envVars = await getBlogEnvVars();
+    if (!envVars.BLOGS_API_BASE_URL || !envVars.BLOGS_TENANT_ID || !envVars.BLOGS_DOMAIN_ID) {
+      throw new Error("Missing required blog environment variables");
+    }
+
+    const url = buildArticleUrl(slug, envVars);
+    const fetchOptions: RequestInit = {
+      headers: buildHeaders()
+    };
+
+    // Only add Next.js specific options on server-side
+    if (typeof window === "undefined") {
+      fetchOptions.next = {
         revalidate: 300,
         tags: [`blog-post-${slug}`]
-      }
-    });
+      };
+    }
+
+    const response = await fetch(url, fetchOptions);
 
     if (!response.ok) {
       if (response.status === 404) {
@@ -89,7 +160,7 @@ export async function fetchBlogPost(slug: string): Promise<BlogPost | null> {
       }
       const errorText = await response.text();
       console.error(`API Error for slug ${slug}: ${response.status} ${response.statusText}`, {
-        url: buildArticleUrl(slug),
+        url: url,
         status: response.status,
         headers: Object.fromEntries(response.headers.entries()),
         body: errorText
@@ -125,7 +196,14 @@ export async function fetchRelatedBlogPosts(
 // Generate all blog post slugs for static generation
 export async function generateBlogSlugs(): Promise<string[]> {
   try {
-    const response = await fetch(buildArticlesUrl(), {
+    // Get environment variables
+    const envVars = await getBlogEnvVars();
+    if (!envVars.BLOGS_API_BASE_URL || !envVars.BLOGS_TENANT_ID || !envVars.BLOGS_DOMAIN_ID) {
+      return [];
+    }
+
+    const url = buildArticlesUrl(envVars);
+    const response = await fetch(url, {
       headers: buildHeaders(),
       next: { tags: ["blog-slugs"] }
     });
@@ -154,13 +232,26 @@ export async function generateBlogSlugs(): Promise<string[]> {
 // Search blogs by keyword
 export async function searchBlogs(query: string): Promise<BlogPost[]> {
   try {
-    const response = await fetch(buildArticlesUrl(), {
-      headers: buildHeaders(),
-      next: {
+    // Get environment variables
+    const envVars = await getBlogEnvVars();
+    if (!envVars.BLOGS_API_BASE_URL || !envVars.BLOGS_TENANT_ID || !envVars.BLOGS_DOMAIN_ID) {
+      return [];
+    }
+
+    const url = buildArticlesUrl(envVars);
+    const fetchOptions: RequestInit = {
+      headers: buildHeaders()
+    };
+
+    // Only add Next.js specific options on server-side
+    if (typeof window === "undefined") {
+      fetchOptions.next = {
         revalidate: 300,
         tags: ["blog-search"]
-      }
-    });
+      };
+    }
+
+    const response = await fetch(url, fetchOptions);
 
     if (!response.ok) {
       throw new Error(`Failed to search blogs: ${response.status} ${response.statusText}`);
