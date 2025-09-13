@@ -22,14 +22,12 @@ export async function GET() {
     // Build the robots.txt URL using environment variables
     const robotsUrl = `${BLOGS_API_BASE_URL}/t/${BLOGS_TENANT_ID}/d/${BLOGS_DOMAIN_ID}/robots.txt`;
 
-    // Fetch robots.txt content from blogify
+    // Fetch robots.txt content from blogify (no caching - always fresh)
     const response = await fetch(robotsUrl, {
       headers: {
         "User-Agent": "Shubhhampers-Web/1.0"
       },
-      next: {
-        revalidate: 3600 // Cache for 1 hour
-      }
+      cache: "no-store" // Always fetch fresh data
     });
 
     if (!response.ok) {
@@ -38,12 +36,12 @@ export async function GET() {
 
     const robotsContent = await response.text();
 
-    // Return the robots.txt content with proper content type
+    // Return the robots.txt content with proper content type (no caching)
     return new Response(robotsContent, {
       status: 200,
       headers: {
         "Content-Type": "text/plain",
-        "Cache-Control": "public, max-age=3600"
+        "Cache-Control": "no-cache, no-store, must-revalidate"
       }
     });
   } catch (error) {

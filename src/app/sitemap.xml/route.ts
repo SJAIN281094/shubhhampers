@@ -2,6 +2,20 @@
 export const dynamic = "force-dynamic";
 export const revalidate = false;
 
+// Transform sitemap URLs from API domain to canonical domain
+function transformSitemapUrls(sitemapContent: string, apiBaseUrl: string): string {
+  const canonicalDomain = "https://www.shubhhampers.com";
+
+  // Replace API URLs with canonical URLs for blog posts
+  // Pattern: {API_BASE_URL}/t/{TENANT_ID}/d/{DOMAIN_ID}/blogs/{slug} -> https://www.shubhhampers.com/blogs/{slug}
+  const apiUrlPattern = new RegExp(
+    `${apiBaseUrl.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}/t/[^/]+/d/[^/]+/blogs/([^<]+)`,
+    "g"
+  );
+
+  return sitemapContent.replace(apiUrlPattern, `${canonicalDomain}/blogs/$1`);
+}
+
 export async function GET() {
   const BLOGS_API_BASE_URL = process.env.NEXT_PUBLIC_BLOGS_BASE_URL;
   const BLOGS_TENANT_ID = process.env.NEXT_PUBLIC_BLOGS_TENANT_ID;
@@ -22,14 +36,12 @@ export async function GET() {
     // Build the sitemap.xml URL using environment variables
     const sitemapUrl = `${BLOGS_API_BASE_URL}/t/${BLOGS_TENANT_ID}/d/${BLOGS_DOMAIN_ID}/sitemap.xml`;
 
-    // Fetch sitemap.xml content from blogify
+    // Fetch sitemap.xml content from blogify (no caching - always fresh)
     const response = await fetch(sitemapUrl, {
       headers: {
         "User-Agent": "Shubhhampers-Web/1.0"
       },
-      next: {
-        revalidate: 1800 // Cache for 30 minutes
-      }
+      cache: "no-store" // Always fetch fresh data
     });
 
     if (!response.ok) {
@@ -38,12 +50,15 @@ export async function GET() {
 
     const sitemapContent = await response.text();
 
-    // Return the sitemap.xml content with proper content type
-    return new Response(sitemapContent, {
+    // Transform the sitemap to use canonical URLs
+    const transformedSitemap = transformSitemapUrls(sitemapContent, BLOGS_API_BASE_URL);
+
+    // Return the transformed sitemap.xml content with proper content type (no caching)
+    return new Response(transformedSitemap, {
       status: 200,
       headers: {
         "Content-Type": "application/xml",
-        "Cache-Control": "public, max-age=1800"
+        "Cache-Control": "no-cache, no-store, must-revalidate"
       }
     });
   } catch (error) {
