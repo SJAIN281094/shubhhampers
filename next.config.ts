@@ -43,6 +43,22 @@ const nextConfig: NextConfig = {
     ]
   },
 
+  // SEO-friendly redirects
+  async redirects() {
+    return [
+      {
+        source: "/products",
+        destination: "/hampers",
+        permanent: true // 301 redirect for SEO
+      },
+      {
+        source: "/products/:path*",
+        destination: "/hampers/:path*",
+        permanent: true // 301 redirect for SEO
+      }
+    ];
+  },
+
   // Next.js 15 optimized headers
   async headers() {
     return [
