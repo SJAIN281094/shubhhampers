@@ -1,4 +1,5 @@
 import axios from "axios";
+import { formatNumber } from "./utils";
 import type {
   ApiHampersResponse,
   ApiHamperProduct,
@@ -48,12 +49,12 @@ function transformApiHamperToUI(apiHamper: ApiHamperProduct): HamperProduct {
   // Generate features from hamper items - only from API data, no fallbacks
   const features = apiHamper.hamperItems.map(item => `${item.quantity}x ${item.item.name}`);
 
-  // Calculate price display
-  const startingPrice = `₹${apiHamper.discountedPrice.toLocaleString()}`;
-  const originalPrice = apiHamper.discount > 0 ? `₹${apiHamper.basePrice.toLocaleString()}` : "";
+  // Calculate price display with safe number formatting
+  const startingPrice = `₹${formatNumber(apiHamper.discountedPrice)}`;
+  const originalPrice = apiHamper.discount > 0 ? `₹${formatNumber(apiHamper.basePrice)}` : "";
   const priceRange =
     apiHamper.discount > 0
-      ? `₹${apiHamper.discountedPrice.toLocaleString()} - ₹${apiHamper.basePrice.toLocaleString()}`
+      ? `₹${formatNumber(apiHamper.discountedPrice)} - ₹${formatNumber(apiHamper.basePrice)}`
       : startingPrice;
 
   // Generate colors based on category

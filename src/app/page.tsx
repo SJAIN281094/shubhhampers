@@ -10,6 +10,7 @@ import HeroSlider from "@components/HeroSlider";
 import { getHeroSlides } from "@lib/home-api";
 import { fetchHampers } from "@lib/hamper-api";
 import type { HamperProduct } from "@lib/hamper-api-types";
+import { formatNumber } from "@lib/utils";
 
 // Aggressively lazy load below-the-fold components with minimal loading states
 const EventsSection = dynamic(() => import("@components/EventsSection"), {
@@ -128,13 +129,13 @@ async function getHomePageData() {
               .slice(0, 4)
               .map(item => `${item.quantity}x ${item.item.name}`);
 
-            // Calculate price display
-            const startingPrice = `₹${apiHamper.discountedPrice.toLocaleString()}`;
+            // Calculate price display with safe number formatting
+            const startingPrice = `₹${formatNumber(apiHamper.discountedPrice)}`;
             const originalPrice =
-              apiHamper.discount > 0 ? `₹${apiHamper.basePrice.toLocaleString()}` : "";
+              apiHamper.discount > 0 ? `₹${formatNumber(apiHamper.basePrice)}` : "";
             const priceRange =
               apiHamper.discount > 0
-                ? `₹${apiHamper.discountedPrice.toLocaleString()} - ₹${apiHamper.basePrice.toLocaleString()}`
+                ? `₹${formatNumber(apiHamper.discountedPrice)} - ₹${formatNumber(apiHamper.basePrice)}`
                 : startingPrice;
 
             return {

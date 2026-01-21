@@ -2,6 +2,9 @@
 
 /**
  * Server action to fetch environment variables safely
+ *
+ * Note: Since these are server actions, we can directly access process.env
+ * without making HTTP requests. This avoids connection errors in production.
  */
 
 // Define which environment variables can be safely exposed to the client
@@ -20,48 +23,21 @@ const SAFE_ENV_VARS = [
 type SafeEnvVar = (typeof SAFE_ENV_VARS)[number];
 
 /**
- * Get environment variable from server using API
+ * Get environment variable directly from process.env
+ * Since this is a server action, we can access process.env directly
  */
 export async function getEnvVar(key: SafeEnvVar): Promise<string | undefined> {
   if (!SAFE_ENV_VARS.includes(key)) {
     return undefined;
   }
 
-  try {
-    // Use site URL for internal API calls
-    const baseUrl =
-      process.env.NODE_ENV === "development"
-        ? "http://localhost:3000"
-        : "https://www.shubhhampers.com";
-
-    // Make internal API call
-    const response = await fetch(`${baseUrl}/api/env?key=${encodeURIComponent(key)}`, {
-      headers: {
-        "Content-Type": "application/json"
-      },
-      // Add cache control for server-side requests
-      cache: "force-cache"
-    });
-
-    if (!response.ok) {
-      // eslint-disable-next-line no-console
-      console.warn(`Failed to fetch env var ${key} from API: ${response.status}`);
-      // Fallback to direct process.env access
-      return process.env[key];
-    }
-
-    const data = await response.json();
-    return data.value || undefined;
-  } catch (error) {
-    // eslint-disable-next-line no-console
-    console.warn(`Error fetching env var ${key} from API:`, error);
-    // Fallback to direct process.env access
-    return process.env[key];
-  }
+  // Direct access to process.env since we're running on the server
+  return process.env[key];
 }
 
 /**
- * Get multiple environment variables from server using API
+ * Get multiple environment variables directly from process.env
+ * Since this is a server action, we can access process.env directly
  */
 export async function getEnvVars(keys: SafeEnvVar[]): Promise<Record<string, string | undefined>> {
   const validKeys = keys.filter(key => SAFE_ENV_VARS.includes(key));
@@ -70,45 +46,10 @@ export async function getEnvVars(keys: SafeEnvVar[]): Promise<Record<string, str
     return {};
   }
 
-  try {
-    // Use site URL for internal API calls
-    const baseUrl =
-      process.env.NODE_ENV === "development"
-        ? "http://localhost:3000"
-        : "https://www.shubhhampers.com";
-
-    // Make internal API call with array support
-    const response = await fetch(`${baseUrl}/api/env`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ keys: validKeys }),
-      // Add cache control for server-side requests
-      cache: "force-cache"
-    });
-
-    if (!response.ok) {
-      // eslint-disable-next-line no-console
-      console.warn(`Failed to fetch env vars from API: ${response.status}`);
-      // Fallback to direct process.env access
-      const result: Record<string, string | undefined> = {};
-      validKeys.forEach(key => {
-        result[key] = process.env[key];
-      });
-      return result;
-    }
-
-    const data = await response.json();
-    return data.values || {};
-  } catch (error) {
-    // eslint-disable-next-line no-console
-    console.warn("Error fetching env vars from API:", error);
-    // Fallback to direct process.env access
-    const result: Record<string, string | undefined> = {};
-    validKeys.forEach(key => {
-      result[key] = process.env[key];
-    });
-    return result;
-  }
+  // Direct access to process.env since we're running on the server
+  const result: Record<string, string | undefined> = {};
+  validKeys.forEach(key => {
+    result[key] = process.env[key];
+  });
+  return result;
 }

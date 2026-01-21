@@ -72,7 +72,7 @@ export async function POST(request: NextRequest) {
         </div>
 
         <div style="margin-top: 20px; text-align: center; color: #666; font-size: 12px;">
-          <p>This inquiry was submitted through the Shubhhampers contact form on ${new Date().toLocaleString()}</p>
+          <p>This inquiry was submitted through the Shubhhampers contact form on ${new Date().toLocaleString("en-US")}</p>
         </div>
       </div>
     </div>
