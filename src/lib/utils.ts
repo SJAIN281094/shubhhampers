@@ -25,7 +25,11 @@ export function formatNumber(value: number | null | undefined, locale: string = 
  * Safely format a date with locale string
  * Prevents errors when date is invalid or locale fails
  */
-export function formatDate(dateString: string | Date, locale: string = "en-US", options?: Intl.DateTimeFormatOptions): string {
+export function formatDate(
+  dateString: string | Date,
+  locale: string = "en-US",
+  options?: Intl.DateTimeFormatOptions
+): string {
   try {
     const date = typeof dateString === "string" ? new Date(dateString) : dateString;
     if (isNaN(date.getTime())) {

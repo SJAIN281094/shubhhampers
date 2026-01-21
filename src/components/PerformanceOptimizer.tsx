@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
@@ -175,13 +174,12 @@ export default function PerformanceOptimizer() {
           list.getEntries().forEach(entry => {
             if (entry.entryType === "navigation") {
               const navEntry = entry as PerformanceNavigationTiming;
-              const metrics = {
+              // Performance Metrics collected
+              void {
                 ttfb: Math.round(navEntry.responseStart - navEntry.requestStart),
                 domComplete: Math.round(navEntry.domComplete - navEntry.startTime),
                 loadComplete: Math.round(navEntry.loadEventEnd - navEntry.startTime)
               };
-
-              console.log("⚡ Performance Metrics:", metrics);
             }
           });
         });
@@ -189,7 +187,7 @@ export default function PerformanceOptimizer() {
         try {
           observer.observe({ entryTypes: ["navigation"] });
         } catch {
-          console.error("Error observing performance metrics");
+          // Error observing performance metrics
         }
 
         return () => observer.disconnect();
@@ -242,11 +240,11 @@ export const measurePerformance = () => {
       const fp = paintEntries.find(entry => entry.name === "first-paint");
       if (fp) metrics.firstPaint = Math.round(fp.startTime);
 
-      console.log("🚀 Next.js 15 Performance (Stable):", metrics);
+      // Next.js 15 Performance metrics collected
       return metrics;
     }
-  } catch (error) {
-    console.warn("Performance measurement failed:", error);
+  } catch {
+    // Performance measurement failed
   }
 
   return null;

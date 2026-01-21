@@ -60,8 +60,8 @@ export async function POST(req: NextRequest) {
         })
       });
     }
-  } catch (error) {
-    console.error("IndexNow notification failed:", error);
+  } catch {
+    // IndexNow notification failed
   }
 
   return NextResponse.json({

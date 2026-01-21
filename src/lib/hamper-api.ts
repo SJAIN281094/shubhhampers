@@ -271,9 +271,7 @@ export async function fetchHamperBySlug(slug: string): Promise<HamperProduct | n
         return transformApiHamperToUI(hamper);
       }
 
-      // Log warning if slug doesn't match but still return the data
-      // eslint-disable-next-line no-console
-      console.warn(`⚠️ API returned different slug. Requested: '${slug}', Got: '${hamper.slug}'`);
+      // API returned different slug but still return the data
       return transformApiHamperToUI(hamper);
     }
 

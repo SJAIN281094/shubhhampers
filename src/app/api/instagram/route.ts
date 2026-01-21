@@ -20,8 +20,6 @@ export async function GET() {
   try {
     // Check if environment variables are set
     if (!INSTAGRAM_ACCESS_TOKEN || !INSTAGRAM_USER_ID) {
-      // eslint-disable-next-line no-console
-      console.error("Instagram API credentials not configured");
       return NextResponse.json(
         {
           error: "Instagram API not configured",
@@ -47,9 +45,6 @@ export async function GET() {
 
     if (!response.ok) {
       const errorData = await response.json();
-      // eslint-disable-next-line no-console
-      console.error("Instagram API Error:", errorData);
-
       return NextResponse.json(
         {
           error: "Failed to fetch Instagram data",
@@ -94,9 +89,8 @@ export async function GET() {
       total: posts.length,
       fetched_at: new Date().toISOString()
     });
-  } catch (error) {
-    // eslint-disable-next-line no-console
-    console.error("Instagram API Error:", error);
+  } catch {
+    // Instagram API Error
 
     return NextResponse.json(
       {

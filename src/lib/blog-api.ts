@@ -41,9 +41,8 @@ async function getBlogEnvVars() {
       BLOGS_TENANT_ID: data.values?.NEXT_PUBLIC_BLOGS_TENANT_ID,
       BLOGS_DOMAIN_ID: data.values?.NEXT_PUBLIC_BLOGS_DOMAIN_ID
     };
-  } catch (error) {
-    console.error("Failed to get blog env vars from API:", error);
-    // Fallback to process.env (might be undefined on client)
+  } catch {
+    // Failed to get blog env vars from API, fallback to process.env
     return {
       BLOGS_API_BASE_URL: process.env.NEXT_PUBLIC_BLOGS_BASE_URL,
       BLOGS_TENANT_ID: process.env.NEXT_PUBLIC_BLOGS_TENANT_ID,
@@ -111,12 +110,6 @@ export async function fetchBlogPosts(_params: BlogApiParams = {}): Promise<{
 
     if (!response.ok) {
       const errorText = await response.text();
-      console.error(`API Error: ${response.status} ${response.statusText}`, {
-        url: url,
-        status: response.status,
-        headers: Object.fromEntries(response.headers.entries()),
-        body: errorText
-      });
       throw new Error(
         `Failed to fetch blog posts: ${response.status} ${response.statusText} - ${errorText}`
       );
@@ -125,7 +118,6 @@ export async function fetchBlogPosts(_params: BlogApiParams = {}): Promise<{
     const data: ApiBlogListResponse = await response.json();
     return transformApiBlogList(data);
   } catch (error) {
-    console.error("Error fetching blog posts:", error);
     throw error;
   }
 }
@@ -159,12 +151,6 @@ export async function fetchBlogPost(slug: string): Promise<BlogPost | null> {
         return null;
       }
       const errorText = await response.text();
-      console.error(`API Error for slug ${slug}: ${response.status} ${response.statusText}`, {
-        url: url,
-        status: response.status,
-        headers: Object.fromEntries(response.headers.entries()),
-        body: errorText
-      });
       throw new Error(
         `Failed to fetch blog post: ${response.status} ${response.statusText} - ${errorText}`
       );
@@ -173,7 +159,6 @@ export async function fetchBlogPost(slug: string): Promise<BlogPost | null> {
     const data: ApiBlogDetailResponse = await response.json();
     return transformApiBlogPost(data.article);
   } catch (error) {
-    console.error(`Error fetching blog post ${slug}:`, error);
     throw error;
   }
 }
@@ -187,8 +172,7 @@ export async function fetchRelatedBlogPosts(
     // For now, just return empty array since we don't have category/tag filtering
     // You can implement this later if needed
     return [];
-  } catch (error) {
-    console.error("Error fetching related blog posts:", error);
+  } catch {
     return [];
   }
 }

@@ -26,8 +26,7 @@ export default function BlogListingClient() {
         const result = await fetchBlogPosts();
         setPosts(result.posts);
         setError(null);
-      } catch (err) {
-        console.error("Failed to load blog posts:", err);
+      } catch {
         setError("Failed to load blog posts. Please try again later.");
       } finally {
         setLoading(false);
@@ -208,9 +207,9 @@ export default function BlogListingClient() {
                   {/* Tags */}
                   {post.tags && Array.isArray(post.tags) && post.tags.length > 0 && (
                     <div className="flex flex-wrap gap-2 mt-3">
-                      {post.tags.slice(0, 4).map((tag, index) => (
+                      {post.tags.slice(0, 4).map(tag => (
                         <span
-                          key={`tag-${tag.slug}-${index}`}
+                          key={`tag-${tag.slug}`}
                           className="inline-flex items-center gap-2 px-3 py-1.5 bg-brand-gold/10 text-brand-brown rounded-full text-xs hover:bg-brand-gold/20 transition-colors duration-200"
                         >
                           <FaTag className="w-3 h-3" />

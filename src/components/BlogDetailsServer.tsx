@@ -25,8 +25,8 @@ export default async function BlogDetailsServer({ slug }: BlogDetailsServerProps
     // );
 
     return <BlogDetailsClient post={post} />;
-  } catch (error) {
-    console.error("Error in BlogDetailsServer:", error);
+  } catch {
+    // Error in BlogDetailsServer
 
     return (
       <div className="container mx-auto px-4 py-16">

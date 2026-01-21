@@ -23,7 +23,7 @@ export async function GET() {
 
   // Check if environment variables are available
   if (!BLOGS_API_BASE_URL || !BLOGS_TENANT_ID || !BLOGS_DOMAIN_ID) {
-    console.error("Missing required environment variables for sitemap.xml");
+    // Missing required environment variables for sitemap.xml
     return new Response("Service Unavailable", {
       status: 503,
       headers: {
@@ -61,8 +61,8 @@ export async function GET() {
         "Cache-Control": "no-cache, no-store, must-revalidate"
       }
     });
-  } catch (error) {
-    console.error("Error fetching sitemap.xml:", error);
+  } catch {
+    // Error fetching sitemap.xml
 
     return new Response("Internal Server Error", {
       status: 500,

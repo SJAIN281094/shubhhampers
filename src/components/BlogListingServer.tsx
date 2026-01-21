@@ -48,8 +48,8 @@ export default async function BlogListingServer({ searchParams }: BlogListingSer
 
     // Pass data to client component
     return <BlogListingClient />;
-  } catch (error) {
-    console.error("Error in BlogListingServer:", error);
+  } catch {
+    // Error in BlogListingServer
 
     return (
       <EmptyState

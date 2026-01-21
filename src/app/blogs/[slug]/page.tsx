@@ -11,8 +11,8 @@ export async function generateStaticParams() {
     return slugs.map(slug => ({
       slug
     }));
-  } catch (error) {
-    console.error("Error generating blog slugs:", error);
+  } catch {
+    // Error generating blog slugs
     return [];
   }
 }
