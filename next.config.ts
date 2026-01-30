@@ -45,22 +45,18 @@ const nextConfig: NextConfig = {
 
   // SEO-friendly redirects
   async redirects() {
-    // Only return redirects in production to avoid Next.js internal resolution issues
-    if (process.env.NODE_ENV === "production") {
-      return [
-        {
-          source: "/products",
-          destination: "/hampers",
-          permanent: true // 301 redirect for SEO
-        },
-        {
-          source: "/products/:path*",
-          destination: "/hampers/:path*",
-          permanent: true // 301 redirect for SEO
-        }
-      ];
-    }
-    return [];
+    return [
+      {
+        source: "/products",
+        destination: "/hampers",
+        permanent: true // 301 redirect for SEO
+      },
+      {
+        source: "/products/:path*",
+        destination: "/hampers/:path*",
+        permanent: true // 301 redirect for SEO
+      }
+    ];
   },
 
   // Next.js 15 optimized headers
