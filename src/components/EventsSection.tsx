@@ -2,11 +2,11 @@
 
 import { useRouter } from "next/navigation";
 import { ArrowRight } from "lucide-react";
-// import { IMAGES } from "../lib/image-constants"; // Not needed for server-side data
+// import { IMAGES } from "@lib/image-constants"; // Not needed for server-side data
 
 import PrimaryButton from "./PrimaryButton";
 import SectionHeader from "./ui/SectionHeader";
-import type { HamperProduct } from "../lib/hamper-api-types";
+import type { HamperProduct } from "@lib/hamper-api-types";
 import HamperCard from "./HamperCard";
 
 interface EventsSectionProps {

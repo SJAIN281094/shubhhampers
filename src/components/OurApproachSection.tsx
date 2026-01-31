@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Button } from "../ui-kit/button";
+import { Button } from "@ui-kit/button";
 import SectionHeader from "./ui/SectionHeader";
 
 export default function OurApproachSection() {

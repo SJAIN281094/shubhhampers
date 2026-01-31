@@ -1,18 +1,19 @@
 "use client";
 
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef, useCallback, useMemo } from "react";
 import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "motion/react";
-import { IMAGES, IMAGE_ALT } from "../lib/image-constants";
+import { useIsMounted } from "@hooks/useIsMounted";
+import { IMAGES, IMAGE_ALT } from "@lib/image-constants";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { TbBrandWhatsapp } from "react-icons/tb";
 import Image from "next/image";
-import { handleWhatsApp } from "../lib/contact-utils";
+import { handleWhatsApp } from "@lib/contact-utils";
 import HamperTag from "./HamperTag";
 import PrimaryButton from "./PrimaryButton";
 import SecondaryButton from "./SecondaryButton";
 import SectionHeader from "./ui/SectionHeader";
-import { TransformedHeroSlide } from "../lib/home-api-types";
+import { TransformedHeroSlide } from "@lib/home-api-types";
 
 // Enhanced Background Elements with Motion
 const MotionBackground = () => {
@@ -185,24 +186,16 @@ export default function HeroSlider({ slides = [] }: HeroSliderProps) {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [direction, setDirection] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
-  const [isMounted, setIsMounted] = useState(false);
+  const isMounted = useIsMounted();
   const [showNavigation, setShowNavigation] = useState(false);
   const autoplayRef = useRef<NodeJS.Timeout | null>(null);
 
-  // Prevent hydration mismatch
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  // Apply styling to API slides on mount
-  const [styledSlides, setStyledSlides] = useState<TransformedHeroSlide[]>([]);
-
-  useEffect(() => {
-    if (isMounted && slides.length > 0) {
-      // Transform API slides to include styling
-      const styled = slides.map(getSlideWithStyling);
-      setStyledSlides(styled);
+  // Apply styling to API slides - use useMemo for derived state
+  const styledSlides = useMemo(() => {
+    if (!isMounted || slides.length === 0) {
+      return [];
     }
+    return slides.map(getSlideWithStyling);
   }, [isMounted, slides]);
 
   const getCategoryMessage = (category: string) => {

@@ -1,10 +1,11 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
-import { IMAGES } from "../lib/image-constants";
+import { useEffect, useMemo } from "react";
+import { useIsMounted } from "@hooks/useIsMounted";
+import { IMAGES } from "@lib/image-constants";
 
 export default function PerformanceOptimizer() {
-  const [isMounted, setIsMounted] = useState(false);
+  const isMounted = useIsMounted();
 
   // Memoize critical resources list
   const criticalResources = useMemo(
@@ -18,11 +19,6 @@ export default function PerformanceOptimizer() {
     }),
     []
   );
-
-  // Prevent hydration mismatch
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
 
   useEffect(() => {
     // Only run after component is mounted (client-side only)

@@ -6,7 +6,7 @@ import { FaWhatsapp } from "react-icons/fa";
 import SectionHeader from "./ui/SectionHeader";
 import PrimaryButton from "./PrimaryButton";
 import SecondaryButton from "./SecondaryButton";
-import { handleWhatsApp } from "../lib/contact-utils";
+import { handleWhatsApp } from "@lib/contact-utils";
 
 export default function WhyChooseUsSection() {
   return (

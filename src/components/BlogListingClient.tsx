@@ -10,8 +10,8 @@ import SectionHeader from "./ui/SectionHeader";
 import EmptyState, { EmptyStateVariants } from "./ui/EmptyState";
 import PrimaryButton from "./PrimaryButton";
 import SecondaryButton from "./SecondaryButton";
-import { fetchBlogPosts } from "@/lib/blog-api";
-import { BlogPost } from "@/lib/blog-api-types";
+import { fetchBlogPosts } from "@lib/blog-api";
+import { BlogPost } from "@lib/blog-api-types";
 
 export default function BlogListingClient() {
   const [searchQuery, setSearchQuery] = useState<string>("");

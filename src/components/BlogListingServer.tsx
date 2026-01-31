@@ -1,5 +1,5 @@
-import { fetchBlogPosts } from "@/lib/blog-api";
-import { BlogApiParams } from "@/lib/blog-api-types";
+import { fetchBlogPosts } from "@lib/blog-api";
+import { BlogApiParams } from "@lib/blog-api-types";
 import BlogListingClient from "./BlogListingClient";
 import EmptyState from "./ui/EmptyState";
 

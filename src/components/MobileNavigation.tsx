@@ -4,12 +4,12 @@ import { useState, useCallback } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import { Button } from "../ui-kit/button";
-import { Sheet, SheetContent, SheetTrigger } from "../ui-kit/sheet";
+import { Button } from "@ui-kit/button";
+import { Sheet, SheetContent, SheetTrigger } from "@ui-kit/sheet";
 import { ChevronDown, ChevronRight } from "lucide-react";
-import { IMAGES, IMAGE_ALT } from "../lib/image-constants";
+import { IMAGES, IMAGE_ALT } from "@lib/image-constants";
 import { NAVIGATION_ITEMS, ADDITIONAL_NAVIGATION_ITEMS } from "@lib/navigation-constants";
-import { CONTACT_INFO } from "../lib/contact-utils";
+import { CONTACT_INFO } from "@lib/contact-utils";
 
 export default function MobileNavigation() {
   const router = useRouter();

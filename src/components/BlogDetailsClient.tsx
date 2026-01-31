@@ -20,8 +20,8 @@ import {
 import FeatureTag from "./FeatureTag";
 import PrimaryButton from "./PrimaryButton";
 import SecondaryButton from "./SecondaryButton";
-import { BlogPost } from "@/lib/blog-api-types";
-import { fetchRelatedBlogPosts } from "@/lib/blog-api";
+import { BlogPost } from "@lib/blog-api-types";
+import { fetchRelatedBlogPosts } from "@lib/blog-api";
 
 interface BlogDetailsClientProps {
   post: BlogPost;

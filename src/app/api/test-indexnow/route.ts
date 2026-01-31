@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { notifyIndexNow, notifyIndexNowBlog, notifyIndexNowHamper } from "@/lib/indexnow";
+import { notifyIndexNow, notifyIndexNowBlog, notifyIndexNowHamper } from "@lib/indexnow";
 
 export async function POST(request: NextRequest) {
   try {

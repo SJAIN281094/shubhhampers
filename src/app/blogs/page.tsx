@@ -1,7 +1,7 @@
 import { Metadata } from "next";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import BlogListingClient from "@/components/BlogListingClient";
+import Header from "@components/Header";
+import Footer from "@components/Footer";
+import BlogListingClient from "@components/BlogListingClient";
 
 export const metadata: Metadata = {
   title: "Blogs | Hamper Ideas, Gifting Tips & Celebration Guides | Shubhhampers",

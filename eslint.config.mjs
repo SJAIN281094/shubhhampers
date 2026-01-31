@@ -1,82 +1,42 @@
-const { FlatCompat } = require("@eslint/eslintrc");
-const js = require("@eslint/js");
+import { defineConfig, globalIgnores } from "eslint/config";
+import nextVitals from "eslint-config-next/core-web-vitals";
+import nextTs from "eslint-config-next/typescript";
+import prettier from "eslint-config-prettier/flat";
 
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-  recommendedConfig: js.configs.recommended
-});
+const eslintConfig = defineConfig([
+  // Next.js Core Web Vitals config (includes React, React Hooks, Next.js rules)
+  ...nextVitals,
 
-const eslintConfig = [
-  // Extend Next.js configurations using FlatCompat
-  ...compat.extends("next/core-web-vitals", "next/typescript"),
+  // TypeScript-specific rules
+  ...nextTs,
 
-  {
-    ignores: [
-      "node_modules/**",
-      ".next/**",
-      "out/**",
-      "build/**",
-      "dist/**",
-      "*.config.js",
-      "*.config.mjs",
-      "*.config.ts",
-      "tailwind.config.ts",
-      "next.config.ts",
-      "postcss.config.mjs",
-      "middleware.ts",
-      "next-env.d.ts",
-      "scripts/**" // Ignore Node.js scripts directory
-    ]
-  },
+  // Prettier integration (disables conflicting ESLint formatting rules)
+  prettier,
 
+  // Override default ignores
+  globalIgnores([
+    // Default ignores from eslint-config-next
+    ".next/**",
+    "out/**",
+    "build/**",
+    "next-env.d.ts",
+    // Additional ignores
+    "node_modules/**",
+    "dist/**",
+    "*.config.js",
+    "*.config.mjs",
+    "*.config.ts",
+    "tailwind.config.ts",
+    "next.config.ts",
+    "postcss.config.mjs",
+    "middleware.ts",
+    "scripts/**"
+  ]),
+
+  // Custom rules overrides
   {
     files: ["**/*.{js,jsx,ts,tsx}"],
-    ignores: ["scripts/**"], // Additional ignore for the main config
     rules: {
-      // React specific rules
-      "react/react-in-jsx-scope": "off",
-      "react/prop-types": "off",
-      "react/display-name": "warn",
-      "react/no-unescaped-entities": "warn",
-      "react/jsx-key": "error",
-      "react/jsx-no-duplicate-props": "error",
-      "react/jsx-no-undef": "error",
-      "react/jsx-uses-react": "off",
-      "react/jsx-uses-vars": "error",
-      "react/no-array-index-key": "warn",
-      "react/no-danger": "off",
-      "react/no-deprecated": "error",
-      "react/no-direct-mutation-state": "error",
-      "react/no-find-dom-node": "error",
-      "react/no-is-mounted": "error",
-      "react/no-render-return-value": "error",
-      "react/no-string-refs": "error",
-      "react/no-unknown-property": "error",
-      "react/self-closing-comp": "error",
-      "react/style-prop-object": "error",
-      "react/void-dom-elements-no-children": "error",
-
-      // React Hooks rules
-      "react-hooks/rules-of-hooks": "error",
-      "react-hooks/exhaustive-deps": "warn",
-
-      // Accessibility rules
-      "jsx-a11y/alt-text": "error",
-      "jsx-a11y/anchor-has-content": "error",
-      "jsx-a11y/anchor-is-valid": "error",
-      "jsx-a11y/aria-props": "error",
-      "jsx-a11y/aria-proptypes": "error",
-      "jsx-a11y/aria-unsupported-elements": "error",
-      "jsx-a11y/heading-has-content": "error",
-      "jsx-a11y/iframe-has-title": "error",
-      "jsx-a11y/img-redundant-alt": "error",
-      "jsx-a11y/no-access-key": "error",
-      "jsx-a11y/no-distracting-elements": "error",
-      "jsx-a11y/no-redundant-roles": "error",
-      "jsx-a11y/role-has-required-aria-props": "error",
-      "jsx-a11y/role-supports-aria-props": "error",
-      "jsx-a11y/scope": "error",
-
       // TypeScript rules
       "@typescript-eslint/no-unused-vars": [
         "error",
@@ -106,7 +66,6 @@ const eslintConfig = [
       "comma-dangle": "error",
       quotes: ["error", "double"],
       semi: ["error", "always"],
-      // indent: ["error", 2], // Disabled - Prettier handles indentation
       "object-curly-spacing": ["error", "always"],
       "array-bracket-spacing": ["error", "never"],
       "comma-spacing": ["error", { before: false, after: true }],
@@ -171,6 +130,6 @@ const eslintConfig = [
       "import/no-default-export": "off"
     }
   }
-];
+]);
 
-module.exports = eslintConfig;
+export default eslintConfig;

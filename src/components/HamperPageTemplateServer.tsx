@@ -2,7 +2,7 @@ import Link from "next/link";
 import HamperCard from "./HamperCard";
 import SectionHeader from "./ui/SectionHeader";
 import EmptyState, { EmptyStateVariants } from "./ui/EmptyState";
-import { HamperProduct, ApiPagination } from "../lib/hamper-api-types";
+import { HamperProduct, ApiPagination } from "@lib/hamper-api-types";
 
 interface HamperPageData {
   pageTitle: string;

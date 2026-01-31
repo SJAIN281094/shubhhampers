@@ -6,7 +6,7 @@ import SectionHeader from "./ui/SectionHeader";
 // import ProcessStep from "./ui/ProcessStep"; // Using direct implementation
 import PrimaryButton from "./PrimaryButton";
 import SecondaryButton from "./SecondaryButton";
-import { handleWhatsApp } from "../lib/contact-utils";
+import { handleWhatsApp } from "@lib/contact-utils";
 
 export default function HowWeWorkSection() {
   const processSteps = [

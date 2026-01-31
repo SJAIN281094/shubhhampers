@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { IMAGES, IMAGE_ALT } from "../lib/image-constants";
+import { IMAGES, IMAGE_ALT } from "@lib/image-constants";
 
 export default function HeaderLogo() {
   return (

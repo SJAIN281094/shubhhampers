@@ -1,9 +1,9 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import BlogDetailsClient from "@/components/BlogDetailsClient";
-import { fetchBlogPost, generateBlogSlugs } from "@/lib/blog-api";
+import Header from "@components/Header";
+import Footer from "@components/Footer";
+import BlogDetailsClient from "@components/BlogDetailsClient";
+import { fetchBlogPost, generateBlogSlugs } from "@lib/blog-api";
 
 export async function generateStaticParams() {
   try {

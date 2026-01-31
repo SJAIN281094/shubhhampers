@@ -111,7 +111,7 @@ export async function revalidateHampersCache(category?: string) {
   "use server";
 
   try {
-    revalidateTag(`hampers-${category || "all"}`);
+    revalidateTag(`hampers-${category || "all"}`, "default");
     // Cache revalidated successfully
   } catch {
     // Error handled by throwing

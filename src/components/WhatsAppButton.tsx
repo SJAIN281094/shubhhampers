@@ -1,7 +1,7 @@
 "use client";
 
-import { Button } from "../ui-kit/button";
-import { handleWhatsApp } from "../lib/contact-utils";
+import { Button } from "@ui-kit/button";
+import { handleWhatsApp } from "@lib/contact-utils";
 
 interface WhatsAppButtonProps {
   message?: string;

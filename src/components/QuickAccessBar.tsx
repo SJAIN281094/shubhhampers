@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { handleWhatsApp, handleEmail } from "../lib/contact-utils";
+import { handleWhatsApp, handleEmail } from "@lib/contact-utils";
 
 export default function QuickAccessBar() {
   const router = useRouter();

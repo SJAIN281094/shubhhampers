@@ -7,6 +7,10 @@ const nextConfig: NextConfig = {
   // Enable React strict mode for better development
   reactStrictMode: true,
 
+  // Turbopack configuration (Next.js 16 uses Turbopack by default)
+  // Empty config to silence the warning - webpack config is for compatibility
+  turbopack: {},
+
   experimental: {
     optimizeCss: false
   },
@@ -183,7 +187,6 @@ const nextConfig: NextConfig = {
     // Enhanced resolve with stable aliases
     config.resolve.alias = {
       ...config.resolve.alias,
-      "@": "./src",
       "@components": "./src/components",
       "@ui-kit": "./src/ui-kit",
       "@lib": "./src/lib"
@@ -204,11 +207,6 @@ const nextConfig: NextConfig = {
   // TypeScript configuration
   typescript: {
     ignoreBuildErrors: false
-  },
-
-  // ESLint configuration
-  eslint: {
-    ignoreDuringBuilds: false
   },
 
   // Remove powered by header for security

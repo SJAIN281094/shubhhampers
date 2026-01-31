@@ -8,12 +8,22 @@ function transformSitemapUrls(sitemapContent: string, apiBaseUrl: string): strin
 
   // Replace API URLs with canonical URLs for blog posts
   // Pattern: {API_BASE_URL}/t/{TENANT_ID}/d/{DOMAIN_ID}/blogs/{slug} -> https://www.shubhhampers.com/blogs/{slug}
-  const apiUrlPattern = new RegExp(
-    `${apiBaseUrl.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}/t/[^/]+/d/[^/]+/blogs/([^<]+)`,
-    "g"
-  );
+  // Using WHATWG URL API for proper URL handling
+  try {
+    // Validate and normalize the API base URL using WHATWG URL API
+    const apiBaseUrlObj = new URL(apiBaseUrl);
+    const escapedApiBaseUrl =
+      apiBaseUrlObj.origin + apiBaseUrlObj.pathname.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
-  return sitemapContent.replace(apiUrlPattern, `${canonicalDomain}/blogs/$1`);
+    const apiUrlPattern = new RegExp(`${escapedApiBaseUrl}/t/[^/]+/d/[^/]+/blogs/([^<]+)`, "g");
+
+    return sitemapContent.replace(apiUrlPattern, `${canonicalDomain}/blogs/$1`);
+  } catch {
+    // Fallback to string-based replacement if URL parsing fails
+    const escapedApiBaseUrl = apiBaseUrl.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    const apiUrlPattern = new RegExp(`${escapedApiBaseUrl}/t/[^/]+/d/[^/]+/blogs/([^<]+)`, "g");
+    return sitemapContent.replace(apiUrlPattern, `${canonicalDomain}/blogs/$1`);
+  }
 }
 
 export async function GET() {

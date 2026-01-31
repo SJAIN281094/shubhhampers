@@ -8,15 +8,16 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "motion/react";
+import { useIsMounted } from "@hooks/useIsMounted";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { TbBrandWhatsapp } from "react-icons/tb";
 import Image from "next/image";
-import { handleWhatsApp } from "../lib/contact-utils";
+import { handleWhatsApp } from "@lib/contact-utils";
 import HamperTag from "./HamperTag";
 import PrimaryButton from "./PrimaryButton";
 import SecondaryButton from "./SecondaryButton";
-import { getHeroSlides, getHeroConfig } from "../lib/home-api";
-import { TransformedHeroSlide } from "../lib/home-api-types";
+import { getHeroSlides, getHeroConfig } from "@lib/home-api";
+import { TransformedHeroSlide } from "@lib/home-api-types";
 
 // Enhanced Background Elements with Motion
 const MotionBackground = () => {
@@ -86,7 +87,7 @@ export default function HeroSliderAPI({ fallbackSlides = [] }: HeroSliderProps) 
   const [currentSlide, setCurrentSlide] = useState(0);
   const [direction, setDirection] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
-  const [isMounted, setIsMounted] = useState(false);
+  const isMounted = useIsMounted();
   const [showNavigation, setShowNavigation] = useState(false);
   const [slides, setSlides] = useState<TransformedHeroSlide[]>(fallbackSlides);
   const [config, setConfig] = useState({
@@ -119,11 +120,6 @@ export default function HeroSliderAPI({ fallbackSlides = [] }: HeroSliderProps) 
     };
 
     fetchHeroData();
-  }, []);
-
-  // Prevent hydration mismatch
-  useEffect(() => {
-    setIsMounted(true);
   }, []);
 
   const getCategoryMessage = (category: string) => {

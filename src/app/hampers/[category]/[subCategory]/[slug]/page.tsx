@@ -150,35 +150,31 @@ export default async function ProductDetailPage({
     notFound();
   }
 
-  try {
-    // Fetch product data by slug
-    const hamper = await fetchHamperBySlug(resolvedParams.slug);
+  // Fetch product data by slug
+  const hamper = await fetchHamperBySlug(resolvedParams.slug).catch(() => null);
 
-    if (!hamper) {
-      notFound();
-    }
-
-    // Verify that the category and subcategory in URL match the product data
-    const expectedCategory = (hamper.categoryName || hamper.category).toLowerCase();
-    const expectedSubCategory =
-      (hamper.subCategoryName || hamper.subCategory)?.toLowerCase() || expectedCategory;
-
-    if (
-      resolvedParams.category !== expectedCategory ||
-      resolvedParams.subCategory !== expectedSubCategory
-    ) {
-      // Redirect to correct URL or show not found
-      notFound();
-    }
-
-    return (
-      <main className="min-h-screen">
-        <Header />
-        <HamperDetailsPage hamper={hamper} />
-        <Footer />
-      </main>
-    );
-  } catch {
+  if (!hamper) {
     notFound();
   }
+
+  // Verify that the category and subcategory in URL match the product data
+  const expectedCategory = (hamper.categoryName || hamper.category).toLowerCase();
+  const expectedSubCategory =
+    (hamper.subCategoryName || hamper.subCategory)?.toLowerCase() || expectedCategory;
+
+  if (
+    resolvedParams.category !== expectedCategory ||
+    resolvedParams.subCategory !== expectedSubCategory
+  ) {
+    // Redirect to correct URL or show not found
+    notFound();
+  }
+
+  return (
+    <main className="min-h-screen">
+      <Header />
+      <HamperDetailsPage hamper={hamper} />
+      <Footer />
+    </main>
+  );
 }

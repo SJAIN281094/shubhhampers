@@ -4,10 +4,10 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { IoArrowForward } from "react-icons/io5";
 import { FaWhatsapp } from "react-icons/fa";
-import { handleWhatsApp } from "../lib/contact-utils";
+import { handleWhatsApp } from "@lib/contact-utils";
 import HamperTag from "./HamperTag";
-import { HamperProduct } from "../lib/hamper-api-types";
-import { generateProductUrl } from "../lib/hamper-url-utils";
+import { HamperProduct } from "@lib/hamper-api-types";
+import { generateProductUrl } from "@lib/hamper-url-utils";
 import { getCategoryUrl } from "@lib/navigation-constants";
 
 interface HamperCardProps {

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef, useCallback } from "react";
+import { useIsMounted } from "@hooks/useIsMounted";
 import QuickAccessBar from "./QuickAccessBar";
 import HeaderLogo from "./HeaderLogo";
 import DesktopNavigation from "./DesktopNavigation";
@@ -9,7 +10,7 @@ import MobileNavigation from "./MobileNavigation";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isMounted, setIsMounted] = useState(false);
+  const isMounted = useIsMounted();
   const ticking = useRef(false);
 
   // Throttled scroll handler for better performance
@@ -31,11 +32,6 @@ export default function Header() {
       });
       ticking.current = true;
     }
-  }, []);
-
-  // Prevent hydration mismatch
-  useEffect(() => {
-    setIsMounted(true);
   }, []);
 
   useEffect(() => {
