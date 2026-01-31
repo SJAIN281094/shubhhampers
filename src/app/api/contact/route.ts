@@ -107,7 +107,7 @@ export async function POST(request: NextRequest) {
           <h3 style="color: #462506; margin: 0 0 15px 0;">🚀 While You Wait</h3>
                       <p style="color: #462506; margin: 0 0 15px 0;">Explore our hampers or connect with us directly:</p>
           <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
-            <a href="https://shubhhampers.com/hampers" style="background: #462506; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block; margin: 5px;">🎁 View Hampers</a>
+            <a href="https://www.shubhhampers.com/hampers" style="background: #462506; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block; margin: 5px;">🎁 View Hampers</a>
             <a href="https://wa.me/919685847274?text=Hi!%20I%20just%20submitted%20a%20contact%20form%20and%20wanted%20to%20connect%20directly." style="background: #25D366; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block; margin: 5px;">💬 WhatsApp Us</a>
           </div>
         </div>
